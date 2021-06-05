@@ -14,6 +14,6 @@ class HomeController extends Controller
 
     public function propertySales()
     {
-        return 'ashik';
+        return view('frontend.property-sales');
     }
 }

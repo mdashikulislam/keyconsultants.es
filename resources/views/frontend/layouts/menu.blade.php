@@ -1,12 +1,15 @@
+@php
+    $routeName = Route::currentRouteName();
+@endphp
 <ul class="mainmenu">
     <li>
-        <a href="index.html" class="active">Home</a>
+        <a href="{{route('landing')}}" class="active">Home</a>
     </li>
     <li>
         <span>For Individuals <i class="fa fa-caret-down"></i></span>
         <ul class="submenu">
             <li>
-                <a href="property-sales.html">Real Estate Services</a>
+                <a class="{{$routeName == 'property.sales' ? 'active':''}}" href="{{route('property.sales')}}">Real Estate Services</a>
             </li>
             <li>
                 <a href="conveyancing-assistance.html">Conveyancing</a>
