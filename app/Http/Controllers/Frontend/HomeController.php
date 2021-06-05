@@ -21,4 +21,14 @@ class HomeController extends Controller
     {
         return view('frontend.conveyancing-assistance');
     }
+
+    public function nonResidentServices()
+    {
+        return view('frontend.non-resident-services');
+    }
+
+    public function willsProbate()
+    {
+        return view('frontend.wills-probate');
+    }
 }
