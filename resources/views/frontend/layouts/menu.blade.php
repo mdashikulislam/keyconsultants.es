@@ -12,7 +12,7 @@
                 <a class="{{$routeName == 'property.sales' ? 'active':''}}" href="{{route('property.sales')}}">Real Estate Services</a>
             </li>
             <li>
-                <a href="conveyancing-assistance.html">Conveyancing</a>
+                <a class="{{$routeName == 'conveyancing.assistance' ? 'active':''}}" href="{{route('conveyancing.assistance')}}">Conveyancing</a>
             </li>
             <li>
                 <a href="non-resident-services.html">Non-Resident Taxes</a>

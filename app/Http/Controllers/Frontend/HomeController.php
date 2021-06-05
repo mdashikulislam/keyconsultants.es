@@ -16,4 +16,9 @@ class HomeController extends Controller
     {
         return view('frontend.property-sales');
     }
+
+    public function conveyancingAssistance()
+    {
+        return view('frontend.conveyancing-assistance');
+    }
 }
