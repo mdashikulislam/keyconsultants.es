@@ -1,7 +1,7 @@
 @php
     $routeName = Route::currentRouteName();
 @endphp
-<ul class="mainmenu">
+
     <li>
         <a href="{{route('landing')}}" class="active">Home</a>
     </li>
@@ -15,10 +15,10 @@
                 <a class="{{$routeName == 'conveyancing.assistance' ? 'active':''}}" href="{{route('conveyancing.assistance')}}">Conveyancing</a>
             </li>
             <li>
-                <a href="non-resident-services.html">Non-Resident Taxes</a>
+                <a class="{{$routeName == 'non.resident.services' ? 'active':''}}" href="{{route('non.resident.services')}}">Non-Resident Taxes</a>
             </li>
             <li>
-                <a href="wills-probate.html">Wills &amp; Probate</a>
+                <a class="{{$routeName == 'wills.probate' ? 'active':''}}" href="{{route('wills.probate')}}">Wills &amp; Probate</a>
             </li>
             <li>
                 <a href="power-of-attorney.html">Power Of Attorney</a>
@@ -76,4 +76,4 @@
     <li>
         <a href="contact.html">Contact</a>
     </li>
-</ul>
+

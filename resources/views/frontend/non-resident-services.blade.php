@@ -1,6 +1,6 @@
 @extends('frontend.layouts.inner-master')
 @section('breadcumb-title')
-    ADMINISTRACION-DE-FINCAS
+    NON-RESIDENT SERVICES
 @endsection
 @section('content')
     <div class="content-area">
