@@ -346,7 +346,7 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="team-wrap">
                         <img class="image" src="{{asset('frontend/assets/images/team/img3.jpg')}}" alt="" />
-                        <h3 class="name">RICHARD MORANh3>
+                        <h3 class="name">RICHARD MORAN</h3>
                             <h4 class="designation">GESTOR & PROPERTY SERVICES</h4>
                             <ul class="social">
                                 <li>
