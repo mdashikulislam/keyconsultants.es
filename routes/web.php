@@ -28,4 +28,6 @@ Route::get('our-fees',[\App\Http\Controllers\Frontend\HomeController::class,'our
 Route::get('accounts-bookkeeping',[\App\Http\Controllers\Frontend\HomeController::class,'accountsBookkeeping'])->name('accounts.bookkeeping');
 Route::get('taxation-matters',[\App\Http\Controllers\Frontend\HomeController::class,'taxationMatters'])->name('taxation.matters');
 Route::get('meet-our-team',[\App\Http\Controllers\Frontend\HomeController::class,'meetOurTeam'])->name('meet.our.team');
+Route::get('career-with-key-consultants',[\App\Http\Controllers\Frontend\HomeController::class,'careerWithKeyConsultants'])->name('career.with.key.consultants');
+Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeController::class,'privacyCookiePolicy'])->name('privacy.cookie.policy');
 
