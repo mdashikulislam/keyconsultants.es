@@ -87,10 +87,10 @@
 </footer>
 <button class="scrollTopBtn"><i class="fa fa-caret-up"></i></button>
 
-{{--<a class="whatsapp-btn" href="https://web.whatsapp.com/send?phone=34665892175&amp;text=" target="_blank">--}}
-{{--    <i class="fa fa-whatsapp"></i>--}}
-{{--    How can I help you?--}}
-{{--</a>--}}
+<a class="whatsapp-btn" href="https://web.whatsapp.com/send?phone=34665892175&amp;text=" target="_blank">
+    <i class="fa fa-whatsapp"></i>
+    How can I help you?
+</a>
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>

@@ -21,38 +21,36 @@
                 <a class="{{$routeName == 'wills.probate' ? 'active':''}}" href="{{route('wills.probate')}}">Wills &amp; Probate</a>
             </li>
             <li>
-                <a href="power-of-attorney.html">Power Of Attorney</a>
+                <a class="{{$routeName == 'power.of.attorney' ? 'active':''}}" href="{{route('power.of.attorney')}}">Power Of Attorney</a>
             </li>
             <li>
-                <a href="energy-performance-certificate.html"
-                >Energy Performance Certificate</a
-                >
+                <a class="{{$routeName == 'energy.performance.certificate' ? 'active':''}}" href="{{route('energy.performance.certificate')}}">Energy Performance Certificate</a>
             </li>
             <li>
-                <a href="cedular-de-habitabilidad.html">Cedular de Habitabilidad</a>
+                <a class="{{$routeName == 'cedular.de.habitabilidad' ? 'active':''}}" href="{{route('cedular.de.habitabilidad')}}">Cedular de Habitabilidad</a>
             </li>
             <li>
-                <a href="insurance-services.html">Insurance Services</a>
+                <a class="{{$routeName == 'insurance.services' ? 'active':''}}" href="{{route('insurance.services')}}">Insurance Services</a>
             </li>
             <li>
-                <a href="green-energy.html">Green Electricity</a>
+                <a class="{{$routeName == 'green.energy' ? 'active':''}}" href="{{route('green.energy')}}">Green Electricity</a>
             </li>
         </ul>
     </li>
     <li>
-        <a href="our-fees.html">For Businesess <i class="fa fa-caret-down"></i></a>
+        <a href="{{route('our.fees')}}">For Businesess <i class="fa fa-caret-down"></i></a>
         <ul class="submenu">
             <li>
-                <a href="administracion-de-fincas.html">Finca Administration</a>
+                <a class="{{$routeName == 'administracion.de.fincas' ? 'active':''}}" href="{{route('administracion.de.fincas')}}">Finca Administration</a>
             </li>
             <li>
-                <a href="our-fees.html">Our Fees</a>
+                <a class="{{$routeName == 'our.fees' ? 'active':''}}" href="{{route('our.fees')}}">Our Fees</a>
             </li>
             <li>
-                <a href="accounts-bookkeeping.html">Accounts &amp; Bookkeeping</a>
+                <a class="{{$routeName == 'accounts.bookkeeping' ? 'active':''}}" href="{{route('accounts.bookkeeping')}}">Accounts &amp; Bookkeeping</a>
             </li>
             <li>
-                <a href="taxation-matters.html">Taxation Matters</a>
+                <a class="{{$routeName == 'taxation.matters' ? 'active':''}}" href="{{route('taxation.matters')}}">Taxation Matters</a>
             </li>
         </ul>
     </li>
