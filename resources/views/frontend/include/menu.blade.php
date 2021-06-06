@@ -55,7 +55,7 @@
         </ul>
     </li>
     <li>
-        <a href="about-us.html">About Us <i class="fa fa-caret-down"></i></a>
+        <a href="{{route('about.us')}}">About Us <i class="fa fa-caret-down"></i></a>
         <ul class="submenu">
             <li>
                 <a class="{{$routeName == 'meet.our.team' ? 'active':''}}" href="{{route('meet.our.team')}}">Meet Our Team</a>
@@ -69,9 +69,9 @@
         </ul>
     </li>
     <li>
-        <a href="properties.html">Property Search</a>
+        <a href="{{route('properties')}}">Property Search</a>
     </li>
     <li>
-        <a href="contact.html">Contact</a>
+        <a href="{{route('contact')}}">Contact</a>
     </li>
 
