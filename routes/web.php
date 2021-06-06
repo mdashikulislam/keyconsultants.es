@@ -30,4 +30,7 @@ Route::get('taxation-matters',[\App\Http\Controllers\Frontend\HomeController::cl
 Route::get('meet-our-team',[\App\Http\Controllers\Frontend\HomeController::class,'meetOurTeam'])->name('meet.our.team');
 Route::get('career-with-key-consultants',[\App\Http\Controllers\Frontend\HomeController::class,'careerWithKeyConsultants'])->name('career.with.key.consultants');
 Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeController::class,'privacyCookiePolicy'])->name('privacy.cookie.policy');
+Route::get('about-us',[\App\Http\Controllers\Frontend\HomeController::class,'aboutUs'])->name('about.us');
+Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'properties'])->name('properties');
+Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 

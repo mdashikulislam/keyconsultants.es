@@ -91,4 +91,19 @@ class HomeController extends Controller
     {
         return view('frontend.privacy-cookie-policy');
     }
+
+    public function aboutUs()
+    {
+        return view('frontend.about-us');
+    }
+
+    public function properties()
+    {
+        return view('frontend.properties');
+    }
+
+    public function contact()
+    {
+        return view('frontend.contact');
+    }
 }

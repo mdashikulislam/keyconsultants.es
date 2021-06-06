@@ -1,4 +1,8 @@
 @include('frontend.layouts.header')
+@php
+  $routeName = Route::currentRouteName();
+@endphp
+@if($routeName != 'about.us' && $routeName != 'properties' && $routeName != 'contact')
 <div
     class="breadcumb-area"
     style="background: url('{{asset('frontend/assets/images/bg/property.webp')}}') no-repeat center center / cover">
@@ -15,7 +19,7 @@
         </svg>
     </div>
 </div>
-
+@endif
 @section('content')
 
 @show
