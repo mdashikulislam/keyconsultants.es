@@ -81,4 +81,14 @@ class HomeController extends Controller
     {
         return view('frontend.meet-our-team');
     }
+
+    public function careerWithKeyConsultants()
+    {
+        return view('frontend.career-with-key-consultants');
+    }
+
+    public function privacyCookiePolicy()
+    {
+        return view('frontend.privacy-cookie-policy');
+    }
 }

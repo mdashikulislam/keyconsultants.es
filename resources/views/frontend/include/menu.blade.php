@@ -58,13 +58,13 @@
         <a href="about-us.html">About Us <i class="fa fa-caret-down"></i></a>
         <ul class="submenu">
             <li>
-                <a href="meet-our-team.html">Meet Our Team</a>
+                <a class="{{$routeName == 'meet.our.team' ? 'active':''}}" href="{{route('meet.our.team')}}">Meet Our Team</a>
             </li>
             <li>
-                <a href="career-with-key-consultants.html">Career with Key Consultants</a>
+                <a class="{{$routeName == 'career.with.key.consultants' ? 'active':''}}" href="{{route('career.with.key.consultants')}}">Career with Key Consultants</a>
             </li>
             <li>
-                <a href="privacy-cookie-policy.html">Privacy &amp; Cookie Policy</a>
+                <a class="{{$routeName == 'privacy.cookie.policy' ? 'active':''}}" href="{{route('privacy.cookie.policy')}}">Privacy &amp; Cookie Policy</a>
             </li>
         </ul>
     </li>
