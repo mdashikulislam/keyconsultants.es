@@ -29,27 +29,27 @@
                 <div class="col-lg-3 col-md-6 col-12">
                     <h2 class="footer-title">Useful Links</h2>
                     <ul class="footer-menu">
-                        <li><a href="index.html">Home</a> </li>
-                        <li><a href="properties.html">Properties </a> </li>
-                        <li> <a href="my-favorites.html">My Favorites </a></li>
-                        <li><a href="meet-our-team.html">Meet Our Team </a> </li>
+                        <li><a href="{{route('landing')}}">Home</a> </li>
+                        <li><a href="{{route('properties')}}">Properties </a> </li>
+                        <li> <a href="javascript:void(0)">My Favorites </a></li>
+                        <li><a href="{{route('meet.our.team')}}">Meet Our Team </a> </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">
                     <h2 class="footer-title">Information</h2>
                     <ul class="footer-menu">
-                        <li><a href="about-us.html">About Us
+                        <li><a href="{{route('about.us')}}">About Us
                             </a></li>
-                        <li><a href="contact.html">Contact Us
+                        <li><a href="{{route('contact')}}">Contact Us
                             </a></li>
-                        <li><a href="career-with-key-consultants.html">Careers with Key Consultants
+                        <li><a href="{{route('career.with.key.consultants')}}">Careers with Key Consultants
                             </a></li>
-                        <li><a href="privacy-cookie-policy.html">Privacy &amp; Cookies Policy
+                        <li><a href="{{route('privacy.cookie.policy')}}">Privacy &amp; Cookies Policy
                             </a></li>
-                        <li><a href="terms-and-conditions-of-business.html">Terms and Conditions of Service
+                        <li><a href="">Terms and Conditions of Service
                             </a></li>
                         <li>Website usage terms</li>
-                        <li><a href="business-start-up-2.html" target="_blank">
+                        <li><a href="{{route('our.fees')}}">
                                 Our Prices / Fees
                             </a></li>
                     </ul>

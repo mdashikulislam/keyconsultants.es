@@ -3,7 +3,7 @@
 @endphp
 
     <li>
-        <a href="{{route('landing')}}" class="active">Home</a>
+        <a class="{{$routeName == 'landing' ? 'active':''}}" href="{{route('landing')}}" >Home</a>
     </li>
     <li>
         <span>For Individuals <i class="fa fa-caret-down"></i></span>
@@ -69,9 +69,9 @@
         </ul>
     </li>
     <li>
-        <a href="{{route('properties')}}">Property Search</a>
+        <a class="{{$routeName == 'properties' ? 'active':''}}" href="{{route('properties')}}">Property Search</a>
     </li>
     <li>
-        <a href="{{route('contact')}}">Contact</a>
+        <a class="{{$routeName == 'contact' ? 'active':''}}" href="{{route('contact')}}">Contact</a>
     </li>
 

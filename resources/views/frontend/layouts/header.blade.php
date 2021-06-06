@@ -14,7 +14,7 @@
                         </li>
                         <li>
                             <i class="fa fa-envelope"></i
-                            ><a href="http://hola@keyconsultants.es" target="_blank">hola@keyconsultants.es</a>
+                            ><a href="mailto:hola@keyconsultants.es" >hola@keyconsultants.es</a>
                         </li>
                         <li>
                             <i class="fa fa-map-marker"></i>Ramon de Montcada 2 Local 4 - 07180, Santa Ponça,

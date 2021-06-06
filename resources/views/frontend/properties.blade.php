@@ -156,7 +156,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
@@ -186,7 +186,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
@@ -216,7 +216,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
@@ -246,7 +246,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
@@ -276,7 +276,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
@@ -306,7 +306,7 @@
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="assets/images/product/img1.jpeg" alt="" />
+                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
                             <div class="img-content">
                                 <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
                                 <a href="product-details.html" class="more">More</a>
