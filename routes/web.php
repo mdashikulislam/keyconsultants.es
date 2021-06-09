@@ -36,6 +36,15 @@ Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'cont
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
 
 
-Auth::routes();
+Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('admin')->middleware('auth')->group(function (){
+    Route::get('dashboard',[\App\Http\Controllers\Backend\AdminController::class,'dashboard'])->name('admin.dashboard');
+
+    Route::prefix('properties')->group(function (){
+        Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
+        Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
+    });
+});
