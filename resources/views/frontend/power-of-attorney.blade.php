@@ -53,7 +53,7 @@
                         </p>
                         <p class="MsoNormal">Please see our terms and conditions</p>
                         <div class="text-center mt-50">
-                            <a href="contact.html" class="contact-btn">Get Quote</a>
+                            <a href="{{route('contact')}}" class="contact-btn">Get Quote</a>
                         </div>
                     </div>
                 </div>

@@ -33,4 +33,5 @@ Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeControlle
 Route::get('about-us',[\App\Http\Controllers\Frontend\HomeController::class,'aboutUs'])->name('about.us');
 Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'properties'])->name('properties');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
+Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
 

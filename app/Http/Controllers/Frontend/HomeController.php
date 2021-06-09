@@ -106,4 +106,9 @@ class HomeController extends Controller
     {
         return view('frontend.contact');
     }
+
+    public function termsAndConditionsOfBusiness()
+    {
+        return view('frontend.terms-and-conditions-of-business');
+    }
 }

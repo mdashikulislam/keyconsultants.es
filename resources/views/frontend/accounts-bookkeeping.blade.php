@@ -23,7 +23,7 @@
                             prices start from as little as 50€ per month Plus IVA for small autonomos.
                         </p>
                         <div class="text-center mt-50">
-                            <a href="contact.html" class="contact-btn">Get Quote</a>
+                            <a href="{{route('contact')}}" class="contact-btn">Get Quote</a>
                         </div>
                     </div>
                 </div>
