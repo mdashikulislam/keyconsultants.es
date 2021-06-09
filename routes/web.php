@@ -35,3 +35,7 @@ Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'p
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
