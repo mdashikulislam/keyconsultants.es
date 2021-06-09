@@ -42,4 +42,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('dashboard',[\App\Http\Controllers\Backend\AdminController::class,'dashboard'])->name('admin.dashboard');
+
+    Route::prefix('properties')->group(function (){
+        Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
+        Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
+    });
 });
