@@ -46,7 +46,7 @@
                             </a></li>
                         <li><a href="{{route('privacy.cookie.policy')}}">Privacy &amp; Cookies Policy
                             </a></li>
-                        <li><a href="">Terms and Conditions of Service
+                        <li><a href="{{route('terms.and.conditions.of.business')}}">Terms and Conditions of Service
                             </a></li>
                         <li>Website usage terms</li>
                         <li><a href="{{route('our.fees')}}">

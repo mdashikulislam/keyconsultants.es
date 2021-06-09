@@ -58,7 +58,7 @@
                                 >
                         </p>
                         <div class="text-center mt-50">
-                            <a href="contact.html" class="contact-btn">Contact Us</a>
+                            <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
                         </div>
                     </div>
                 </div>

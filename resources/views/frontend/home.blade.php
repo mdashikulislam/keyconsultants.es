@@ -9,7 +9,7 @@
                 <div class="slider-content">
                     <h2>Find your next home with Key Consultants</h2>
                     <h4 class="fs-45 text-uppercase color-white">MALLORCA</h4>
-                    <a href="#">SEARCH OUR PROPERTIES</a>
+                    <a href="{{route('properties')}}">SEARCH OUR PROPERTIES</a>
                 </div>
             </div>
             <div
@@ -19,7 +19,7 @@
                 <div class="slider-content">
                     <h2>Community Management</h2>
                     <h3 class="fs-45 text-uppercase color-white">(Administracíon de Fincas)</h3>
-                    <a href="#">Find out More</a>
+                    <a href="{{route('properties')}}">Find out More</a>
                 </div>
             </div>
             <div
@@ -30,7 +30,7 @@
                     <h2>Services for Non-Residents</h2>
                     <h2 class="fs-30">MALLORCA</h2>
 
-                    <a href="#">Find out More</a>
+                    <a href="{{route('properties')}}">Find out More</a>
                 </div>
             </div>
             <div
@@ -39,7 +39,7 @@
             >
                 <div class="slider-content">
                     <h2 class="fs-40">View our Selection of Exclusive Properties</h2>
-                    <a href="#">Take me there </a>
+                    <a href="{{route('properties')}}">Take me there </a>
                 </div>
             </div>
         </div>
@@ -197,7 +197,7 @@
                             and assist you through the whole process from start to finish, making the process as
                             easy as possible.
                         </p>
-                        <a href="about-us.html" class="btn-style">About Us</a>
+                        <a href="{{route('about.us')}}" class="btn-style">About Us</a>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 offset-lg-1 col-12">
@@ -240,7 +240,7 @@
                     of real estate and private individuals, so whatever style of property you are looking for, let
                     the team at Key Consultants find it for you.
                 </p>
-                <a href="contact.html" class="contact-btn">Contact Us</a>
+                <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
             </div>
         </div>
     </div>
@@ -257,7 +257,7 @@
                         <div class="icon">
                             <img src="{{asset('frontend/assets/images/icons/building.png')}}" alt="" />
                         </div>
-                        <a href="properties.html" class="btn-style"> apartments </a>
+                        <a href="{{route('properties')}}" class="btn-style"> apartments </a>
                     </div>
                 </div>
                 <div class="col-md-4 col-12">
@@ -265,7 +265,7 @@
                         <div class="icon">
                             <img src="{{asset('frontend/assets/images/icons/house.png')}}" alt="" />
                         </div>
-                        <a href="properties.html" class="btn-style"> houses </a>
+                        <a href="{{route('properties')}}" class="btn-style"> houses </a>
                     </div>
                 </div>
                 <div class="col-md-4 col-12">
@@ -274,7 +274,7 @@
                             <img src="{{asset('frontend/assets/images/icons/building2.png')}}" alt="" />
                         </div>
 
-                        <a href="properties.html" class="btn-style"> businesses </a>
+                        <a href="{{route('properties')}}" class="btn-style"> businesses </a>
                     </div>
                 </div>
             </div>
