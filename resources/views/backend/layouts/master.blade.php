@@ -122,6 +122,20 @@
 <script src="{{asset('backend/dist/js/adminlte.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('backend/dist/js/demo.js')}}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+</script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @stack('js')
 </body>

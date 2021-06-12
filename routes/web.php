@@ -51,3 +51,5 @@ Route::prefix('admin')->middleware('auth')->group(function (){
 
 //Ajax Route
 Route::post('add-new-property-status',[\App\Http\Controllers\Backend\AjaxController::class,'addPropertyStatus'])->name('add.property.status');
+Route::post('add-new-additionally',[\App\Http\Controllers\Backend\AjaxController::class,'additionally'])->name('add.property.additionally');
+Route::post('add-new-reference-number',[\App\Http\Controllers\Backend\AjaxController::class,'referenceNumber'])->name('add.property.reference.number');

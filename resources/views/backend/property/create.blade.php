@@ -1,7 +1,7 @@
 @extends('backend.layouts.master')
 @section('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Add New Property</h3>
@@ -31,6 +31,7 @@
                             <i class="fas fa-minus"></i>
                         </button>
                     </div>
+
                 </div>
                 <div class="card-body">
                     <div class="form-group clearfix">
@@ -46,6 +47,9 @@
                                 Checkbox
                             </label>
                         </div>
+                    </div>
+                    <div class="form-gtoup">
+                        <button  data-toggle="modal" data-target="#modal_add_new_reference_number" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Reference Number</button>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -126,7 +130,7 @@
             </div>
             <!-- /.card -->
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Property Status</h3>
@@ -137,14 +141,30 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="form-group clearfix">
-                        <div class="icheck-primary" id="property_status">
-                            <input value="For Rent" id="property_status1" name="property_status[]" type="checkbox"  checked>
-                            <label for="property_status1">
-                                For Rent
-                            </label>
-                        </div>
-                        <button  data-toggle="modal" data-target="#modal_add_new_property_status" style="color: #007bff;" type="button" class="btn"><i class="fa fa-plus fa-fw"></i>Add New Property Status</button>
+                    <div class="form-group clearfix" id="property_status">
+                        {!! \App\Helper\Helper::getPropertyStatusCheckbox() !!}
+                    </div>
+                    <div class="form-gtoup">
+                        <button  data-toggle="modal" data-target="#modal_add_new_property_status" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Status</button>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Additionally</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group clearfix" id="property_additionally">
+                        {!! \App\Helper\Helper::getPropertyAditionallyCheckbox() !!}
+                    </div>
+                    <div class="form-gtoup">
+                        <button  data-toggle="modal" data-target="#modal_add_new_additionally" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -179,6 +199,58 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <div class="modal fade" id="modal_add_new_additionally"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="add_new_additionally_form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Additionally</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input name="name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <div class="modal fade" id="modal_add_new_reference_number"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="add_new_reference_number_form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Reference Number</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input name="name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 @endsection
 @push('js')
     <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
@@ -201,13 +273,86 @@
                         '_token':'{{csrf_token()}}'
                     },
                     success:function (response){
-                        console.log(response)
+                        if (response.status == true){
+                            $('#modal_add_new_property_status').modal('hide');
+                            $('#property_status').append(`<div class="icheck-primary">
+                                <input value="${response.data.id}" name="property_status[]" type="checkbox" id="property-status-${response.data.id}" checked>
+                                <label for="property-status-${response.data.id}">
+                                    ${response.data.name}
+                                </label>
+                              </div>`);
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Property Status added successful'
+                            });
+                        }
                     },
                     error:function (error){
-                        var errorValue = error.responseJSON;
+                        Swal.fire(`${error.responseJSON.errors.name}`);
                     }
                 });
             });
+            $('#add_new_additionally_form').on('submit',function (e){
+                e.preventDefault();
+                var name = $(this).find('input[name="name"]').val();
+                $.ajax({
+                    url:'{{route('add.property.additionally')}}',
+                    method:'POST',
+                    data:{
+                        name:name,
+                        '_token':'{{csrf_token()}}'
+                    },
+                    success:function (response){
+                        if (response.status == true){
+                            $('#modal_add_new_additionally').modal('hide');
+                            $('#property_additionally').append(`<div class="icheck-primary">
+                                <input value="${response.data.id}" name="additionally[]" type="checkbox" id="additionally-${response.data.id}" checked>
+                                <label for="additionally-${response.data.id}">
+                                    ${response.data.name}
+                                </label>
+                              </div>`);
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Additionally added successful'
+                            });
+                        }
+                    },
+                    error:function (error){
+                        Swal.fire(`${error.responseJSON.errors.name}`);
+                    }
+                });
+            });
+            $('#add_new_reference_number_form').on('submit',function (e){
+                e.preventDefault();
+                var name = $(this).find('input[name="name"]').val();
+                $.ajax({
+                    url:'{{route('add.property.reference.number')}}',
+                    method:'POST',
+                    data:{
+                        name:name,
+                        '_token':'{{csrf_token()}}'
+                    },
+                    success:function (response){
+                        if (response.status == true){
+                            $('#modal_add_new_reference_number').modal('hide');
+                            $('#property_additionally').append(`<div class="icheck-primary">
+                                <input value="${response.data.id}" name="additionally[]" type="checkbox" id="additionally-${response.data.id}" checked>
+                                <label for="additionally-${response.data.id}">
+                                    ${response.data.name}
+                                </label>
+                              </div>`);
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Additionally added successful'
+                            });
+                        }
+                    },
+                    error:function (error){
+                        Swal.fire(`${error.responseJSON.errors.name}`);
+                    }
+                });
+            });
+
         });
     </script>
 @endpush
