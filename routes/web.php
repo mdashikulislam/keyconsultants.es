@@ -48,3 +48,6 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
     });
 });
+
+//Ajax Route
+Route::post('add-new-property-status',[\App\Http\Controllers\Backend\AjaxController::class,'addPropertyStatus'])->name('add.property.status');
