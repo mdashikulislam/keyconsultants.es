@@ -46,5 +46,12 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::prefix('properties')->group(function (){
         Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
         Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
+        Route::post('store',[\App\Http\Controllers\Backend\PropertyController::class,'store'])->name('admin.property.store');
     });
 });
+
+//Ajax Route
+Route::post('add-new-property-status',[\App\Http\Controllers\Backend\AjaxController::class,'addPropertyStatus'])->name('add.property.status');
+Route::post('add-new-additionally',[\App\Http\Controllers\Backend\AjaxController::class,'additionally'])->name('add.property.additionally');
+Route::post('add-new-reference-number',[\App\Http\Controllers\Backend\AjaxController::class,'referenceNumber'])->name('add.property.reference.number');
+Route::post('add-new-property-type',[\App\Http\Controllers\Backend\AjaxController::class,'propertyType'])->name('add.property.type');
