@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
 use App\Models\PropertyStatus;
+use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -52,6 +53,21 @@ class AjaxController extends Controller
         return response()->json([
             'status'=>true,
             'msg'=>'Reference Number Added Successfully',
+            'data'=>$status
+        ]);
+    }
+
+    public function propertyType(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>['required','max:255','unique:reference_numbers,name']
+        ]);
+        $status = new PropertyType();
+        $status->name = $request->name;
+        $status->save();
+        return response()->json([
+            'status'=>true,
+            'msg'=>'Property Added Successfully',
             'data'=>$status
         ]);
     }
