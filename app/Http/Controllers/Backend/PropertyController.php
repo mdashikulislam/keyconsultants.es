@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\MoreMedia;
 use App\Models\Property;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class PropertyController extends Controller
@@ -60,6 +62,15 @@ class PropertyController extends Controller
             $property->feature_image = $imageName;
         }
         $property->save();
+        if ($request->has('more_media')){
+            foreach ($request->more_media as $media){
+                $newMedia = new MoreMedia();
+                $newMedia->property_id = $property->id;
+                $mediaName = Helper::uploadSingleImage($media,'more_media','MM');
+                $newMedia->path = $mediaName;
+                $newMedia->save();
+            }
+        }
         \Alert::success('Property Added Successfully');
         return redirect()->back();
     }

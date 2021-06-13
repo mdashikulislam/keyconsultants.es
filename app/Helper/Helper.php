@@ -4,6 +4,7 @@ use App\Models\Additionally;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
+use App\Models\Region;
 
 class Helper{
     public static function getPropertyStatusCheckbox()
@@ -77,5 +78,26 @@ class Helper{
         $file->storeAs($destination,$fileName,'public');
         $fileNameWithDestination = $destination . '/'.$fileName;
         return $fileNameWithDestination;
+    }
+
+    public static function getRegionDropdown($selected = null)
+    {
+        $regions = Region::all();
+        $html = '';
+        if ($regions){
+            foreach ($regions as $region){
+                $html .='<option ';
+                if ($selected){
+                    foreach ($selected as $select){
+                        if ($region->name == $select){
+                            $html .= 'selected';
+                        }
+                    }
+                }
+                $html .='  value="'.$region->name.'">';
+                $html .= $region->name.'</option>';
+            }
+        }
+        return $html;
     }
 }

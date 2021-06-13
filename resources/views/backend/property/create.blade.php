@@ -1,5 +1,6 @@
 @extends('backend.layouts.master')
 @section('content')
+
     <form action="{{route('admin.property.store')}}" method="POST" enctype="multipart/form-data">@csrf
         <div class="row">
             <div class="col-md-9">
@@ -66,7 +67,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Price</label>
-                            <input type="text"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
+                            <input type="number"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
                             @error('price')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
@@ -75,32 +76,32 @@
                             <label>City</label>
                             <select name="city" class="form-control select2 @error('city') is-invalid @enderror" style="width: 100%;height: 50px!important;">
                                 <option selected="selected" value="" disabled>Select City</option>
-                                <option value="Alcudia">Alcudia</option>
-                                <option value="Binssalem">Binssalem</option>
-                                <option value="Cala Ratjada">Cala Ratjada</option>
-                                <option value="Cala d'Or">Cala d'Or</option>
-                                <option value="Cala Moraia">Cala Moraia</option>
-                                <option value="Cala Millor">Cala Millor</option>
-                                <option value="Calvià Pueblo">Calvià Pueblo</option>
-                                <option value="Costa de la Calma">Costa de la Calma</option>
-                                <option value="Deià">Deià</option>
-                                <option value="Esporles">Esporles</option>
-                                <option value="Fornalutx">Fornalutx</option>
-                                <option value="Inca">Inca</option>
-                                <option value="Manacor">Manacor</option>
-                                <option value="Palma de Mallorca">Palma de Mallorca</option>
-                                <option value="Pollença">Pollença</option>
-                                <option value="Puerto Pollensa">Puerto Pollensa</option>
-                                <option value="Sa Pobla">Sa Pobla</option>
-                                <option value="Santa Ponça">Santa Ponsa</option>
-                                <option value="S´Arraco">S'Arraco</option>
-                                <option value="Sineu">Sineu</option>
-                                <option value="Sóller">Sóller</option>
-                                <option value="Valldemossa">Valldemossa</option>
-                                <option value="Port Andratx">Port Andratx </option>
-                                <option value="El Toro">El Toro</option>
-                                <option value="Son Ferrer">Son Ferrer</option>
-                                <option value="Paguera">Paguera</option>
+                                <option {{old('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
+                                <option {{old('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
+                                <option {{old('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
+                                <option {{old('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
+                                <option {{old('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
+                                <option {{old('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
+                                <option {{old('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
+                                <option {{old('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
+                                <option {{old('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
+                                <option {{old('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
+                                <option {{old('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
+                                <option {{old('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
+                                <option {{old('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
+                                <option {{old('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
+                                <option {{old('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
+                                <option {{old('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
+                                <option {{old('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
+                                <option {{old('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
+                                <option {{old('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
+                                <option {{old('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
+                                <option {{old('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
+                                <option {{old('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
+                                <option {{old('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
+                                <option {{old('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
+                                <option {{old('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
+                                <option {{old('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
                             </select>
                             @error('city')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
@@ -109,13 +110,7 @@
                         <div class="form-group">
                             <label>Region</label>
                             <select name="region[]" class="select2 @error('region') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                                <option value="East">East</option>
-                                <option value="West">West</option>
-                                <option value="North">North</option>
-                                <option value="Center">Center</option>
-                                <option value="South">South</option>
-                                <option value="South-East">South-East</option>
-                                <option value="South-West">South-West</option>
+                                    {!! \App\Helper\Helper::getRegionDropdown(old('region')) !!}
                             </select>
                             @error('region')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
@@ -123,35 +118,35 @@
                         </div>
                         <div class="form-group">
                             <label >Rooms</label>
-                            <input name="room" type="text"  value="{{old('room')}}" class="form-control @error('room') is-invalid @enderror">
+                            <input name="room" type="number"  value="{{old('room')}}" class="form-control @error('room') is-invalid @enderror">
                             @error('room')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Bathrooms</label>
-                            <input name="bathroom" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
+                            <input name="bathroom" value="{{old('living_space')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
                             @error('bathroom')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Land Area</label>
-                            <input name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
+                            <input name="land_area" value="{{old('land_area')}}" type="number"  class="form-control @error('land_area') is-invalid @enderror">
                             @error('land_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Living Space</label>
-                            <input name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
+                            <input name="living_space" value="{{old('living_space')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
                             @error('living_space')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Balcony/Terrace Area</label>
-                            <input type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
+                            <input type="number" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
                             @error('balcony_terrace_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
