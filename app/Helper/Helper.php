@@ -100,4 +100,14 @@ class Helper{
         }
         return $html;
     }
+
+    public static function getPropertyTypeNameById($id)
+    {
+        $typeName = PropertyType::where('id',$id)->first();
+        $html ='';
+        if ($typeName){
+            $html .='<span style="color: #fff!important;" class="mb-1 badge bg-success d-block">'.$typeName->name.'</span>';
+        }
+        return $html;
+    }
 }

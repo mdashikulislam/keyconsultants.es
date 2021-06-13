@@ -13,7 +13,11 @@ class PropertyController extends Controller
 {
     public function index()
     {
-        return view('backend.property.index');
+        $properties = Property::orderBy('id','DESC')->paginate(5);
+        return view('backend.property.index')
+            ->with([
+                'properties'=>$properties
+            ]);
     }
 
     public function create()
@@ -72,6 +76,6 @@ class PropertyController extends Controller
             }
         }
         \Alert::success('Property Added Successfully');
-        return redirect()->back();
+        return redirect()->route('admin.property.index');
     }
 }
