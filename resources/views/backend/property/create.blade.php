@@ -212,10 +212,10 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_type">
-                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox() !!}
+                            {!! \App\Helper\Helper::getPropertyTypeCheckbox() !!}
                         </div>
                         <div class="form-gtoup">
-                            <button  data-toggle="modal" data-target="#modal_add_new_property_type" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>
+                            <button  data-toggle="modal" data-target="#modal_add_new_property_type" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Type</button>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -234,7 +234,7 @@
                             <img style="width: 100%;height: auto" src="{{asset('uploads/no_image.jpg')}}" alt="">
                         </div>
                         <div class="upload mt-2">
-                            <input type="file" class="form-control" id="feature_image">
+                            <input type="file" name="feature_image" class="form-control" id="feature_image">
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -346,7 +346,7 @@
             <div class="modal-content">
                 <form id="add_new_property_type_form">
                     <div class="modal-header">
-                        <h4 class="modal-title">Add New Reference Number</h4>
+                        <h4 class="modal-title">Add New Property Type</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -489,8 +489,8 @@
                         if (response.status == true){
                             $('#modal_add_new_property_type').modal('hide');
                             $('#property_type').append(`<div class="icheck-primary d-inline mr-2">
-                                <input value="${response.data.id}" name="reference_number[]" type="checkbox" id="reference_number-${response.data.id}" checked>
-                                <label for="reference_number-${response.data.id}">
+                                <input value="${response.data.id}" name="property_type[]" type="checkbox" id="property_type-${response.data.id}" checked>
+                                <label for="property_type-${response.data.id}">
                                     ${response.data.name}
                                 </label>
                               </div>`);

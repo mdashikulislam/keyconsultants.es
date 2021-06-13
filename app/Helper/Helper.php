@@ -2,6 +2,7 @@
 namespace App\Helper;
 use App\Models\Additionally;
 use App\Models\PropertyStatus;
+use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
 
 class Helper{
@@ -53,15 +54,15 @@ class Helper{
         }
         return $html;
     }
-    public static function getReferenceNumberCheckbox()
+    public static function getPropertyTypeCheckbox()
     {
-        $referenceNumber = ReferenceNumber::all();
+        $referenceNumber = PropertyType::all();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
-                $html .='<div class="icheck-primary d-inline mr-2">';
-                $html .='<input value="'.$status->id.'" id="reference_number-'.$status->id.'" name="reference_number[]" type="checkbox">';
-                $html .= '<label for="reference_number-'.$status->id.'">';
+                $html .='<div class="icheck-primary ">';
+                $html .='<input value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
+                $html .= '<label for="property_type-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
             }

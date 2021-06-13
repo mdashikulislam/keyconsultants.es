@@ -89,6 +89,7 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+@include('sweetalert::alert')
 
 <!-- jQuery -->
 <script src="{{asset('backend/plugins/jquery/jquery.min.js')}}"></script>

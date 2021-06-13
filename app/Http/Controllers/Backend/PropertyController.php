@@ -21,7 +21,6 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
-//        return $request->all();
         $this->validate($request,[
             'title'=>['required','max:255'],
             'description'=>['required'],
@@ -35,10 +34,9 @@ class PropertyController extends Controller
             'living_space'=>['required'],
             'balcony_terrace_area'=>['required'],
             'property_status'=>['required'],
-//            'property_type'=>['required'],
+            'property_type'=>['required'],
             'feature_image'=>['required'],
         ]);
-
         $property = new Property();
         $property->title = $request->title;
         $property->slug = \Str::slug($request->title);
@@ -53,16 +51,16 @@ class PropertyController extends Controller
         $property->living_space = $request->living_space;
         $property->balcony_terrace_area = $request->balcony_terrace_area;
         $property->property_status = implode(',',$request->property_status);
-//        $property->property_type = implode(',',$request->property_type);
-        if ($property->additionally){
+        $property->property_type = implode(',',$request->property_type);
+        if ($request->additionally){
             $property->additionally = implode(',',$request->additionally);
         }
-        if ($request->hasFile('feature_image')){
+        if ($request->file('feature_image')){
             $imageName = Helper::uploadSingleImage($request->feature_image,'feature_image','FI');
-            $property->property_type = $imageName;
+            $property->feature_image = $imageName;
         }
-
         $property->save();
-        return $request->all();
+        \Alert::success('Property Added Successfully');
+        return redirect()->back();
     }
 }
