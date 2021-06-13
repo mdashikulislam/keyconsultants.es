@@ -45,6 +45,10 @@
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{route('admin.dashboard')}}" class="nav-link">Home</a>
             </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <form action="{{route('logout')}}" method="POST" class="d-none" id="logout">@csrf</form>
+                <a href="" id="logout-btn" class="nav-link"><i class="fa fa-sign-out-alt"></i>Logout</a>
+            </li>
         </ul>
     </nav>
     <!-- /.navbar -->
@@ -136,6 +140,10 @@
             toast.addEventListener('mouseleave', Swal.resumeTimer)
         }
     })
+    $('#logout-btn').on('click',function (e){
+        e.preventDefault();
+        $('#logout').submit();
+    });
 </script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 @stack('js')
