@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -98,9 +99,13 @@ class HomeController extends Controller
         return view('frontend.about-us');
     }
 
-    public function properties()
+    public function properties(Request $request)
     {
-        return view('frontend.properties');
+        $property = Property::where('post_status','Active')->orderBy('created_at','DESC')->get();
+        return view('frontend.properties')
+            ->with([
+                'properties'=>$property
+            ]);
     }
 
     public function contact()
@@ -131,5 +136,10 @@ class HomeController extends Controller
         $contact->save();
         \Alert::success('Message Send successfully...');
         return redirect()->back();
+    }
+
+    public function propertiesDetails()
+    {
+        return view('frontend.property_details');
     }
 }

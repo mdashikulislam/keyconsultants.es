@@ -32,6 +32,7 @@ Route::get('career-with-key-consultants',[\App\Http\Controllers\Frontend\HomeCon
 Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeController::class,'privacyCookiePolicy'])->name('privacy.cookie.policy');
 Route::get('about-us',[\App\Http\Controllers\Frontend\HomeController::class,'aboutUs'])->name('about.us');
 Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'properties'])->name('properties');
+Route::get('properties/{id}/{slug}',[\App\Http\Controllers\Frontend\HomeController::class,'propertiesDetails'])->name('properties.details');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
 
