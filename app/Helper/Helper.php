@@ -110,4 +110,56 @@ class Helper{
         }
         return $html;
     }
+    public static function getFrontendPropertyTypeNameById($id)
+    {
+
+        $typeName = PropertyType::where('id',$id)->first();
+        if ($typeName){
+            return  $typeName->name;
+        }
+    }
+    public static function getReferenceDropdown($selected = 0)
+    {
+        $referenceNumber = ReferenceNumber::all();
+        $html = '';
+        if ($referenceNumber){
+            foreach ($referenceNumber as $number){
+                $html .= '<option';
+                $html .= ' value="'.$number->id.'" >';
+                $html .= $number->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
+    }
+
+    public static function getRegionFrontendDropdown($selected =0)
+    {
+        $regions = Region::all();
+        $html ='';
+        if ($regions){
+            foreach ($regions as $region){
+                $html .= '<option';
+                $html .= ' value="'.$region->id.'" >';
+                $html .= $region->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
+    }
+
+    public static function getPropertyTypeDropdown($selected =0)
+    {
+        $regions = PropertyType::all();
+        $html ='';
+        if ($regions){
+            foreach ($regions as $region){
+                $html .= '<option';
+                $html .= ' value="'.$region->id.'" >';
+                $html .= $region->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
+    }
 }

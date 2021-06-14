@@ -16,97 +16,50 @@
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="reference_number">
                                 <option value="">Reference Number...</option>
-                                <option value="SP-1108">SP-1108</option>
-                                <option value="SP-1117">SP-1117</option>
-                                <option value="CC-1138">CC-1138</option>
-                                <option value="57682">57682</option>
-                                <option value="30010">30010</option>
-                                <option value="30003">30003</option>
-                                <option value="KC30002">KC30002</option>
-                                <option value="KC30010">KC30010</option>
-                                <option value="KC30003">KC30003</option>
-                                <option value="KC30001">KC30001</option>
-                                <option value="KC25811">KC25811</option>
-                                <option value="MM25695">MM25695</option>
-                                <option value="KS25613">KS25613</option>
-                                <option value="MM25552">MM25552</option>
-                                <option value="KC25481">KC25481</option>
-                                <option value="KC25457">KC25457</option>
-                                <option value="KC25406">KC25406</option>
-                                <option value="KC24795">KC24795</option>
-                                <option value="MM24678">MM24678</option>
-                                <option value="MM24615">MM24615</option>
-                                <option value="MM24600">MM24600</option>
-                                <option value="MM24419">MM24419</option>
-                                <option value="LSP24219">LSP24219</option>
-                                <option value="MM24087">MM24087</option>
-                                <option value="MM23470">MM23470</option>
-                                <option value="KC23210">KC23210</option>
-                                <option value="KC22824">KC22824</option>
-                                <option value="KC22806">KC22806</option>
-                                <option value="LSP22743">LSP22743</option>
-                                <option value="LSP22730">LSP22730</option>
-                                <option value="KC20197">KC20197</option>
-                                <option value="KC21184">KC21184</option>
-                                <option value="KC30030">KC30030</option>
-                                <option value="KC30040">KC30040</option>
-                                <option value="KC30050">KC30050</option>
-                                <option value="KC30060">KC30060</option>
-                                <option value="KC30032">KC30032</option>
-                                <option value="KC30033">KC30033</option>
-                                <option value="KC30034">KC30034</option>
-                                <option value="KC30070">KC30070</option>
+                                {!! \App\Helper\Helper::getReferenceDropdown() !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="city">
                                 <option value="">Select City...</option>
-                                <option value="Alcudia">Alcudia</option>
-                                <option value="Binssalem">Binssalem</option>
-                                <option value="Cala Ratjada">Cala Ratjada</option>
-                                <option value="Cala d'Or">Cala d'Or</option>
-                                <option value="Cala Moraia">Cala Moraia</option>
-                                <option value="Cala Millor">Cala Millor</option>
-                                <option value="Calvià Pueblo">Calvià Pueblo</option>
-                                <option value="Costa de la Calma">Costa de la Calma</option>
-                                <option value="Deià">Deià</option>
-                                <option value="Esporles">Esporles</option>
-                                <option value="Fornalutx">Fornalutx</option>
-                                <option value="Inca">Inca</option>
-                                <option value="Manacor">Manacor</option>
-                                <option value="Palma de Mallorca">Palma de Mallorca</option>
-                                <option value="Pollença">Pollença</option>
-                                <option value="Puerto Pollensa">Puerto Pollensa</option>
-                                <option value="Sa Pobla">Sa Pobla</option>
-                                <option value="Santa Ponça">Santa Ponsa</option>
-                                <option value="S´Arraco">S'Arraco</option>
-                                <option value="Sineu">Sineu</option>
-                                <option value="Sóller">Sóller</option>
-                                <option value="Valldemossa">Valldemossa</option>
-                                <option value="Port Andratx">Port Andratx</option>
-                                <option value="El Toro">El Toro</option>
-                                <option value="Son Ferrer">Son Ferrer</option>
-                                <option value="Paguera">Paguera</option>
+                                <option {{old('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
+                                <option {{old('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
+                                <option {{old('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
+                                <option {{old('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
+                                <option {{old('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
+                                <option {{old('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
+                                <option {{old('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
+                                <option {{old('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
+                                <option {{old('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
+                                <option {{old('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
+                                <option {{old('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
+                                <option {{old('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
+                                <option {{old('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
+                                <option {{old('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
+                                <option {{old('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
+                                <option {{old('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
+                                <option {{old('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
+                                <option {{old('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
+                                <option {{old('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
+                                <option {{old('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
+                                <option {{old('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
+                                <option {{old('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
+                                <option {{old('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
+                                <option {{old('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
+                                <option {{old('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
+                                <option {{old('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="region">
                                 <option value="">Select Region...</option>
-                                <option value="East">East</option>
-                                <option value="West">West</option>
-                                <option value="North">North</option>
-                                <option value="Center">Center</option>
-                                <option value="South">South</option>
-                                <option value="South-East">South-East</option>
-                                <option value="South-West">South-West</option>
+                                {!! \App\Helper\Helper::getRegionFrontendDropdown() !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="property-type">
                                 <option value="">Type...</option>
-                                <option value="6">Apartment</option>
-                                <option value="7">Town House</option>
-                                <option value="5">Villa</option>
+                                {!! \App\Helper\Helper::getPropertyTypeDropdown() !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -148,189 +101,44 @@
                 <option>Highest to lowest</option>
             </select>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
+                @forelse($properties as $property)
+                    <div class="col-lg-4 col-md-6 col-12">
                     <div class="product-wrap">
                         <div class="product-header">
                             <span class="badge">Rent/Sale</span>
-                            <h4>Port Andratx</h4>
+                            <h4>{{$property->city}}</h4>
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>
                         <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
+                            <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />
                             <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
+                                <h3>{{$property->title}}</h3>
+                                <a href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="more">More</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <div class="d-flex flex-wrap justify-content-between info">
                                 <h5>KC30070</h5>
                                 <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
+                                    <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
+                                    <li><i class="fa fa-bed"></i> {{$property->room}}</li>
+                                    <li><i class="fa fa-bath"></i> {{$property->bathroom}}</li>
                                 </ul>
                             </div>
                             <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
+                                <h5>
+                                    {!!  \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type)!!}
+                                </h5>
+                                <span class="price"><i class="fa fa-check"></i> {{$property->price}} €</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <button class="loadmore-btn">Load more</button>
-                </div>
+                @empty
+                @endforelse
+{{--                <div class="col-12">--}}
+{{--                    <button class="loadmore-btn">Load more</button>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
