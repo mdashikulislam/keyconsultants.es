@@ -1,3 +1,7 @@
+@php
+    $currentRouteName = Route::currentRouteName();
+    $prefix = request()->route()->getPrefix();
+@endphp
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('admin.dashboard')}}" class="brand-link">
@@ -19,7 +23,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
+                <li class="nav-item @if($prefix == 'admin/properties') menu-open @endif ">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
@@ -29,13 +33,13 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{route('admin.property.index')}}" class="nav-link active">
+                            <a href="{{route('admin.property.index')}}" class="nav-link {{$currentRouteName == 'admin.property.index' ? 'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Properties List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('admin.property.create')}}" class="nav-link active">
+                            <a href="{{route('admin.property.create')}}" class="nav-link {{$currentRouteName == 'admin.property.create' ? 'active':''}}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Properties</p>
                             </a>

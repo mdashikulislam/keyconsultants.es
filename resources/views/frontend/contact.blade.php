@@ -16,25 +16,43 @@
             <h1 class="contact-title">Get In touch</h1>
             <div class="row align-items-center">
                 <div class="col-lg-8 col-12">
-                    <form id="contact" class="contact-form-wrap">
+                    <form class="contact-form-wrap" action="{{route('user.contact.form')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <input type="text" placeholder="Name" name="name" id="name" />
+                                <input type="text" placeholder="Name" value="{{old('name')}}" name="name" id="name" />
+                                @error('name')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="email" placeholder="Email" name="email" id="email" />
+                                <input type="email" placeholder="Email" value="{{old('email')}}" name="email" id="email" />
+                                @error('email')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="tel" placeholder="Phone" name="phone" id="phone" />
+                                <input type="tel" placeholder="Phone" value="{{old('phone')}}" name="phone" id="phone" />
+                                @error('phone')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="text" placeholder="Subject" name="subject" id="subject" />
+                                <input type="text" placeholder="Subject" value="{{old('subject')}}" name="subject" id="subject" />
+                                @error('subject')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <textarea placeholder="Tell Us More"></textarea>
+                                <textarea placeholder="Tell Us More"  name="message">{{old('message')}}</textarea>
+                                @error('message')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-12 text-right">
-                                <button class="submit" type="submit">Send Message</button>
+                                <button class="submit" type="submit">
+                                    Submit <i class="fa fa-long-arrow-right"></i>
+                                </button>
                             </div>
                         </div>
                     </form>

@@ -39,12 +39,17 @@
                                     <td>{{\Carbon\Carbon::parse($property->created_at)->isoFormat('Do, MM YYYY')}}</td>
                                     <td>
                                         <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                        <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <form class="d-none" id="delete-{{$property->id}}" action="{{route('admin.property.delete')}}" method="POST">
+                                            @csrf
+                                            {{method_field('DELETE')}}
+                                            <input type="hidden" name="id" value="{{$property->id}}">
+                                        </form>
+                                        <a href="" onclick="deleteProperty({{$property->id}})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">No Result Found</td>
+                                    <td style="text-align: center" colspan="6">No Result Found</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -63,4 +68,24 @@
             vertical-align: middle!important;
         }
     </style>
+@endpush
+@push('js')
+    <script>
+        function deleteProperty(id){
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You you want to delete your property!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#delete-'+id).submit();
+                }
+            })
+        }
+    </script>
 @endpush

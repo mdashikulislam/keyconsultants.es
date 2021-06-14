@@ -35,7 +35,13 @@ Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'p
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
 
+//User action
+Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contactForm'])->name('user.contact.form');
 
+
+
+
+//Admin Route and Auth
 Auth::routes(['register'=>false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -47,6 +53,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
         Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
         Route::post('store',[\App\Http\Controllers\Backend\PropertyController::class,'store'])->name('admin.property.store');
+        Route::delete('delete',[\App\Http\Controllers\Backend\PropertyController::class,'delete'])->name('admin.property.delete');
     });
 });
 
