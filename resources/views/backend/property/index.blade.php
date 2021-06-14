@@ -44,7 +44,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="5">No Result Found</td>
+                                    <td style="text-align: center" colspan="6">No Result Found</td>
                                 </tr>
                             @endforelse
                         </tbody>
