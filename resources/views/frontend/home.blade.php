@@ -201,22 +201,38 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 offset-lg-1 col-12">
-                    <form class="contact-form">
+                    <form class="contact-form" action="{{route('user.contact.form')}}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 col-12">
-                                <input type="text" placeholder="Name" name="name" id="name" />
+                                <input type="text" placeholder="Name" value="{{old('name')}}" name="name" id="name" />
+                                @error('name')
+                                    <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="email" placeholder="Email" name="email" id="email" />
+                                <input type="email" placeholder="Email" value="{{old('email')}}" name="email" id="email" />
+                                @error('email')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="tel" placeholder="Phone" name="phone" id="phone" />
+                                <input type="tel" placeholder="Phone" value="{{old('phone')}}" name="phone" id="phone" />
+                                @error('phone')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-md-6 col-12">
-                                <input type="text" placeholder="Subject" name="subject" id="subject" />
+                                <input type="text" placeholder="Subject" value="{{old('subject')}}" name="subject" id="subject" />
+                                @error('subject')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-12">
-                                <textarea placeholder="Tell Us More"></textarea>
+                                <textarea placeholder="Tell Us More"  name="message">{{old('message')}}</textarea>
+                                @error('message')
+                                <span class="invalid-feedback" style="display: block">{{$message}}</span>
+                                @enderror
                             </div>
                             <div class="col-12 text-right">
                                 <button class="submit" type="submit">

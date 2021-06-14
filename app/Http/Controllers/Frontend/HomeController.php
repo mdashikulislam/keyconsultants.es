@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -110,5 +111,25 @@ class HomeController extends Controller
     public function termsAndConditionsOfBusiness()
     {
         return view('frontend.terms-and-conditions-of-business');
+    }
+
+    public function contactForm(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>['required'],
+            'email'=>['email','email'],
+            'phone'=>['required'],
+            'subject'=>['required'],
+            'message'=>['required'],
+        ]);
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->phone = $request->phone;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
+        \Alert::success('Message Send successfully...');
+        return redirect()->back();
     }
 }

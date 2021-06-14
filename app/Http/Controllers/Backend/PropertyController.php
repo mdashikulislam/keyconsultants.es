@@ -78,4 +78,16 @@ class PropertyController extends Controller
         \Alert::success('Property Added Successfully');
         return redirect()->route('admin.property.index');
     }
+
+    public function delete(Request $request)
+    {
+        $property = Property::where('id',$request->id)->first();
+        if (empty($property)){
+            \Alert::error('Property Not found');
+        }
+        $property->delete();
+        \Alert::success('Property Delete Successfully');
+        return redirect()->back();
+
+    }
 }

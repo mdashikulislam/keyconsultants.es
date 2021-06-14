@@ -91,6 +91,7 @@
     <i class="fa fa-whatsapp"></i>
     How can I help you?
 </a>
+@include('sweetalert::alert')
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
