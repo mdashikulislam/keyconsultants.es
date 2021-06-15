@@ -65,6 +65,7 @@ class PropertyController extends Controller
             $imageName = Helper::uploadSingleImage($request->feature_image,'feature_image','FI');
             $property->feature_image = $imageName;
         }
+        $property->post_status = 'Active';
         $property->save();
         if ($request->has('more_media')){
             foreach ($request->more_media as $media){
