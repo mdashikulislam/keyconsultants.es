@@ -47,10 +47,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/gallery.html" class="nav-link">
+                    <a href="{{route('admin.contact.message')}}" class="nav-link {{$currentRouteName == 'admin.contact.message' ? 'active':''}}">
                         <i class="nav-icon far fa-image"></i>
                         <p>
-                            Sample
+                            Contact Message
                         </p>
                     </a>
                 </li>
