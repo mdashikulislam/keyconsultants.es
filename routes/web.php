@@ -56,6 +56,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('store',[\App\Http\Controllers\Backend\PropertyController::class,'store'])->name('admin.property.store');
         Route::delete('delete',[\App\Http\Controllers\Backend\PropertyController::class,'delete'])->name('admin.property.delete');
     });
+    Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
 });
 
 //Ajax Route
