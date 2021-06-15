@@ -2,7 +2,7 @@
 @php
   $routeName = Route::currentRouteName();
 @endphp
-@if($routeName != 'about.us' && $routeName != 'properties' && $routeName != 'contact')
+@if($routeName != 'about.us' && $routeName != 'properties' && $routeName != 'contact' && $routeName !='properties.details')
 <div
     class="breadcumb-area"
     style="background: url('{{asset('frontend/assets/images/bg/property.webp')}}') no-repeat center center / cover">
