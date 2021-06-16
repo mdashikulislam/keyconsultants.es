@@ -34,12 +34,13 @@
                                 <td>{{$query->question}}</td>
                             </tr>
                         @empty
+                            <tr>
+                                <td colspan="6" style="text-align: center"></td>
+                            </tr>
                         @endforelse
                         </tbody>
                     </table>
                 </div>
-
-
                 <div style="display: flex;flex-direction: row-reverse;margin-right: 20px;">
                     {{$enquiry->links('vendor.pagination.bootstrap-4')}}
                 </div>

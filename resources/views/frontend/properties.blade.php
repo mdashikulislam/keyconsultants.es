@@ -80,8 +80,8 @@
                                 <span id="bedrooms-value1"></span>
                                 <span class="separator">—</span>
                                 <span id="bedrooms-value2"></span>
-                                <input type="hidden" name="min-value" value="" />
-                                <input type="hidden" name="max-value" value="" />
+                                <input type="hidden" id="bed1" name="min-value" value="" />
+                                <input type="hidden" id="bed2" name="max-value" value="" />
                             </div>
                         </div>
                     </form>
@@ -181,12 +181,12 @@
                 document.getElementsByName('max-value').value = moneyFormat.from(values[1]);
             });
 
-            $('select').on('change',function (){
-                $('#sort-form').submit();
-            });
-            $('input').on('change',function (){
-                $('#sort-form').submit();
-            });
+
+
+
+
+
+
             // bedrooms slider
             let bedroomsSlider = document.getElementById('bedrooms');
 
@@ -210,6 +210,17 @@
                 document.getElementById('bedrooms-value2').innerHTML = values[1];
                 document.getElementsByName('min-value').value;
                 document.getElementsByName('max-value').value;
+            });
+
+            $('select').on('change',function (){
+                $('#sort-form').submit();
+            });
+            bedroomsSlider.noUiSlider.on('change', function (values, handle) {
+                document.getElementById('bedrooms-value1').innerHTML = values[0];
+                document.getElementById('bedrooms-value2').innerHTML = values[1];
+                document.getElementsByName('min-value').value;
+                document.getElementsByName('max-value').value;
+                $('#sort-form').submit();
             });
         });
     </script>
