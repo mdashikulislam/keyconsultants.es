@@ -12,54 +12,54 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <form class="row">
+                    <form id="sort-form" class="row" action="{{route('properties')}}" method="GET">
                         <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="reference_number">
+                            <select name="reference_number" class="select-style" name="reference_number">
                                 <option value="">Reference Number...</option>
-                                {!! \App\Helper\Helper::getReferenceDropdown() !!}
+                                {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="city">
+                            <select  class="select-style" name="city">
                                 <option value="">Select City...</option>
-                                <option {{old('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
-                                <option {{old('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
-                                <option {{old('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
-                                <option {{old('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
-                                <option {{old('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
-                                <option {{old('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
-                                <option {{old('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
-                                <option {{old('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
-                                <option {{old('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
-                                <option {{old('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
-                                <option {{old('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
-                                <option {{old('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
-                                <option {{old('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
-                                <option {{old('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
-                                <option {{old('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
-                                <option {{old('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
-                                <option {{old('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
-                                <option {{old('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
-                                <option {{old('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
-                                <option {{old('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
-                                <option {{old('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
-                                <option {{old('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
-                                <option {{old('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
-                                <option {{old('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
-                                <option {{old('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
-                                <option {{old('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
+                                <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
+                                <option {{request()->input('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
+                                <option {{request()->input('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
+                                <option {{request()->input('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
+                                <option {{request()->input('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
+                                <option {{request()->input('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
+                                <option {{request()->input('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
+                                <option {{request()->input('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
+                                <option {{request()->input('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
+                                <option {{request()->input('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
+                                <option {{request()->input('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
+                                <option {{request()->input('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
+                                <option {{request()->input('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
+                                <option {{request()->input('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
+                                <option {{request()->input('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
+                                <option {{request()->input('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
+                                <option {{request()->input('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
+                                <option {{request()->input('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
+                                <option {{request()->input('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
+                                <option {{request()->input('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
+                                <option {{request()->input('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
+                                <option {{request()->input('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
+                                <option {{request()->input('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
+                                <option {{request()->input('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
+                                <option {{request()->input('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
+                                <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="region">
                                 <option value="">Select Region...</option>
-                                {!! \App\Helper\Helper::getRegionFrontendDropdown() !!}
+                                {!! \App\Helper\Helper::getRegionFrontendDropdown(request()->input('region')) !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
                             <select class="select-style" name="property-type">
                                 <option value="">Type...</option>
-                                {!! \App\Helper\Helper::getPropertyTypeDropdown() !!}
+                                {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property-type')) !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -118,7 +118,7 @@
                         </div>
                         <div class="product-info">
                             <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
+                                <h5>{{$property->reference_number}}</h5>
                                 <ul class="d-flex justify-content-between">
                                     <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
                                     <li><i class="fa fa-bed"></i> {{$property->room}}</li>
@@ -181,6 +181,12 @@
                 document.getElementsByName('max-value').value = moneyFormat.from(values[1]);
             });
 
+            $('select').on('change',function (){
+                $('#sort-form').submit();
+            });
+            $('input').on('change',function (){
+                $('#sort-form').submit();
+            });
             // bedrooms slider
             let bedroomsSlider = document.getElementById('bedrooms');
 

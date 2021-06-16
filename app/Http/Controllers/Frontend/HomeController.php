@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
+use App\Models\Enquiry;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -138,8 +139,41 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function propertiesDetails()
+    public function propertiesDetails($id,$slug)
     {
-        return view('frontend.property_details');
+        $property = Property::where('id',$id)
+            ->where('slug',$slug)
+            ->with('more_medias')
+            ->first();
+        if (empty($property)){
+            return  redirect()->back();
+        }
+        return view('frontend.property_details')
+            ->with([
+                'property'=>$property
+            ]);
+    }
+
+    public function propertyEnquiry(Request $request)
+    {
+        $this->validate($request,[
+            'name'=>['required'],
+            'email'=>['required','email'],
+            'question'=>['required'],
+            'phone'=>['required'],
+        ]);
+        $quiry = new Enquiry();
+        $quiry->post_id = $request->post_id;
+        $quiry->name = $request->name;
+        $quiry->email = $request->email;
+        $quiry->phone = $request->phone;
+        $quiry->question = $request->question;
+
+        if ($request->querys){
+            $quiry->query = implode(',',$request->querys);
+        }
+        $quiry->save();
+        \Alert::success('Question submit Successfully');
+        return redirect()->back();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 namespace App\Helper;
 use App\Models\Additionally;
+use App\Models\Property;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
@@ -120,13 +121,16 @@ class Helper{
     }
     public static function getReferenceDropdown($selected = 0)
     {
-        $referenceNumber = ReferenceNumber::all();
+        $referenceNumber = Property::pluck('reference_number');
         $html = '';
         if ($referenceNumber){
             foreach ($referenceNumber as $number){
-                $html .= '<option';
-                $html .= ' value="'.$number->id.'" >';
-                $html .= $number->name;
+                $html .= '<option ';
+                if ($selected == $number){
+                    $html .= 'selected';
+                }
+                $html .= ' value="'.$number.'" >';
+                $html .= $number;
                 $html .= '</option>';
             }
         }
@@ -139,7 +143,10 @@ class Helper{
         $html ='';
         if ($regions){
             foreach ($regions as $region){
-                $html .= '<option';
+                $html .= '<option ';
+                if ($region->id == $selected){
+                    $html .= 'selected';
+                }
                 $html .= ' value="'.$region->id.'" >';
                 $html .= $region->name;
                 $html .= '</option>';
@@ -154,12 +161,38 @@ class Helper{
         $html ='';
         if ($regions){
             foreach ($regions as $region){
-                $html .= '<option';
+                $html .= '<option ';
+                if ($selected == $region->id){
+                    $html .= 'selected';
+                }
                 $html .= ' value="'.$region->id.'" >';
                 $html .= $region->name;
                 $html .= '</option>';
             }
         }
         return $html;
+    }
+
+    public static function getAdditionallyData($show = null)
+    {
+        $aditionally = Additionally::all();
+        $value = [];
+        if ($aditionally){
+            foreach($aditionally as $add){
+                if ($show){
+                    foreach($show as $s){
+                        if ($s == $add->id){
+                            $value[] = $add->name;
+                        }
+                    }
+                }
+            }
+        }
+        return $value;
+    }
+
+    public static function getPropertyInfoById($id = 0)
+    {
+       return Property::where('id',$id)->first();
     }
 }

@@ -31,30 +31,30 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Reference Number</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
+{{--                <div class="card card-primary">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3 class="card-title">Reference Number</h3>--}}
+{{--                        <div class="card-tools">--}}
+{{--                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
+{{--                                <i class="fas fa-minus"></i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
 
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group clearfix" id="reference_number">
-                            {!! \App\Helper\Helper::getReferenceNumberCheckbox() !!}
-                            @error('reference_number')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div class="form-group clearfix" id="reference_number">--}}
+{{--                            {!! \App\Helper\Helper::getReferenceNumberCheckbox() !!}--}}
+{{--                            @error('reference_number')--}}
+{{--                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>--}}
+{{--                            @enderror--}}
+{{--                        </div>--}}
 
-                        <div class="form-group">
-                            <button  data-toggle="modal" data-target="#modal_add_new_reference_number" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Reference Number</button>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
+{{--                        <div class="form-group">--}}
+{{--                            <button  data-toggle="modal" data-target="#modal_add_new_reference_number" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Reference Number</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.card-body -->--}}
+{{--                </div>--}}
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Property Information</h3>
@@ -310,32 +310,32 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <div class="modal fade" id="modal_add_new_reference_number"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="add_new_reference_number_form">
-                    <div class="modal-header">
-                        <h4 class="modal-title">Add New Reference Number</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Name</label>
-                            <input name="name" type="text" class="form-control">
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
+{{--    <div class="modal fade" id="modal_add_new_reference_number"  style=" padding-right: 17px;" aria-modal="true" role="dialog">--}}
+{{--        <div class="modal-dialog">--}}
+{{--            <div class="modal-content">--}}
+{{--                <form id="add_new_reference_number_form">--}}
+{{--                    <div class="modal-header">--}}
+{{--                        <h4 class="modal-title">Add New Reference Number</h4>--}}
+{{--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
+{{--                            <span aria-hidden="true">×</span>--}}
+{{--                        </button>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-body">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label for="">Name</label>--}}
+{{--                            <input name="name" type="text" class="form-control">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="modal-footer justify-content-between">--}}
+{{--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
+{{--                        <button type="submit" class="btn btn-primary">Save</button>--}}
+{{--                    </div>--}}
+{{--                </form>--}}
+{{--            </div>--}}
+{{--            <!-- /.modal-content -->--}}
+{{--        </div>--}}
+{{--        <!-- /.modal-dialog -->--}}
+{{--    </div>--}}
     <div class="modal fade" id="modal_add_new_property_type"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">

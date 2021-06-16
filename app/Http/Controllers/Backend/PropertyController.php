@@ -27,10 +27,10 @@ class PropertyController extends Controller
 
     public function store(Request $request)
     {
+
         $this->validate($request,[
             'title'=>['required','max:255'],
             'description'=>['required'],
-            'reference_number'=>['required'],
             'price'=>['required'],
             'city'=>['required'],
             'region'=>['required'],
@@ -43,11 +43,13 @@ class PropertyController extends Controller
             'property_type'=>['required'],
             'feature_image'=>['required'],
         ]);
+        $referenceNumber = Property::orderBy('id','DESC')->limit(1)->pluck('id');
+        $refNumber = @$referenceNumber[0] ? : 0;
         $property = new Property();
         $property->title = $request->title;
         $property->slug = \Str::slug($request->title);
+        $property->reference_number = 'SP-'.sprintf('%05u', $refNumber+1);
         $property->description = $request->description;
-        $property->reference_number = implode(',',$request->reference_number);
         $property->price = $request->price;
         $property->city = $request->city;
         $property->region = implode(',',$request->region);

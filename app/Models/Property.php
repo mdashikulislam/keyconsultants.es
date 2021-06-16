@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Property extends Model
 {
     use HasFactory,SoftDeletes;
+
+    public function more_medias()
+    {
+        return $this->hasMany(MoreMedia::class,'property_id','id');
+    }
 }
