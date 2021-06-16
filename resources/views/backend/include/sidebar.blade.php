@@ -54,6 +54,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.enquiry')}}" class="nav-link {{$currentRouteName == 'admin.enquiry' ? 'active':''}}">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Enquiry
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

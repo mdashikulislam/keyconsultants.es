@@ -99,12 +99,24 @@
                         </ul>
                         <label class="product-label">Your Question*</label>
                         <textarea name="question" class="input" placeholder="type question">{{old('question')}}</textarea>
+                        @error('question')
+                        <span  class="invalid-feedback d-block">{{$message}}</span>
+                        @enderror
                         <label class="product-label">Your Name*</label>
                         <input value="{{old('name')}}" name="name" class="input" type="text" placeholder="name" />
+                        @error('name')
+                            <span  class="invalid-feedback d-block">{{$message}}</span>
+                        @enderror
                         <label class="product-label">Your Phone*</label>
                         <input value="{{old('phone')}}" name="phone" class="input" type="tel" placeholder="Phone" />
+                        @error('phone')
+                            <span  class="invalid-feedback d-block">{{$message}}</span>
+                        @enderror
                         <label class="product-label">Your Email*</label>
                         <input value="{{old('email')}}" name="email" class="input" type="email" placeholder="Email" />
+                        @error('email')
+                            <span  class="invalid-feedback d-block">{{$message}}</span>
+                        @enderror
                         <button type="submit">Submit</button>
                     </form>
                 </div>

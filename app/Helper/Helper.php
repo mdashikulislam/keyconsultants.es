@@ -190,4 +190,9 @@ class Helper{
         }
         return $value;
     }
+
+    public static function getPropertyInfoById($id = 0)
+    {
+       return Property::where('id',$id)->first();
+    }
 }
