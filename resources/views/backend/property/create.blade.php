@@ -67,7 +67,7 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="inputName">Price</label>
-                            <input type="number"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
+                            <input type="text" placeholder="ex: €500,000"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
                             @error('price')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
@@ -125,28 +125,28 @@
                         </div>
                         <div class="form-group">
                             <label >Bathrooms</label>
-                            <input name="bathroom" value="{{old('living_space')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
+                            <input name="bathroom" value="{{old('bathroom')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
                             @error('bathroom')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Land Area</label>
-                            <input name="land_area" value="{{old('land_area')}}" type="number"  class="form-control @error('land_area') is-invalid @enderror">
+                            <input name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
                             @error('land_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Living Space</label>
-                            <input name="living_space" value="{{old('living_space')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
+                            <input name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
                             @error('living_space')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Balcony/Terrace Area</label>
-                            <input type="number" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
+                            <input type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
                             @error('balcony_terrace_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror

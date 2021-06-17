@@ -23,6 +23,14 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item">
+                    <a target="_blank" href="{{route('landing')}}" class="nav-link ">
+                        <i class="nav-icon far fa-image"></i>
+                        <p>
+                            Visit Website
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item @if($prefix == 'admin/properties') menu-open @endif ">
                     <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
