@@ -31,8 +31,16 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a  href="{{route('admin.dashboard')}}" class="nav-link @if($currentRouteName == 'admin.dashboard') active @endif">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
                 <li class="nav-item @if($prefix == 'admin/properties') menu-open @endif ">
-                    <a href="#" class="nav-link active">
+                    <a href="#" class="nav-link @if($prefix == 'admin/properties') active @endif">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Properties
