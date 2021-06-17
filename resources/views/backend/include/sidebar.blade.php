@@ -41,7 +41,7 @@
                 </li>
                 <li class="nav-item @if($prefix == 'admin/properties') menu-open @endif ">
                     <a href="#" class="nav-link @if($prefix == 'admin/properties') active @endif">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fa fa-university"></i>
                         <p>
                             Properties
                             <i class="right fas fa-angle-left"></i>
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.contact.message')}}" class="nav-link {{$currentRouteName == 'admin.contact.message' ? 'active':''}}">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon fa fa-envelope-open"></i>
                         <p>
                             Contact Message
                         </p>
@@ -72,7 +72,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.enquiry')}}" class="nav-link {{$currentRouteName == 'admin.enquiry' ? 'active':''}}">
-                        <i class="nav-icon far fa-image"></i>
+                        <i class="nav-icon fa fa-list-alt"></i>
                         <p>
                             Enquiry
                         </p>
