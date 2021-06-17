@@ -1,6 +1,7 @@
 <?php
 namespace App\Helper;
 use App\Models\Additionally;
+use App\Models\Feature;
 use App\Models\Property;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
@@ -65,6 +66,21 @@ class Helper{
                 $html .='<div class="icheck-primary ">';
                 $html .='<input value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
                 $html .= '<label for="property_type-'.$status->id.'">';
+                $html .= $status->name;
+                $html .='</label></div>';
+            }
+        }
+        return $html;
+    }
+    public static function getPropertyFeatureCheckbox()
+    {
+        $referenceNumber = Feature::all();
+        $html = '';
+        if (!empty($referenceNumber)){
+            foreach ($referenceNumber as $key=>$status){
+                $html .='<div class="icheck-primary ">';
+                $html .='<input value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
+                $html .= '<label for="property_feature-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
             }

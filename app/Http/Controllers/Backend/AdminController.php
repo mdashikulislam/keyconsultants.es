@@ -21,7 +21,7 @@ class AdminController extends Controller
 
     public function contactMessage()
     {
-        $contacts = Contact::orderBy('created_at')->paginate(10);
+        $contacts = Contact::orderBy('created_at','DESC')->paginate(10);
         return view('backend.contact')->with([
             'contacts'=>$contacts
         ]);
@@ -29,7 +29,7 @@ class AdminController extends Controller
 
     public function enquiry()
     {
-        $enquiry = Enquiry::orderBy('created_at')->paginate(10);
+        $enquiry = Enquiry::orderBy('created_at','DESC')->paginate(10);
         return view('backend.enquiry')->with([
             'enquiry'=>$enquiry
         ]);

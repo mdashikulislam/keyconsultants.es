@@ -59,6 +59,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('note/{id}',[\App\Http\Controllers\Backend\PropertyController::class,'note'])->name('admin.property.note');
         Route::post('note-add',[\App\Http\Controllers\Backend\PropertyController::class,'addNote'])->name('admin.note.add');
         Route::get('note-delete/{id}',[\App\Http\Controllers\Backend\PropertyController::class,'deleteNote'])->name('admin.note.delete');
+        Route::post('status-change',[\App\Http\Controllers\Backend\PropertyController::class,'statusChange'])->name('admin.property.status.change');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
     Route::get('enquiry',[\App\Http\Controllers\Backend\AdminController::class,'enquiry'])->name('admin.enquiry');
@@ -69,3 +70,4 @@ Route::post('add-new-property-status',[\App\Http\Controllers\Backend\AjaxControl
 Route::post('add-new-additionally',[\App\Http\Controllers\Backend\AjaxController::class,'additionally'])->name('add.property.additionally');
 Route::post('add-new-reference-number',[\App\Http\Controllers\Backend\AjaxController::class,'referenceNumber'])->name('add.property.reference.number');
 Route::post('add-new-property-type',[\App\Http\Controllers\Backend\AjaxController::class,'propertyType'])->name('add.property.type');
+Route::post('add-new-property-feature',[\App\Http\Controllers\Backend\AjaxController::class,'propertyFeature'])->name('add.property.feature');

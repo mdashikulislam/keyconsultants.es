@@ -38,14 +38,29 @@
                                     </td>
                                     <td>{{\Carbon\Carbon::parse($property->created_at)->isoFormat('Do, MM YYYY')}}</td>
                                     <td>
-                                        <a href="{{route('admin.property.note',['id'=>$property->id])}}" class="btn btn-info"><i class="fa fa-list"></i></a>
+                                        @if($property->post_status == 'Active')
+                                            <form id="change-{{$property->id}}" action="{{route('admin.property.status.change')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="post_id" value="{{$property->id}}">
+                                                <input type="hidden" name="status" value="Inactive">
+                                            </form>
+                                            <a href="" onclick="changeStatusInactive({{$property->id}})" class="btn btn-success mb-1"><i class="fa fa-eye-slash"></i></a>
+                                        @else
+                                            <form id="change-{{$property->id}}" action="{{route('admin.property.status.change')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="status" value="Active">
+                                                <input type="hidden" name="post_id" value="{{$property->id}}">
+                                            </form>
+                                            <a href="" onclick="changeStatusActive({{$property->id}})" class="btn btn-success mb-1"><i class="fa fa-eye"></i></a>
+                                        @endif
+                                        <a href="{{route('admin.property.note',['id'=>$property->id])}}" class="mb-1 btn btn-info"><i class="fa fa-list"></i></a>
 {{--                                        <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>--}}
                                         <form class="d-none" id="delete-{{$property->id}}" action="{{route('admin.property.delete')}}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}
                                             <input type="hidden" name="id" value="{{$property->id}}">
                                         </form>
-                                        <a href="" onclick="deleteProperty({{$property->id}})" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        <a href="" onclick="deleteProperty({{$property->id}})" class="btn btn-danger mb-1"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             @empty
@@ -85,6 +100,38 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $('#delete-'+id).submit();
+                }
+            })
+        }
+        function changeStatusActive(id){
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You you want to Publish your property!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Publish it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#change-'+id).submit();
+                }
+            })
+        }
+        function changeStatusInactive(id){
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You you want to Draft your property!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Draft it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $('#change-'+id).submit();
                 }
             })
         }

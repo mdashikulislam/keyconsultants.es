@@ -58,6 +58,7 @@ class PropertyController extends Controller
         $property->balcony_terrace_area = $request->balcony_terrace_area;
         $property->property_status = implode(',',$request->property_status);
         $property->property_type = implode(',',$request->property_type);
+        $property->feature = implode(',',$request->feature);
         if ($request->additionally){
             $property->additionally = implode(',',$request->additionally);
         }
@@ -119,6 +120,15 @@ class PropertyController extends Controller
         $note = Note::where('id',$id)->first();
         $note->delete();
         \Alert::success('Private Note delete Successful');
+        return redirect()->back();
+    }
+
+    public function statusChange(Request $request)
+    {
+        $property = Property::where('id',$request->post_id)->first();
+        $property->post_status = $request->status;
+        $property->save();
+        \Alert::success('Status Change Successfully');
         return redirect()->back();
     }
 }

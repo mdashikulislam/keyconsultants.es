@@ -217,6 +217,25 @@
                 </div>
                 <div class="card card-primary">
                     <div class="card-header">
+                        <h3 class="card-title">Property Feature</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group clearfix" id="property_feature">
+                            {!! \App\Helper\Helper::getPropertyFeatureCheckbox() !!}
+                        </div>
+                        <div class="form-gtoup">
+                            <button  data-toggle="modal" data-target="#modal_add_new_property_feature" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Feature</button>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <div class="card card-primary">
+                    <div class="card-header">
                         <h3 class="card-title">Featured Image</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -362,6 +381,32 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <div class="modal fade" id="modal_add_new_property_feature"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="add_new_property_feature_form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Property Feature</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input name="name" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
 @endsection
 @push('js')
     <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
@@ -396,7 +441,7 @@
                                     ${response.data.name}
                                 </label>
                               </div>`);
-                            $('#add_new-property_form').find('input[name="name"]').val();
+                            $('#add_new-property_form').find('input[name="name"]').val('');
                             Toast.fire({
                                 icon: 'success',
                                 title: 'Property Status added successful'
@@ -427,7 +472,7 @@
                                     ${response.data.name}
                                 </label>
                               </div>`);
-                            $('#add_new_additionally_form').find('input[name="name"]').val();
+                            $('#add_new_additionally_form').find('input[name="name"]').val('');
                             Toast.fire({
                                 icon: 'success',
                                 title: 'Additionally added successful'
@@ -493,6 +538,37 @@
                             Toast.fire({
                                 icon: 'success',
                                 title: 'Reference Number added successful'
+                            });
+                        }
+                    },
+                    error:function (error){
+                        Swal.fire(`${error.responseJSON.errors.name}`);
+                    }
+                });
+            });
+            $('#add_new_property_feature_form').on('submit',function (e){
+                e.preventDefault();
+                var name = $(this).find('input[name="name"]').val();
+                $.ajax({
+                    url:'{{route('add.property.feature')}}',
+                    method:'POST',
+                    data:{
+                        name:name,
+                        '_token':'{{csrf_token()}}'
+                    },
+                    success:function (response){
+                        if (response.status == true){
+                            $('#modal_add_new_property_feature').modal('hide');
+                            $('#property_feature').append(`<div class="icheck-primary d-inline mr-2">
+                                <input value="${response.data.id}" name="feature[]" type="checkbox" id="property_feature-${response.data.id}" checked>
+                                <label for="property_feature-${response.data.id}">
+                                    ${response.data.name}
+                                </label>
+                              </div>`);
+                            $('#add_new_property_feature_form').find('input[name="name"]').val('');
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'Property Added successful'
                             });
                         }
                     },
