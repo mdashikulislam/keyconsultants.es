@@ -121,4 +121,13 @@ class PropertyController extends Controller
         \Alert::success('Private Note delete Successful');
         return redirect()->back();
     }
+
+    public function statusChange(Request $request)
+    {
+        $property = Property::where('id',$request->post_id)->first();
+        $property->post_status = $request->status;
+        $property->save();
+        \Alert::success('Status Change Successfully');
+        return redirect()->back();
+    }
 }
