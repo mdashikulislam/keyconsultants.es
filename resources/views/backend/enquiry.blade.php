@@ -31,9 +31,17 @@
                                 </td>
                                 <td>{{$query->name}}</td>
                                 <td>
-                                    {{$query->email}}
+                                    <a href="mailto:{{$query->email}}">
+                                        {{$query->email}}
+                                    </a>
+
                                 </td>
-                                <td>{{$query->phone}}</td>
+                                <td>
+                                    <a href="callto:{{$query->phone}}">
+                                        {{$query->phone}}
+                                    </a>
+
+                                </td>
                                 <td>
                                     @php
                                     $queries = explode(',',$query->query);

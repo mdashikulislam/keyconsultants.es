@@ -24,7 +24,9 @@
                             <td>@if($loop->index + 1 <10){{'0'.($loop->index+1)}}@endif @if($loop->index + 1 > 9){{($loop->index+1)}}@endif</td>
                             <td>{{$contact->name}}</td>
                             <td>
-                                {{$contact->email}}
+                                <a href="mailto:{{$contact->email}}">
+                                    {{$contact->email}}
+                                </a>
                             </td>
                             <td>{{$contact->subject}}</td>
                             <td>{{$contact->message}}</td>
