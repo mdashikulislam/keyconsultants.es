@@ -52,9 +52,15 @@
                                 <ul class="product-info-details">
                                     <li><i class="fa fa-bed"></i> Bedroom: {{$property->room}}</li>
                                     <li><i class="fa fa-bath"></i> Bathrooms: {{$property->bathroom}}</li>
-                                    <li><i class="fa fa-home"></i> Land Area: {{$property->land_area}}m2</li>
-                                    <li><i class="fa fa-home"></i> Living Space: {{$property->living_space}}m2</li>
-                                    <li><i class="fa fa-home"></i> Balcony/Terrace Area:{{$property->balcony_terrace_area}}m2</li>
+                                    @if($property->land_area)
+                                    <li><i class="fa fa-home"></i> Land Area: {{$property->land_area}}</li>
+                                    @endif
+                                    @if($property->living_space)
+                                    <li><i class="fa fa-home"></i> Living Space: {{$property->living_space}}</li>
+                                    @endif
+                                    @if($property->balcony_terrace_area)
+                                    <li><i class="fa fa-home"></i> Balcony/Terrace Area:{{$property->balcony_terrace_area}}</li>
+                                    @endif
                                     <li>
                                         <i class="fa fa-home"></i>
                                         @php

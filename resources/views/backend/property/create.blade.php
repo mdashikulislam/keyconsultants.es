@@ -132,21 +132,21 @@
                         </div>
                         <div class="form-group">
                             <label >Land Area</label>
-                            <input name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
+                            <input placeholder="ex: 720m2" name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
                             @error('land_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Living Space</label>
-                            <input name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
+                            <input placeholder="ex: 720m2"  name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
                             @error('living_space')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
                         <div class="form-group">
                             <label >Balcony/Terrace Area</label>
-                            <input type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
+                            <input placeholder="ex: 720m2"  type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
                             @error('balcony_terrace_area')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror

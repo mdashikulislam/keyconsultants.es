@@ -120,7 +120,9 @@
                             <div class="d-flex flex-wrap justify-content-between info">
                                 <h5>{{$property->reference_number}}</h5>
                                 <ul class="d-flex justify-content-between">
+                                    @if($property->living_space)
                                     <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
+                                    @endif
                                     <li><i class="fa fa-bed"></i> {{$property->room}}</li>
                                     <li><i class="fa fa-bath"></i> {{$property->bathroom}}</li>
                                 </ul>
@@ -129,7 +131,7 @@
                                 <h5>
                                     {!!  \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type)!!}
                                 </h5>
-                                <span class="price"><i class="fa fa-check"></i> {{$property->price}} €</span>
+                                <span class="price"><i class="fa fa-check"></i> {{$property->price}} </span>
                             </div>
                         </div>
                     </div>
