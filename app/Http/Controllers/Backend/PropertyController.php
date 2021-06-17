@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\MoreMedia;
+use App\Models\Note;
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -36,9 +37,6 @@ class PropertyController extends Controller
             'region'=>['required'],
             'room'=>['required'],
             'bathroom'=>['required'],
-            'land_area'=>['required'],
-            'living_space'=>['required'],
-            'balcony_terrace_area'=>['required'],
             'property_status'=>['required'],
             'property_type'=>['required'],
             'feature_image'=>['required'],
@@ -92,5 +90,35 @@ class PropertyController extends Controller
         \Alert::success('Property Delete Successfully');
         return redirect()->back();
 
+    }
+
+    public function note($id)
+    {
+        $notes = Note::where('post_id',$id)->orderBy('created_at','DESC')->get();
+        return view('backend.property.note')
+            ->with([
+                'id'=>$id,
+                'notes'=>$notes
+            ]);
+    }
+
+    public function addNote(Request $request)
+    {
+        $note = new Note();
+        $note->post_id = $request->post_id;
+        $note->name = $request->name;
+        $note->email = $request->email;
+        $note->note = $request->note;
+        $note->save();
+        \Alert::success('Private Note added successfully');
+        return redirect()->back();
+    }
+
+    public function deleteNote($id)
+    {
+        $note = Note::where('id',$id)->first();
+        $note->delete();
+        \Alert::success('Private Note delete Successful');
+        return redirect()->back();
     }
 }
