@@ -38,6 +38,7 @@
                                     </td>
                                     <td>{{\Carbon\Carbon::parse($property->created_at)->isoFormat('Do, MM YYYY')}}</td>
                                     <td>
+                                        <a href="{{route('admin.property.note',['id'=>$property->id])}}" class="btn btn-info"><i class="fa fa-list"></i></a>
 {{--                                        <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>--}}
                                         <form class="d-none" id="delete-{{$property->id}}" action="{{route('admin.property.delete')}}" method="POST">
                                             @csrf
