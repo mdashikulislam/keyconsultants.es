@@ -92,16 +92,12 @@ class AjaxController extends Controller
 
     public function moreMediaUpload(Request $request)
     {
-        $postId = [];
         if ($request->file('file')){
-            foreach ($request->file as $media){
-                $newMedia = new MoreMedia();
-                $mediaName = Helper::uploadSingleImage($media,'more_media','MM');
-                $newMedia->path = $mediaName;
-                $newMedia->save();
-                $postId[] = $newMedia->id;
-            }
+            $newMedia = new MoreMedia();
+            $mediaName = Helper::uploadSingleImage($request->file,'more_media','MM');
+            $newMedia->path = $mediaName;
+            $newMedia->save();
         }
-        return response()->json($postId);
+        return response()->json($newMedia->id);
     }
 }

@@ -253,33 +253,29 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">More Media</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="input-box">
-
-                        </div>
-                        <div class="form-group">
-                            <button style="color: #007bff;" type="button" class="btn  btn-primary btn-block btn-sm text-white mt-2" id="add_More"><i class="fa fa-plus fa-fw"></i>Add More</button>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
                 <!-- /.card -->
             </div>
         </div>
+        <input type="hidden" id="more_media" name="more_media">
     </form>
     <div class="row">
         <div class="col-md-12">
-            <form  id="more_media_dropzone" class="dropzone" method="POST" enctype="multipart/form-data" >@csrf</form>
-            <button id="more-media-upload-button" type="button" class="btn btn-success">Upload</button>
+
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">More Media</h3>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form  id="more_media_dropzone" class="dropzone" method="POST" enctype="multipart/form-data" >@csrf</form>
+                </div>
+                <!-- /.card-body -->
+            </div>
+
         </div>
     </div>
     <div class="modal fade" id="modal_add_new_property_status"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
@@ -419,7 +415,6 @@
 
 
     <script>
-        Dropzone.autoDiscover = false;
         $('#summernote').summernote({
             height:400
         });
@@ -594,36 +589,18 @@
                 display(this);
             });
 
-            $('#add_More').on('click',function (e){
-                e.preventDefault();
-                var html = `<div class="input-group mb-2">
-                              <input type="file" name="more_media[]" class="form-control">
-                              <div class="input-group-append">
-                                <a class="btn btn-danger remove_preview" href=""><i class="fa fa-trash"></i></a>
-                              </div>
-                            </div>`;
+            // $('#add_More').on('click',function (e){
+            //     e.preventDefault();
+            //     var html = `<div class="input-group mb-2">
+            //                   <input type="file" name="more_media[]" class="form-control">
+            //                   <div class="input-group-append">
+            //                     <a class="btn btn-danger remove_preview" href=""><i class="fa fa-trash"></i></a>
+            //                   </div>
+            //                 </div>`;
+            //
+            //     $('.input-box').append(html);
+            // });
 
-                $('.input-box').append(html);
-            });
-            var url = '{{route('more.media.upload')}}'
-            var myDropzone = new Dropzone('#more_media_dropzone',{
-                url:url,
-                method: 'post',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
-                },
-                uploadMultiple:true,
-                addRemoveLinks:true,
-                autoProcessQueue:false,
-                parallelUploads:50,
-                success:function (file,response){
-                    console.log(response)
-                }
-            });
-            $('#more-media-upload-button').on('click',function (){
-                myDropzone.processQueue();
-                $(this).hide();
-            })
         });
 
         function display(input) {
@@ -636,6 +613,68 @@
             }
         }
 
+    </script>
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        Dropzone.autoDiscover = false;
+        var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
+        // imageDataArray variable to set value in crud form
+        var imageDataArray = new Array;
+        // fileList variable to store current files index and name
+        var fileList = new Array;
+        var i = 0;
+
+        $(function(){
+            uploader = new Dropzone(".dropzone",{
+                url: "{{route('more.media.upload')}}",
+                paramName : "file",
+                uploadMultiple :false,
+                acceptedFiles : "image/*",
+                addRemoveLinks: true,
+                forceFallback: false,
+                maxFilesize: 256, // Set the maximum file size to 256 MB
+                parallelUploads: 100,
+            });//end drop zone
+            uploader.on("success", function(file,response) {
+                imageDataArray.push(response)
+                fileList[i] = {
+                    "serverFileName": response,
+                    "fileName": file.name,
+                    "fileId": i
+                };
+
+                i += 1;
+                console.log(fileList);
+                $('#more_media').val(imageDataArray);
+            });
+            uploader.on("removedfile", function(file) {
+                var rmvFile = "";
+                for (var f = 0; f < fileList.length; f++) {
+                    if (fileList[f].fileName == file.name) {
+                        // remove file from original array by database image name
+                        imageDataArray.splice(imageDataArray.indexOf(fileList[f].serverFileName), 1);
+                        $('#more_media').val(imageDataArray);
+                        // get removed database file name
+                        rmvFile = fileList[f].serverFileName;
+                        // get request to remove the uploaded file from server
+                        {{--$.get( "{{url('item/image/delete')}}", { file: rmvFile } )--}}
+                        {{--    .done(function( data ) {--}}
+                        {{--        //console.log(data)--}}
+                        {{--    });--}}
+                        // reset imageDataArray variable to set value in crud form
+
+                        console.log(imageDataArray)
+                    }
+                }
+
+            });
+        });
     </script>
 @endpush
 @push('css')
