@@ -71,3 +71,4 @@ Route::post('add-new-additionally',[\App\Http\Controllers\Backend\AjaxController
 Route::post('add-new-reference-number',[\App\Http\Controllers\Backend\AjaxController::class,'referenceNumber'])->name('add.property.reference.number');
 Route::post('add-new-property-type',[\App\Http\Controllers\Backend\AjaxController::class,'propertyType'])->name('add.property.type');
 Route::post('add-new-property-feature',[\App\Http\Controllers\Backend\AjaxController::class,'propertyFeature'])->name('add.property.feature');
+Route::post('more-media-upload',[\App\Http\Controllers\Backend\AjaxController::class,'moreMediaUpload'])->name('more.media.upload');

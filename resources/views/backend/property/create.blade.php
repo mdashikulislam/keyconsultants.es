@@ -276,7 +276,12 @@
             </div>
         </div>
     </form>
-
+    <div class="row">
+        <div class="col-md-12">
+            <form  id="more_media_dropzone" class="dropzone" method="POST" enctype="multipart/form-data" >@csrf</form>
+            <button id="more-media-upload-button" type="button" class="btn btn-success">Upload</button>
+        </div>
+    </div>
     <div class="modal fade" id="modal_add_new_property_status"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -409,8 +414,12 @@
     </div>
 @endsection
 @push('js')
+    <script src="{{asset('backend/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
+
+
     <script>
+        Dropzone.autoDiscover = false;
         $('#summernote').summernote({
             height:400
         });
@@ -421,8 +430,12 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
         });
+
+
         $(document).ready(function (){
-            $('#add_new-property_form').on('submit',function (e){
+
+            // $(".dropzone").dropzone();
+            $('#add_new-property_zform').on('submit',function (e){
                 e.preventDefault();
                 var name = $(this).find('input[name="name"]').val();
                 $.ajax({
@@ -592,7 +605,25 @@
 
                 $('.input-box').append(html);
             });
-
+            var url = '{{route('more.media.upload')}}'
+            var myDropzone = new Dropzone('#more_media_dropzone',{
+                url:url,
+                method: 'post',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="token"]').attr('content')
+                },
+                uploadMultiple:true,
+                addRemoveLinks:true,
+                autoProcessQueue:false,
+                parallelUploads:50,
+                success:function (file,response){
+                    console.log(response)
+                }
+            });
+            $('#more-media-upload-button').on('click',function (){
+                myDropzone.processQueue();
+                $(this).hide();
+            })
         });
 
         function display(input) {
@@ -608,6 +639,7 @@
     </script>
 @endpush
 @push('css')
+    <link rel="stylesheet" href="{{asset('backend/dropzone/dropzone.css')}}">
     <link rel="stylesheet" href="{{asset('backend/plugins/select2/css/select2.min.css')}}">
     <style>
         .select2-container--default .select2-selection--single {
