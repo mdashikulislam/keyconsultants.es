@@ -105,7 +105,7 @@
                     <div class="col-lg-4 col-md-6 col-12">
                     <div class="product-wrap">
                         <div class="product-header">
-                            <span class="badge">Rent/Sale</span>
+                            <span class="badge">{{$property->propertyStatus->name}}</span>
                             <h4>{{$property->city}}</h4>
                             <span class="fevurite"><i class="fa fa-star"></i></span>
                         </div>

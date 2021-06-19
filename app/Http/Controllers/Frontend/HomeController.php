@@ -102,7 +102,8 @@ class HomeController extends Controller
 
     public function properties(Request $request)
     {
-        $property = Property::where('post_status','Active')->orderBy('created_at','DESC')->get();
+        $property = Property::where('post_status','Active')
+            ->with('propertyStatus')->orderBy('created_at','DESC')->get();
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
