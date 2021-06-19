@@ -57,9 +57,9 @@
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="property-type">
+                            <select class="select-style" name="property_type">
                                 <option value="">Type...</option>
-                                {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property-type')) !!}
+                                {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6 col-12 mb-25">

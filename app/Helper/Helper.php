@@ -106,12 +106,12 @@ class Helper{
                 $html .='<option ';
                 if ($selected){
                     foreach ($selected as $select){
-                        if ($region->name == $select){
+                        if ($region->id == $select){
                             $html .= 'selected';
                         }
                     }
                 }
-                $html .='  value="'.$region->name.'">';
+                $html .='  value="'.$region->id.'">';
                 $html .= $region->name.'</option>';
             }
         }

@@ -102,8 +102,21 @@ class HomeController extends Controller
 
     public function properties(Request $request)
     {
-        $property = Property::where('post_status','Active')
-            ->with('propertyStatus')->orderBy('created_at','DESC')->get();
+
+        $property = Property::where('post_status','Active');
+        if ($request->reference_number){
+            $property = $property->where('reference_number',$request->reference_number);
+        }
+        if ($request->city){
+            $property = $property->where('city',$request->city);
+        }
+        if ($request->region){
+            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
+        }
+        if ($request->property_type){
+            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+        }
+        $property= $property->with('propertyStatus')->orderBy('created_at','DESC')->get();
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
