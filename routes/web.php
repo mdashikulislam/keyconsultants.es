@@ -33,6 +33,7 @@ Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeControlle
 Route::get('about-us',[\App\Http\Controllers\Frontend\HomeController::class,'aboutUs'])->name('about.us');
 Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'properties'])->name('properties');
 Route::get('properties/sale',[\App\Http\Controllers\Frontend\HomeController::class,'sale'])->name('property.sale');
+Route::get('properties/rent',[\App\Http\Controllers\Frontend\HomeController::class,'rent'])->name('property.rent');
 Route::get('properties/{id}/{slug}',[\App\Http\Controllers\Frontend\HomeController::class,'propertiesDetails'])->name('properties.details');
 Route::post('property-enquiry',[\App\Http\Controllers\Frontend\HomeController::class,'propertyEnquiry'])->name('property.enquiry');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');

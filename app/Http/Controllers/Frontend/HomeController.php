@@ -103,7 +103,7 @@ class HomeController extends Controller
     public function properties(Request $request)
     {
 
-        $property = Property::where('post_status','Active');
+        $property = Property::where('post_status','Active')->with('propertyStatus');
         if ($request->reference_number){
             $property = $property->where('reference_number',$request->reference_number);
         }
@@ -125,7 +125,12 @@ class HomeController extends Controller
         if ($request->additionally){
             $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
         }
-        $property= $property->with('propertyStatus')->orderBy('created_at','DESC')->get();
+        if ($request->price_filter){
+            $property=$property->orderBy('price',$request->price_filter);
+        }else{
+            $property=$property->orderBy('created_at','DESC');
+        }
+        $property= $property->get();
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
@@ -167,6 +172,45 @@ class HomeController extends Controller
         $property = $property->get();
 //        return $property;
         return view('frontend.properties-sale')
+            ->with([
+                'properties'=>$property
+            ]);
+    }
+
+    public function rent(Request $request)
+    {
+        $property = Property::where('post_status','Active')->with('propertyStatus');
+        if ($request->reference_number){
+            $property = $property->where('reference_number',$request->reference_number);
+        }
+        if ($request->city){
+            $property = $property->where('city',$request->city);
+        }
+        if ($request->region){
+            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
+        }
+        if ($request->property_type){
+            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+        }
+        if ($request->max_price){
+            $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
+        }
+        if ($request->max_bed){
+            $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
+        }
+        if ($request->additionally){
+            $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
+        }
+
+        $property= $property->whereIn('property_status',[6,13]);
+        if ($request->price_filter){
+            $property=$property->orderBy('price',$request->price_filter);
+        }else{
+            $property=$property->orderBy('created_at','DESC');
+        }
+        $property = $property->get();
+//        return $property;
+        return view('frontend.properties-rent')
             ->with([
                 'properties'=>$property
             ]);
