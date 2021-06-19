@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
 use App\Models\Feature;
+use App\Models\MoreMedia;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
@@ -86,5 +88,23 @@ class AjaxController extends Controller
             'msg'=>'Property Feature added Successfully',
             'data'=>$status
         ]);
+    }
+
+    public function moreMediaUpload(Request $request)
+    {
+        if ($request->file('file')){
+            $newMedia = new MoreMedia();
+            $mediaName = Helper::uploadSingleImage($request->file,'more_media','MM');
+            $newMedia->path = $mediaName;
+            $newMedia->save();
+        }
+        return response()->json($newMedia->id);
+    }
+
+    public function deleteMoreMedia(Request $request)
+    {
+        $media = MoreMedia::where('id',$request->id)->first();
+        $media->delete();
+        return true;
     }
 }

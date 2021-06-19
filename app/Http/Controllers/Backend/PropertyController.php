@@ -68,14 +68,9 @@ class PropertyController extends Controller
         }
         $property->post_status = 'Active';
         $property->save();
-        if ($request->has('more_media')){
-            foreach ($request->more_media as $media){
-                $newMedia = new MoreMedia();
-                $newMedia->property_id = $property->id;
-                $mediaName = Helper::uploadSingleImage($media,'more_media','MM');
-                $newMedia->path = $mediaName;
-                $newMedia->save();
-            }
+        if ($request->more_media){
+            $moreMedia = explode(',',$request->more_media);
+            $property->more_medias()->sync($moreMedia);
         }
         \Alert::success('Property Added Successfully');
         return redirect()->route('admin.property.index');

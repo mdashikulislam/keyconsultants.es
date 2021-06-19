@@ -12,6 +12,6 @@ class Property extends Model
 
     public function more_medias()
     {
-        return $this->hasMany(MoreMedia::class,'property_id','id');
+        return $this->belongsToMany(MoreMedia::class,'property_more_images');
     }
 }
