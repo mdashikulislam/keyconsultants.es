@@ -100,4 +100,11 @@ class AjaxController extends Controller
         }
         return response()->json($newMedia->id);
     }
+
+    public function deleteMoreMedia(Request $request)
+    {
+        $media = MoreMedia::where('id',$request->id)->first();
+        $media->delete();
+        return true;
+    }
 }

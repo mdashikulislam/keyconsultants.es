@@ -412,8 +412,6 @@
 @push('js')
     <script src="{{asset('backend/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('backend/plugins/select2/js/select2.full.min.js')}}"></script>
-
-
     <script>
         $('#summernote').summernote({
             height:400
@@ -425,7 +423,6 @@
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
         });
-
 
         $(document).ready(function (){
 
@@ -621,7 +618,6 @@
             }
         });
 
-
         Dropzone.autoDiscover = false;
         var acceptedFileTypes = "image/*"; //dropzone requires this param be a comma separated list
         // imageDataArray variable to set value in crud form
@@ -663,13 +659,12 @@
                         // get removed database file name
                         rmvFile = fileList[f].serverFileName;
                         // get request to remove the uploaded file from server
-                        {{--$.get( "{{url('item/image/delete')}}", { file: rmvFile } )--}}
-                        {{--    .done(function( data ) {--}}
-                        {{--        //console.log(data)--}}
-                        {{--    });--}}
+                        $.get( "{{route('more.media.delete')}}", { id: rmvFile } )
+                            .done(function( data ) {
+                                //console.log(data)
+                            });
                         // reset imageDataArray variable to set value in crud form
 
-                        console.log(imageDataArray)
                     }
                 }
 
@@ -706,6 +701,21 @@
         .input-group a{
             height: 45px!important;
             line-height: 2!important;
+        }
+        .dropzone {
+            border: 2px dashed #0087F7;
+            border-radius: 5px;
+            background: white;
+        }
+        .dropzone .dz-message .dz-button{
+            background: none;
+            color: #999;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;
+            font-size: 40px;
         }
     </style>
 @endpush
