@@ -116,6 +116,12 @@ class HomeController extends Controller
         if ($request->property_type){
             $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
         }
+        if ($request->max_price){
+            $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
+        }
+        if ($request->max_bed){
+            $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
+        }
         $property= $property->with('propertyStatus')->orderBy('created_at','DESC')->get();
         return view('frontend.properties')
             ->with([

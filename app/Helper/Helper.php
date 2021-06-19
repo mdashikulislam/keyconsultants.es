@@ -136,6 +136,24 @@ class Helper{
         $typeName = PropertyType::whereIn('id',$id)->pluck('name');
         return $typeName;
     }
+
+    public static function getAdditionallyDropdown($selected = 0)
+    {
+        $additionallys = Additionally::all();
+        $html = '';
+        if ($additionallys){
+            foreach ($additionallys as $number){
+                $html .= '<option ';
+                if ($selected == $number->id){
+                    $html .= 'selected';
+                }
+                $html .= ' value="'.$number->id.'" >';
+                $html .= $number->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
+    }
     public static function getReferenceDropdown($selected = 0)
     {
         $referenceNumber = Property::pluck('reference_number');

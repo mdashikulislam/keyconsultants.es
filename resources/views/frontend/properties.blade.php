@@ -15,7 +15,7 @@
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select name="reference_number" class="select-style" name="reference_number">
+                                <select  class="select-style" name="reference_number">
                                     <option value="">Reference Number...</option>
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
@@ -103,6 +103,12 @@
                                     <input type="hidden" name="min_space" />
                                     <input type="hidden" name="max_space"  />
                                 </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select name="additionally" class="select-style">
+                                    <option value="">Additionally...</option>
+                                    {!! \App\Helper\Helper::getAdditionallyDropdown(request()->input('additionally')) !!}
+                                </select>
                             </div>
                         </div>
                     </form>
