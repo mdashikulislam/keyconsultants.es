@@ -122,6 +122,9 @@ class HomeController extends Controller
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
         }
+        if ($request->additionally){
+            $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
+        }
         $property= $property->with('propertyStatus')->orderBy('created_at','DESC')->get();
         return view('frontend.properties')
             ->with([
