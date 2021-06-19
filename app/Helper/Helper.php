@@ -106,12 +106,12 @@ class Helper{
                 $html .='<option ';
                 if ($selected){
                     foreach ($selected as $select){
-                        if ($region->name == $select){
+                        if ($region->id == $select){
                             $html .= 'selected';
                         }
                     }
                 }
-                $html .='  value="'.$region->name.'">';
+                $html .='  value="'.$region->id.'">';
                 $html .= $region->name.'</option>';
             }
         }
@@ -129,11 +129,30 @@ class Helper{
     }
     public static function getFrontendPropertyTypeNameById($id)
     {
-
-        $typeName = PropertyType::where('id',$id)->first();
-        if ($typeName){
-            return  $typeName->name;
+        if (empty($id)){
+            return ;
         }
+        $id = explode(',',$id);
+        $typeName = PropertyType::whereIn('id',$id)->pluck('name');
+        return $typeName;
+    }
+
+    public static function getAdditionallyDropdown($selected = 0)
+    {
+        $additionallys = Additionally::all();
+        $html = '';
+        if ($additionallys){
+            foreach ($additionallys as $number){
+                $html .= '<option ';
+                if ($selected == $number->id){
+                    $html .= 'selected';
+                }
+                $html .= ' value="'.$number->id.'" >';
+                $html .= $number->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
     }
     public static function getReferenceDropdown($selected = 0)
     {

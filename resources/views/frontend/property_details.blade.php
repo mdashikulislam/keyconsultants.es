@@ -27,7 +27,7 @@
                     <div class="product-details-content">
                         <ul class="price-info">
                             <li>
-                                <h4>€ {{$property->price}}</h4>
+                                <h4> {{$property->symbol.number_format($property->price)}}</h4>
                             </li>
                             <li>
                                 <span class="fevurite"><i class="fa fa-star"></i></span>
@@ -44,8 +44,15 @@
                                 <ul class="price-info-details">
                                     <li><strong>Reference Number:</strong> {{$property->reference_number}}</li>
                                     <li><strong>City:</strong> {{$property->city}}</li>
-                                    <li><strong>Region:</strong> West</li>
-                                    <li><strong>Type:</strong> Villa</li>
+                                    <li><strong>Region:</strong> {{$property->region}}</li>
+                                    <li><strong>Type:</strong>
+                                        @php
+                                          $type = \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type);
+                                          $type = json_decode($type,true);
+                                          $type = implode(',',$type)
+                                        @endphp
+                                        {{$type}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-12">

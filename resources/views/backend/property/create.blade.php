@@ -66,8 +66,9 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="inputName">Price</label>
-                            <input type="text" placeholder="ex: €500,000"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
+                            <label for="inputName" style="display: block">Price</label>
+                            <input placeholder="€" name="symbol" type="text" style="width:13%;margin-right: 2%;" class="form-control float-left">
+                            <input style="width: 85%" type="number" placeholder="ex:500000"  name="price" value="{{old('price')}}" class="form-control @error('price') is-invalid @enderror">
                             @error('price')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror

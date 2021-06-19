@@ -14,4 +14,9 @@ class Property extends Model
     {
         return $this->belongsToMany(MoreMedia::class,'property_more_images');
     }
+
+    public function propertyStatus()
+    {
+        return $this->hasOne(PropertyStatus::class,'id','property_status');
+    }
 }
