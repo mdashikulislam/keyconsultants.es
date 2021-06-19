@@ -30,10 +30,10 @@
                                     <td>{{$property->title}}</td>
                                     <td>
                                         @php
-                                            $types = explode(',',$property->property_type)
+                                            $types = explode(',',$property->property_type);
                                         @endphp
                                         @foreach($types as $type)
-                                            {!! \App\Helper\Helper::getPropertyTypeNameById($types) !!}
+                                            {!! \App\Helper\Helper::getPropertyTypeNameById($type) !!}
                                         @endforeach
                                     </td>
                                     <td>{{\Carbon\Carbon::parse($property->created_at)->isoFormat('Do, MM YYYY')}}</td>
