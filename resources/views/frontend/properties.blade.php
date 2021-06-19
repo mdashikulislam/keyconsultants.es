@@ -134,7 +134,7 @@
                                     @empty
                                     @endforelse
                                 </h5>
-                                <span class="price"><i class="fa fa-check"></i> {{$property->price}} </span>
+                                <span class="price"><i class="fa fa-check"></i> {{$property->symbol.number_format($property->price)}} </span>
                             </div>
                         </div>
                     </div>
