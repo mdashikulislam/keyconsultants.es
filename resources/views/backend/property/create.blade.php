@@ -428,7 +428,7 @@
         $(document).ready(function (){
 
             // $(".dropzone").dropzone();
-            $('#add_new-property_zform').on('submit',function (e){
+            $('#add_new-property_form').on('submit',function (e){
                 e.preventDefault();
                 var name = $(this).find('input[name="name"]').val();
                 $.ajax({
