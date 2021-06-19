@@ -129,11 +129,12 @@ class Helper{
     }
     public static function getFrontendPropertyTypeNameById($id)
     {
-
-        $typeName = PropertyType::where('id',$id)->first();
-        if ($typeName){
-            return  $typeName->name;
+        if (empty($id)){
+            return ;
         }
+        $id = explode(',',$id);
+        $typeName = PropertyType::whereIn('id',$id)->pluck('name');
+        return $typeName;
     }
     public static function getReferenceDropdown($selected = 0)
     {

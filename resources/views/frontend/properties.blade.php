@@ -129,7 +129,10 @@
                             </div>
                             <div class="d-flex flex-wrap justify-content-between">
                                 <h5>
-                                    {!!  \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type)!!}
+                                    @forelse( \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type) as $type)
+                                        {!! $type.'<br>'  !!}
+                                    @empty
+                                    @endforelse
                                 </h5>
                                 <span class="price"><i class="fa fa-check"></i> {{$property->price}} </span>
                             </div>
