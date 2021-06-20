@@ -44,7 +44,14 @@
                                 <ul class="price-info-details">
                                     <li><strong>Reference Number:</strong> {{$property->reference_number}}</li>
                                     <li><strong>City:</strong> {{$property->city}}</li>
-                                    <li><strong>Region:</strong> {{$property->region}}</li>
+                                    <li><strong>Region:</strong>
+                                        @php
+                                            $region = \App\Helper\Helper::getPropertyRegionName($property->region);
+                                            $region = json_decode($region,true);
+                                            $region = implode(',',$region)
+                                        @endphp
+                                        {{$region}}
+                                    </li>
                                     <li><strong>Type:</strong>
                                         @php
                                           $type = \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type);

@@ -137,6 +137,15 @@ class Helper{
         return $typeName;
     }
 
+    public static function getPropertyRegionName($id)
+    {
+        if (empty($id)){
+            return ;
+        }
+        $id = explode(',',$id);
+        $typeName = Region::whereIn('id',$id)->pluck('name');
+        return $typeName;
+    }
     public static function getAdditionallyDropdown($selected = 0)
     {
         $additionallys = Additionally::all();
