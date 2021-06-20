@@ -27,7 +27,7 @@
                                     <td>
                                         <img style="width: 100%;height: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="">
                                     </td>
-                                    <td>{{$property->title}}</td>
+                                    <td><a target="_blank" href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}">{{$property->title}}</a></td>
                                     <td>
                                         @php
                                             $types = explode(',',$property->property_type);

@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
 @section('content')
-    <form action="{{route('admin.property.store')}}" method="POST" enctype="multipart/form-data">@csrf
+    <form action="{{route('admin.property.update',['id'=>$property->id,'slug'=>$property->slug])}}" method="POST" enctype="multipart/form-data">@csrf
         <div class="row">
             <div class="col-md-9">
                 <div class="card card-primary">
@@ -110,7 +110,13 @@
                         <div class="form-group">
                             <label>Region</label>
                             <select name="region[]" class="select2 @error('region') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                                {!! \App\Helper\Helper::getRegionDropdown(old('region')) !!}
+                                @php
+                                    $region = null;
+                                    if ($property->region){
+                                        $region = explode(',',$property->region);
+                                    }
+                                @endphp
+                                {!! \App\Helper\Helper::getRegionDropdown($region ? :old('region')) !!}
                             </select>
                             @error('region')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
@@ -263,7 +269,7 @@
                     </div>
                     <div class="card-body">
                         <div class="preview">
-                            <img style="width: 100%;height: auto" src="{{asset('uploads/no_image.jpg')}}" alt="">
+                            <img style="width: 100%;height: auto" src="{{$property->feature_image ? asset('storage/'.$property->feature_image):asset('uploads/no_image.jpg')}}" alt="">
                         </div>
                         <div class="upload mt-2">
                             <input type="file" name="feature_image" class="form-control" id="feature_image">
