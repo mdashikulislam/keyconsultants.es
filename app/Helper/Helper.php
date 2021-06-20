@@ -16,7 +16,7 @@ class Helper{
         if (!empty($propertyStatus)){
             foreach ($propertyStatus as $key=>$status){
                 $html .='<div class="icheck-primary">';
-                $html .='<input value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status[]" type="checkbox">';
+                $html .='<input value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status" type="radio">';
                 $html .= '<label for="property-status-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';

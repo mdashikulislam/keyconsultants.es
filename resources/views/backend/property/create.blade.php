@@ -442,7 +442,7 @@
                         if (response.status == true){
                             $('#modal_add_new_property_status').modal('hide');
                             $('#property_status').append(`<div class="icheck-primary">
-                                <input value="${response.data.id}" name="property_status[]" type="checkbox" id="property-status-${response.data.id}" checked>
+                                <input value="${response.data.id}" name="property_status" type="radio" id="property-status-${response.data.id}" checked>
                                 <label for="property-status-${response.data.id}">
                                     ${response.data.name}
                                 </label>

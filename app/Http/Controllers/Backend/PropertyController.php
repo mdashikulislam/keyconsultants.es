@@ -56,7 +56,7 @@ class PropertyController extends Controller
         $property->land_area = $request->land_area;
         $property->living_space = $request->living_space;
         $property->balcony_terrace_area = $request->balcony_terrace_area;
-        $property->property_status = implode(',',$request->property_status);
+        $property->property_status = $request->property_status;
         $property->property_type = implode(',',$request->property_type);
         $property->feature = implode(',',$request->feature);
         if ($request->symbol){
