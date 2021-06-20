@@ -29,9 +29,9 @@
                             <li>
                                 <h4> {{$property->symbol.number_format($property->price)}}</h4>
                             </li>
-                            <li>
-                                <span class="fevurite"><i class="fa fa-star"></i></span>
-                            </li>
+{{--                            <li>--}}
+{{--                                <span class="fevurite"><i class="fa fa-star"></i></span>--}}
+{{--                            </li>--}}
                             <li>
                                 <a href="facebook.com" class="facebook"><i class="fa fa-facebook"></i></a>
                             </li>
