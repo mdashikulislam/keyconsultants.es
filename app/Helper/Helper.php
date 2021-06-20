@@ -9,14 +9,18 @@ use App\Models\ReferenceNumber;
 use App\Models\Region;
 
 class Helper{
-    public static function getPropertyStatusCheckbox()
+    public static function getPropertyStatusCheckbox($selected = 0)
     {
         $propertyStatus = PropertyStatus::all();
         $html = '';
         if (!empty($propertyStatus)){
-            foreach ($propertyStatus as $key=>$status){
+            foreach ($propertyStatus as $key =>$status){
                 $html .='<div class="icheck-primary">';
-                $html .='<input value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status" type="radio">';
+                $html .='<input ';
+                if ($selected == $status->id){
+                    $html .= 'checked';
+                }
+                $html .= ' value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status" type="radio">';
                 $html .= '<label for="property-status-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';

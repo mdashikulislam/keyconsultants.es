@@ -79,6 +79,17 @@ class PropertyController extends Controller
         return redirect()->route('admin.property.index');
     }
 
+    public function edit($id,$slug)
+    {
+        $property = Property::where(['id'=>$id,'slug'=>$slug])->first();
+        if (empty($property)){
+            return redirect()->back();
+        }
+        return view('backend.property.edit')
+            ->with([
+                'property'=>$property
+            ]);
+    }
     public function delete(Request $request)
     {
         $property = Property::where('id',$request->id)->first();

@@ -54,7 +54,7 @@
                                             <a href="" onclick="changeStatusActive({{$property->id}})" class="btn btn-success mb-1"><i class="fa fa-eye"></i></a>
                                         @endif
                                         <a href="{{route('admin.property.note',['id'=>$property->id])}}" class="mb-1 btn btn-info"><i class="fa fa-list"></i></a>
-{{--                                        <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>--}}
+                                        <a href="{{route('admin.property.edit',['id'=>$property->id,'slug'=>$property->slug])}}" class="btn btn-primary mb-1"><i class="fa fa-edit"></i></a>
                                         <form class="d-none" id="delete-{{$property->id}}" action="{{route('admin.property.delete')}}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}
