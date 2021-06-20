@@ -188,7 +188,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_additionally">
-                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox() !!}
+                            @php
+                                $additionally = null;
+                                if ($property->additionally){
+                                    $additionally = explode(',',$property->additionally);
+                                }
+                            @endphp
+                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox($additionally) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_additionally" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>
@@ -207,7 +213,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_type">
-                            {!! \App\Helper\Helper::getPropertyTypeCheckbox() !!}
+                            @php
+                                $propertyType = null;
+                                if ($property->property_type){
+                                    $propertyType = explode(',',$property->property_type);
+                                }
+                            @endphp
+                            {!! \App\Helper\Helper::getPropertyTypeCheckbox($propertyType) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_property_type" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Type</button>
@@ -226,7 +238,13 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_feature">
-                            {!! \App\Helper\Helper::getPropertyFeatureCheckbox() !!}
+                            @php
+                                $feature = null;
+                                if ($property->feature){
+                                    $feature = explode(',',$property->feature);
+                                }
+                            @endphp
+                            {!! \App\Helper\Helper::getPropertyFeatureCheckbox($feature) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_property_feature" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Feature</button>

@@ -189,7 +189,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_additionally">
-                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox() !!}
+                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox(old('additionally')) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_additionally" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_type">
-                            {!! \App\Helper\Helper::getPropertyTypeCheckbox() !!}
+                            {!! \App\Helper\Helper::getPropertyTypeCheckbox(old('property_type')) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_property_type" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Type</button>

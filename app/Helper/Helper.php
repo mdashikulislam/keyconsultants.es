@@ -30,14 +30,22 @@ class Helper{
         return $html;
     }
 
-    public static function getPropertyAditionallyCheckbox()
+    public static function getPropertyAditionallyCheckbox($selected = null)
     {
         $aditionallyes = Additionally::all();
         $html = '';
         if (!empty($aditionallyes)){
             foreach ($aditionallyes as $key=>$status){
                 $html .='<div class="icheck-primary">';
-                $html .='<input value="'.$status->id.'" id="additionally-'.$status->id.'" name="additionally[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="additionally-'.$status->id.'" name="additionally[]" type="checkbox">';
                 $html .= '<label for="additionally-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -61,14 +69,22 @@ class Helper{
         }
         return $html;
     }
-    public static function getPropertyTypeCheckbox()
+    public static function getPropertyTypeCheckbox($selected = null)
     {
         $referenceNumber = PropertyType::all();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
                 $html .='<div class="icheck-primary ">';
-                $html .='<input value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
                 $html .= '<label for="property_type-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -76,14 +92,22 @@ class Helper{
         }
         return $html;
     }
-    public static function getPropertyFeatureCheckbox()
+    public static function getPropertyFeatureCheckbox($selected=null)
     {
         $referenceNumber = Feature::all();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
                 $html .='<div class="icheck-primary ">';
-                $html .='<input value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
                 $html .= '<label for="property_feature-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
