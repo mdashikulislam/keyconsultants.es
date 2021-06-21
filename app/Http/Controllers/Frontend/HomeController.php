@@ -295,8 +295,8 @@ class HomeController extends Controller
             ->where('slug',$slug)
             ->with('more_medias')
             ->first();
-
-
+//        return $property;
+//        return view('frontend.pdf')->with(['data'=>$property]);
         $pdf = \PDF::loadView('frontend.pdf',['data'=>$property])->setPaper('a4','portrait');
         return $pdf->download('test.pdf');
     }
