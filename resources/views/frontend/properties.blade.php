@@ -203,11 +203,11 @@
             let priceSlider = document.getElementById('price');
 
             noUiSlider.create(priceSlider, {
-                start: [{{request()->input('min_price') ? :0}}, {{request()->input('max_price')? : 100000}}],
+                start: [{{request()->input('min_price') ? :0}}, {{request()->input('max_price')? : 1000000}}],
                 step: 1,
                 range: {
                     min: [0],
-                    max: [100000],
+                    max: [1000000],
                 },
                 format: wNumb({
                     decimals: 0,
