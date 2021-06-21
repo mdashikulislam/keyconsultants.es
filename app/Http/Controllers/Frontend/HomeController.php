@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Property;
+use Barryvdh\DomPDF\PDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -266,7 +269,9 @@ class HomeController extends Controller
             ->where('slug',$slug)
             ->with('more_medias')
             ->first();
-        return $property;
+
+        $pdf = \PDF::loadView('frontend.pdf',['data'=>$property])->setPaper('a4','portrait');
+        return $pdf->download('test.pdf');
     }
     public function propertyEnquiry(Request $request)
     {
