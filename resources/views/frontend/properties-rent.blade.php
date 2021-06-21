@@ -211,25 +211,24 @@
                 },
                 format: wNumb({
                     decimals: 0,
-                    thousand: ',',
                 }),
                 connect: true,
             });
 
             // Set visual min and max values and also update value hidden form inputs
             priceSlider.noUiSlider.on('update', function (values, handle) {
-                document.getElementById('price-value1').innerHTML = values[0];
-                document.getElementById('price-value2').innerHTML = values[1];
-                $('input[name="min_price"]').val(parseInt(values[0].replace(/\,(\d\d)$/, ".$1").replace(',','')));
-                $('input[name="max_price"]').val(parseInt(values[1].replace(/\,(\d\d)$/, ".$1").replace(',','')));
+                document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
+                document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
+                $('input[name="min_price"]').val(values[0]);
+                $('input[name="max_price"]').val(values[1]);
             });
 
 
             priceSlider.noUiSlider.on('change', function (values, handle) {
-                document.getElementById('price-value1').innerHTML = values[0];
-                document.getElementById('price-value2').innerHTML = values[1];
-                $('input[name="min_price"]').val(parseInt(values[0].replace(/\,(\d\d)$/, ".$1").replace(',','')));
-                $('input[name="max_price"]').val(parseInt(values[1].replace(/\,(\d\d)$/, ".$1").replace(',','')));
+                document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
+                document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
+                $('input[name="min_price"]').val(values[0]);
+                $('input[name="max_price"]').val(values[1]);
                 $('#sort-form').submit();
             });
 
@@ -304,5 +303,8 @@
             });
 
         });
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     </script>
 @endpush
