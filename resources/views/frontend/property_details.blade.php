@@ -100,10 +100,10 @@
                                 </ul>
                             </div>
                             <div class="col-12">
-{{--                                <a href="#"><img src="assets/images/icons/pdf.png" alt="" /></a>--}}
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
                                 {!! $property->description !!}
-                                <a href="#"
-{{--                                ><img src="assets/images/icons/pdf2.png" height="60" width="60" alt=""--}}
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"
+                                ><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" height="60" width="60" alt=""
                                     /></a>
                             </div>
                         </div>
