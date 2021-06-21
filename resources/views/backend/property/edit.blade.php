@@ -773,5 +773,6 @@
             outline: inherit;
             font-size: 40px;
         }
+
     </style>
 @endpush
