@@ -101,6 +101,20 @@ class AjaxController extends Controller
         return response()->json($newMedia->id);
     }
 
+    public function getMoreMedia(Request $request)
+    {
+        $imageId = \DB::table('property_more_images')->where('property_id',$request->property_id)->pluck('more_media_id');
+        if (empty($imageId)){
+            return ;
+        }
+        $image = MoreMedia::whereIn('id',$imageId)->get();
+        $image->each(function ($item){
+            $item->name = substr($item->path,11);
+            $item->size = filesize('storage/'.$item->path);
+            $item->path_val = asset('storage/'.$item->path);
+        });
+        return $image;
+    }
     public function deleteMoreMedia(Request $request)
     {
         $media = MoreMedia::where('id',$request->id)->first();
