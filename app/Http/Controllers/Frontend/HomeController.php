@@ -152,7 +152,7 @@ class HomeController extends Controller
         }else{
             $property=$property->orderBy('created_at','DESC');
         }
-        $property= $property->get();
+        $property= $property->paginate(9);
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
@@ -191,7 +191,7 @@ class HomeController extends Controller
         }else{
             $property=$property->orderBy('created_at','DESC');
         }
-        $property = $property->get();
+        $property= $property->paginate(9);
 //        return $property;
         return view('frontend.properties-sale')
             ->with([
@@ -231,7 +231,7 @@ class HomeController extends Controller
         }else{
             $property=$property->orderBy('created_at','DESC');
         }
-        $property = $property->get();
+        $property= $property->paginate(9);
 //        return $property;
         return view('frontend.properties-rent')
             ->with([

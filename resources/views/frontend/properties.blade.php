@@ -165,6 +165,9 @@
                 </div>
                 @empty
                 @endforelse
+                <div class="col-12">
+                    {{$properties->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}
+                </div>
 {{--                <div class="col-12">--}}
 {{--                    <button class="loadmore-btn">Load more</button>--}}
 {{--                </div>--}}
