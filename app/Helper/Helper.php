@@ -297,4 +297,12 @@ class Helper{
         }
         return $html;
     }
+
+    public static function getSeoDataByUrl($url = 'homepage')
+    {
+        $seo = Seo::where('url',$url)->first();
+        \SEOMeta::setTitle(@$seo->title ? :'Key Consultants Mallorca');
+        \SEOMeta::setDescription(@$seo->description ? :'Real Estate Mallorca');
+        \SEOMeta::setKeywords(@$seo->keyword ? explode(',',@$seo->keyword) : ['Key Consultants Mallorca']);
+    }
 }
