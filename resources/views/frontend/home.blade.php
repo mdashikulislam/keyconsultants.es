@@ -132,17 +132,17 @@
                             </div>
                         </div>
                         <div class="row" id="space_show">
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
-                                <label class="label-text">Living Space</label>
-                                <div id="living_space"></div>
-                                <div class="d-flex align-items-center value">
-                                    <span id="space-value1"></span>
-                                    <span class="separator">—</span>
-                                    <span id="space-value2"></span>
-                                    <input type="hidden" name="min_space" />
-                                    <input type="hidden" name="max_space"  />
-                                </div>
-                            </div>
+{{--                            <div class="col-md-4 col-sm-6 col-12 mb-25">--}}
+{{--                                <label class="label-text">Living Space</label>--}}
+{{--                                <div id="living_space"></div>--}}
+{{--                                <div class="d-flex align-items-center value">--}}
+{{--                                    <span id="space-value1"></span>--}}
+{{--                                    <span class="separator">—</span>--}}
+{{--                                    <span id="space-value2"></span>--}}
+{{--                                    <input type="hidden" name="min_space" />--}}
+{{--                                    <input type="hidden" name="max_space"  />--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="col-md-4 col-sm-6 col-12">
                                 <select name="additionally" class="select-style">
                                     <option value="">Additionally...</option>
