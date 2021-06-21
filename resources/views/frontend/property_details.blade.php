@@ -36,7 +36,7 @@
                                 <a target="_blank" href="https://facebook.com/sharer.php?u={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-{{--                                <a href="#" class="pdf"><img src="assets/images/icons/pdf.png" alt="" /></a>--}}
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
                             </li>
                         </ul>
                         <div class="row">

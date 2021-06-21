@@ -260,6 +260,14 @@ class HomeController extends Controller
             ]);
     }
 
+    public function propertiesDetailsPdf($id,$slug)
+    {
+        $property = Property::where('id',$id)
+            ->where('slug',$slug)
+            ->with('more_medias')
+            ->first();
+        return $property;
+    }
     public function propertyEnquiry(Request $request)
     {
         $this->validate($request,[
