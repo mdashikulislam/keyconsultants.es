@@ -660,8 +660,40 @@
                 forceFallback: false,
                 maxFilesize: 256, // Set the maximum file size to 256 MB
                 parallelUploads: 100,
+                init:function (){
+                    myDropzone = this;
+                    $.ajax({
+                        url: '{{route('more.media.get')}}',
+                        type: 'get',
+                        data: {property_id: '{{$property->id}}'},
+                        dataType: 'json',
+                        success: function(response){
+                            $.each(response, function(key,value) {
+                                var mockFile = { name: value.name, size: value.size };
+                                // console.log(value)
+                                myDropzone.emit("addedfile", mockFile);
+                                myDropzone.emit("thumbnail",mockFile, value.path_val);
+                                myDropzone.emit("complete", mockFile);
+                                imageDataArray.push(value.id)
+                                fileList[i] = {
+                                    "serverFileName": value.id,
+                                    "fileName": value.name,
+                                    "fileId": i
+                                };
+                                //
+
+                                i += 1;
+                                // console.log(fileList);
+                                console.log(imageDataArray)
+                                $('#more_media').val(imageDataArray);
+
+                            });
+                        }
+                    });
+                }
             });//end drop zone
             uploader.on("success", function(file,response) {
+                // console.log(response)
                 imageDataArray.push(response)
                 fileList[i] = {
                     "serverFileName": response,
@@ -670,7 +702,7 @@
                 };
 
                 i += 1;
-                console.log(fileList);
+                // console.log(imageDataArray);
                 $('#more_media').val(imageDataArray);
             });
             uploader.on("removedfile", function(file) {

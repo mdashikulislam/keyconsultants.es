@@ -136,6 +136,10 @@ class PropertyController extends Controller
             $property->feature_image = $imageName;
         }
         $property->save();
+        if ($request->more_media){
+            $moreMedia = explode(',',$request->more_media);
+            $property->more_medias()->sync($moreMedia);
+        }
         \Alert::success('Property Update Successfully');
         return redirect()->route('admin.property.index');
     }
