@@ -56,7 +56,7 @@ class PropertyController extends Controller
         $property->land_area = $request->land_area;
         $property->living_space = $request->living_space;
         $property->balcony_terrace_area = $request->balcony_terrace_area;
-        $property->property_status = implode(',',$request->property_status);
+        $property->property_status = $request->property_status;
         $property->property_type = implode(',',$request->property_type);
         $property->feature = implode(',',$request->feature);
         if ($request->symbol){
@@ -79,6 +79,66 @@ class PropertyController extends Controller
         return redirect()->route('admin.property.index');
     }
 
+    public function edit($id,$slug)
+    {
+        $property = Property::where(['id'=>$id,'slug'=>$slug])->first();
+        if (empty($property)){
+            return redirect()->back();
+        }
+        return view('backend.property.edit')
+            ->with([
+                'property'=>$property
+            ]);
+    }
+
+    public function update($id,$slug,Request $request)
+    {
+        $this->validate($request,[
+            'title'=>['required','max:255'],
+            'description'=>['required'],
+            'price'=>['required'],
+            'city'=>['required'],
+            'region'=>['required'],
+            'room'=>['required'],
+            'bathroom'=>['required'],
+            'property_status'=>['required'],
+            'property_type'=>['required'],
+        ]);
+        $property = Property::where(['id'=>$id,'slug'=>$slug])->first();
+
+        $property->title = $request->title;
+        $property->slug = \Str::slug($request->title);
+
+        $property->description = $request->description;
+        $property->price = $request->price;
+        $property->city = $request->city;
+        $property->region = implode(',',$request->region);
+        $property->room = $request->room;
+        $property->bathroom = $request->bathroom;
+        $property->land_area = $request->land_area;
+        $property->living_space = $request->living_space;
+        $property->balcony_terrace_area = $request->balcony_terrace_area;
+        $property->property_status = $request->property_status;
+        $property->property_type = implode(',',$request->property_type);
+        $property->feature = implode(',',$request->feature);
+        if ($request->symbol){
+            $property->symbol = $request->symbol;
+        }
+        if ($request->additionally){
+            $property->additionally = implode(',',$request->additionally);
+        }
+        if ($request->file('feature_image')){
+            $imageName = Helper::uploadSingleImage($request->feature_image,'feature_image','FI');
+            $property->feature_image = $imageName;
+        }
+        if ($request->file('feature_image')){
+            $imageName = Helper::uploadSingleImage($request->feature_image,'feature_image','FI');
+            $property->feature_image = $imageName;
+        }
+        $property->save();
+        \Alert::success('Property Update Successfully');
+        return redirect()->route('admin.property.index');
+    }
     public function delete(Request $request)
     {
         $property = Property::where('id',$request->id)->first();

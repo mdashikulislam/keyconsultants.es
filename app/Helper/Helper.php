@@ -9,14 +9,18 @@ use App\Models\ReferenceNumber;
 use App\Models\Region;
 
 class Helper{
-    public static function getPropertyStatusCheckbox()
+    public static function getPropertyStatusCheckbox($selected = 0)
     {
         $propertyStatus = PropertyStatus::all();
         $html = '';
         if (!empty($propertyStatus)){
-            foreach ($propertyStatus as $key=>$status){
+            foreach ($propertyStatus as $key =>$status){
                 $html .='<div class="icheck-primary">';
-                $html .='<input value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected == $status->id){
+                    $html .= 'checked';
+                }
+                $html .= ' value="'.$status->id.'" id="property-status-'.$status->id.'" name="property_status" type="radio">';
                 $html .= '<label for="property-status-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -26,14 +30,22 @@ class Helper{
         return $html;
     }
 
-    public static function getPropertyAditionallyCheckbox()
+    public static function getPropertyAditionallyCheckbox($selected = null)
     {
         $aditionallyes = Additionally::all();
         $html = '';
         if (!empty($aditionallyes)){
             foreach ($aditionallyes as $key=>$status){
                 $html .='<div class="icheck-primary">';
-                $html .='<input value="'.$status->id.'" id="additionally-'.$status->id.'" name="additionally[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="additionally-'.$status->id.'" name="additionally[]" type="checkbox">';
                 $html .= '<label for="additionally-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -57,14 +69,22 @@ class Helper{
         }
         return $html;
     }
-    public static function getPropertyTypeCheckbox()
+    public static function getPropertyTypeCheckbox($selected = null)
     {
         $referenceNumber = PropertyType::all();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
                 $html .='<div class="icheck-primary ">';
-                $html .='<input value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="property_type-'.$status->id.'" name="property_type[]" type="checkbox">';
                 $html .= '<label for="property_type-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -72,14 +92,22 @@ class Helper{
         }
         return $html;
     }
-    public static function getPropertyFeatureCheckbox()
+    public static function getPropertyFeatureCheckbox($selected=null)
     {
         $referenceNumber = Feature::all();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
                 $html .='<div class="icheck-primary ">';
-                $html .='<input value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
+                $html .='<input ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $status->id){
+                            $html .= 'checked';
+                        }
+                    }
+                }
+                $html .=' value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
                 $html .= '<label for="property_feature-'.$status->id.'">';
                 $html .= $status->name;
                 $html .='</label></div>';
@@ -137,6 +165,15 @@ class Helper{
         return $typeName;
     }
 
+    public static function getPropertyRegionName($id)
+    {
+        if (empty($id)){
+            return ;
+        }
+        $id = explode(',',$id);
+        $typeName = Region::whereIn('id',$id)->pluck('name');
+        return $typeName;
+    }
     public static function getAdditionallyDropdown($selected = 0)
     {
         $additionallys = Additionally::all();

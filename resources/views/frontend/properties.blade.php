@@ -131,7 +131,7 @@
                         <div class="product-header">
                             <span class="badge">{{$property->propertyStatus->name}}</span>
                             <h4>{{$property->city}}</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
+{{--                            <span class="fevurite"><i class="fa fa-star"></i></span>--}}
                         </div>
                         <div class="product-img">
                             <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />

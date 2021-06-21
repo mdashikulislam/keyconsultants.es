@@ -57,6 +57,8 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
         Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
         Route::post('store',[\App\Http\Controllers\Backend\PropertyController::class,'store'])->name('admin.property.store');
+        Route::get('edit/{id}/{slug}',[\App\Http\Controllers\Backend\PropertyController::class,'edit'])->name('admin.property.edit');
+        Route::post('update/{id}/{slug}',[\App\Http\Controllers\Backend\PropertyController::class,'update'])->name('admin.property.update');
         Route::delete('delete',[\App\Http\Controllers\Backend\PropertyController::class,'delete'])->name('admin.property.delete');
         Route::get('note/{id}',[\App\Http\Controllers\Backend\PropertyController::class,'note'])->name('admin.property.note');
         Route::post('note-add',[\App\Http\Controllers\Backend\PropertyController::class,'addNote'])->name('admin.note.add');
