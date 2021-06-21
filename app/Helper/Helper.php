@@ -244,7 +244,22 @@ class Helper{
         }
         return $html;
     }
-
+    public static function getPropertyFeature($show = null){
+        $features = Feature::all();
+        $value = [];
+        if ($features){
+            foreach($features as $add){
+                if ($show){
+                    foreach($show as $s){
+                        if ($s == $add->id){
+                            $value[] = $add->name;
+                        }
+                    }
+                }
+            }
+        }
+        return $value;
+    }
     public static function getAdditionallyData($show = null)
     {
         $aditionally = Additionally::all();

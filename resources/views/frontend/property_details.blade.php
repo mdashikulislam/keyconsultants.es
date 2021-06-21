@@ -29,9 +29,6 @@
                             <li>
                                 <h4> {{$property->symbol.number_format($property->price)}}</h4>
                             </li>
-{{--                            <li>--}}
-{{--                                <span class="fevurite"><i class="fa fa-star"></i></span>--}}
-{{--                            </li>--}}
                             <li>
                                 <a target="_blank" href="https://facebook.com/sharer.php?u={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook"><i class="fa fa-facebook"></i></a>
                             </li>
@@ -75,8 +72,9 @@
                                     @if($property->balcony_terrace_area)
                                     <li><i class="fa fa-home"></i> Balcony/Terrace Area:{{$property->balcony_terrace_area}}</li>
                                     @endif
+                                    @if($property->additionally)
                                     <li>
-                                        <i class="fa fa-home"></i>
+                                        <i class="fa fa-home"></i>Additionally :
                                         @php
                                             $aditionally = explode(',',@$property->additionally);
                                             $data = \App\Helper\Helper::getAdditionallyData($aditionally);
@@ -86,6 +84,19 @@
                                         @endphp
 
                                     </li>
+                                    @endif
+                                    @if($property->feature)
+                                        <li>
+                                            <i class="fa fa-home"></i>Feature :
+                                            @php
+                                                $feature = explode(',',@$property->feature);
+                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);
+                                                if (!empty($feature)){
+                                                    echo implode(',',$feature);
+                                                }
+                                            @endphp
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="col-12">
