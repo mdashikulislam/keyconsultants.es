@@ -33,10 +33,10 @@
 {{--                                <span class="fevurite"><i class="fa fa-star"></i></span>--}}
 {{--                            </li>--}}
                             <li>
-                                <a href="facebook.com" class="facebook"><i class="fa fa-facebook"></i></a>
+{{--                                <a href="facebook.com" class="facebook"><i class="fa fa-facebook"></i></a>--}}
                             </li>
                             <li>
-                                <a href="#" class="pdf"><img src="assets/images/icons/pdf.png" alt="" /></a>
+{{--                                <a href="#" class="pdf"><img src="assets/images/icons/pdf.png" alt="" /></a>--}}
                             </li>
                         </ul>
                         <div class="row">
@@ -89,10 +89,10 @@
                                 </ul>
                             </div>
                             <div class="col-12">
-                                <a href="#"><img src="assets/images/icons/pdf.png" alt="" /></a>
+{{--                                <a href="#"><img src="assets/images/icons/pdf.png" alt="" /></a>--}}
                                 {!! $property->description !!}
                                 <a href="#"
-                                ><img src="assets/images/icons/pdf2.png" height="60" width="60" alt=""
+{{--                                ><img src="assets/images/icons/pdf2.png" height="60" width="60" alt=""--}}
                                     /></a>
                             </div>
                         </div>
