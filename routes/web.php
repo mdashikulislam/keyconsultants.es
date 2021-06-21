@@ -66,7 +66,9 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('status-change',[\App\Http\Controllers\Backend\PropertyController::class,'statusChange'])->name('admin.property.status.change');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
+    Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');
     Route::get('enquiry',[\App\Http\Controllers\Backend\AdminController::class,'enquiry'])->name('admin.enquiry');
+    Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
 });
 
 //Ajax Route
