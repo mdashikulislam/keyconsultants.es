@@ -70,6 +70,8 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');
     Route::get('enquiry',[\App\Http\Controllers\Backend\AdminController::class,'enquiry'])->name('admin.enquiry');
     Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
+    Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
+    Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
 });
 
 //Ajax Route
@@ -81,3 +83,4 @@ Route::post('add-new-property-feature',[\App\Http\Controllers\Backend\AjaxContro
 Route::post('more-media-upload',[\App\Http\Controllers\Backend\AjaxController::class,'moreMediaUpload'])->name('more.media.upload');
 Route::get('get-media',[\App\Http\Controllers\Backend\AjaxController::class,'getMoreMedia'])->name('more.media.get');
 Route::get('delete-more-media',[\App\Http\Controllers\Backend\AjaxController::class,'deleteMoreMedia'])->name('more.media.delete');
+Route::get('seo-data/{id}',[\App\Http\Controllers\Backend\AjaxController::class,'seoData'])->name('seo.data');

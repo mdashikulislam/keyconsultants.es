@@ -10,6 +10,7 @@ use App\Models\MoreMedia;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
+use App\Models\Seo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -120,5 +121,24 @@ class AjaxController extends Controller
         $media = MoreMedia::where('id',$request->id)->first();
         $media->delete();
         return true;
+    }
+
+    public function seoData($id)
+    {
+        $data = Seo::where('id',$id)->first();
+        if ($data){
+            if ($data->keyword){
+                $data->keyword = explode(',',$data->keyword);
+            }
+            return response()->json([
+                'status'=>true,
+                'data'=>$data
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'data'=>'Not Found'
+            ]);
+        }
     }
 }

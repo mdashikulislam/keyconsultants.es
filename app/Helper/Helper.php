@@ -7,6 +7,7 @@ use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
 use App\Models\Region;
+use App\Models\Seo;
 
 class Helper{
     public static function getPropertyStatusCheckbox($selected = 0)
@@ -281,5 +282,19 @@ class Helper{
     public static function getPropertyInfoById($id = 0)
     {
        return Property::where('id',$id)->first();
+    }
+
+    public static function getSeoDropDown()
+    {
+        $seos = Seo::all();
+        $html = '';
+        if ($seos){
+            foreach ($seos as $seo){
+                $html .= '<option value="'.$seo->id.'">';
+                $html .= $seo->name;
+                $html .= '</option>';
+            }
+        }
+        return $html;
     }
 }

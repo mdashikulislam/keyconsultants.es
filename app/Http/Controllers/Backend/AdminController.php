@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Property;
+use App\Models\Seo;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -54,6 +55,28 @@ class AdminController extends Controller
         }
         $enquiry->delete();
         \Alert::success('Enquiry Delete Successful.');
+        return redirect()->back();
+    }
+
+    public function seo()
+    {
+        return view('backend.seo');
+    }
+
+    public function seoStore(Request $request)
+    {
+        $data = Seo::where('id',$request->id)->first();
+        if ($request->title){
+            $data->title = $request->title;
+        }
+        if ($request->description){
+            $data->description = $request->description;
+        }
+        if ($request->keyword){
+            $data->keyword = implode(',',$request->keyword);
+        }
+        $data->save();
+        \Alert::success('Seo Added Successfully');
         return redirect()->back();
     }
 }

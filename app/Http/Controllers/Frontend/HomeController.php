@@ -15,6 +15,9 @@ class HomeController extends Controller
 {
     public function index()
     {
+        \SEOMeta::setTitle('ashik');
+        \SEOMeta::setDescription('asfasgfsdgdsg');
+        \SEOMeta::setKeywords('');
         return view('frontend.home');
     }
 
