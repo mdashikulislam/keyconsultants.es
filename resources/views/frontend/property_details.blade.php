@@ -87,14 +87,19 @@
                                     @endif
                                     @if($property->feature)
                                         <li>
-                                            <i class="fa fa-home"></i>Feature :
-                                            @php
-                                                $feature = explode(',',@$property->feature);
-                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);
-                                                if (!empty($feature)){
-                                                    echo implode(',',$feature);
-                                                }
-                                            @endphp
+                                            <ul>
+                                                <li><i class="fa fa-home" style="display: block"></i>Features :</li>
+                                                <li>dsgsdagsdg</li>
+                                                <li>dsgsdagsdg</li>
+                                            </ul>
+{{--                                            <i class="fa fa-home"></i>Feature :--}}
+{{--                                            @php--}}
+{{--                                                $feature = explode(',',@$property->feature);--}}
+{{--                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);--}}
+{{--                                                if (!empty($feature)){--}}
+{{--                                                    echo implode(',',$feature);--}}
+{{--                                                }--}}
+{{--                                            @endphp--}}
                                         </li>
                                     @endif
                                 </ul>
