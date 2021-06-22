@@ -12,10 +12,11 @@
                         <thead>
                         <tr>
                             <th style="width: 5%">#</th>
-                            <th style="width: 20%">Name</th>
+                            <th style="width: 15%">Name</th>
                             <th style="width: 20%">Email</th>
                             <th style="width: 20%">Subject</th>
                             <th>Message</th>
+                            <th style="width: 5%">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,8 +31,14 @@
                             </td>
                             <td>{{$contact->subject}}</td>
                             <td>{{$contact->message}}</td>
+                            <td>
+                                <a href="{{route('admin.contact.delete',['id'=>$contact->id])}}"  class="btn btn-danger mb-1 delete-btn"><i class="fa fa-trash"></i></a>
+                            </td>
                         </tr>
                         @empty
+                            <tr>
+                                <td colspan="6" style="text-align: center">No Result Found</td>
+                            </tr>
                         @endforelse
                         </tbody>
                     </table>
@@ -46,3 +53,25 @@
         </div>
     </div>
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function (){
+            $('.delete-btn').on('click',function (e){
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You you want to delete your Contact Message!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = $(this).attr('href');
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

@@ -27,16 +27,13 @@
                     <div class="product-details-content">
                         <ul class="price-info">
                             <li>
-                                <h4>€ {{$property->price}}</h4>
+                                <h4> {{$property->symbol.number_format($property->price)}}</h4>
                             </li>
                             <li>
-                                <span class="fevurite"><i class="fa fa-star"></i></span>
+                                <a target="_blank" href="https://facebook.com/sharer.php?u={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="facebook.com" class="facebook"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="pdf"><img src="assets/images/icons/pdf.png" alt="" /></a>
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
                             </li>
                         </ul>
                         <div class="row">
@@ -44,8 +41,22 @@
                                 <ul class="price-info-details">
                                     <li><strong>Reference Number:</strong> {{$property->reference_number}}</li>
                                     <li><strong>City:</strong> {{$property->city}}</li>
-                                    <li><strong>Region:</strong> West</li>
-                                    <li><strong>Type:</strong> Villa</li>
+                                    <li><strong>Region:</strong>
+                                        @php
+                                            $region = \App\Helper\Helper::getPropertyRegionName($property->region);
+                                            $region = json_decode($region,true);
+                                            $region = implode(',',$region)
+                                        @endphp
+                                        {{$region}}
+                                    </li>
+                                    <li><strong>Type:</strong>
+                                        @php
+                                          $type = \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type);
+                                          $type = json_decode($type,true);
+                                          $type = implode(',',$type)
+                                        @endphp
+                                        {{$type}}
+                                    </li>
                                 </ul>
                             </div>
                             <div class="col-md-6 col-12">
@@ -61,8 +72,9 @@
                                     @if($property->balcony_terrace_area)
                                     <li><i class="fa fa-home"></i> Balcony/Terrace Area:{{$property->balcony_terrace_area}}</li>
                                     @endif
+                                    @if($property->additionally)
                                     <li>
-                                        <i class="fa fa-home"></i>
+                                        <i class="fa fa-home"></i>Additionally :
                                         @php
                                             $aditionally = explode(',',@$property->additionally);
                                             $data = \App\Helper\Helper::getAdditionallyData($aditionally);
@@ -72,13 +84,26 @@
                                         @endphp
 
                                     </li>
+                                    @endif
+                                    @if($property->feature)
+                                        <li>
+                                            <i class="fa fa-home"></i>Feature :
+                                            @php
+                                                $feature = explode(',',@$property->feature);
+                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);
+                                                if (!empty($feature)){
+                                                    echo implode(',',$feature);
+                                                }
+                                            @endphp
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                             <div class="col-12">
-                                <a href="#"><img src="assets/images/icons/pdf.png" alt="" /></a>
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
                                 {!! $property->description !!}
-                                <a href="#"
-                                ><img src="assets/images/icons/pdf2.png" height="60" width="60" alt=""
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"
+                                ><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" height="60" width="60" alt=""
                                     /></a>
                             </div>
                         </div>

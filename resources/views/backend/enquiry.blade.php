@@ -18,6 +18,7 @@
                             <th style="width: 15%">Phone</th>
                             <th style="width: 15%">Query</th>
                             <th style="width:15% ">Question</th>
+                            <th style="width:5% ">Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -53,10 +54,13 @@
                                     @endif
                                 </td>
                                 <td>{{$query->question}}</td>
+                                <td>
+                                    <a href="{{route('admin.enquiry.delete',['id'=>$query->id])}}"  class="btn btn-danger mb-1 delete-btn"><i class="fa fa-trash"></i></a>
+                                </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" style="text-align: center"></td>
+                                <td colspan="8" style="text-align: center">No Result Found</td>
                             </tr>
                         @endforelse
                         </tbody>
@@ -65,8 +69,36 @@
                 <div style="display: flex;flex-direction: row-reverse;margin-right: 20px;">
                     {{$enquiry->links('vendor.pagination.bootstrap-4')}}
                 </div>
-
             </div>
         </div>
     </div>
 @endsection
+@push('js')
+    <style>
+        .table td, .table th{
+            vertical-align: middle;
+        }
+    </style>
+@endpush
+@push('js')
+    <script>
+        $(document).ready(function (){
+            $('.delete-btn').on('click',function (e){
+                e.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You you want to delete your Contact Message!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = $(this).attr('href');
+                    }
+                })
+            })
+        })
+    </script>
+@endpush

@@ -27,13 +27,13 @@
                                     <td>
                                         <img style="width: 100%;height: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="">
                                     </td>
-                                    <td>{{$property->title}}</td>
+                                    <td><a target="_blank" href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}">{{$property->title}}</a></td>
                                     <td>
                                         @php
-                                            $types = explode(',',$property->property_type)
+                                            $types = explode(',',$property->property_type);
                                         @endphp
                                         @foreach($types as $type)
-                                            {!! \App\Helper\Helper::getPropertyTypeNameById($types) !!}
+                                            {!! \App\Helper\Helper::getPropertyTypeNameById($type) !!}
                                         @endforeach
                                     </td>
                                     <td>{{\Carbon\Carbon::parse($property->created_at)->isoFormat('Do, MM YYYY')}}</td>
@@ -54,7 +54,7 @@
                                             <a href="" onclick="changeStatusActive({{$property->id}})" class="btn btn-success mb-1"><i class="fa fa-eye"></i></a>
                                         @endif
                                         <a href="{{route('admin.property.note',['id'=>$property->id])}}" class="mb-1 btn btn-info"><i class="fa fa-list"></i></a>
-{{--                                        <a href="" class="btn btn-primary"><i class="fa fa-edit"></i></a>--}}
+                                        <a href="{{route('admin.property.edit',['id'=>$property->id,'slug'=>$property->slug])}}" class="btn btn-primary mb-1"><i class="fa fa-edit"></i></a>
                                         <form class="d-none" id="delete-{{$property->id}}" action="{{route('admin.property.delete')}}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}

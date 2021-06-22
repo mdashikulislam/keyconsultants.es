@@ -32,7 +32,10 @@ Route::get('career-with-key-consultants',[\App\Http\Controllers\Frontend\HomeCon
 Route::get('privacy-cookie-policy',[\App\Http\Controllers\Frontend\HomeController::class,'privacyCookiePolicy'])->name('privacy.cookie.policy');
 Route::get('about-us',[\App\Http\Controllers\Frontend\HomeController::class,'aboutUs'])->name('about.us');
 Route::get('properties',[\App\Http\Controllers\Frontend\HomeController::class,'properties'])->name('properties');
+Route::get('properties/sale',[\App\Http\Controllers\Frontend\HomeController::class,'sale'])->name('property.sale');
+Route::get('properties/rent',[\App\Http\Controllers\Frontend\HomeController::class,'rent'])->name('property.rent');
 Route::get('properties/{id}/{slug}',[\App\Http\Controllers\Frontend\HomeController::class,'propertiesDetails'])->name('properties.details');
+Route::get('properties/{id}/{slug}/pdf',[\App\Http\Controllers\Frontend\HomeController::class,'propertiesDetailsPdf'])->name('properties.details.pdf');
 Route::post('property-enquiry',[\App\Http\Controllers\Frontend\HomeController::class,'propertyEnquiry'])->name('property.enquiry');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
@@ -55,6 +58,8 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::get('index',[\App\Http\Controllers\Backend\PropertyController::class,'index'])->name('admin.property.index');
         Route::get('create',[\App\Http\Controllers\Backend\PropertyController::class,'create'])->name('admin.property.create');
         Route::post('store',[\App\Http\Controllers\Backend\PropertyController::class,'store'])->name('admin.property.store');
+        Route::get('edit/{id}/{slug}',[\App\Http\Controllers\Backend\PropertyController::class,'edit'])->name('admin.property.edit');
+        Route::post('update/{id}/{slug}',[\App\Http\Controllers\Backend\PropertyController::class,'update'])->name('admin.property.update');
         Route::delete('delete',[\App\Http\Controllers\Backend\PropertyController::class,'delete'])->name('admin.property.delete');
         Route::get('note/{id}',[\App\Http\Controllers\Backend\PropertyController::class,'note'])->name('admin.property.note');
         Route::post('note-add',[\App\Http\Controllers\Backend\PropertyController::class,'addNote'])->name('admin.note.add');
@@ -62,7 +67,11 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('status-change',[\App\Http\Controllers\Backend\PropertyController::class,'statusChange'])->name('admin.property.status.change');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
+    Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');
     Route::get('enquiry',[\App\Http\Controllers\Backend\AdminController::class,'enquiry'])->name('admin.enquiry');
+    Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
+    Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
+    Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
 });
 
 //Ajax Route
@@ -71,3 +80,7 @@ Route::post('add-new-additionally',[\App\Http\Controllers\Backend\AjaxController
 Route::post('add-new-reference-number',[\App\Http\Controllers\Backend\AjaxController::class,'referenceNumber'])->name('add.property.reference.number');
 Route::post('add-new-property-type',[\App\Http\Controllers\Backend\AjaxController::class,'propertyType'])->name('add.property.type');
 Route::post('add-new-property-feature',[\App\Http\Controllers\Backend\AjaxController::class,'propertyFeature'])->name('add.property.feature');
+Route::post('more-media-upload',[\App\Http\Controllers\Backend\AjaxController::class,'moreMediaUpload'])->name('more.media.upload');
+Route::get('get-media',[\App\Http\Controllers\Backend\AjaxController::class,'getMoreMedia'])->name('more.media.get');
+Route::get('delete-more-media',[\App\Http\Controllers\Backend\AjaxController::class,'deleteMoreMedia'])->name('more.media.delete');
+Route::get('seo-data/{id}',[\App\Http\Controllers\Backend\AjaxController::class,'seoData'])->name('seo.data');

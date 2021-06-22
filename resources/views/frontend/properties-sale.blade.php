@@ -5,14 +5,14 @@
         style="background: url('{{asset('frontend/assets/images/bg/sale.png')}}') repeat-x center center / contain"
     >
         <div class="container">
-            <h2 class="sale-breadcumb-title">Properties</h2>
+            <h2 class="sale-breadcumb-title">PROPERTIES FOR SALE</h2>
         </div>
     </div>
     <div class="sale-rent-area mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <form id="sort-form" action="{{route('properties')}}" method="GET">
+                    <form id="sort-form" action="{{route('property.sale')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
                                 <select  class="select-style" name="reference_number">
@@ -89,7 +89,7 @@
                         <div class="row">
                             <div class="col-lg-11 col-12 text-right">
                                 <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>
-                                <a href="{{route('properties')}}" class="showmore-btn">Reset Filter</a>
+                                <a href="{{route('property.sale')}}" class="showmore-btn">Reset Filter</a>
                             </div>
                         </div>
                         <div class="row" id="space_show">
@@ -127,50 +127,50 @@
             <div class="row">
                 @forelse($properties as $property)
                     <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">{{$property->propertyStatus->name}}</span>
-                            <h4>{{$property->city}}</h4>
-{{--                            <span class="fevurite"><i class="fa fa-star"></i></span>--}}
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />
-                            <div class="img-content">
-                                <h3>{{$property->title}}</h3>
-                                <a href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="more">More</a>
+                        <div class="product-wrap">
+                            <div class="product-header">
+                                <span class="badge">{{$property->propertyStatus->name}}</span>
+                                <h4>{{$property->city}}</h4>
+{{--                                <span class="fevurite"><i class="fa fa-star"></i></span>--}}
                             </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>{{$property->reference_number}}</h5>
-                                <ul class="d-flex justify-content-between">
-                                    @if($property->living_space)
-                                    <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
-                                    @endif
-                                    <li><i class="fa fa-bed"></i> {{$property->room}}</li>
-                                    <li><i class="fa fa-bath"></i> {{$property->bathroom}}</li>
-                                </ul>
+                            <div class="product-img">
+                                <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />
+                                <div class="img-content">
+                                    <h3>{{$property->title}}</h3>
+                                    <a href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="more">More</a>
+                                </div>
                             </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>
-                                    @forelse( \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type) as $type)
-                                        {!! $type.'<br>'  !!}
-                                    @empty
-                                    @endforelse
-                                </h5>
-                                <span class="price"><i class="fa fa-check"></i> {{$property->symbol.number_format($property->price)}} </span>
+                            <div class="product-info">
+                                <div class="d-flex flex-wrap justify-content-between info">
+                                    <h5>{{$property->reference_number}}</h5>
+                                    <ul class="d-flex justify-content-between">
+                                        @if($property->living_space)
+                                            <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
+                                        @endif
+                                        <li><i class="fa fa-bed"></i> {{$property->room}}</li>
+                                        <li><i class="fa fa-bath"></i> {{$property->bathroom}}</li>
+                                    </ul>
+                                </div>
+                                <div class="d-flex flex-wrap justify-content-between">
+                                    <h5>
+                                        @forelse( \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type) as $type)
+                                            {!! $type.'<br>'  !!}
+                                        @empty
+                                        @endforelse
+                                    </h5>
+                                    <span class="price"><i class="fa fa-check"></i> {{$property->symbol.number_format($property->price)}} </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @empty
                 @endforelse
-                <div class="col-12">
-                    {{$properties->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}
-                </div>
-{{--                <div class="col-12">--}}
-{{--                    <button class="loadmore-btn">Load more</button>--}}
-{{--                </div>--}}
+                    <div class="col-12">
+                        {{$properties->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}
+                    </div>
+                {{--                <div class="col-12">--}}
+                {{--                    <button class="loadmore-btn">Load more</button>--}}
+                {{--                </div>--}}
             </div>
         </div>
     </div>
@@ -202,9 +202,7 @@
                     $(this).text('Show more');
                 }
             });
-            // price slider
             let priceSlider = document.getElementById('price');
-
             noUiSlider.create(priceSlider, {
                 start: [{{request()->input('min_price') ? :0}}, {{request()->input('max_price')? : 1000000}}],
                 step: 1,
@@ -217,7 +215,6 @@
                 }),
                 connect: true,
             });
-
             // Set visual min and max values and also update value hidden form inputs
             priceSlider.noUiSlider.on('update', function (values, handle) {
                 document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
@@ -225,8 +222,6 @@
                 $('input[name="min_price"]').val(values[0]);
                 $('input[name="max_price"]').val(values[1]);
             });
-
-
             priceSlider.noUiSlider.on('change', function (values, handle) {
                 document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
                 document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
@@ -234,6 +229,7 @@
                 $('input[name="max_price"]').val(values[1]);
                 $('#sort-form').submit();
             });
+
 
 
 
@@ -306,6 +302,7 @@
             });
 
         });
+
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }

@@ -78,6 +78,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.seo')}}" class="nav-link {{$currentRouteName == 'admin.seo' ? 'active':''}}">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            SEO
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

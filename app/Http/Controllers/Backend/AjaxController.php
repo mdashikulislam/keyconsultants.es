@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
 use App\Models\Feature;
+use App\Models\MoreMedia;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
+use App\Models\Seo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -86,5 +89,56 @@ class AjaxController extends Controller
             'msg'=>'Property Feature added Successfully',
             'data'=>$status
         ]);
+    }
+
+    public function moreMediaUpload(Request $request)
+    {
+        if ($request->file('file')){
+            $newMedia = new MoreMedia();
+            $mediaName = Helper::uploadSingleImage($request->file,'more_media','MM');
+            $newMedia->path = $mediaName;
+            $newMedia->save();
+        }
+        return response()->json($newMedia->id);
+    }
+
+    public function getMoreMedia(Request $request)
+    {
+        $imageId = \DB::table('property_more_images')->where('property_id',$request->property_id)->pluck('more_media_id');
+        if (empty($imageId)){
+            return ;
+        }
+        $image = MoreMedia::whereIn('id',$imageId)->get();
+        $image->each(function ($item){
+            $item->name = substr($item->path,11);
+            $item->size = filesize('storage/'.$item->path);
+            $item->path_val = asset('storage/'.$item->path);
+        });
+        return $image;
+    }
+    public function deleteMoreMedia(Request $request)
+    {
+        $media = MoreMedia::where('id',$request->id)->first();
+        $media->delete();
+        return true;
+    }
+
+    public function seoData($id)
+    {
+        $data = Seo::where('id',$id)->first();
+        if ($data){
+            if ($data->keyword){
+                $data->keyword = explode(',',$data->keyword);
+            }
+            return response()->json([
+                'status'=>true,
+                'data'=>$data
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'data'=>'Not Found'
+            ]);
+        }
     }
 }
