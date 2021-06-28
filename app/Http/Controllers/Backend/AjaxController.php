@@ -141,4 +141,22 @@ class AjaxController extends Controller
             ]);
         }
     }
+
+    public function changeFeature($id)
+    {
+        $feature = Feature::where('id',$id)->first();
+        if ($feature){
+            $feature->visible = 0;
+            $feature->save();
+            return response()->json([
+                'status'=>true,
+                'data'=>$feature
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'data'=>'Not Found'
+            ]);
+        }
+    }
 }

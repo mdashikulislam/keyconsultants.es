@@ -134,7 +134,7 @@
                 @if($key < 5)
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 30px;">
-                        <img style="width: 100%;" src="{{storage_path('app/public/'.$media->path)}}" alt="">
+                        <img style="width: 100%;max-height: 400px" src="{{storage_path('app/public/'.$media->path)}}" alt="">
                     </div>
                 </div>
                 @endif
