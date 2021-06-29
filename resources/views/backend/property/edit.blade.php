@@ -649,7 +649,21 @@
         // fileList variable to store current files index and name
         var fileList = new Array;
         var i = 0;
-
+        $(".dropzone").sortable({
+            items:'.dz-preview',
+            cursor: 'move',
+            opacity: 0.5,
+            containment: "parent",
+            distance: 20,
+            tolerance: 'pointer',
+            update: function(e, ui){
+                var imageDataArray = [];
+                $('.dz-preview').each(function (){
+                    imageDataArray.push(parseInt($(this).attr('id')));
+                });
+                $('#more_media').val(imageDataArray);
+            },
+        });
         $(function(){
             uploader = new Dropzone(".dropzone",{
                 url: "{{route('more.media.upload')}}",
@@ -669,11 +683,12 @@
                         dataType: 'json',
                         success: function(response){
                             $.each(response, function(key,value) {
-                                var mockFile = { name: value.name, size: value.size };
+                                var mockFile = { name: value.name, size: value.size,id:value.id };
                                 // console.log(value)
                                 myDropzone.emit("addedfile", mockFile);
                                 myDropzone.emit("thumbnail",mockFile, value.path_val);
                                 myDropzone.emit("complete", mockFile);
+                                $(".dz-preview:last-child").attr('id', value.id);
                                 imageDataArray.push(value.id)
                                 fileList[i] = {
                                     "serverFileName": value.id,
@@ -681,16 +696,16 @@
                                     "fileId": i
                                 };
                                 //
-
                                 i += 1;
                                 // console.log(fileList);
-                                console.log(imageDataArray)
+                                // console.log(imageDataArray)
                                 $('#more_media').val(imageDataArray);
 
                             });
                         }
                     });
-                }
+                },
+
             });//end drop zone
             uploader.on("success", function(file,response) {
                 // console.log(response)
@@ -700,9 +715,9 @@
                     "fileName": file.name,
                     "fileId": i
                 };
-
                 i += 1;
                 // console.log(imageDataArray);
+                $(".dz-preview:last-child").attr('id', response);
                 $('#more_media').val(imageDataArray);
             });
             uploader.on("removedfile", function(file) {
@@ -798,6 +813,9 @@
             outline: inherit;
             font-size: 40px;
         }
-
+        .dropzone .dz-preview .dz-image img{
+            width: 100%!important;
+            height: 120px!important;
+        }
     </style>
 @endpush

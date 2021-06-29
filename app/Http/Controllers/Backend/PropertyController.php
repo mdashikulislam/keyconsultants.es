@@ -93,6 +93,7 @@ class PropertyController extends Controller
 
     public function update($id,$slug,Request $request)
     {
+
         $this->validate($request,[
             'title'=>['required','max:255'],
             'description'=>['required'],
@@ -138,7 +139,10 @@ class PropertyController extends Controller
         $property->save();
         if ($request->more_media){
             $moreMedia = explode(',',$request->more_media);
-            $property->more_medias()->sync($moreMedia);
+            $property->more_medias()->detach($moreMedia);
+            foreach ($moreMedia as $m){
+                $property->more_medias()->attach($m);
+            }
         }
         \Alert::success('Property Update Successfully');
         return redirect()->route('admin.property.index');

@@ -85,3 +85,4 @@ Route::get('get-media',[\App\Http\Controllers\Backend\AjaxController::class,'get
 Route::get('delete-more-media',[\App\Http\Controllers\Backend\AjaxController::class,'deleteMoreMedia'])->name('more.media.delete');
 Route::get('seo-data/{id}',[\App\Http\Controllers\Backend\AjaxController::class,'seoData'])->name('seo.data');
 Route::get('feature/change/{id}',[\App\Http\Controllers\Backend\AjaxController::class,'changeFeature'])->name('feature.change');
+Route::get('order-image',[\App\Http\Controllers\Backend\AjaxController::class,'orderImage'])->name('order.image');

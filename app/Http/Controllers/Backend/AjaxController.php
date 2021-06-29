@@ -108,7 +108,10 @@ class AjaxController extends Controller
         if (empty($imageId)){
             return ;
         }
-        $image = MoreMedia::whereIn('id',$imageId)->get();
+        $sort =json_decode($imageId,true);
+        $sort = implode(',',$sort);
+
+        $image = MoreMedia::whereIn('id',$imageId)->orderByRaw(\DB::raw("FIELD(id,$sort)"))->get();
         $image->each(function ($item){
             $item->name = substr($item->path,11);
             $item->size = filesize('storage/'.$item->path);
@@ -158,5 +161,10 @@ class AjaxController extends Controller
                 'data'=>'Not Found'
             ]);
         }
+    }
+
+    public function orderImage(Request $request)
+    {
+        return $request->all();
     }
 }
