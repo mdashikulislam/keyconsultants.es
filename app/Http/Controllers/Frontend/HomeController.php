@@ -16,6 +16,7 @@ class HomeController extends Controller
 {
     public function index()
     {
+
         Helper::getSeoDataByUrl();
         return view('frontend.home');
     }
@@ -298,7 +299,7 @@ class HomeController extends Controller
 //        return $property;
 //        return view('frontend.pdf')->with(['data'=>$property]);
         $pdf = \PDF::loadView('frontend.pdf',['data'=>$property])->setPaper('a4','portrait');
-        return $pdf->download('test.pdf');
+        return $pdf->download($property->slug.'.pdf');
     }
     public function propertyEnquiry(Request $request)
     {

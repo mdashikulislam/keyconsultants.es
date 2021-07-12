@@ -108,7 +108,10 @@ class AjaxController extends Controller
         if (empty($imageId)){
             return ;
         }
-        $image = MoreMedia::whereIn('id',$imageId)->get();
+        $sort =json_decode($imageId,true);
+        $sort = implode(',',$sort);
+
+        $image = MoreMedia::whereIn('id',$imageId)->orderByRaw(\DB::raw("FIELD(id,$sort)"))->get();
         $image->each(function ($item){
             $item->name = substr($item->path,11);
             $item->size = filesize('storage/'.$item->path);
@@ -133,6 +136,23 @@ class AjaxController extends Controller
             return response()->json([
                 'status'=>true,
                 'data'=>$data
+            ]);
+        }else{
+            return response()->json([
+                'status'=>false,
+                'data'=>'Not Found'
+            ]);
+        }
+    }
+    public function changeFeature($id)
+    {
+        $feature = Feature::where('id',$id)->first();
+        if ($feature){
+            $feature->visible = 0;
+            $feature->save();
+            return response()->json([
+                'status'=>true,
+                'data'=>$feature
             ]);
         }else{
             return response()->json([

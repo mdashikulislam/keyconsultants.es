@@ -13,13 +13,13 @@
             <div class="row">
                 <div class="col-lg-8 col-12">
                     <div class="product-active">
-                        <div class="product-images">
-                            <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />
+                        <div class="product-images" style="text-align: center!important;">
+                            <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="" />
                         </div>
                         @if($property->more_medias)
                             @foreach($property->more_medias as $media)
                                 <div class="product-images">
-                                    <img src="{{asset('storage/'.$media->path)}}" alt="" />
+                                    <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$media->path)}}" alt="" />
                                 </div>
                             @endforeach
                         @endif
@@ -87,14 +87,19 @@
                                     @endif
                                     @if($property->feature)
                                         <li>
-                                            <i class="fa fa-home"></i>Feature :
-                                            @php
-                                                $feature = explode(',',@$property->feature);
-                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);
-                                                if (!empty($feature)){
-                                                    echo implode(',',$feature);
-                                                }
-                                            @endphp
+                                            <ul>
+                                                <li style="justify-content: left"><i class="fa fa-home" style="display: block"></i>Features :</li>
+                                                @php
+                                                    $feature = explode(',',@$property->feature);
+                                                    $feature = \App\Helper\Helper::getPropertyFeature($feature);
+                                                    if (!empty($feature)){
+                                                        foreach ($feature as $f):
+                                                        echo '<li style="justify-content: left"><i class="fa fa-arrow-right fa-fw"></i>'.$f.'</li>';
+                                                        endforeach;
+                                                    }
+                                                @endphp
+                                            </ul>
+
                                         </li>
                                     @endif
                                 </ul>

@@ -8,6 +8,7 @@ use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
 use App\Models\Region;
 use App\Models\Seo;
+use Illuminate\Database\Eloquent\Model;
 
 class Helper{
     public static function getPropertyStatusCheckbox($selected = 0)
@@ -93,13 +94,17 @@ class Helper{
         }
         return $html;
     }
-    public static function getPropertyFeatureCheckbox($selected=null)
+    public static function getPropertyFeatureCheckbox($selected=null,$visible)
     {
-        $referenceNumber = Feature::all();
+        $referenceNumber = new Feature();
+        if (@$visible){
+            $referenceNumber = $referenceNumber->where('visible',$visible);
+        }
+        $referenceNumber = $referenceNumber->get();
         $html = '';
         if (!empty($referenceNumber)){
             foreach ($referenceNumber as $key=>$status){
-                $html .='<div class="icheck-primary ">';
+                $html .='<div class="icheck-primary " id="rmv-'.$status->id.'">';
                 $html .='<input ';
                 if ($selected){
                     foreach ($selected as $s){
@@ -109,9 +114,9 @@ class Helper{
                     }
                 }
                 $html .=' value="'.$status->id.'" id="property_feature-'.$status->id.'" name="feature[]" type="checkbox">';
-                $html .= '<label for="property_feature-'.$status->id.'">';
+                $html .= '<label style="display:block" for="property_feature-'.$status->id.'">';
                 $html .= $status->name;
-                $html .='</label></div>';
+                $html .='<a data-id="'.$status->id.'" class="delete-feature" href="javascript:void(0)" style="float: right"><i class="fa fa-trash"></a></i></label></div>';
             }
         }
         return $html;

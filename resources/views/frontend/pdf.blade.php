@@ -49,7 +49,10 @@
                         <h2>Overview</h2>
                     </div>
                     <div class="description">
-                        {!! $data->description !!}
+                        <p>
+                            <?php echo substr(strip_tags($data->description),0,500) . "..."; ?>
+                        </p>
+{{--                        {{Str::limit(strip_tags($data->description),500)}}--}}
                     </div>
                     <div class="price">
                         <h2>Price and Details</h2>
@@ -134,7 +137,7 @@
                 @if($key < 5)
                 <div class="row">
                     <div class="col-md-12" style="margin-top: 30px;">
-                        <img style="width: 100%;" src="{{storage_path('app/public/'.$media->path)}}" alt="">
+                        <img style="width: 100%;max-height: 400px;" src="{{storage_path('app/public/'.$media->path)}}" alt="">
                     </div>
                 </div>
                 @endif

@@ -227,7 +227,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group clearfix" id="property_feature">
-                            {!! \App\Helper\Helper::getPropertyFeatureCheckbox() !!}
+                            {!! \App\Helper\Helper::getPropertyFeatureCheckbox(null,1) !!}
                         </div>
                         <div class="form-gtoup">
                             <button  data-toggle="modal" data-target="#modal_add_new_property_feature" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Property Feature</button>
@@ -637,6 +637,7 @@
                 forceFallback: false,
                 maxFilesize: 256, // Set the maximum file size to 256 MB
                 parallelUploads: 100,
+                timeout: 180000,
             });//end drop zone
             uploader.on("success", function(file,response) {
                 imageDataArray.push(response)
@@ -670,6 +671,31 @@
                 }
 
             });
+        });
+    </script>
+    <script>
+        $('.delete-feature').on('click',function (e){
+            e.preventDefault();
+            var url = '{{route('feature.change',['id'=>':id'])}}';
+            url = url.replace(':id',$(this).data('id'));
+            $.ajax({
+                url:url,
+                method:'GET',
+                success:function (response){
+                    if (response.status == true){
+                        $('#rmv-'+response.data.id).remove();
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'Feature Remove successful'
+                        });
+                    }else{
+                        Toast.fire({
+                            icon: 'error',
+                            title: 'Feature Not remove'
+                        });
+                    }
+                }
+            })
         });
     </script>
 @endpush
