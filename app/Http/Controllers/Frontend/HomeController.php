@@ -6,6 +6,7 @@ use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
+use App\Models\Favorite;
 use App\Models\Property;
 use Barryvdh\DomPDF\PDF;
 use Dompdf\Dompdf;
@@ -273,11 +274,15 @@ class HomeController extends Controller
 
     public function propertiesDetails($id,$slug, Request $request)
     {
-        return $request->ip();
+//        return $request->ip();
         $property = Property::where('id',$id)
             ->where('slug',$slug)
             ->with('more_medias')
+            ->with(['favorites'=>function($query) use($request){
+                $query->where('ip',$request->ip());
+            }])
             ->first();
+//        return $property;
         if (empty($property)){
             return  redirect()->back();
         }
@@ -323,5 +328,30 @@ class HomeController extends Controller
         $quiry->save();
         \Alert::success('Question submit Successfully');
         return redirect()->back();
+    }
+
+    public function favorite(Request $request)
+    {
+        if ($request->mode == 0){
+            $favorite = Favorite::where('post_id',$request->id)->where(['status' => 1,'ip'=>\request()->ip()])->first();
+            $favorite->status = 0;
+            $favorite->save();
+            toast('Property remove from wishlist','success');
+            return redirect()->back();
+        }else{
+            $favorite = Favorite::where('post_id',$request->id)->where(['status' => 0,'ip'=>\request()->ip()])->first();
+            if ($favorite){
+                $favorite->status = 1;
+                $favorite->save();
+            }else{
+                $favorite = new Favorite();
+                $favorite->ip = $request->ip();
+                $favorite->post_id = $request->id;
+                $favorite->status = 1;
+                $favorite->save();
+            }
+            toast('Property Added into wishlist','success');
+            return redirect()->back();
+        }
     }
 }

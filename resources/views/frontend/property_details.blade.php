@@ -34,7 +34,19 @@
                                 <h4> {{$property->symbol.number_format($property->price)}}</h4>
                             </li>
                             <li>
-                                <span class="fevurite"><i class="fa fa-star"></i></span>
+                                @if(@$property->favorites->status == 1)
+                                <form action="{{route('favorite')}}" method="post">@csrf
+                                    <input type="hidden" name="mode" value="0">
+                                    <input type="hidden" name="id" value="{{$property->id}}">
+                                    <span class="fevurite"><i class="fa fa-star"></i></span>
+                                </form>
+                                @else
+                                <form action="{{route('favorite')}}" method="post">@csrf
+                                    <input type="hidden" name="mode" value="1">
+                                    <input type="hidden" name="id" value="{{$property->id}}">
+                                    <span class="fevurite"><i class="fa fa-star-o"></i></span>
+                                </form>
+                                @endif
                             </li>
                             <li>
                                 <a target="_blank" href="https://facebook.com/sharer.php?u={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -82,6 +94,7 @@
                                 </ul>
                             </div>
                             <div class="col-12">
+                                <h4 style="color: #c0b298;margin-bottom: 20px;">Information about this Property</h4>
                                 {!! $property->description !!}
                             </div>
                         </div>
@@ -156,9 +169,23 @@
 @push('js')
     <script src="{{asset('frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
     <script>
-        $(document).on('click', '.fevurite', function () {
-            $(this).find('.fa').addClass('fa-star-o').removeClass('fa-star');
+        // $(document).on('click', '.fevurite', function () {
+        //     $(this).find('.fa').toggleClass('fa-star-o').toggleClass('fa-star');
+        //     if ($(this).find('.fa').hasClass('fa-star-o')){
+        //
+        //     }else{
+        //         console.log('a')
+        //     }
+        // });
+
+        // $.getJSON("https://jsonip.com?callback=?", function(data) {
+        //     alert("Your IP address is :- " + data.ip);
+        // });
+
+        $('.fevurite').on('click',function (){
+           $(this).parent('form').submit();
         });
+
         $(document).ready(function (){
           $('.test-popup-link').magnificPopup({
               type: 'image',

@@ -42,7 +42,7 @@ Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\Ho
 
 //User action
 Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contactForm'])->name('user.contact.form');
-
+Route::post('favorite', [\App\Http\Controllers\Frontend\HomeController::class, 'favorite'])->name('favorite');
 
 
 

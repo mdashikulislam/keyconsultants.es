@@ -19,4 +19,9 @@ class Property extends Model
     {
         return $this->hasOne(PropertyStatus::class,'id','property_status');
     }
+
+    public function favorites()
+    {
+        return $this->hasOne(Favorite::class,'post_id','id');
+    }
 }
