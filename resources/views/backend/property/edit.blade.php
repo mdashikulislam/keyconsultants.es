@@ -183,31 +183,31 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Additionally</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                                <i class="fas fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group clearfix" id="property_additionally">
-                            @php
-                                $additionally = null;
-                                if ($property->additionally){
-                                    $additionally = explode(',',$property->additionally);
-                                }
-                            @endphp
-                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox($additionally) !!}
-                        </div>
-                        <div class="form-gtoup">
-                            <button  data-toggle="modal" data-target="#modal_add_new_additionally" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>
-                        </div>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
+{{--                <div class="card card-primary">--}}
+{{--                    <div class="card-header">--}}
+{{--                        <h3 class="card-title">Additionally</h3>--}}
+{{--                        <div class="card-tools">--}}
+{{--                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
+{{--                                <i class="fas fa-minus"></i>--}}
+{{--                            </button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="card-body">--}}
+{{--                        <div class="form-group clearfix" id="property_additionally">--}}
+{{--                            @php--}}
+{{--                                $additionally = null;--}}
+{{--                                if ($property->additionally){--}}
+{{--                                    $additionally = explode(',',$property->additionally);--}}
+{{--                                }--}}
+{{--                            @endphp--}}
+{{--                            {!! \App\Helper\Helper::getPropertyAditionallyCheckbox($additionally) !!}--}}
+{{--                        </div>--}}
+{{--                        <div class="form-gtoup">--}}
+{{--                            <button  data-toggle="modal" data-target="#modal_add_new_additionally" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Additionally</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <!-- /.card-body -->--}}
+{{--                </div>--}}
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Property Type</h3>

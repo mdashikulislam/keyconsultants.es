@@ -126,9 +126,9 @@ class PropertyController extends Controller
         if ($request->symbol){
             $property->symbol = $request->symbol;
         }
-        if ($request->additionally){
-            $property->additionally = implode(',',$request->additionally);
-        }
+//        if ($request->additionally){
+//            $property->additionally = implode(',',$request->additionally);
+//        }
         if ($request->file('feature_image')){
             $imageName = Helper::uploadSingleImage($request->feature_image,'feature_image','FI');
             $property->feature_image = $imageName;
