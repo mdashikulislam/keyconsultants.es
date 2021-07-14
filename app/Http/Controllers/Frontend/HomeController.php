@@ -271,8 +271,9 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
-    public function propertiesDetails($id,$slug)
+    public function propertiesDetails($id,$slug, Request $request)
     {
+        return $request->ip();
         $property = Property::where('id',$id)
             ->where('slug',$slug)
             ->with('more_medias')
