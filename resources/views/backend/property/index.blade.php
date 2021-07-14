@@ -9,11 +9,18 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+                    <form action="{{route('admin.property.index')}}" method="GET">
+                        <div class="input-group mb-3">
+                            <input value="{{request()->input('keyword') ? :''}}" type="text" class="form-control" name="keyword" placeholder="Search by Title, Owner Name, Reference Number, Bedrooms, Bathrooms, Price, City, Region, Land Area, Living Space">
+                            <button type="submit" class="btn btn-success" style="border-radius: 0">Search</button>
+                            <a href="{{route('admin.property.index')}}" class="btn btn-info" style="border-radius: 0;color: #fff;">Reset</a>
+                        </div>
+                    </form>
                     <table class="table table-bordered">
                         <thead>
                         <tr style="text-align: center">
                             <th style="width: 5%">#</th>
-                            <th style="width: 15%;">Image</th>
+                            <th style="width: 25%;">Image</th>
                             <th>Title</th>
                             <th style="width: 15%">Type</th>
                             <th style="width: 12%">Date</th>
@@ -25,9 +32,16 @@
                                 <tr>
                                     <td>@if($loop->index + 1 <10){{'0'.($loop->index+1)}}@endif @if($loop->index + 1 > 9){{($loop->index+1)}}@endif</td>
                                     <td>
-                                        <img style="width: 100%;height: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="">
+                                        <img style="width: 100%;max-height:180px;" src="{{asset('storage/'.$property->feature_image)}}" alt="">
                                     </td>
-                                    <td><a target="_blank" href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}">{{$property->title}}</a></td>
+                                    <td>
+                                        <a class="d-block" target="_blank" href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}">{{$property->title}}</a>
+                                        <span class="d-block">Reference Number: {{$property->reference_number}}</span>
+                                        <span class="d-block">Number of bedrooms: {{$property->room}}</span>
+                                        <span class="d-block">Number of bathrooms: {{$property->bathroom}}</span>
+                                        <span class="d-block">Price : {{$property->symbol.number_format($property->price)}}</span>
+                                        <span class="d-block">Area : {{$property->land_area}}</span>
+                                    </td>
                                     <td>
                                         @php
                                             $types = explode(',',$property->property_type);
@@ -72,7 +86,7 @@
                     </table>
                 </div>
                 <div style="display: flex;flex-direction: row-reverse;margin-right: 20px;">
-                    {{$properties->links('vendor.pagination.bootstrap-4')}}
+                    {{$properties->appends(\request()->input())->links('vendor.pagination.bootstrap-4')}}
                 </div>
             </div>
         </div>

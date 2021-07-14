@@ -12,9 +12,24 @@ use Illuminate\Http\Request;
 
 class PropertyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $properties = Property::orderBy('id','DESC')->paginate(5);
+        $properties = new Property();
+        if ($request->keyword){
+            $keyword = $request->keyword;
+            $properties  = $properties->where('title','LIKE',"%$keyword%");
+            $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
+            $properties  = $properties->orWhere('reference_number','LIKE',"%$keyword%");
+            $properties  = $properties->orWhere('room',$keyword);
+            $properties  = $properties->orWhere('bathroom',$keyword);
+            $properties  = $properties->orWhere('price',$keyword);
+            $properties  = $properties->orWhere('city',$keyword);
+            $properties  = $properties->orWhere('region',$keyword);
+            $properties  = $properties->orWhere('land_area',$keyword);
+            $properties  = $properties->orWhere('living_space',$keyword);
+            $properties = $properties->groupBy('id');
+        }
+        $properties = $properties->orderBy('id','DESC')->paginate(1);
         return view('backend.property.index')
             ->with([
                 'properties'=>$properties
@@ -31,6 +46,7 @@ class PropertyController extends Controller
 
         $this->validate($request,[
             'title'=>['required','max:255'],
+            'owner_name'=>['required','max:255'],
             'description'=>['required'],
             'price'=>['required'],
             'city'=>['required'],
@@ -45,6 +61,7 @@ class PropertyController extends Controller
         $refNumber = @$referenceNumber[0] ? : 0;
         $property = new Property();
         $property->title = $request->title;
+        $property->owner_name = $request->owner_name;
         $property->slug = \Str::slug($request->title);
         $property->reference_number = 'SP-'.sprintf('%05u', $refNumber+1);
         $property->description = $request->description;
@@ -97,6 +114,7 @@ class PropertyController extends Controller
     {
         $this->validate($request,[
             'title'=>['required','max:255'],
+            'owner_name'=>['required','max:255'],
             'description'=>['required'],
             'price'=>['required'],
             'city'=>['required'],
@@ -109,6 +127,7 @@ class PropertyController extends Controller
         $property = Property::where(['id'=>$id,'slug'=>$slug])->first();
 
         $property->title = $request->title;
+        $property->owner_name = $request->owner_name;
         $property->slug = \Str::slug($request->title);
 
         $property->description = $request->description;

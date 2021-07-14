@@ -21,6 +21,13 @@
                             @enderror
                         </div>
                         <div class="form-group">
+                            <label for="inputName">Owner Name</label>
+                            <input type="text" name="owner_name" value="{{$property->owner_name ? :old('owner_name')}}" class="form-control @error('owner_name') is-invalid @enderror">
+                            @error('owner_name')
+                            <span class="invalid-feedback">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
                             <label for="summernote">Property Description</label>
                             <textarea id="summernote" name="description" class="form-control @error('description') is-invalid @enderror">{{$property->description ? :old('description')}}</textarea>
                             @error('description')
