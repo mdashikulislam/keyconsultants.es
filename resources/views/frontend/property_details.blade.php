@@ -33,7 +33,7 @@
                                 <a target="_blank" href="https://facebook.com/sharer.php?u={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li>
-                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
+                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" style="width: auto;height: 33px" alt="" /></a>
                             </li>
                         </ul>
                         <div class="row">
@@ -60,7 +60,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-6 col-12">
-                                <ul class="product-info-details">
+                                <ul class="product-info-details d-flex justify-content-end">
                                     <li><i class="fa fa-bed"></i> Bedroom: {{$property->room}}</li>
                                     <li><i class="fa fa-bath"></i> Bathrooms: {{$property->bathroom}}</li>
                                     @if($property->land_area)
@@ -72,44 +72,10 @@
                                     @if($property->balcony_terrace_area)
                                     <li><i class="fa fa-home"></i> Balcony/Terrace Area:{{$property->balcony_terrace_area}}</li>
                                     @endif
-                                    @if($property->additionally)
-                                    <li>
-                                        <i class="fa fa-home"></i>Additionally :
-                                        @php
-                                            $aditionally = explode(',',@$property->additionally);
-                                            $data = \App\Helper\Helper::getAdditionallyData($aditionally);
-                                            if (!empty($data)){
-                                                echo implode(',',$data);
-                                            }
-                                        @endphp
-
-                                    </li>
-                                    @endif
-                                    @if($property->feature)
-                                        <li>
-                                            <ul>
-                                                <li style="justify-content: left"><i class="fa fa-home" style="display: block"></i>Features :</li>
-                                                @php
-                                                    $feature = explode(',',@$property->feature);
-                                                    $feature = \App\Helper\Helper::getPropertyFeature($feature);
-                                                    if (!empty($feature)){
-                                                        foreach ($feature as $f):
-                                                        echo '<li style="justify-content: left"><i class="fa fa-arrow-right fa-fw"></i>'.$f.'</li>';
-                                                        endforeach;
-                                                    }
-                                                @endphp
-                                            </ul>
-
-                                        </li>
-                                    @endif
                                 </ul>
                             </div>
                             <div class="col-12">
-                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"><img src="{{asset('frontend/assets/images/icons/pdf.png')}}" alt="" /></a>
                                 {!! $property->description !!}
-                                <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"
-                                ><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" height="60" width="60" alt=""
-                                    /></a>
                             </div>
                         </div>
                     </div>
@@ -155,6 +121,26 @@
                         @enderror
                         <button type="submit">Submit</button>
                     </form>
+                    <div class="feature-list mt-3" style="background: #dededc;padding: 20px;">
+                        <div class="label d-flex justify-content-start">
+                            <i class="fa fa-home" style="font-size: 18px;margin-top: 2px;"></i><span style="font-size: 16px" class="ml-2 font-weight-bold">Features :</span>
+                        </div>
+                        <div class="list">
+                            <ul>
+                                @if($property->feature)
+                                    @php
+                                        $feature = explode(',',@$property->feature);
+                                        $feature = \App\Helper\Helper::getPropertyFeature($feature);
+                                        if (!empty($feature)){
+                                            foreach ($feature as $f):
+                                            echo '<li style="justify-content: left;margin-top:5px"><i class="fa fa-arrow-right fa-fw"></i>'.$f.'</li>';
+                                            endforeach;
+                                        }
+                                    @endphp
+                                @endif
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
