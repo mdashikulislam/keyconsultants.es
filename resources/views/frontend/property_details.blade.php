@@ -13,14 +13,18 @@
             <div class="row">
                 <div class="col-lg-8 col-12">
                     <div class="product-active">
-                        <div class="product-images" style="text-align: center!important;">
-                            <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="" />
-                        </div>
+                        <a href="{{asset('storage/'.$property->feature_image)}}" class="test-popup-link">
+                            <div class="product-images" style="text-align: center!important;">
+                                <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$property->feature_image)}}" alt="" />
+                            </div>
+                        </a>
                         @if($property->more_medias)
                             @foreach($property->more_medias as $media)
-                                <div class="product-images">
-                                    <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$media->path)}}" alt="" />
-                                </div>
+                                <a href="{{asset('storage/'.$media->path)}}" class="test-popup-link">
+                                    <div class="product-images">
+                                        <img style="max-height: 500px;margin: auto" src="{{asset('storage/'.$media->path)}}" alt="" />
+                                    </div>
+                                </a>
                             @endforeach
                         @endif
                     </div>
@@ -147,10 +151,19 @@
     </div>
 @endsection
 @push('js')
+    <script src="{{asset('frontend/assets/js/jquery.magnific-popup.min.js')}}"></script>
     <script>
         $(document).on('click', '.fevurite', function () {
             $(this).find('.fa').addClass('fa-star-o').removeClass('fa-star');
         });
+        $(document).ready(function (){
+          $('.test-popup-link').magnificPopup({
+              type: 'image',
+              gallery: {
+                  enabled: true
+              },
+          });
+        })
     </script>
     <script>
         $('.product-active').slick({
@@ -164,4 +177,7 @@
             autoplaySpeed: 2000,
         });
     </script>
+@endpush
+@push('css')
+    <link rel="stylesheet" href="{{asset('frontend/assets/css/magnific-popup.css')}}">
 @endpush
