@@ -162,6 +162,36 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Cost Information</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label for="">IBI</label>
+                                <input name="ibi" type="number" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Basura</label>
+                                <input name="basura" type="number" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Community</label>
+                                <input name="community" type="number" class="form-control">
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="">Energy Cost</label>
+                                <input name="energy_cost" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- /.card -->
             </div>
             <div class="col-md-3">
@@ -261,6 +291,7 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
+
                 <!-- /.card -->
             </div>
         </div>

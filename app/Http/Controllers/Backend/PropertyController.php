@@ -75,6 +75,10 @@ class PropertyController extends Controller
         $property->living_space = $request->living_space;
         $property->balcony_terrace_area = $request->balcony_terrace_area;
         $property->property_status = $request->property_status;
+        $property->ibi = round($request->ibi,2);
+        $property->basura = round($request->basura,2);
+        $property->community = round($request->community,2);
+        $property->energy_cost = $request->energy_cost;
         $property->property_type = implode(',',$request->property_type);
         if ($request->feature){
             $property->feature = implode(',',$request->feature);
@@ -141,6 +145,10 @@ class PropertyController extends Controller
         $property->living_space = $request->living_space;
         $property->balcony_terrace_area = $request->balcony_terrace_area;
         $property->property_status = $request->property_status;
+        $property->ibi = round($request->ibi,2);
+        $property->basura = round($request->basura,2);
+        $property->community = round($request->community,2);
+        $property->energy_cost = $request->energy_cost;
         $property->property_type = implode(',',$request->property_type);
         $property->feature = implode(',',$request->feature);
         if ($request->symbol){
