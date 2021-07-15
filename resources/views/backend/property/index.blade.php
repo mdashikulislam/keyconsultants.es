@@ -41,6 +41,7 @@
                                         <span class="d-block">Number of bathrooms: {{$property->bathroom}}</span>
                                         <span class="d-block">Price : {{$property->symbol.number_format($property->price)}}</span>
                                         <span class="d-block">Area : {{$property->land_area}}</span>
+                                        <span class="d-block">Owner Name : {{$property->owner_name ? :''}}</span>
                                     </td>
                                     <td>
                                         @php

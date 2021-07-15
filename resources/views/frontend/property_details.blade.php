@@ -55,7 +55,7 @@
                                 <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" style="width: auto;height: 33px" alt="" /></a>
                             </li>
                             <li>
-                                <a target="_blank" href="mailto:?subject={{$property->title}}&body={{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"  style="color: #c0b298;font-size: 40px;"><i class="fa fa-envelope fa-fw"></i></a>
+                                <a target="_blank" href="mailto:?subject={{$property->reference_number}}:{{$property->title}}&body={{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"  style="color: #c0b298;font-size: 40px;"><i class="fa fa-envelope fa-fw"></i></a>
                             </li>
                             <li>
                                 <a target="_blank" href="https://web.whatsapp.com/send?text={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook" style="background: #25D366;padding-left: 10px;padding-right: 10px;"><i class="fa fa-whatsapp fa-fw"></i>Share</a>
@@ -221,7 +221,13 @@
             margin-right: 0;
         }
         .product-details-content .price-info li:first-child h4{
-            width: 414px;
+            width: 424px;
+        }
+        .product-details-content .price-info .facebook{
+            min-width: 40px!important;
+        }
+        .product-details-content .product-info-details li{
+            min-width: 170px!important;
         }
     </style>
 @endpush
