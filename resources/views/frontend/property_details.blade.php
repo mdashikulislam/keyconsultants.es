@@ -54,6 +54,12 @@
                             <li>
                                 <a href="{{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}" class="pdf"><img src="{{asset('frontend/assets/images/icons/pdf2.png')}}" style="width: auto;height: 33px" alt="" /></a>
                             </li>
+                            <li>
+                                <a target="_blank" href="mailto:?subject={{$property->title}}&body={{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"  style="color: #c0b298;font-size: 40px;"><i class="fa fa-envelope fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a target="_blank" href="https://web.whatsapp.com/send?text={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook" style="background: #25D366;padding-left: 10px;padding-right: 10px;"><i class="fa fa-whatsapp fa-fw"></i>Share</a>
+                            </li>
                         </ul>
                         <div class="row">
                             <div class="col-md-6 col-12">
@@ -210,4 +216,12 @@
 @endpush
 @push('css')
     <link rel="stylesheet" href="{{asset('frontend/assets/css/magnific-popup.css')}}">
+    <style>
+        .product-details-content .price-info li:last-child{
+            margin-right: 0;
+        }
+        .product-details-content .price-info li:first-child h4{
+            width: 414px;
+        }
+    </style>
 @endpush

@@ -12,8 +12,8 @@
                     <form action="{{route('admin.property.index')}}" method="GET">
                         <div class="input-group mb-3">
                             <input value="{{request()->input('keyword') ? :''}}" type="text" class="form-control" name="keyword" placeholder="Search by Title, Owner Name, Reference Number, Bedrooms, Bathrooms, Price, City, Region, Land Area, Living Space">
-                            <button type="submit" class="btn btn-success" style="border-radius: 0">Search</button>
-                            <a href="{{route('admin.property.index')}}" class="btn btn-info" style="border-radius: 0;color: #fff;">Reset</a>
+                            <button type="submit" class="btn btn-success" style="border-radius: 0"><i class="fa fa-search-plus fa-fw"></i>Search</button>
+                            <a href="{{route('admin.property.index')}}" class="btn btn-info" style="border-radius: 0;color: #fff;"><i class="fa fa-recycle fa-fw"></i>Reset</a>
                         </div>
                     </form>
                     <table class="table table-bordered">
