@@ -55,7 +55,7 @@
                         </div>
                         <div class="card-footer">
                             <div class="text-right">
-                                <a href="#" class="btn btn-sm btn-danger">
+                                <a href="{{route('owner.delete',['id'=>$owner->id])}}" class="btn btn-sm btn-danger delete-owner">
                                     <i class="fas fa-trash"></i> Delete
                                 </a>
                             </div>
@@ -466,6 +466,24 @@
                 }
             })
         }
+        $(document).ready(function (){
+            $('.delete-owner').on('click',function (){
+               event.preventDefault();
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = $(this).attr('href');
+                    }
+                })
+            });
+        });
     </script>
 @endpush
 @push('css')

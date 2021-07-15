@@ -240,4 +240,11 @@ class PropertyController extends Controller
         toast('Owner Added Successfully','success');
         return redirect()->back();
     }
+
+    public function ownerDelete($id)
+    {
+        Owner::where('id',$id)->delete();
+        toast('Owner information delete successful','success');
+        return redirect()->back();
+    }
 }
