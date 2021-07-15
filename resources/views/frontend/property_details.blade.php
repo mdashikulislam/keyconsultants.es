@@ -103,6 +103,7 @@
                                 <h4 style="color: #c0b298;margin-bottom: 20px;">Information about this Property</h4>
                                 {!! $property->description !!}
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -167,6 +168,10 @@
                             </ul>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-12" style="border-top: 1px solid #000;margin-top: 20px;">
+                    <p style="margin-top: 10px;color: #000">Disclaimer</p>
+                    <p style="color: #777">All information provided herein has been obtained from sources believed reliable, but may be subject to errors, omissions, change of price, prior sale, or withdrawal without notice. Key Consultants CBand its affiliates make no representation, warranty or guaranteeas to accuracy of any information contained herein. You should consult your advisors for an independent verification of any properties.</p>
                 </div>
             </div>
         </div>

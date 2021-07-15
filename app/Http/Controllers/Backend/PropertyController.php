@@ -6,6 +6,7 @@ use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\MoreMedia;
 use App\Models\Note;
+use App\Models\Owner;
 use App\Models\Property;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -182,10 +183,12 @@ class PropertyController extends Controller
     public function note($id)
     {
         $notes = Note::where('post_id',$id)->orderBy('created_at','DESC')->get();
+        $owners = Owner::where('user_id',$id)->orderBy('created_at','ASC')->get();
         return view('backend.property.note')
             ->with([
                 'id'=>$id,
-                'notes'=>$notes
+                'notes'=>$notes,
+                'owners'=>$owners
             ]);
     }
 
@@ -215,6 +218,26 @@ class PropertyController extends Controller
         $property->post_status = $request->status;
         $property->save();
         \Alert::success('Status Change Successfully');
+        return redirect()->back();
+    }
+
+    public function ownerStore(Request $request)
+    {
+        $owner = new Owner();
+        $owner->user_id = $request->post_id;
+        $owner->name = $request->name;
+        $owner->dni_nie = $request->dni_nie;
+        $owner->address1 = $request->address1;
+        $owner->address2 = $request->address2;
+        $owner->country = $request->country;
+        $owner->post_code = $request->post_code;
+        $owner->email = $request->email;
+        $owner->telephone = $request->telephone;
+        $owner->mobile = $request->mobile;
+        $owner->nationality = $request->nationality;
+        $owner->passport = $request->passport;
+        $owner->save();
+        toast('Owner Added Successfully','success');
         return redirect()->back();
     }
 }

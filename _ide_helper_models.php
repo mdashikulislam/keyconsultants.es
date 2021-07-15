@@ -135,6 +135,32 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Owner
+ *
+ * @property int $id
+ * @property int $user_id
+ * @property string $name
+ * @property string|null $dni_nie
+ * @property string|null $address1
+ * @property string|null $address2
+ * @property string|null $country
+ * @property string|null $post_code
+ * @property string|null $email
+ * @property string|null $telephone
+ * @property string|null $mobile
+ * @property string|null $nationality
+ * @property string|null $passport
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Owner query()
+ */
+	class Owner extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Property
  *
  * @property int $id
@@ -160,6 +186,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property string|null $feature
  * @property string $symbol
+ * @property string|null $owner_name
  * @property-read \App\Models\Favorite|null $favorites
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MoreMedia[] $more_medias
  * @property-read \App\Models\PropertyStatus|null $propertyStatus
