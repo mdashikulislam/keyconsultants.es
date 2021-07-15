@@ -168,6 +168,32 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="energy-cost mt-3">
+                        <div class="list" style="border: 1px solid #ccc;padding: 15px">
+                            <p style="font-weight: bold">Costs information</p>
+                            <table class="table cost-table">
+                                <tr>
+                                    <td style="width: 70%">IBI:</td>
+                                    <td>{{$property->ibi}}€</td>
+                                    <td>pa</td>
+                                </tr>
+                                <tr>
+                                    <td>Basura:</td>
+                                    <td>{{$property->basura}}€</td>
+                                    <td>pa</td>
+                                </tr>
+                                <tr>
+                                    <td>Community:</td>
+                                    <td>{{$property->community}}</td>
+                                    <td>pa</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="level d-flex justify-content-between mt-2" style="align-items: center">
+                        <img style="width: 120px;height: auto" src="{{asset('frontend/assets/images/cost.jpg')}}" alt="">
+                        <p>{{$property->energy_cost}}</p>
+                    </div>
                 </div>
                 <div class="col-md-12" style="border-top: 1px solid #000;margin-top: 20px;">
                     <p style="margin-top: 10px;color: #000">Disclaimer</p>
@@ -233,6 +259,11 @@
         }
         .product-details-content .product-info-details li{
             min-width: 170px!important;
+        }
+
+        .cost-table tr td{
+            border: 0;
+            padding: 3px 0;
         }
     </style>
 @endpush
