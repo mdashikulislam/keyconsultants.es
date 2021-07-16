@@ -255,15 +255,21 @@
             whatsappSelector.attr('href','https://web.whatsapp.com/send?text='+urlName)
         }
         if (navigator.appVersion.indexOf("Mac") != -1) {
-            Name = "MacOS";
+            whatsappSelector.attr('href','https://web.whatsapp.com/send?text='+urlName)
         }
         if (navigator.appVersion.indexOf("X11") != -1) {
-            Name = "UNIX OS";
+            whatsappSelector.attr('href','https://web.whatsapp.com/send?text='+urlName)
         }
         if (navigator.appVersion.indexOf("Android") != -1) {
             whatsappSelector.attr('href','whatsapp://send?text='+urlName)
         }
-        // whatsapp://send?text=
+        if (navigator.appVersion.indexOf("Android") != -1) {
+            whatsappSelector.attr('href','whatsapp://send?text='+urlName)
+        }
+        var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            whatsappSelector.attr('href','whatsapp://send?text='+urlName)
+        }
     </script>
 @endpush
 @push('css')
