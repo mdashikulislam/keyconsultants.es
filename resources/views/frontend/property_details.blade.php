@@ -58,7 +58,7 @@
                                 <a target="_blank" href="mailto:?subject={{$property->reference_number}}:{{$property->title}}&body={{route('properties.details.pdf',['id'=>$property->id,'slug'=>$property->slug])}}"  style="color: #c0b298;font-size: 40px;"><i class="fa fa-envelope fa-fw"></i></a>
                             </li>
                             <li>
-                                <a id="whatsapp" target="_blank" href="" class="facebook" style="background: #25D366;padding-left: 10px;padding-right: 10px;"><i class="fa fa-whatsapp fa-fw"></i>Share</a>
+                                <a id="whatsapp" target="_blank" href="whatsapp://send?text={{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="facebook" style="background: #25D366;padding-left: 10px;padding-right: 10px;"><i class="fa fa-whatsapp fa-fw"></i>Share</a>
                             </li>
                         </ul>
                         <div class="row">
