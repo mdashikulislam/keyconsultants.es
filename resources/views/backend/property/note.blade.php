@@ -17,21 +17,15 @@
                             <h4 class="text-center" style="padding: 0;margin: 0;">{{\App\Helper\Helper::addOrdinalNumberSuffix($loop->index +1 )}} Owner Information</h4>
                         </div>
                         <div class="card-body ">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
+                            <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Owner Name</th>
-                                            <th>DNI/NIE</th>
+                                            <th style="width: 25%">Owner Name</th>
+                                            <th style="width: 15%">DNI/NIE</th>
                                             <th>Address(1)</th>
                                             <th>Address(2)</th>
-                                            <th>Country</th>
-                                            <th>Postcode</th>
-                                            <th>Email</th>
-                                            <th>Telephone</th>
-                                            <th>Mobile</th>
-                                            <th>Nationality</th>
-                                            <th>Passport</th>
+                                            <th style="width: 10%">Country</th>
+                                            <th style="width: 10%">Postcode</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -42,16 +36,29 @@
                                             <td>{{$owner->address2}}</td>
                                             <td>{{$owner->country}}</td>
                                             <td>{{$owner->post_code}}</td>
-                                            <td>{{$owner->email}}</td>
-                                            <td>{{$owner->telephone}}</td>
-                                            <td>{{$owner->mobile}}</td>
-                                            <td>{{$owner->nationality}}</td>
-                                            <td>{{$owner->passport}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
-                            </div>
-
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th style="width: 25%">Email</th>
+                                    <th style="width: 15%">Telephone</th>
+                                    <th>Mobile</th>
+                                    <th style="width: 19.7%">Nationality</th>
+                                    <th style="width: 20%">Passport</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{$owner->email}}</td>
+                                    <td>{{$owner->telephone}}</td>
+                                    <td>{{$owner->mobile}}</td>
+                                    <td>{{$owner->nationality}}</td>
+                                    <td>{{$owner->passport}}</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="card-footer">
                             <div class="text-right">
