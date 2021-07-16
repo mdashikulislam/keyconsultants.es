@@ -22,9 +22,6 @@ class PropertyController extends Controller
         if ($request->keyword){
             $keyword = $request->keyword;
             $properties  = $properties->where('title','LIKE',"%$keyword%");
-            $properties  = $properties->orWhere('bathroom',$keyword);
-            $properties  = $properties->orWhere('land_area',$keyword);
-            $properties  = $properties->orWhere('living_space',$keyword);
         }
         if ($request->room){
             $properties  = $properties->where('room',$request->room);
