@@ -37,7 +37,6 @@ class PropertyController extends Controller
             $properties = $properties->groupBy('id');
         }
         $properties = $properties->orderBy('id','DESC')->paginate(1);
-        return $properties;
         return view('backend.property.index')
             ->with([
                 'properties'=>$properties
