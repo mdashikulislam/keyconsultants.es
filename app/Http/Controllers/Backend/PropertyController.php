@@ -8,6 +8,7 @@ use App\Models\MoreMedia;
 use App\Models\Note;
 use App\Models\Owner;
 use App\Models\Property;
+use App\Models\Region;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -18,19 +19,25 @@ class PropertyController extends Controller
         $properties = new Property();
         if ($request->keyword){
             $keyword = $request->keyword;
+            $regions = Region::where('name','LIKE',"%$keyword%")->groupBy('id')->pluck('id');
             $properties  = $properties->where('title','LIKE',"%$keyword%");
             $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
             $properties  = $properties->orWhere('reference_number',$keyword);
             $properties  = $properties->orWhere('room',$keyword);
             $properties  = $properties->orWhere('bathroom',$keyword);
             $properties  = $properties->orWhere('price',$keyword);
-            $properties  = $properties->orWhere('city',$keyword);
-            $properties  = $properties->orWhere('region',$keyword);
+            $properties  = $properties->orWhere('city','LIKE',"%$keyword%");
+            if (!empty($regions)){
+                foreach ($regions as $region){
+                    $properties  = $properties->orWhereRaw('FIND_IN_SET('.$region.',region)');
+                }
+            }
             $properties  = $properties->orWhere('land_area',$keyword);
             $properties  = $properties->orWhere('living_space',$keyword);
             $properties = $properties->groupBy('id');
         }
-        $properties = $properties->orderBy('id','DESC')->paginate(20);
+        $properties = $properties->orderBy('id','DESC')->paginate(1);
+        return $properties;
         return view('backend.property.index')
             ->with([
                 'properties'=>$properties

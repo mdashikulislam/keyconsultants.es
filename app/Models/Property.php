@@ -24,4 +24,9 @@ class Property extends Model
     {
         return $this->hasOne(Favorite::class,'post_id','id');
     }
+
+    public function region()
+    {
+        $this->hasMany(Region::class,'id','region');
+    }
 }
