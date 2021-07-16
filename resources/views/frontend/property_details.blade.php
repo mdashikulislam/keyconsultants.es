@@ -260,7 +260,7 @@
         if (navigator.appVersion.indexOf("X11") != -1) {
             Name = "UNIX OS";
         }
-        if (navigator.appVersion.indexOf("android") != -1) {
+        if (navigator.appVersion.indexOf("Android") != -1) {
             whatsappSelector.attr('href','whatsapp://send?text='+urlName)
         }
         // whatsapp://send?text=
