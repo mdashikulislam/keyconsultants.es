@@ -10,16 +10,11 @@
                 <!-- /.card-header -->
                 <div class="card-body">
                     <form action="{{route('admin.property.index')}}" method="GET">
-{{--                        <div class="input-group mb-3">--}}
-{{--                            <input value="{{request()->input('keyword') ? :''}}" type="text" class="form-control" name="keyword" placeholder="Search by Title, Owner Name, Reference Number, Bedrooms, Bathrooms, Price, City, Region, Land Area, Living Space">--}}
-{{--                            <button type="submit" class="btn btn-success" style="border-radius: 0"><i class="fa fa-search-plus fa-fw"></i>Search</button>--}}
-{{--                            <a href="{{route('admin.property.index')}}" class="btn btn-info" style="border-radius: 0;color: #fff;"><i class="fa fa-recycle fa-fw"></i>Reset</a>--}}
-{{--                        </div>--}}
                        <div class="row">
-                           <div class="form-group col-4">
-                               <input value="{{request()->input('keyword') ? :''}}" type="text" name="keyword" class="form-control" placeholder="Title,Owner,Bedrooms,Bathrooms,Price,Land Area,Living Space">
+                           <div class="form-group col-3">
+                               <input value="{{request()->input('keyword') ? :''}}" type="text" name="keyword" class="form-control" placeholder="Title,Bathrooms,Land Area,Living Space">
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-3">
                                <select name="reference_number"  class="select2 form-control">
                                    <option value="" selected disabled>Select Reference</option>
                                    @forelse($referenceNumbers as $referenceNumber)
@@ -68,9 +63,53 @@
                                    @endforelse
                                </select>
                            </div>
+                           <div class="form-group col-2">
+                               <select name="room"  class="select2 form-control">
+                                   <option value="" selected disabled>Select Bedrooms</option>
+                                   @for($i = 1;$i < 21;$i++)
+                                       <option {{$i == request()->input('room') ? 'selected':''}} value="{{$i}}">{{$i}}</option>
+                                   @endfor
+                               </select>
+                           </div>
+                           <div class="form-group col-3">
+                               <select name="owner_name"  class="select2 form-control">
+                                   <option value="" selected disabled>Select Owner</option>
+                                   @forelse($owners as $owner)
+                                       <option {{$owner ==request()->input('owner_name') ? 'selected':''}} value="{{$owner}}">{{$owner}}</option>
+                                   @empty
+                                   @endforelse
+                               </select>
+                           </div>
+                           <div class="form-group col-3">
+                               <select name="property_type"  class="select2 form-control">
+                                   <option value="" selected disabled>Type of Property</option>
+                                   @forelse($types as $type)
+                                       <option {{$type->id ==request()->input('property_type') ? 'selected':''}} value="{{$type->id}}">{{$type->name}}</option>
+                                   @empty
+                                   @endforelse
+                               </select>
+                           </div>
+                           <div class="form-group col-2">
+                               <select name="property_status"  class="select2 form-control">
+                                   <option value="" selected disabled>Property Status</option>
+                                   @forelse($status as $s)
+                                       <option {{$s->id ==request()->input('property_status') ? 'selected':''}} value="{{$s->id}}">{{$s->name}}</option>
+                                   @empty
+                                   @endforelse
+                               </select>
+                           </div>
+                           <div class="form-group col-2">
+                               <select name="price"  class="select2 form-control">
+                                   <option value="" selected disabled>Price</option>
+                                   @forelse($prices as $price)
+                                       <option {{$price ==request()->input('price') ? 'selected':''}} value="{{$price}}">{{$price}}</option>
+                                   @empty
+                                   @endforelse
+                               </select>
+                           </div>
                            <div class="form-group col-2 text-right">
-                               <button type="submit" class="btn btn-success" style="border-radius: 0;padding: .375rem 0.4rem;"><i class="fa fa-search-plus fa-fw"></i>Search</button>
-                               <a href="{{route('admin.property.index')}}" class="btn btn-info" style="border-radius: 0;color: #fff;padding: .375rem 0.4rem;"><i class="fa fa-recycle fa-fw"></i>Reset</a>
+                               <button type="submit" class="btn btn-success" style="padding: .375rem 0.4rem;"><i class="fa fa-search-plus fa-fw"></i>Search</button>
+                               <a href="{{route('admin.property.index')}}" class="btn btn-info" style="color: #fff;padding: .375rem 0.4rem;"><i class="fa fa-recycle fa-fw"></i>Reset</a>
                            </div>
                        </div>
                     </form>

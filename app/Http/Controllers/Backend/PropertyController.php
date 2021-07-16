@@ -8,6 +8,8 @@ use App\Models\MoreMedia;
 use App\Models\Note;
 use App\Models\Owner;
 use App\Models\Property;
+use App\Models\PropertyStatus;
+use App\Models\PropertyType;
 use App\Models\Region;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -20,12 +22,24 @@ class PropertyController extends Controller
         if ($request->keyword){
             $keyword = $request->keyword;
             $properties  = $properties->where('title','LIKE',"%$keyword%");
-            $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
-            $properties  = $properties->orWhere('room',$keyword);
             $properties  = $properties->orWhere('bathroom',$keyword);
-            $properties  = $properties->orWhere('price',$keyword);
             $properties  = $properties->orWhere('land_area',$keyword);
             $properties  = $properties->orWhere('living_space',$keyword);
+        }
+        if ($request->room){
+            $properties  = $properties->where('room',$request->room);
+        }
+        if ($request->owner_name){
+            $properties  = $properties->where('owner_name',$request->owner_name);
+        }
+        if ($request->property_type){
+            $properties  = $properties->where('property_type',$request->property_type);
+        }
+        if ($request->property_status){
+            $properties  = $properties->where('property_status',$request->property_status);
+        }
+        if ($request->price){
+            $properties  = $properties->where('price',$request->price);
         }
         if ($request->reference_number){
             $properties = $properties->where('reference_number',$request->reference_number);
@@ -36,33 +50,22 @@ class PropertyController extends Controller
         if ($request->region){
             $properties = $properties->whereRaw('FIND_IN_SET('.$request->region.',region)');
         }
-//        if ($request->keyword){
-//            $keyword = $request->keyword;
-//            $regions = Region::where('name','LIKE',"%$keyword%")->groupBy('id')->pluck('id');
-//            $properties  = $properties->where('title','LIKE',"%$keyword%");
-//            $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
-//            $properties  = $properties->orWhere('reference_number',$keyword);
-//            $properties  = $properties->orWhere('room',$keyword);
-//            $properties  = $properties->orWhere('bathroom',$keyword);
-//            $properties  = $properties->orWhere('price',$keyword);
-//            $properties  = $properties->orWhere('city','LIKE',"%$keyword%");
-//            if (!empty($regions)){
-//                foreach ($regions as $region){
-//                    $properties  = $properties->orWhereRaw('FIND_IN_SET('.$region.',region)');
-//                }
-//            }
-//            $properties  = $properties->orWhere('land_area',$keyword);
-//            $properties  = $properties->orWhere('living_space',$keyword);
-//            $properties = $properties->groupBy('id');
-//        }
         $properties = $properties->orderBy('id','DESC')->groupBy('id')->paginate(20);
         $referenceNumbers = Property::pluck('reference_number');
         $regions = Region::all();
+        $status = PropertyStatus::all();
+        $types = PropertyType::all();
+        $prices = Property::orderBy('price','ASC')->groupBy('price')->pluck('price');
+        $owners = Property::whereNotNull('owner_name')->groupBy('owner_name')->pluck('owner_name');
         return view('backend.property.index')
             ->with([
                 'properties'=>$properties,
                 'referenceNumbers'=>$referenceNumbers,
-                'regions'=>$regions
+                'regions'=>$regions,
+                'status'=>$status,
+                'types'=>$types,
+                'prices'=>$prices,
+                'owners'=>$owners
             ]);
     }
 
