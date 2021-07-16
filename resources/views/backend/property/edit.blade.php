@@ -191,7 +191,7 @@
                                 <input value="{{$property->community}}" name="community" type="number" class="form-control">
                             </div>
                             <div class="form-group col-6">
-                                <label for="">Energy Cost</label>
+                                <label for="">Energy Performance Rating</label>
                                 <input value="{{$property->energy_cost}}" name="energy_cost" type="text" class="form-control">
                             </div>
                         </div>
