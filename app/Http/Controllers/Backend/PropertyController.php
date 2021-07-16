@@ -55,7 +55,7 @@ class PropertyController extends Controller
 //            $properties  = $properties->orWhere('living_space',$keyword);
 //            $properties = $properties->groupBy('id');
 //        }
-        $properties = $properties->orderBy('id','DESC')->groupBy('id')->paginate(10);
+        $properties = $properties->orderBy('id','DESC')->groupBy('id')->paginate(20);
         $referenceNumbers = Property::pluck('reference_number');
         $regions = Region::all();
         return view('backend.property.index')
