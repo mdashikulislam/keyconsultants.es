@@ -45,7 +45,7 @@
                                     <th style="width: 25%">Email</th>
                                     <th style="width: 15%">Telephone</th>
                                     <th>Mobile</th>
-                                    <th style="width: 19.7%">Nationality</th>
+                                    <th style="width: 20%">Nationality</th>
                                     <th style="width: 20%">Passport</th>
                                 </tr>
                                 </thead>
