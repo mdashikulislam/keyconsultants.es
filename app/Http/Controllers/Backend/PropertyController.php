@@ -20,7 +20,7 @@ class PropertyController extends Controller
             $keyword = $request->keyword;
             $properties  = $properties->where('title','LIKE',"%$keyword%");
             $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
-            $properties  = $properties->orWhere('reference_number','LIKE',"%$keyword%");
+            $properties  = $properties->orWhere('reference_number',$keyword);
             $properties  = $properties->orWhere('room',$keyword);
             $properties  = $properties->orWhere('bathroom',$keyword);
             $properties  = $properties->orWhere('price',$keyword);
@@ -52,8 +52,6 @@ class PropertyController extends Controller
             'price'=>['required'],
             'city'=>['required'],
             'region'=>['required'],
-            'room'=>['required'],
-            'bathroom'=>['required'],
             'property_status'=>['required'],
             'property_type'=>['required'],
             'feature_image'=>['required'],
@@ -124,8 +122,6 @@ class PropertyController extends Controller
             'price'=>['required'],
             'city'=>['required'],
             'region'=>['required'],
-            'room'=>['required'],
-            'bathroom'=>['required'],
             'property_status'=>['required'],
             'property_type'=>['required'],
         ]);
