@@ -19,27 +19,50 @@ class PropertyController extends Controller
         $properties = new Property();
         if ($request->keyword){
             $keyword = $request->keyword;
-            $regions = Region::where('name','LIKE',"%$keyword%")->groupBy('id')->pluck('id');
             $properties  = $properties->where('title','LIKE',"%$keyword%");
             $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
-            $properties  = $properties->orWhere('reference_number',$keyword);
             $properties  = $properties->orWhere('room',$keyword);
             $properties  = $properties->orWhere('bathroom',$keyword);
             $properties  = $properties->orWhere('price',$keyword);
-            $properties  = $properties->orWhere('city','LIKE',"%$keyword%");
-            if (!empty($regions)){
-                foreach ($regions as $region){
-                    $properties  = $properties->orWhereRaw('FIND_IN_SET('.$region.',region)');
-                }
-            }
             $properties  = $properties->orWhere('land_area',$keyword);
             $properties  = $properties->orWhere('living_space',$keyword);
-            $properties = $properties->groupBy('id');
         }
-        $properties = $properties->orderBy('id','DESC')->paginate(10);
+        if ($request->reference_number){
+            $properties = $properties->where('reference_number',$request->reference_number);
+        }
+        if ($request->city){
+            $properties = $properties->where('city',$request->city);
+        }
+        if ($request->region){
+            $properties = $properties->whereRaw('FIND_IN_SET('.$request->region.',region)');
+        }
+//        if ($request->keyword){
+//            $keyword = $request->keyword;
+//            $regions = Region::where('name','LIKE',"%$keyword%")->groupBy('id')->pluck('id');
+//            $properties  = $properties->where('title','LIKE',"%$keyword%");
+//            $properties  = $properties->orWhere('owner_name','LIKE',"%$keyword%");
+//            $properties  = $properties->orWhere('reference_number',$keyword);
+//            $properties  = $properties->orWhere('room',$keyword);
+//            $properties  = $properties->orWhere('bathroom',$keyword);
+//            $properties  = $properties->orWhere('price',$keyword);
+//            $properties  = $properties->orWhere('city','LIKE',"%$keyword%");
+//            if (!empty($regions)){
+//                foreach ($regions as $region){
+//                    $properties  = $properties->orWhereRaw('FIND_IN_SET('.$region.',region)');
+//                }
+//            }
+//            $properties  = $properties->orWhere('land_area',$keyword);
+//            $properties  = $properties->orWhere('living_space',$keyword);
+//            $properties = $properties->groupBy('id');
+//        }
+        $properties = $properties->orderBy('id','DESC')->groupBy('id')->paginate(10);
+        $referenceNumbers = Property::pluck('reference_number');
+        $regions = Region::all();
         return view('backend.property.index')
             ->with([
-                'properties'=>$properties
+                'properties'=>$properties,
+                'referenceNumbers'=>$referenceNumbers,
+                'regions'=>$regions
             ]);
     }
 
