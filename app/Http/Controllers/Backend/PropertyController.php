@@ -36,7 +36,7 @@ class PropertyController extends Controller
             $properties  = $properties->orWhere('living_space',$keyword);
             $properties = $properties->groupBy('id');
         }
-        $properties = $properties->orderBy('id','DESC')->paginate(1);
+        $properties = $properties->orderBy('id','DESC')->paginate(10);
         return view('backend.property.index')
             ->with([
                 'properties'=>$properties
