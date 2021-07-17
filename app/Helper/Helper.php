@@ -199,7 +199,7 @@ class Helper{
     }
     public static function getReferenceDropdown($selected = 0)
     {
-        $referenceNumber = Property::pluck('reference_number');
+        $referenceNumber = Property::where('post_status','Active')->pluck('reference_number');
         $html = '';
         if ($referenceNumber){
             foreach ($referenceNumber as $number){
