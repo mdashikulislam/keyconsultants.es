@@ -51,7 +51,7 @@
                 <li><a class="rent" href="">Rent</a></li>
             </ul>
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <form id="search">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
@@ -124,30 +124,6 @@
                                     <input type="hidden" name="min_bed" />
                                     <input type="hidden" name="max_bed" />
                                 </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-11 col-12 text-right">
-                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>
-                            </div>
-                        </div>
-                        <div class="row" id="space_show">
-{{--                            <div class="col-md-4 col-sm-6 col-12 mb-25">--}}
-{{--                                <label class="label-text">Living Space</label>--}}
-{{--                                <div id="living_space"></div>--}}
-{{--                                <div class="d-flex align-items-center value">--}}
-{{--                                    <span id="space-value1"></span>--}}
-{{--                                    <span class="separator">—</span>--}}
-{{--                                    <span id="space-value2"></span>--}}
-{{--                                    <input type="hidden" name="min_space" />--}}
-{{--                                    <input type="hidden" name="max_space"  />--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select name="additionally" class="select-style">
-                                    <option value="">Additionally...</option>
-                                    {!! \App\Helper\Helper::getAdditionallyDropdown(request()->input('additionally')) !!}
-                                </select>
                             </div>
                         </div>
                     </form>

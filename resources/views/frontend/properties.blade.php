@@ -11,7 +11,7 @@
     <div class="sale-rent-area mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
+                <div class="col-lg-12">
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
@@ -87,35 +87,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-11 col-12 text-right">
-                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>
-                                <a href="{{route('properties')}}" class="showmore-btn">Reset Filter</a>
-                            </div>
-                        </div>
-                        <div class="row" id="space_show">
-{{--                            <div class="col-md-4 col-sm-6 col-12 mb-25">--}}
-{{--                                <label class="label-text">Living Space</label>--}}
-{{--                                <div id="living_space"></div>--}}
-{{--                                <div class="d-flex align-items-center value">--}}
-{{--                                    <span id="space-value1"></span>--}}
-{{--                                    <span class="separator">—</span>--}}
-{{--                                    <span id="space-value2"></span>--}}
-{{--                                    <input type="hidden" name="min_space" />--}}
-{{--                                    <input type="hidden" name="max_space"  />--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select name="additionally" class="select-style">
-                                    <option value="">Additionally...</option>
-                                    {!! \App\Helper\Helper::getAdditionallyDropdown(request()->input('additionally')) !!}
+                                <select class="select-style" name="price_filter">
+                                    <option value="">Sort By Price...</option>
+                                    <option {{request()->input('price_filter') == 'ASC' ? 'selected':''}} value="ASC">Lowest to highest</option>
+                                    <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
                                 </select>
                             </div>
+                            <div class="col-md-4 col-sm-6 col-12"></div>
+                            <div class="col-md-4 col-sm-6 col-12 text-right">
+                                {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
+                                <a href="{{route('property.sale')}}" class="showmore-btn">Reset Filter</a>
+                            </div>
                         </div>
-                        <select class="product-filter" name="price_filter">
-                            <option value="">Sort By Price...</option>
-                            <option {{request()->input('price_filter') == 'ASC' ? 'selected':''}} value="ASC">Lowest to highest</option>
-                            <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
-                        </select>
                     </form>
                 </div>
 
