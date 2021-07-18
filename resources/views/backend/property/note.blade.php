@@ -17,7 +17,8 @@
                             <h4 class="text-center" style="padding: 0;margin: 0;">{{\App\Helper\Helper::addOrdinalNumberSuffix($loop->index +1 )}} Owner Information</h4>
                         </div>
                         <div class="card-body ">
-                            <table class="table table-bordered">
+                            <div class="custom-responsive">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
                                             <th style="width: 25%">Owner Name</th>
@@ -39,7 +40,7 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                            <table class="table table-bordered">
+                                <table class="table table-bordered">
                                 <thead>
                                 <tr>
                                     <th style="width: 25%">Email</th>
@@ -59,6 +60,7 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                         <div class="card-footer">
                             <div class="text-right">
@@ -514,6 +516,15 @@
             float: right;
             margin-left: 5px;
             margin-right: -2px;
+        }
+        @media (max-width: 991px) {
+            .custom-responsive{
+                overflow: hidden;
+                overflow-x: scroll;
+            }
+            .custom-responsive table{
+                width: 1000px;
+            }
         }
     </style>
 @endpush
