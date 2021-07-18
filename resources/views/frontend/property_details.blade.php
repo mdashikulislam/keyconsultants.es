@@ -292,5 +292,8 @@
             border: 0;
             padding: 3px 0;
         }
+        .slick-dots{
+            flex-wrap: wrap!important;
+        }
     </style>
 @endpush
