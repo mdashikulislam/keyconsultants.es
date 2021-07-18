@@ -113,18 +113,19 @@
                            </div>
                        </div>
                     </form>
-                    <table class="table table-bordered">
-                        <thead>
-                        <tr style="text-align: center">
-                            <th style="width: 5%">#</th>
-                            <th style="width: 25%;">Image</th>
-                            <th>Title</th>
-                            <th style="width: 15%">Type</th>
-                            <th style="width: 12%">Date</th>
-                            <th style="width: 12%">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
+                    <div class="custom-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr style="text-align: center">
+                                <th style="width: 5%">#</th>
+                                <th style="width: 25%;">Image</th>
+                                <th>Title</th>
+                                <th style="width: 15%">Type</th>
+                                <th style="width: 12%">Date</th>
+                                <th style="width: 12%">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
                             @forelse($properties as $property)
                                 <tr>
                                     <td>@if($loop->index + 1 <10){{'0'.($loop->index+1)}}@endif @if($loop->index + 1 > 9){{($loop->index+1)}}@endif</td>
@@ -180,8 +181,10 @@
                                     <td style="text-align: center" colspan="6">No Result Found</td>
                                 </tr>
                             @endforelse
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
                 <div style="display: flex;flex-direction: row-reverse;margin-right: 20px;">
                     {{$properties->appends(\request()->input())->links('vendor.pagination.bootstrap-4')}}
@@ -214,6 +217,16 @@
             float: right;
             margin-left: 5px;
             margin-right: -2px;
+        }
+
+        @media (max-width: 991px) {
+            .custom-responsive{
+                overflow: hidden;
+                overflow-x: scroll;
+            }
+            .custom-responsive table{
+                width: 1000px;
+            }
         }
     </style>
 @endpush
