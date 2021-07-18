@@ -11,326 +11,150 @@
     <div class="sale-rent-area mt-5">
         <div class="container">
             <div class="row">
-                <div class="col-lg-9">
-                    <form class="row">
-                        <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="reference_number">
-                                <option value="">Reference Number...</option>
-                                <option value="SP-1108">SP-1108</option>
-                                <option value="SP-1117">SP-1117</option>
-                                <option value="CC-1138">CC-1138</option>
-                                <option value="57682">57682</option>
-                                <option value="30010">30010</option>
-                                <option value="30003">30003</option>
-                                <option value="KC30002">KC30002</option>
-                                <option value="KC30010">KC30010</option>
-                                <option value="KC30003">KC30003</option>
-                                <option value="KC30001">KC30001</option>
-                                <option value="KC25811">KC25811</option>
-                                <option value="MM25695">MM25695</option>
-                                <option value="KS25613">KS25613</option>
-                                <option value="MM25552">MM25552</option>
-                                <option value="KC25481">KC25481</option>
-                                <option value="KC25457">KC25457</option>
-                                <option value="KC25406">KC25406</option>
-                                <option value="KC24795">KC24795</option>
-                                <option value="MM24678">MM24678</option>
-                                <option value="MM24615">MM24615</option>
-                                <option value="MM24600">MM24600</option>
-                                <option value="MM24419">MM24419</option>
-                                <option value="LSP24219">LSP24219</option>
-                                <option value="MM24087">MM24087</option>
-                                <option value="MM23470">MM23470</option>
-                                <option value="KC23210">KC23210</option>
-                                <option value="KC22824">KC22824</option>
-                                <option value="KC22806">KC22806</option>
-                                <option value="LSP22743">LSP22743</option>
-                                <option value="LSP22730">LSP22730</option>
-                                <option value="KC20197">KC20197</option>
-                                <option value="KC21184">KC21184</option>
-                                <option value="KC30030">KC30030</option>
-                                <option value="KC30040">KC30040</option>
-                                <option value="KC30050">KC30050</option>
-                                <option value="KC30060">KC30060</option>
-                                <option value="KC30032">KC30032</option>
-                                <option value="KC30033">KC30033</option>
-                                <option value="KC30034">KC30034</option>
-                                <option value="KC30070">KC30070</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="city">
-                                <option value="">Select City...</option>
-                                <option value="Alcudia">Alcudia</option>
-                                <option value="Binssalem">Binssalem</option>
-                                <option value="Cala Ratjada">Cala Ratjada</option>
-                                <option value="Cala d'Or">Cala d'Or</option>
-                                <option value="Cala Moraia">Cala Moraia</option>
-                                <option value="Cala Millor">Cala Millor</option>
-                                <option value="Calvià Pueblo">Calvià Pueblo</option>
-                                <option value="Costa de la Calma">Costa de la Calma</option>
-                                <option value="Deià">Deià</option>
-                                <option value="Esporles">Esporles</option>
-                                <option value="Fornalutx">Fornalutx</option>
-                                <option value="Inca">Inca</option>
-                                <option value="Manacor">Manacor</option>
-                                <option value="Palma de Mallorca">Palma de Mallorca</option>
-                                <option value="Pollença">Pollença</option>
-                                <option value="Puerto Pollensa">Puerto Pollensa</option>
-                                <option value="Sa Pobla">Sa Pobla</option>
-                                <option value="Santa Ponça">Santa Ponsa</option>
-                                <option value="S´Arraco">S'Arraco</option>
-                                <option value="Sineu">Sineu</option>
-                                <option value="Sóller">Sóller</option>
-                                <option value="Valldemossa">Valldemossa</option>
-                                <option value="Port Andratx">Port Andratx</option>
-                                <option value="El Toro">El Toro</option>
-                                <option value="Son Ferrer">Son Ferrer</option>
-                                <option value="Paguera">Paguera</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="region">
-                                <option value="">Select Region...</option>
-                                <option value="East">East</option>
-                                <option value="West">West</option>
-                                <option value="North">North</option>
-                                <option value="Center">Center</option>
-                                <option value="South">South</option>
-                                <option value="South-East">South-East</option>
-                                <option value="South-West">South-West</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12">
-                            <select class="select-style" name="property-type">
-                                <option value="">Type...</option>
-                                <option value="6">Apartment</option>
-                                <option value="7">Town House</option>
-                                <option value="5">Villa</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4 col-sm-6 col-12 mb-25">
-                            <label class="label-text">Price</label>
-                            <div id="price"></div>
-                            <div class="d-flex align-items-center value">
-                                <span id="price-value1"></span>
-                                <span class="separator">—</span>
-                                <span id="price-value2"></span>
-                                <input type="hidden" name="min-value" value="" />
-                                <input type="hidden" name="max-value" value="" />
+                <div class="col-lg-12">
+                    <form id="sort-form" action="{{route('properties')}}" method="GET">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select  class="select-style" name="reference_number">
+                                    <option value="">Reference Number...</option>
+                                    {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select  class="select-style" name="city">
+                                    <option value="">Select City...</option>
+                                    <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
+                                    <option {{request()->input('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
+                                    <option {{request()->input('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
+                                    <option {{request()->input('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
+                                    <option {{request()->input('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
+                                    <option {{request()->input('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
+                                    <option {{request()->input('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
+                                    <option {{request()->input('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
+                                    <option {{request()->input('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
+                                    <option {{request()->input('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
+                                    <option {{request()->input('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
+                                    <option {{request()->input('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
+                                    <option {{request()->input('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
+                                    <option {{request()->input('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
+                                    <option {{request()->input('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
+                                    <option {{request()->input('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
+                                    <option {{request()->input('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
+                                    <option {{request()->input('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
+                                    <option {{request()->input('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
+                                    <option {{request()->input('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
+                                    <option {{request()->input('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
+                                    <option {{request()->input('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
+                                    <option {{request()->input('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
+                                    <option {{request()->input('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
+                                    <option {{request()->input('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
+                                    <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select class="select-style" name="region">
+                                    <option value="">Select Region...</option>
+                                    {!! \App\Helper\Helper::getRegionFrontendDropdown(request()->input('region')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select class="select-style" name="property_type">
+                                    <option value="">Type...</option>
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                                <label class="label-text">Price</label>
+                                <div id="price"></div>
+                                <div class="d-flex align-items-center value">
+                                    <span id="price-value1"></span>
+                                    <span class="separator">—</span>
+                                    <span id="price-value2"></span>
+                                    <input type="hidden" name="min_price" />
+                                    <input type="hidden" name="max_price"  />
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                                <label class="label-text">Bedrooms</label>
+                                <div id="bedrooms"></div>
+                                <div class="d-flex align-items-center value">
+                                    <span id="bedrooms-value1"></span>
+                                    <span class="separator">—</span>
+                                    <span id="bedrooms-value2"></span>
+                                    <input type="hidden" id="bed1" name="min_bed"  />
+                                    <input type="hidden" id="bed2" name="max_bed" />
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-4 col-sm-6 col-12 mb-25">
-                            <label class="label-text">Bedrooms</label>
-                            <div id="bedrooms"></div>
-                            <div class="d-flex align-items-center value">
-                                <span id="bedrooms-value1"></span>
-                                <span class="separator">—</span>
-                                <span id="bedrooms-value2"></span>
-                                <input type="hidden" name="min-value" value="" />
-                                <input type="hidden" name="max-value" value="" />
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select class="select-style" name="price_filter">
+                                    <option value="">Sort By Price...</option>
+                                    <option {{request()->input('price_filter') == 'ASC' ? 'selected':''}} value="ASC">Lowest to highest</option>
+                                    <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12"></div>
+                            <div class="col-md-4 col-sm-6 col-12 text-right">
+                                {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
+                                <a href="{{route('property.sale')}}" class="showmore-btn">Reset Filter</a>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-11 col-12 text-right">
-                    <a href="Javascript:void(0)" class="showmore-btn">Show More</a>
-                </div>
+
             </div>
         </div>
     </div>
-
     <div class="product-area pb-5">
         <div class="container">
-            <select class="product-filter" name="select-name">
-                <option value="">Sort By Price...</option>
-                <option>Lowest to highest</option>
-                <option>Highest to lowest</option>
-            </select>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12">
+                @forelse($properties as $property)
+                    <div class="col-lg-4 col-md-6 col-12">
                     <div class="product-wrap">
                         <div class="product-header">
-                            <span class="badge">Rent/Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
+                            <span class="badge">{{$property->propertyStatus->name}}</span>
+                            <h4>{{$property->city}}</h4>
+{{--                            <span class="fevurite"><i class="fa fa-star"></i></span>--}}
                         </div>
                         <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
+                            <img src="{{asset('storage/'.$property->feature_image)}}" alt="" />
                             <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
+                                <h3>{{$property->title}}</h3>
+                                <a href="{{route('properties.details',['id'=>$property->id,'slug'=>$property->slug])}}" class="more">More</a>
                             </div>
                         </div>
                         <div class="product-info">
                             <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
+                                <h5>{{$property->reference_number}}</h5>
                                 <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
+                                    @if($property->living_space)
+                                    <li><i class="fa fa-linode"></i> {{$property->living_space}}</li>
+                                    @endif
+                                    <li><i class="fa fa-bed"></i> {{$property->room}}</li>
+                                    <li><i class="fa fa-bath"></i> {{$property->bathroom}}</li>
                                 </ul>
                             </div>
                             <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
+                                <h5>
+                                    @forelse( \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type) as $type)
+                                        {!! $type.'<br>'  !!}
+                                    @empty
+                                    @endforelse
+                                </h5>
+                                <span class="price"><i class="fa fa-check"></i> {{$property->symbol.number_format($property->price)}} </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="product-wrap">
-                        <div class="product-header">
-                            <span class="badge">For Sale</span>
-                            <h4>Port Andratx</h4>
-                            <span class="fevurite"><i class="fa fa-star"></i></span>
-                        </div>
-                        <div class="product-img">
-                            <img src="{{asset('frontend/assets/images/product/img1.jpeg')}}" alt="" />
-                            <div class="img-content">
-                                <h3>Amazing 3 bedroom Villa in Sant Elm</h3>
-                                <a href="product-details.html" class="more">More</a>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="d-flex flex-wrap justify-content-between info">
-                                <h5>KC30070</h5>
-                                <ul class="d-flex justify-content-between">
-                                    <li><i class="fa fa-linode"></i> 172</li>
-                                    <li><i class="fa fa-bed"></i> 5</li>
-                                    <li><i class="fa fa-bath"></i> 2</li>
-                                </ul>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-between">
-                                <h5>KC30070</h5>
-                                <span class="price"><i class="fa fa-check"></i> 1490000 €</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                @endforelse
                 <div class="col-12">
-                    <button class="loadmore-btn">Load more</button>
+                    {{$properties->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}
                 </div>
+{{--                <div class="col-12">--}}
+{{--                    <button class="loadmore-btn">Load more</button>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>
@@ -347,37 +171,62 @@
             $('.noUi-handle').on('click', function () {
                 $(this).width(50);
             });
+
+            $('select').on('change',function (){
+                $('#sort-form').submit();
+            });
+
+            $('#space_show').hide();
+            $('#show-hide').on('click',function (){
+                $('#space_show').slideToggle();
+                $(this).toggleClass('active');
+                if ($(this).hasClass('active')){
+                    $(this).text('Hide');
+                }else {
+                    $(this).text('Show more');
+                }
+            });
             // price slider
             let priceSlider = document.getElementById('price');
-            let moneyFormat = wNumb({
-                decimals: 0,
-                thousand: ',',
-                prefix: '€',
-            });
+
             noUiSlider.create(priceSlider, {
-                start: [0, 10000],
+                start: [{{request()->input('min_price') ? :0}}, {{request()->input('max_price')? : 1000000}}],
                 step: 1,
                 range: {
                     min: [0],
-                    max: [10000],
+                    max: [1000000],
                 },
-                format: moneyFormat,
+                format: wNumb({
+                    decimals: 0,
+                }),
                 connect: true,
             });
 
             // Set visual min and max values and also update value hidden form inputs
             priceSlider.noUiSlider.on('update', function (values, handle) {
-                document.getElementById('price-value1').innerHTML = values[0];
-                document.getElementById('price-value2').innerHTML = values[1];
-                document.getElementsByName('min-value').value = moneyFormat.from(values[0]);
-                document.getElementsByName('max-value').value = moneyFormat.from(values[1]);
+                document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
+                document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
+                $('input[name="min_price"]').val(values[0]);
+                $('input[name="max_price"]').val(values[1]);
             });
+
+
+            priceSlider.noUiSlider.on('change', function (values, handle) {
+                document.getElementById('price-value1').innerHTML = numberWithCommas(values[0]);
+                document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
+                $('input[name="min_price"]').val(values[0]);
+                $('input[name="max_price"]').val(values[1]);
+                $('#sort-form').submit();
+            });
+
+
+
 
             // bedrooms slider
             let bedroomsSlider = document.getElementById('bedrooms');
 
             noUiSlider.create(bedroomsSlider, {
-                start: [0, 7],
+                start: [{{request()->input('min_bed') ? :0}}, {{request()->input('max_bed')? : 7}}],
                 step: 1,
                 range: {
                     min: [0],
@@ -394,9 +243,55 @@
             bedroomsSlider.noUiSlider.on('update', function (values, handle) {
                 document.getElementById('bedrooms-value1').innerHTML = values[0];
                 document.getElementById('bedrooms-value2').innerHTML = values[1];
-                document.getElementsByName('min-value').value;
-                document.getElementsByName('max-value').value;
+                $('input[name="min_bed"]').val(values[0]);
+                $('input[name="max_bed"]').val(values[1]);
             });
+
+
+            bedroomsSlider.noUiSlider.on('change', function (values, handle) {
+                document.getElementById('bedrooms-value1').innerHTML = values[0];
+                document.getElementById('bedrooms-value2').innerHTML = values[1];
+                $('input[name="min_bed"]').val(values[0]);
+                $('input[name="max_bed"]').val(values[1]);
+                $('#sort-form').submit();
+            });
+
+            // bedrooms slider
+            let livingSpaceSlider = document.getElementById('living_space');
+
+            noUiSlider.create(livingSpaceSlider, {
+                start: [{{request()->input('min_space') ? :0}}, {{request()->input('max_space')? : 1000}}],
+                step: 1,
+                range: {
+                    min: [0],
+                    max: [1000],
+                },
+                format: wNumb({
+                    decimals: 0,
+                }),
+                connect: true,
+            });
+
+            // Set visual min and max values and also update value hidden form inputs
+            livingSpaceSlider.noUiSlider.on('update', function (values, handle) {
+                document.getElementById('space-value1').innerHTML = values[0];
+                document.getElementById('space-value2').innerHTML = values[1];
+                $('input[name="min_space"]').val(values[0]);
+                $('input[name="max_space"]').val(values[1]);
+            });
+
+
+            livingSpaceSlider.noUiSlider.on('change', function (values, handle) {
+                document.getElementById('space-value1').innerHTML = values[0];
+                document.getElementById('space-value2').innerHTML = values[1];
+                $('input[name="min_space"]').val(values[0]);
+                $('input[name="max_space"]').val(values[1]);
+                $('#sort-form').submit();
+            });
+
         });
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     </script>
 @endpush
