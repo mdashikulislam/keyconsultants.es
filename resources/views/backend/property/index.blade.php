@@ -11,10 +11,10 @@
                 <div class="card-body">
                     <form action="{{route('admin.property.index')}}" method="GET">
                        <div class="row">
-                           <div class="form-group col-3">
-                               <input value="{{request()->input('keyword') ? :''}}" type="text" name="keyword" class="form-control" placeholder="Title,Bathrooms,Land Area,Living Space">
+                           <div class="form-group col-sm-12 col-lg-3">
+                               <input value="{{request()->input('keyword') ? :''}}" type="text" name="keyword" class="form-control" placeholder="Property Title">
                            </div>
-                           <div class="form-group col-3">
+                           <div class="form-group col-sm-12 col-lg-3">
                                <select name="reference_number"  class="select2 form-control">
                                    <option value="" selected disabled>Select Reference</option>
                                    @forelse($referenceNumbers as $referenceNumber)
@@ -23,7 +23,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-sm-12 col-lg-2">
                                <select name="city"  class="select2 form-control">
                                    <option value="" selected disabled>Select City</option>
                                    <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
@@ -54,7 +54,7 @@
                                    <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
                                </select>
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-sm-12 col-lg-2">
                                <select name="region"  class="select2 form-control">
                                    <option value="" selected disabled>Select Region</option>
                                    @forelse($regions as $region)
@@ -63,7 +63,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-sm-12 col-lg-2">
                                <select name="room"  class="select2 form-control">
                                    <option value="" selected disabled>Select Bedrooms</option>
                                    @for($i = 1;$i < 21;$i++)
@@ -71,7 +71,7 @@
                                    @endfor
                                </select>
                            </div>
-                           <div class="form-group col-3">
+                           <div class="form-group col-sm-12 col-lg-3">
                                <select name="owner_name"  class="select2 form-control">
                                    <option value="" selected disabled>Select Owner</option>
                                    @forelse($owners as $owner)
@@ -80,7 +80,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-3">
+                           <div class="form-group col-sm-12 col-lg-3">
                                <select name="property_type"  class="select2 form-control">
                                    <option value="" selected disabled>Type of Property</option>
                                    @forelse($types as $type)
@@ -89,7 +89,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-sm-12 col-lg-2">
                                <select name="property_status"  class="select2 form-control">
                                    <option value="" selected disabled>Property Status</option>
                                    @forelse($status as $s)
@@ -98,7 +98,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-2">
+                           <div class="form-group col-sm-12 col-lg-2">
                                <select name="price"  class="select2 form-control">
                                    <option value="" selected disabled>Price</option>
                                    @forelse($prices as $price)
@@ -107,7 +107,7 @@
                                    @endforelse
                                </select>
                            </div>
-                           <div class="form-group col-2 text-right">
+                           <div class="form-group col-sm-12 col-lg-2 text-right">
                                <button type="submit" class="btn btn-success" style="padding: .375rem 0.4rem;"><i class="fa fa-search-plus fa-fw"></i>Search</button>
                                <a href="{{route('admin.property.index')}}" class="btn btn-info" style="color: #fff;padding: .375rem 0.4rem;"><i class="fa fa-recycle fa-fw"></i>Reset</a>
                            </div>
