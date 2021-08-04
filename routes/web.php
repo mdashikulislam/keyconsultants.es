@@ -90,3 +90,6 @@ Route::get('feature/change/{id}',[\App\Http\Controllers\Backend\AjaxController::
 Route::get('command',function (){
     \Artisan::call('storage:link');
 });
+
+//Ajax Route
+Route::get('get-district/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getDistrict'])->name('get.district');

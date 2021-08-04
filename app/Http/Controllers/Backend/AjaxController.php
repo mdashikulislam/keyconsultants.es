@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
+use App\Models\Distict;
 use App\Models\Feature;
 use App\Models\MoreMedia;
 use App\Models\PropertyStatus;
@@ -160,5 +161,17 @@ class AjaxController extends Controller
                 'data'=>'Not Found'
             ]);
         }
+    }
+
+    public function getDistrict($name)
+    {
+        $districts = Distict::where('province_name',$name)->get();
+        $html = '';
+        if (!empty($districts)){
+
+        }else{
+            $html = '<option value="">Select District</option>';
+        }
+        return $html;
     }
 }

@@ -38,30 +38,6 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-{{--                <div class="card card-primary">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h3 class="card-title">Reference Number</h3>--}}
-{{--                        <div class="card-tools">--}}
-{{--                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
-{{--                                <i class="fas fa-minus"></i>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="form-group clearfix" id="reference_number">--}}
-{{--                            {!! \App\Helper\Helper::getReferenceNumberCheckbox() !!}--}}
-{{--                            @error('reference_number')--}}
-{{--                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            <button  data-toggle="modal" data-target="#modal_add_new_reference_number" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Reference Number</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- /.card-body -->--}}
-{{--                </div>--}}
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Property Information</h3>
@@ -79,6 +55,22 @@
                             @error('price')
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label>Province</label>
+                                <select name="province" id="province" class="form-control select2">
+                                    <option value="Mallorca">Mallorca</option>
+                                    <option value="Ibiza">Ibiza</option>
+                                    <option value="Menorca">Menorca</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-6">
+                                <label>District</label>
+                                <select name="" id="district" class="form-control select2">
+                                    <option value="">Select District</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>City</label>
@@ -458,6 +450,25 @@
         $('.select2').select2()
     </script>
     <script>
+
+        $('#province').on('change',function (){
+           var value = $(this).val();
+           var url= '{{route('get.district',['name'=>':name'])}}';
+           url = url.replace(':name',value);
+           $.ajax({
+                url:url,
+               method:'GET',
+               success:function (response){
+                   $('#district').empty();
+                   $('#district').html(response);
+                   console.log(response)
+                   $('.select2').select2()
+               }
+           });
+
+        });
+        //district
+
         $(document).on('click','.remove_preview',function (e){
             e.preventDefault();
             $(this).parent('div').parent('div').remove();

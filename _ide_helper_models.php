@@ -27,6 +27,22 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\City
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $district_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Contact
  *
  * @property int $id
@@ -43,6 +59,22 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
  */
 	class Contact extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Distict
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $province_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict query()
+ */
+	class Distict extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -187,6 +219,10 @@ namespace App\Models{
  * @property string|null $feature
  * @property string $symbol
  * @property string|null $owner_name
+ * @property string $ibi
+ * @property string $basura
+ * @property string $community
+ * @property string|null $energy_cost
  * @property-read \App\Models\Favorite|null $favorites
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MoreMedia[] $more_medias
  * @property-read \App\Models\PropertyStatus|null $propertyStatus

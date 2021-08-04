@@ -13,5 +13,4 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/default.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}" />
     @stack('css')
-
 </head>
