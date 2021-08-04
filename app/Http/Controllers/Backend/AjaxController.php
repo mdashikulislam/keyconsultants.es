@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
+use App\Models\City;
 use App\Models\Distict;
 use App\Models\Feature;
 use App\Models\MoreMedia;
@@ -167,10 +168,26 @@ class AjaxController extends Controller
     {
         $districts = Distict::where('province_name',$name)->get();
         $html = '';
-        if (!empty($districts)){
-
+        if (count($districts) > 0){
+            foreach ($districts as $district){
+                $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';
+            }
         }else{
             $html = '<option value="">Select District</option>';
+        }
+        return $html;
+    }
+
+    public function getCity($name)
+    {
+        $districts = City::where('district_name',$name)->get();
+        $html = '';
+        if (count($districts) > 0){
+            foreach ($districts as $district){
+                $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';
+            }
+        }else{
+            $html = '<option value="">Select City</option>';
         }
         return $html;
     }

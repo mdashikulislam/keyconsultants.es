@@ -80,7 +80,8 @@ class PropertyController extends Controller
             'description'=>['required'],
             'price'=>['required'],
             'city'=>['required'],
-            'region'=>['required'],
+            'province'=>['required'],
+            'district'=>['required'],
             'property_status'=>['required'],
             'property_type'=>['required'],
             'feature_image'=>['required'],
@@ -95,7 +96,9 @@ class PropertyController extends Controller
         $property->description = $request->description;
         $property->price = $request->price;
         $property->city = $request->city;
-        $property->region = implode(',',$request->region);
+        $property->province = $request->province;
+        $property->district = $request->district;
+//        $property->region = implode(',',$request->region);
         $property->room = $request->room;
         $property->bathroom = $request->bathroom;
         $property->land_area = $request->land_area;

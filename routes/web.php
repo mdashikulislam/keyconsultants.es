@@ -93,3 +93,4 @@ Route::get('command',function (){
 
 //Ajax Route
 Route::get('get-district/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getDistrict'])->name('get.district');
+Route::get('get-city/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getCity'])->name('get.city');
