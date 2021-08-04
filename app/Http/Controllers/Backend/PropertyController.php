@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
+use App\Models\City;
+use App\Models\Distict;
 use App\Models\MoreMedia;
 use App\Models\Note;
 use App\Models\Owner;
@@ -136,12 +138,16 @@ class PropertyController extends Controller
     public function edit($id,$slug)
     {
         $property = Property::where(['id'=>$id,'slug'=>$slug])->first();
+        $district = Distict::where('province_name',$property->province)->get();
+        $cities = City::where('district_name',$property->district)->get();
         if (empty($property)){
             return redirect()->back();
         }
         return view('backend.property.edit')
             ->with([
-                'property'=>$property
+                'property'=>$property,
+                'districts'=>$district,
+                'cities'=>$cities
             ]);
     }
 
@@ -153,7 +159,8 @@ class PropertyController extends Controller
             'description'=>['required'],
             'price'=>['required'],
             'city'=>['required'],
-            'region'=>['required'],
+            'province'=>['required'],
+            'district'=>['required'],
             'property_status'=>['required'],
             'property_type'=>['required'],
         ]);
@@ -166,7 +173,8 @@ class PropertyController extends Controller
         $property->description = $request->description;
         $property->price = $request->price;
         $property->city = $request->city;
-        $property->region = implode(',',$request->region);
+        $property->province = $request->province;
+        $property->district = $request->district;
         $property->room = $request->room;
         $property->bathroom = $request->bathroom;
         $property->land_area = $request->land_area;

@@ -123,51 +123,6 @@
                                 @enderror
                             </div>
                         </div>
-{{--                        <div class="form-group">--}}
-{{--                            <label>City</label>--}}
-{{--                            <select name="city" class="form-control select2 @error('city') is-invalid @enderror" style="width: 100%;height: 50px!important;">--}}
-{{--                                <option selected="selected" value="" disabled>Select City</option>--}}
-{{--                                <option {{old('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>--}}
-{{--                                <option {{old('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>--}}
-{{--                                <option {{old('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>--}}
-{{--                                <option {{old('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>--}}
-{{--                                <option {{old('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>--}}
-{{--                                <option {{old('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>--}}
-{{--                                <option {{old('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>--}}
-{{--                                <option {{old('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>--}}
-{{--                                <option {{old('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>--}}
-{{--                                <option {{old('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>--}}
-{{--                                <option {{old('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>--}}
-{{--                                <option {{old('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>--}}
-{{--                                <option {{old('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>--}}
-{{--                                <option {{old('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>--}}
-{{--                                <option {{old('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>--}}
-{{--                                <option {{old('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>--}}
-{{--                                <option {{old('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>--}}
-{{--                                <option {{old('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>--}}
-{{--                                <option {{old('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>--}}
-{{--                                <option {{old('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>--}}
-{{--                                <option {{old('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>--}}
-{{--                                <option {{old('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>--}}
-{{--                                <option {{old('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>--}}
-{{--                                <option {{old('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>--}}
-{{--                                <option {{old('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>--}}
-{{--                                <option {{old('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>--}}
-{{--                            </select>--}}
-{{--                            @error('city')--}}
-{{--                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label>Region</label>--}}
-{{--                            <select name="region[]" class="select2 @error('region') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">--}}
-{{--                                    {!! \App\Helper\Helper::getRegionDropdown(old('region')) !!}--}}
-{{--                            </select>--}}
-{{--                            @error('region')--}}
-{{--                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
-
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -378,32 +333,6 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-{{--    <div class="modal fade" id="modal_add_new_reference_number"  style=" padding-right: 17px;" aria-modal="true" role="dialog">--}}
-{{--        <div class="modal-dialog">--}}
-{{--            <div class="modal-content">--}}
-{{--                <form id="add_new_reference_number_form">--}}
-{{--                    <div class="modal-header">--}}
-{{--                        <h4 class="modal-title">Add New Reference Number</h4>--}}
-{{--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                            <span aria-hidden="true">×</span>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label for="">Name</label>--}}
-{{--                            <input name="name" type="text" class="form-control">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-footer justify-content-between">--}}
-{{--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-{{--                        <button type="submit" class="btn btn-primary">Save</button>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--            <!-- /.modal-content -->--}}
-{{--        </div>--}}
-{{--        <!-- /.modal-dialog -->--}}
-{{--    </div>--}}
     <div class="modal fade" id="modal_add_new_property_type"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -476,6 +405,8 @@
                 url:url,
                method:'GET',
                success:function (response){
+                   $('#city').empty();
+                   $('#city').html('<option value="">Select City</option>');
                    $('#district').empty();
                    $('#district').html(response);
                    $('.select2').select2()
