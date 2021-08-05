@@ -191,4 +191,89 @@ class AjaxController extends Controller
         }
         return $html;
     }
+
+    public function getAll(Request $request)
+    {
+
+        $province = $request->province;
+        $districtRequest = $request->district;
+        $cityRequest = $request->city;
+//        dd($cityRequest);
+        $district = Distict::all();
+        $cities = City::all();
+        $distHtml = '';
+        $cityHtml = '';
+        if (!empty($province)){
+            $currentDistrict = Distict::whereNotIn('province_name',$province)->get();
+            foreach ($district as $dt){
+                $distHtml .= '<option ';
+                if ($districtRequest){
+                    foreach ($districtRequest as $dts){
+                        if ($dts == $dt->name){
+                            $distHtml .=' selected ';
+                        }
+                    }
+                }
+                if ($currentDistrict){
+                    foreach ($currentDistrict as $cda){
+                        if ($cda->id == $dt->id){
+                            $distHtml .='disabled ';
+                        }
+                    }
+                }
+                $distHtml .=' >'.$dt->name.'</option>';
+            }
+        }else{
+            foreach ($district as $dt){
+                $distHtml .= '<option ';
+                if ($districtRequest){
+                    foreach ($districtRequest as $dts){
+                        if ($dts == $dt->name){
+                            $distHtml .=' selected ';
+                        }
+                    }
+                }
+                $distHtml .=' >'.$dt->name.'</option>';
+            }
+        }
+        if (!empty($districtRequest)){
+            $currentCity =  City::whereNotIn('district_name',$districtRequest)->get();
+            foreach ($cities as $dt){
+                $cityHtml .= '<option ';
+                if ($cityRequest){
+                    foreach ($cityRequest as $dts){
+                        if ($dts == $dt->name){
+                            $cityHtml .=' selected ';
+                        }
+                    }
+                }
+                if ($currentCity){
+                    foreach ($currentCity as $cda){
+                        if ($cda->id == $dt->id){
+                            $cityHtml .='disabled ';
+                        }
+                    }
+                }
+                $cityHtml .=' >'.$dt->name.'</option>';
+            }
+        }else{
+            foreach ($cities as $ct){
+//                dd($cityRequest);
+                $cityHtml .= '<option ';
+                if ($cityRequest){
+                    foreach ($cityRequest as $cts){
+                        if ($cts == $ct->name){
+                            $cityHtml .=' selected ';
+                        }
+                    }
+                }
+                $cityHtml .=' >'.$ct->name.'</option>';
+            }
+        }
+        $data = [
+            'district'=>$distHtml,
+            'city'=>$cityHtml
+        ];
+        return $data;
+    }
 }

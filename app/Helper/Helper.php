@@ -197,15 +197,19 @@ class Helper{
         }
         return $html;
     }
-    public static function getReferenceDropdown($selected = 0)
+    public static function getReferenceDropdown($selected = [])
     {
         $referenceNumber = Property::where('post_status','Active')->pluck('reference_number');
         $html = '';
         if ($referenceNumber){
             foreach ($referenceNumber as $number){
                 $html .= '<option ';
-                if ($selected == $number){
-                    $html .= 'selected';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $number){
+                            $html .= 'selected';
+                        }
+                    }
                 }
                 $html .= ' value="'.$number.'" >';
                 $html .= $number;
@@ -233,15 +237,40 @@ class Helper{
         return $html;
     }
 
-    public static function getPropertyTypeDropdown($selected =0)
+    public static function getPropertyProvince($selected = [])
+    {
+        $datas = [
+            'Mallorca','Ibiza','Menorca'
+        ];
+        $html ='';
+        foreach ($datas as $data){
+            $html .= '<option ';
+            if ($selected){
+                foreach ($selected as $s){
+                    if ($s == $data){
+                        $html .= 'selected';
+                    }
+                }
+            }
+            $html .= ' value="'.$data.'" >';
+            $html .= $data;
+            $html .= '</option>';
+        }
+        return $html;
+    }
+    public static function getPropertyTypeDropdown($selected = [])
     {
         $regions = PropertyType::all();
         $html ='';
         if ($regions){
             foreach ($regions as $region){
                 $html .= '<option ';
-                if ($selected == $region->id){
-                    $html .= 'selected';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $region->id){
+                            $html .= 'selected';
+                        }
+                    }
                 }
                 $html .= ' value="'.$region->id.'" >';
                 $html .= $region->name;

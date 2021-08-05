@@ -188,16 +188,16 @@ class HomeController extends Controller
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1));
         $property = Property::where('post_status','Active')->with('propertyStatus');
         if ($request->reference_number){
-            $property = $property->where('reference_number',$request->reference_number);
+            $property = $property->whereIn('reference_number',$request->reference_number);
+        }
+        if ($request->district){
+            $property = $property->whereIn('district',$request->district);
         }
         if ($request->city){
-            $property = $property->where('city',$request->city);
-        }
-        if ($request->region){
-            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
+            $property = $property->whereIn('city',$request->city);
         }
         if ($request->property_type){
-            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+            $property = $property->whereIn('property_type',$request->property_type);
         }
         if ($request->max_price){
             $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);

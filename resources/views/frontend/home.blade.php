@@ -55,10 +55,12 @@
                     <form id="search">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple id="reference_number" class="select-style form" name="reference_number">
+                                <select multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
+
+
                             <div class="col-md-4 col-sm-6 col-12">
                                 <select class="select-style" name="city">
                                     <option value="">Select City...</option>
@@ -426,13 +428,17 @@
 @push('js')
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>--}}
     <script>
-        $("#reference_number").select2({
-            closeOnSelect : false,
-            placeholder : "Placeholder",
-            allowHtml: true,
-            allowClear: false,
-            tags: true
-        });
+        function select2Control(){
+            $("#reference_number").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Reference Number'
+            });
+        }
+        select2Control();
+        console.log($(".select-js").data('place'))
         // Initialize slider:
         $(document).ready(function () {
             $('.noUi-handle').on('click', function () {

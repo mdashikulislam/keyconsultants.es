@@ -5,7 +5,7 @@
         style="background: url('{{asset('frontend/assets/images/bg/sale.png')}}') repeat-x center center / contain"
     >
         <div class="container">
-            <h2 class="sale-breadcumb-title">Properties</h2>
+            <h2 class="sale-breadcumb-title">Search our Properties</h2>
         </div>
     </div>
     <div class="sale-rent-area mt-5">
@@ -15,50 +15,50 @@
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select  class="select-style" name="reference_number">
+                                <select multiple id="reference_number" class="select-style" name="reference_number[]">
                                     <option value="">Reference Number...</option>
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select  class="select-style" name="city">
-                                    <option value="">Select City...</option>
-                                    <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
-                                    <option {{request()->input('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
-                                    <option {{request()->input('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
-                                    <option {{request()->input('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
-                                    <option {{request()->input('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
-                                    <option {{request()->input('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
-                                    <option {{request()->input('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
-                                    <option {{request()->input('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
-                                    <option {{request()->input('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
-                                    <option {{request()->input('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
-                                    <option {{request()->input('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
-                                    <option {{request()->input('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
-                                    <option {{request()->input('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
-                                    <option {{request()->input('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
-                                    <option {{request()->input('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
-                                    <option {{request()->input('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
-                                    <option {{request()->input('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
-                                    <option {{request()->input('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
-                                    <option {{request()->input('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
-                                    <option {{request()->input('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
-                                    <option {{request()->input('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
-                                    <option {{request()->input('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
-                                    <option {{request()->input('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
-                                    <option {{request()->input('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
-                                    <option {{request()->input('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
-                                    <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
+                                <select multiple name="province[]" id="province" class="form-control">
+                                    {!! \App\Helper\Helper::getPropertyProvince(request()->input('province')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="region">
-                                    <option value="">Select Region...</option>
-                                    {!! \App\Helper\Helper::getRegionFrontendDropdown(request()->input('region')) !!}
+                                <select multiple name="district[]" id="district" class="form-control">
+                                    @forelse(\App\Models\Distict::all() as $district)
+                                        <option
+                                            @if(request()->input('district'))
+                                                @foreach(request()->input('district') as $dt)
+                                                @if($dt == $district->name)
+                                                    selected
+                                                @endif
+                                                @endforeach
+                                            @endif
+                                            value="{{$district->name}}">{{$district->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="property_type">
+                                <select multiple name="city[]" id="city" class="form-control">
+                                    @forelse(\App\Models\City::all() as $city)
+                                        <option
+                                            @if(request()->input('city'))
+                                                @foreach(request()->input('city') as $dt)
+                                                    @if($dt == $city->name)
+                                                    selected
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                            value="{{$city->name}}">{{$city->name}}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
                                     {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
@@ -94,10 +94,12 @@
                                     <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12"></div>
-                            <div class="col-md-4 col-sm-6 col-12 text-right">
+                            <div class="col-md-2 col-sm-6 col-12"></div>
+                            <div class="col-md-6 col-sm-6 col-12 text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
-                                <a href="{{route('property.sale')}}" class="showmore-btn">Reset Filter</a>
+                                <button class="btn btn-success" type="submit">Search Now</button>
+                                <a href="{{route('properties')}}"  class="btn btn-primary">Reset Filter</a>
+                                <button type="button"  class="btn btn-info">Property Seekers</button>
                             </div>
                         </div>
                     </form>
@@ -166,15 +168,78 @@
         });
     </script>
     <script>
+
+        function select2Control(){
+            $("#reference_number").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Reference Number'
+            });
+            $("#province").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Province'
+            });
+            $("#district").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'District'
+            });
+            $("#city").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'City'
+            });
+            $('#property_type').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Type'
+            });
+        }
+        select2Control();
+
+        $('#province,#district,#city').on('change',function (){
+            var province = $('#province');
+            var district = $('#district');
+            var city = $('#city');
+            var data = {
+                'province':province.val(),
+                'district':district.val(),
+                'city':city.val(),
+                '_token':'{{csrf_token()}}'
+            };
+            $.ajax({
+                url:'{{route('get.all')}}',
+                method:'POST',
+                data:data,
+                success:function (response){
+                    district.empty();
+                    district.html(response.district);
+                    city.empty();
+                    city.html(response.city);
+                    select2Control();
+                }
+            });
+        });
         // Initialize slider:
         $(document).ready(function () {
             $('.noUi-handle').on('click', function () {
                 $(this).width(50);
             });
 
-            $('select').on('change',function (){
-                $('#sort-form').submit();
-            });
+            // $('select').on('change',function (){
+            //     $('#sort-form').submit();
+            // });
 
             $('#space_show').hide();
             $('#show-hide').on('click',function (){
@@ -295,3 +360,80 @@
         }
     </script>
 @endpush
+@push('css')
+    <style>
+
+        .select2-results__option {
+            padding-right: 20px;
+            vertical-align: middle;
+        }
+        .select2-results__option:before {
+            content: "";
+            display: inline-block;
+            position: relative;
+            height: 20px;
+            width: 20px;
+            border: 2px solid #e9e9e9;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+        .select2-results__option[aria-selected=true]:before {
+            font-family:fontAwesome;
+            content: "\f00c";
+            color: #fff;
+            background-color: #c0b298;
+            border: 0;
+            display: inline-block;
+            padding-left: 3px;
+        }
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #fff;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #eaeaeb;
+            color: #272727;
+        }
+        .select2-container--default .select2-selection--multiple {
+            margin-bottom: 10px;
+        }
+        .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+            border-radius: 4px;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border-color: #c0b298;
+            border-width: 2px;
+        }
+        .select2-container--default .select2-selection--multiple {
+            border-width: 2px;
+        }
+        .select2-container--open .select2-dropdown--below {
+
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        }
+        .select2-selection .select2-selection--multiple:after {
+            content: 'hhghgh';
+        }
+        /* select with icons badges single*/
+        .select-icon .select2-selection__placeholder .badge {
+            display: none;
+        }
+        .select-icon .placeholder {
+            display: none;
+        }
+        .select-icon .select2-results__option:before,
+        .select-icon .select2-results__option[aria-selected=true]:before {
+            display: none !important;
+            /* content: "" !important; */
+        }
+        .select-icon  .select2-search--dropdown {
+            display: none;
+        }
+        .select-icon  .select2-search--dropdown {
+            display: none;
+        }
+    </style>
+    @endpush
