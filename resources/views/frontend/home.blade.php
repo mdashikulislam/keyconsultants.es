@@ -49,7 +49,7 @@
             <ul class="sale-rent-btns d-flex flex-wrap align-items-center">
                 <li><a class="sale" href="">Sale</a></li>
                 <li><a class="rent" href="">Rent</a></li>
-                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >Property Seeker</button></li>
+                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >search our Properties</button></li>
             </ul>
             <div class="row">
                 <div class="col-lg-12">
