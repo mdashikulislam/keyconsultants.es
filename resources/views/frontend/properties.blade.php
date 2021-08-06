@@ -97,10 +97,10 @@
                             <div class="col-md-2 col-sm-6 col-12"></div>
                             <div class="col-md-6 col-sm-6 col-12 text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
-                                <button class="btn btn-success" type="submit">Search Now</button>
-                                <a href="{{route('properties')}}"  class="btn btn-primary">Reset Filter</a>
-                                <button type="button" class="btn btn-secondary" id="seeker">
-                                    Property Seekers
+                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
+                                <a href="{{route('properties')}}"  class="btn btn-dark">Clear Filter</a>
+                                <button type="button" class="btn btn-danger" id="seeker">
+                                    Save this search
                                 </button>
                             </div>
                         </div>
