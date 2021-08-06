@@ -167,7 +167,7 @@ class AjaxController extends Controller
     public function getDistrict($name)
     {
         $districts = Distict::where('province_name',$name)->get();
-        $html = '';
+        $html = '<option value="" selected disabled>Select District</option>';
         if (count($districts) > 0){
             foreach ($districts as $district){
                 $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';
@@ -181,7 +181,7 @@ class AjaxController extends Controller
     public function getCity($name)
     {
         $districts = City::where('district_name',$name)->get();
-        $html = '';
+        $html = '<option value="" selected disabled>Select City</option>';
         if (count($districts) > 0){
             foreach ($districts as $district){
                 $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';

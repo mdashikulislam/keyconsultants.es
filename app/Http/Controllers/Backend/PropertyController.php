@@ -43,11 +43,14 @@ class PropertyController extends Controller
         if ($request->reference_number){
             $properties = $properties->where('reference_number',$request->reference_number);
         }
+        if ($request->province){
+            $properties = $properties->where('province',$request->province);
+        }
+        if ($request->district){
+            $properties = $properties->where('district',$request->district);
+        }
         if ($request->city){
             $properties = $properties->where('city',$request->city);
-        }
-        if ($request->region){
-            $properties = $properties->whereRaw('FIND_IN_SET('.$request->region.',region)');
         }
         $properties = $properties->orderBy('id','DESC')->groupBy('id')->paginate(20);
         $referenceNumbers = Property::pluck('reference_number');
