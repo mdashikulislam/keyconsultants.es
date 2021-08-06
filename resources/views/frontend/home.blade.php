@@ -49,6 +49,7 @@
             <ul class="sale-rent-btns d-flex flex-wrap align-items-center">
                 <li><a class="sale" href="">Sale</a></li>
                 <li><a class="rent" href="">Rent</a></li>
+                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >Property Seeker</button></li>
             </ul>
             <div class="row">
                 <div class="col-lg-12">
@@ -59,49 +60,47 @@
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
-
-
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="city">
-                                    <option value="">Select City...</option>
-                                    <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
-                                    <option {{request()->input('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
-                                    <option {{request()->input('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
-                                    <option {{request()->input('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
-                                    <option {{request()->input('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
-                                    <option {{request()->input('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
-                                    <option {{request()->input('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
-                                    <option {{request()->input('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
-                                    <option {{request()->input('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
-                                    <option {{request()->input('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
-                                    <option {{request()->input('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
-                                    <option {{request()->input('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
-                                    <option {{request()->input('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
-                                    <option {{request()->input('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
-                                    <option {{request()->input('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
-                                    <option {{request()->input('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
-                                    <option {{request()->input('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
-                                    <option {{request()->input('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
-                                    <option {{request()->input('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
-                                    <option {{request()->input('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
-                                    <option {{request()->input('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
-                                    <option {{request()->input('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
-                                    <option {{request()->input('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
-                                    <option {{request()->input('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
-                                    <option {{request()->input('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
-                                    <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
+                                <select multiple name="province[]" id="province" class="form-control">
+                                    {!! \App\Helper\Helper::getPropertyProvince() !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="region">
-                                    <option value="">Select Region...</option>
-                                    {!! \App\Helper\Helper::getRegionFrontendDropdown() !!}
+                                <select multiple name="district[]" id="district" class="form-control">
+                                    @forelse(\App\Models\Distict::all() as $district)
+                                        <option
+                                            @if(request()->input('district'))
+                                            @foreach(request()->input('district') as $dt)
+                                            @if($dt == $district->name)
+                                            selected
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            value="{{$district->name}}">{{$district->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="property_type">
+                                <select multiple name="city[]" id="city" class="form-control">
+                                    @forelse(\App\Models\City::all() as $city)
+                                        <option
+                                            @if(request()->input('city'))
+                                            @foreach(request()->input('city') as $dt)
+                                            @if($dt == $city->name)
+                                            selected
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            value="{{$city->name}}">{{$city->name}}</option>
+                                    @empty
+                                    @endforelse
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
-                                    {!! \App\Helper\Helper::getPropertyTypeDropdown() !!}
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -347,10 +346,10 @@
             </div>
         </div>
     </div>
+    @include('frontend.property-seeker')
 @endsection
 @push('css')
     <style>
-
         .select2-results__option {
             padding-right: 20px;
             vertical-align: middle;
@@ -428,6 +427,19 @@
 @push('js')
 {{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>--}}
     <script>
+        $('#seeker').on('click',function (){
+            $('input[name="mod_ref_number"]').val($('#reference_number').val())
+            $('input[name="mod_province"]').val($('#province').val())
+            $('input[name="mod_district"]').val($('#district').val())
+            $('input[name="mod_city"]').val($('#city').val())
+            $('input[name="mod_type"]').val($('#property_type').val())
+            $('input[name="mod_min_price"]').val($('input[name="min_price"]').val())
+            $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
+            $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
+            $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('#property_seeker').modal('show');
+        })
+
         function select2Control(){
             $("#reference_number").select2({
                 closeOnSelect : false,
@@ -436,8 +448,60 @@
                 tags: false,
                 placeholder:'Reference Number'
             });
+            $("#province").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Province'
+            });
+            $("#district").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'District'
+            });
+            $("#city").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'City'
+            });
+            $('#property_type').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Type'
+            });
         }
         select2Control();
+        $('#province,#district,#city').on('change',function (){
+            var province = $('#province');
+            var district = $('#district');
+            var city = $('#city');
+            var data = {
+                'province':province.val(),
+                'district':district.val(),
+                'city':city.val(),
+                '_token':'{{csrf_token()}}'
+            };
+            $.ajax({
+                url:'{{route('get.all')}}',
+                method:'POST',
+                data:data,
+                success:function (response){
+                    district.empty();
+                    district.html(response.district);
+                    city.empty();
+                    city.html(response.city);
+                    select2Control();
+                }
+            });
+        });
+
         console.log($(".select-js").data('place'))
         // Initialize slider:
         $(document).ready(function () {

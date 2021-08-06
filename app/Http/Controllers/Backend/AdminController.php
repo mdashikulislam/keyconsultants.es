@@ -85,7 +85,7 @@ class AdminController extends Controller
     {
         $seekers = SeekerInfo::with(['seeker_datas'=>function($item){
             $item->orderBy('created_at','DESC');
-        }])->whereHas('seeker_datas')->orderByDesc('created_at')->get();
+        }])->whereHas('seeker_datas')->orderByDesc('created_at')->paginate(10);
         return view('backend.property-seeker')
             ->with([
                 'seekers'=>$seekers

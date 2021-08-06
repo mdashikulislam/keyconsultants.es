@@ -184,7 +184,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
                 <div style="display: flex;flex-direction: row-reverse;margin-right: 20px;">
                     {{$properties->appends(\request()->input())->links('vendor.pagination.bootstrap-4')}}

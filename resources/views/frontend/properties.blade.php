@@ -99,7 +99,7 @@
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button class="btn btn-success" type="submit">Search Now</button>
                                 <a href="{{route('properties')}}"  class="btn btn-primary">Reset Filter</a>
-                                <button type="button" class="btn btn-primary" id="seeker">
+                                <button type="button" class="btn btn-secondary" id="seeker">
                                     Property Seekers
                                 </button>
                             </div>
@@ -170,7 +170,6 @@
     </script>
     <script>
         $('#seeker').on('click',function (){
-
             $('input[name="mod_ref_number"]').val($('#reference_number').val())
             $('input[name="mod_province"]').val($('#province').val())
             $('input[name="mod_district"]').val($('#district').val())

@@ -21,7 +21,7 @@
                                  <tbody>
                                     @forelse($seekers as $seeker)
                                     <tr data-toggle="collapse" data-target="#colps-{{$seeker->id}}" class="accordion-toggle">
-                                        <td><button class="btn btn-default btn-xs"><i class="fa fa-eye"></i></button></td>
+                                        <td><button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button></td>
                                         <td>{{$seeker->name}}</td>
                                         <td>{{$seeker->email}}</td>
                                     </tr>
@@ -76,6 +76,9 @@
                             </table>
                         </div>
                      </div>
+                </div>
+                <div class="card-footer">
+                    {{$seekers->links('vendor.pagination.bootstrap-4')}}
                 </div>
             </div>
         </div>
