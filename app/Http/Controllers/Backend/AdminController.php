@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Property;
+use App\Models\SeekerInfo;
 use App\Models\Seo;
 use Illuminate\Http\Request;
 
@@ -78,5 +79,16 @@ class AdminController extends Controller
         $data->save();
         \Alert::success('Seo Added Successfully');
         return redirect()->back();
+    }
+
+    public function propertySeeker()
+    {
+        $seekers = SeekerInfo::with(['seeker_datas'=>function($item){
+            $item->orderBy('created_at','DESC');
+        }])->whereHas('seeker_datas')->orderByDesc('created_at')->get();
+        return view('backend.property-seeker')
+            ->with([
+                'seekers'=>$seekers
+            ]);
     }
 }

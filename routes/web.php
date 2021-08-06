@@ -74,6 +74,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
     Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
     Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
+    Route::get('property-seeker', [\App\Http\Controllers\Backend\AdminController::class, 'propertySeeker'])->name('admin.property.seeker');
 });
 
 //Ajax Route

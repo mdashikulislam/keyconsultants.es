@@ -86,6 +86,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.property.seeker')}}" class="nav-link {{$currentRouteName == 'admin.property.seeker' ? 'active':''}}">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
+                            Property Seeker
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
