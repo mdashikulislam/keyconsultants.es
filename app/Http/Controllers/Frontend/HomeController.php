@@ -165,8 +165,6 @@ class HomeController extends Controller
     public function sale(Request $request)
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
-
-
         $property = Property::where('post_status','Active')->with('propertyStatus');
         if ($request->reference_number){
             $property = $property->whereIn('reference_number',$request->reference_number);
@@ -210,25 +208,26 @@ class HomeController extends Controller
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
         $property = Property::where('post_status','Active')->with('propertyStatus');
         if ($request->reference_number){
-            $property = $property->where('reference_number',$request->reference_number);
+            $property = $property->whereIn('reference_number',$request->reference_number);
+        }
+        if ($request->province){
+            $property = $property->whereIn('province',$request->province);
+        }
+        if ($request->district){
+            $property = $property->whereIn('district',$request->district);
         }
         if ($request->city){
-            $property = $property->where('city',$request->city);
+            $property = $property->whereIn('city',$request->city);
         }
-        if ($request->region){
-            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
-        }
+
         if ($request->property_type){
-            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+            $property = $property->whereIn('property_type',$request->property_type);
         }
         if ($request->max_price){
             $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
         }
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
-        }
-        if ($request->additionally){
-            $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
         }
 
         $property= $property->whereIn('property_status',[6,13]);
