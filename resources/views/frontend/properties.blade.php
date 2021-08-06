@@ -99,7 +99,9 @@
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button class="btn btn-success" type="submit">Search Now</button>
                                 <a href="{{route('properties')}}"  class="btn btn-primary">Reset Filter</a>
-                                <button type="button"  class="btn btn-info">Property Seekers</button>
+                                <button type="button" class="btn btn-primary" id="seeker">
+                                    Property Seekers
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -108,6 +110,7 @@
             </div>
         </div>
     </div>
+
     <div class="product-area pb-5">
         <div class="container">
             <div class="row">
@@ -154,12 +157,10 @@
                 <div class="col-12">
                     {{$properties->appends(request()->input())->links('vendor.pagination.bootstrap-4')}}
                 </div>
-{{--                <div class="col-12">--}}
-{{--                    <button class="loadmore-btn">Load more</button>--}}
-{{--                </div>--}}
             </div>
         </div>
     </div>
+    @include('frontend.property-seeker')
 @endsection
 @push('js')
     <script>
@@ -168,7 +169,19 @@
         });
     </script>
     <script>
+        $('#seeker').on('click',function (){
 
+            $('input[name="mod_ref_number"]').val($('#reference_number').val())
+            $('input[name="mod_province"]').val($('#province').val())
+            $('input[name="mod_district"]').val($('#district').val())
+            $('input[name="mod_city"]').val($('#city').val())
+            $('input[name="mod_type"]').val($('#property_type').val())
+            $('input[name="mod_min_price"]').val($('input[name="min_price"]').val())
+            $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
+            $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
+            $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('#property_seeker').modal('show');
+        })
         function select2Control(){
             $("#reference_number").select2({
                 closeOnSelect : false,
@@ -281,7 +294,7 @@
                 document.getElementById('price-value2').innerHTML = numberWithCommas(values[1]);
                 $('input[name="min_price"]').val(values[0]);
                 $('input[name="max_price"]').val(values[1]);
-                $('#sort-form').submit();
+                // $('#sort-form').submit();
             });
 
 
@@ -318,7 +331,7 @@
                 document.getElementById('bedrooms-value2').innerHTML = values[1];
                 $('input[name="min_bed"]').val(values[0]);
                 $('input[name="max_bed"]').val(values[1]);
-                $('#sort-form').submit();
+                // $('#sort-form').submit();
             });
 
             // bedrooms slider
@@ -351,7 +364,7 @@
                 document.getElementById('space-value2').innerHTML = values[1];
                 $('input[name="min_space"]').val(values[0]);
                 $('input[name="max_space"]').val(values[1]);
-                $('#sort-form').submit();
+                // $('#sort-form').submit();
             });
 
         });

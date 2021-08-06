@@ -39,7 +39,7 @@ Route::get('properties/{id}/{slug}/pdf',[\App\Http\Controllers\Frontend\HomeCont
 Route::post('property-enquiry',[\App\Http\Controllers\Frontend\HomeController::class,'propertyEnquiry'])->name('property.enquiry');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
-
+Route::post('property-seeker', [\App\Http\Controllers\Frontend\HomeController::class, 'propertySeeker'])->name('property.seeker');
 //User action
 Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contactForm'])->name('user.contact.form');
 Route::post('favorite', [\App\Http\Controllers\Frontend\HomeController::class, 'favorite'])->name('favorite');

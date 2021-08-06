@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Favorite;
 use App\Models\Property;
+use App\Models\SeekerData;
+use App\Models\SeekerInfo;
 use Barryvdh\DomPDF\PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -409,5 +411,30 @@ class HomeController extends Controller
             toast('Property Added into wishlist','success');
             return redirect()->back();
         }
+    }
+
+    public function propertySeeker(Request $request)
+    {
+        $seeker = SeekerInfo::where('email',$request->email)->first();
+        if (empty($seeker)){
+         $seeker = new SeekerInfo();
+         $seeker->name = $request->name;
+         $seeker->email = $request->email;
+         $seeker->save();
+        }
+        $seekerData = new SeekerData();
+        $seekerData->seeker_info_id = $seeker->id;
+        $seekerData->reference_no = $request->mod_ref_number;
+        $seekerData->province = $request->mod_province;
+        $seekerData->district = $request->mod_district;
+        $seekerData->city = $request->mod_city;
+        $seekerData->type = $request->mod_type;
+        $seekerData->min_price = $request->mod_min_price;
+        $seekerData->max_price = $request->mod_max_price;
+        $seekerData->min_bed = $request->mod_min_bedroom;
+        $seekerData->max_bed = $request->mod_max_bedroom;
+        $seekerData->save();
+        toast('Property seeker request sent','success');
+        return redirect()->back();
     }
 }

@@ -61,16 +61,14 @@
                         <ul>
                             <li><i class="fa fa-dot-circle-o"></i>Price : {{$data->currency ? :'€'.number_format($data->price)}}</li>
                             <li><i class="fa fa-dot-circle-o"></i>Reference Number : {{$data->reference_number}}</li>
-                            <li><i class="fa fa-dot-circle-o"></i>City : {{$data->city}}</li>
-                            <li><i class="fa fa-dot-circle-o"></i>Region :
-
-                                @php
-                                    $region = \App\Helper\Helper::getPropertyRegionName($data->region);
-                                    $region = json_decode($region,true);
-                                    $region = implode(',',$region)
-                                @endphp
-                                {{$region}}
+                            <li><i class="fa fa-dot-circle-o"></i>Province :
+                                {{$data->province}}
                             </li>
+                            <li><i class="fa fa-dot-circle-o"></i>District :
+                                {{$data->district}}
+                            </li>
+                            <li><i class="fa fa-dot-circle-o"></i>City : {{$data->city}}</li>
+
                             <li><i class="fa fa-dot-circle-o"></i>Type :
                                 @php
                                     $type = \App\Helper\Helper::getFrontendPropertyTypeNameById($data->property_type);
