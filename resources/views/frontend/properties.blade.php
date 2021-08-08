@@ -119,7 +119,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2 col-sm-12 col-12"></div>
-                            <div class="col-md-6 col-sm-12 col-12 text-right">
+                            <div class="col-md-6 col-sm-12  text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
                                 <a href="{{route('properties')}}"  class="btn btn-dark">Clear Filter</a>
