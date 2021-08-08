@@ -184,7 +184,50 @@
             </div>
         </div>
     </div>
-    @include('frontend.property-seeker')
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="property_seeker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Property Seeker</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('property.seeker')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="mod_ref_number">
+                        <input type="hidden" name="mod_province">
+                        <input type="hidden" name="mod_district">
+                        <input type="hidden" name="mod_city">
+                        <input type="hidden" name="mod_type">
+                        <input type="hidden" name="mod_min_price">
+                        <input type="hidden" name="mod_max_price">
+                        <input type="hidden" name="mod_min_bedroom">
+                        <input type="hidden" name="mod_max_bedroom">
+                        <input type="hidden" name="mod_feature">
+                        <input type="hidden" name="mod_for">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{{--    @include('frontend.property-seeker')--}}
 @endsection
 @push('js')
     <script>
@@ -203,6 +246,8 @@
             $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
             $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
             $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('input[name="mod_for"]').val($('#looking_for').val())
+            $('input[name="mod_feature"]').val($('#feature').val())
             $('#property_seeker').modal('show');
         })
         function select2Control(){

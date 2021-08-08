@@ -386,6 +386,8 @@ class HomeController extends Controller
         $seekerData->max_price = $request->mod_max_price;
         $seekerData->min_bed = $request->mod_min_bedroom;
         $seekerData->max_bed = $request->mod_max_bedroom;
+        $seekerData->for = $request->mod_for;
+        $seekerData->feature = $request->mod_feature;
         $seekerData->save();
         toast('Property seeker request sent','success');
         return redirect()->back();
