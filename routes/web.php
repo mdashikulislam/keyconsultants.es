@@ -67,6 +67,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('status-change',[\App\Http\Controllers\Backend\PropertyController::class,'statusChange'])->name('admin.property.status.change');
         Route::post('owner/store', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerStore'])->name('owner.store');
         Route::get('owner/delete/{id}', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerDelete'])->name('owner.delete');
+        Route::get('property-seeker', [\App\Http\Controllers\Backend\AdminController::class, 'propertySeeker'])->name('admin.property.seeker');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
     Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');
@@ -74,7 +75,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
     Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
     Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
-    Route::get('property-seeker', [\App\Http\Controllers\Backend\AdminController::class, 'propertySeeker'])->name('admin.property.seeker');
+
 });
 
 //Ajax Route

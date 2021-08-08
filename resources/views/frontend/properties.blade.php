@@ -15,7 +15,7 @@
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select  id="looking_for" class="select-style select2-class" name="looking_for">
+                                <select  id="looking_for" class="select-style" name="looking_for">
                                     <option value="0" selected disabled>Looking For</option>
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
                                     <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
@@ -286,13 +286,8 @@
                 tags: false,
                 placeholder:'Type'
             });
-            $('#looking_for').select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Looking For'
-            });
+
+
             $('#feature').select2({
                 closeOnSelect : false,
                 allowHtml: true,
@@ -301,9 +296,17 @@
                 placeholder:'Feature'
             });
 
-            // $('.select2-class').select2();
         }
+
         select2Control();
+
+        $('#looking_for').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Looking For'
+        });
 
         $('#province,#district,#city').on('change',function (){
             var province = $('#province');

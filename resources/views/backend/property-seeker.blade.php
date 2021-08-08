@@ -56,9 +56,39 @@
                                                                 <td>Maximum Bedroom</td>
                                                                 <td>{{$data->max_bed}}</td>
                                                             </tr>
+
                                                             <tr>
                                                                 <td>Property Type</td>
                                                                 <td>{{$data->type}}</td>
+                                                                <td>Looking For</td>
+                                                                <td>{{@$data->propertyStatus->name}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Feature</td>
+                                                                <td>
+{{--                                                                    @if($data->feature)--}}
+{{--                                                                        @php--}}
+{{--                                                                            $ft = explode(',',$data->feature);--}}
+{{--                                                                        @endphp--}}
+{{--                                                                        @foreach(\App\Models\Feature::all() as $fetr)--}}
+{{--                                                                            @if($fetr->id == $ft)--}}
+{{--                                                                                {{$fetr->name}}--}}
+{{--                                                                            @endif--}}
+{{--                                                                        @endforeach--}}
+{{--                                                                    @endif--}}
+
+                                                                    @if($data->feature)
+                                                                        @php
+                                                                                $feature = explode(',',@$data->feature);
+                                                                                $feature = \App\Helper\Helper::getPropertyFeature($feature);
+                                                                                if (!empty($feature)){
+                                                                                    foreach ($feature as $key => $f):
+                                                                                    echo ($key+1).'. '.$f.'<br>';
+                                                                                    endforeach;
+                                                                                }
+                                                                        @endphp
+                                                                    @endif
+                                                                </td>
                                                                 <td>Search Time</td>
                                                                 <td>{{\Carbon\Carbon::parse($data->created_at)->isoFormat('Do, MM YY - H:SS A')}}</td>
                                                             </tr>
