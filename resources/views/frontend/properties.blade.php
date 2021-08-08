@@ -15,9 +15,22 @@
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
+                                <select  id="looking_for" class="select-style select2-class" name="looking_for">
+                                    <option value="0" selected disabled>Looking For</option>
+                                    <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
+                                    <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
                                 <select multiple id="reference_number" class="select-style" name="reference_number[]">
                                     <option value="">Reference Number...</option>
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
+                                    <option value="">Type...</option>
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
@@ -58,9 +71,19 @@
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple class="select-style" id="property_type" name="property_type[]">
-                                    <option value="">Type...</option>
-                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                                <select multiple name="feature[]" id="feature" class="form-control">
+                                    @forelse(\App\Models\Feature::all() as $feature)
+                                        <option
+                                            @if(request()->input('feature'))
+                                                @foreach(request()->input('feature') as $ft)
+                                                    @if($ft == $feature->id)
+                                                        selected
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                            value="{{$feature->id}}">{{$feature->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -85,6 +108,7 @@
                                     <input type="hidden" id="bed2" name="max_bed" />
                                 </div>
                             </div>
+
                         </div>
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
@@ -217,6 +241,22 @@
                 tags: false,
                 placeholder:'Type'
             });
+            $('#looking_for').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Looking For'
+            });
+            $('#feature').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Feature'
+            });
+
+            // $('.select2-class').select2();
         }
         select2Control();
 
@@ -446,6 +486,16 @@
         }
         .select-icon  .select2-search--dropdown {
             display: none;
+        }
+        .select2-container .select2-selection--single{
+            height: 40px!important;
+        }
+        .select2-selection__arrow {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 38px;
+            font-weight: 500;
         }
     </style>
     @endpush

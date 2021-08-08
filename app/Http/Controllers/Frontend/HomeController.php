@@ -129,6 +129,9 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+        if ($request->looking_for){
+            $property = $property->where('property_status',$request->looking_for);
+        }
         if ($request->reference_number){
             $property = $property->whereIn('reference_number',$request->reference_number);
         }
@@ -150,12 +153,17 @@ class HomeController extends Controller
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
         }
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->price_filter){
             $property=$property->orderBy('price',$request->price_filter);
         }else{
             $property=$property->orderBy('created_at','DESC');
         }
         $property= $property->paginate(9);
+//        return $property;
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
