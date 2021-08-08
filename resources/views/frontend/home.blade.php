@@ -56,8 +56,21 @@
                     <form id="search">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-12">
+                                <select  id="looking_for" class="select-style" name="looking_for">
+                                    <option value="0" selected disabled>Looking For</option>
+                                    <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
+                                    <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
                                 <select multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
+                                    <option value="">Type...</option>
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
@@ -97,10 +110,21 @@
                                     @endforelse
                                 </select>
                             </div>
+
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple class="select-style" id="property_type" name="property_type[]">
-                                    <option value="">Type...</option>
-                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                                <select multiple name="feature[]" id="feature" class="form-control">
+                                    @forelse(\App\Models\Feature::all() as $feature)
+                                        <option
+                                            @if(request()->input('feature'))
+                                            @foreach(request()->input('feature') as $ft)
+                                            @if($ft == $feature->id)
+                                            selected
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            value="{{$feature->id}}">{{$feature->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -346,7 +370,49 @@
             </div>
         </div>
     </div>
-    @include('frontend.property-seeker')
+
+    <!-- Modal -->
+    <div class="modal fade" id="property_seeker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Property Seeker</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('property.seeker')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="mod_ref_number">
+                        <input type="hidden" name="mod_province">
+                        <input type="hidden" name="mod_district">
+                        <input type="hidden" name="mod_city">
+                        <input type="hidden" name="mod_type">
+                        <input type="hidden" name="mod_min_price">
+                        <input type="hidden" name="mod_max_price">
+                        <input type="hidden" name="mod_min_bedroom">
+                        <input type="hidden" name="mod_max_bedroom">
+                        <input type="hidden" name="mod_feature">
+                        <input type="hidden" name="mod_for">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
 @push('css')
     <style>
@@ -422,6 +488,16 @@
         .select-icon  .select2-search--dropdown {
             display: none;
         }
+        .select2-container .select2-selection--single{
+            height: 40px!important;
+        }
+        .select2-selection__arrow {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 38px;
+            font-weight: 500;
+        }
     </style>
 @endpush
 @push('js')
@@ -437,6 +513,8 @@
             $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
             $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
             $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('input[name="mod_for"]').val($('#looking_for').val())
+            $('input[name="mod_feature"]').val($('#feature').val())
             $('#property_seeker').modal('show');
         })
 
@@ -476,8 +554,22 @@
                 tags: false,
                 placeholder:'Type'
             });
+            $('#feature').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Feature'
+            });
         }
         select2Control();
+        $('#looking_for').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Looking For'
+        });
         $('#province,#district,#city').on('change',function (){
             var province = $('#province');
             var district = $('#district');
