@@ -518,14 +518,36 @@
             $('#property_seeker').modal('show');
         })
 
+        $("#reference_number").select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Reference Number'
+        });
+        $('#property_type').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Type'
+        });
+        $('#feature').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Feature'
+        });
+        $('#looking_for').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Looking For'
+        });
         function select2Control(){
-            $("#reference_number").select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Reference Number'
-            });
+
             $("#province").select2({
                 closeOnSelect : false,
                 allowHtml: true,
@@ -547,29 +569,10 @@
                 tags: false,
                 placeholder:'City'
             });
-            $('#property_type').select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Type'
-            });
-            $('#feature').select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Feature'
-            });
+
         }
         select2Control();
-        $('#looking_for').select2({
-            closeOnSelect : false,
-            allowHtml: true,
-            allowClear: false,
-            tags: false,
-            placeholder:'Looking For'
-        });
+
         $('#province,#district,#city').on('change',function (){
             var province = $('#province');
             var district = $('#district');
