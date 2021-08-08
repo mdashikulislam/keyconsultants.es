@@ -14,31 +14,31 @@
                 <div class="col-lg-12">
                     <form id="sort-form" action="{{route('properties')}}" method="GET">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12 mb-15">
                                 <select  id="looking_for" class="select-style" name="looking_for">
                                     <option value="0" selected disabled>Looking For</option>
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
                                     <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select multiple id="reference_number" class="select-style" name="reference_number[]">
                                     <option value="">Reference Number...</option>
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
                                     {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select multiple name="province[]" id="province" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyProvince(request()->input('province')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12 ">
                                 <select multiple name="district[]" id="district" class="form-control">
                                     @forelse(\App\Models\Distict::all() as $district)
                                         <option
@@ -54,7 +54,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select multiple name="city[]" id="city" class="form-control">
                                     @forelse(\App\Models\City::all() as $city)
                                         <option
@@ -70,7 +70,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select multiple name="feature[]" id="feature" class="form-control">
                                     @forelse(\App\Models\Feature::all() as $feature)
                                         <option
@@ -86,7 +86,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-12 col-12 mb-25">
                                 <label class="label-text">Price</label>
                                 <div id="price"></div>
                                 <div class="d-flex align-items-center value">
@@ -97,7 +97,7 @@
                                     <input type="hidden" name="max_price"  />
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-12 col-12 mb-25">
                                 <label class="label-text">Bedrooms</label>
                                 <div id="bedrooms"></div>
                                 <div class="d-flex align-items-center value">
@@ -111,15 +111,15 @@
 
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-12 col-12">
                                 <select class="select-style" name="price_filter">
                                     <option value="">Sort By Price...</option>
                                     <option {{request()->input('price_filter') == 'ASC' ? 'selected':''}} value="ASC">Lowest to highest</option>
                                     <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
                                 </select>
                             </div>
-                            <div class="col-md-2 col-sm-6 col-12"></div>
-                            <div class="col-md-6 col-sm-6 col-12 text-right">
+                            <div class="col-md-2 col-sm-12 col-12"></div>
+                            <div class="col-md-6 col-sm-12 col-12 text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
                                 <a href="{{route('properties')}}"  class="btn btn-dark">Clear Filter</a>
