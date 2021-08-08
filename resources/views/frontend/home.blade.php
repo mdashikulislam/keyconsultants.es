@@ -49,11 +49,11 @@
             <ul class="sale-rent-btns d-flex flex-wrap align-items-center">
                 <li><a class="sale" href="">Sale</a></li>
                 <li><a class="rent" href="">Rent</a></li>
-                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >search our Properties</button></li>
+{{--                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >search our Properties</button></li>--}}
             </ul>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="search">
+                    <form id="search" method="GET" action="{{route('properties')}}">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12 mb-15">
                                 <select  id="looking_for" class="select-style" name="looking_for">
@@ -148,6 +148,15 @@
                                     <input type="hidden" name="min_bed" />
                                     <input type="hidden" name="max_bed" />
                                 </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-sm-12"></div>
+                            <div class="col-md-6  col-sm-12 text-right">
+                                {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
+                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
+                                <a href="{{route('property.rent')}}"  class="btn btn-dark">Clear Filter</a>
+                                <button type="button" class="btn btn-danger" id="seeker">
+                                    Save this search
+                                </button>
                             </div>
                         </div>
                     </form>
