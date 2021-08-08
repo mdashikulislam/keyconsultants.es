@@ -14,18 +14,24 @@
                 <div class="col-lg-12">
                     <form id="sort-form" action="{{route('property.sale')}}" method="GET">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <select multiple id="reference_number" class="select-style" name="reference_number[]">
                                     <option value="">Reference Number...</option>
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
+                                    <option value="">Type...</option>
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <select multiple name="province[]" id="province" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyProvince(request()->input('province')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <select multiple name="district[]" id="district" class="form-control">
                                     @forelse(\App\Models\Distict::all() as $district)
                                         <option
@@ -41,7 +47,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <select multiple name="city[]" id="city" class="form-control">
                                     @forelse(\App\Models\City::all() as $city)
                                         <option
@@ -57,13 +63,23 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple class="select-style" id="property_type" name="property_type[]">
-                                    <option value="">Type...</option>
-                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
+                                <select multiple name="feature[]" id="feature" class="form-control">
+                                    @forelse(\App\Models\Feature::all() as $feature)
+                                        <option
+                                            @if(request()->input('feature'))
+                                            @foreach(request()->input('feature') as $ft)
+                                            @if($ft == $feature->id)
+                                            selected
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            value="{{$feature->id}}">{{$feature->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <label class="label-text">Price</label>
                                 <div id="price"></div>
                                 <div class="d-flex align-items-center value">
@@ -74,7 +90,7 @@
                                     <input type="hidden" name="max_price"  />
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-sm-12 mb-25">
                                 <label class="label-text">Bedrooms</label>
                                 <div id="bedrooms"></div>
                                 <div class="d-flex align-items-center value">
@@ -87,18 +103,18 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-6 col-sm-12 ">
                                 <select class="select-style" name="price_filter">
                                     <option value="">Sort By Price...</option>
                                     <option {{request()->input('price_filter') == 'ASC' ? 'selected':''}} value="ASC">Lowest to highest</option>
                                     <option {{request()->input('price_filter') == 'DESC' ? 'selected':''}} value="DESC">Highest to lowest</option>
                                 </select>
                             </div>
-                            <div class="col-md-2 col-sm-6 col-12"></div>
-                            <div class="col-md-6 col-sm-6 col-12 text-right">
+                            <div class="col-md-2 col-sm-6 col-sm-12"></div>
+                            <div class="col-md-6 col-sm-6 col-sm-12 text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
-                                <a href="{{route('properties')}}"  class="btn btn-dark">Clear Filter</a>
+                                <a href="{{route('property.sale')}}"  class="btn btn-dark">Clear Filter</a>
                                 <button type="button" class="btn btn-danger" id="seeker">
                                     Save this search
                                 </button>
@@ -162,7 +178,46 @@
             </div>
         </div>
     </div>
-    @include('frontend.property-seeker')
+    <div class="modal fade" id="property_seeker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Property Seeker</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('property.seeker')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="mod_ref_number">
+                        <input type="hidden" name="mod_province">
+                        <input type="hidden" name="mod_district">
+                        <input type="hidden" name="mod_city">
+                        <input type="hidden" name="mod_type">
+                        <input type="hidden" name="mod_min_price">
+                        <input type="hidden" name="mod_max_price">
+                        <input type="hidden" name="mod_min_bedroom">
+                        <input type="hidden" name="mod_max_bedroom">
+                        <input type="hidden" name="mod_feature">
+                        <input type="hidden" value="7" name="mod_for">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('css')
     <style>
@@ -259,6 +314,7 @@
             $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
             $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
             $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('input[name="mod_feature"]').val($('#feature').val())
             $('#property_seeker').modal('show');
         })
         function select2Control(){
@@ -296,6 +352,13 @@
                 allowClear: false,
                 tags: false,
                 placeholder:'Type'
+            });
+            $('#feature').select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Feature'
             });
         }
         select2Control();

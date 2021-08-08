@@ -174,6 +174,10 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->reference_number){
             $property = $property->whereIn('reference_number',$request->reference_number);
         }
@@ -215,6 +219,11 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->reference_number){
             $property = $property->whereIn('reference_number',$request->reference_number);
         }

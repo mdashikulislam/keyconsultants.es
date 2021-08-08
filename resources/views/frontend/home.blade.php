@@ -55,7 +55,7 @@
                 <div class="col-lg-12">
                     <form id="search">
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 col-12">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12 mb-15">
                                 <select  id="looking_for" class="select-style" name="looking_for">
                                     <option value="0" selected disabled>Looking For</option>
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
