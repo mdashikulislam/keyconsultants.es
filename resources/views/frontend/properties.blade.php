@@ -251,13 +251,7 @@
             $('#property_seeker').modal('show');
         })
         function select2Control(){
-            $("#reference_number").select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Reference Number'
-            });
+
             $("#province").select2({
                 closeOnSelect : false,
                 allowHtml: true,
@@ -279,22 +273,7 @@
                 tags: false,
                 placeholder:'City'
             });
-            $('#property_type').select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Type'
-            });
 
-
-            $('#feature').select2({
-                closeOnSelect : false,
-                allowHtml: true,
-                allowClear: false,
-                tags: false,
-                placeholder:'Feature'
-            });
 
         }
 
@@ -307,7 +286,29 @@
             tags: false,
             placeholder:'Looking For'
         });
+        $('#property_type').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Type'
+        });
 
+
+        $('#feature').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Feature'
+        });
+        $("#reference_number").select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Reference Number'
+        });
         $('#province,#district,#city').on('change',function (){
             var province = $('#province');
             var district = $('#district');
