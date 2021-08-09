@@ -29,7 +29,7 @@ class LocationSeeder extends Seeder
                 'Binissalem'=>["Binissalem"],
                 'Búger'=>["Buger"],
                 'Bunyola'=>["Bunyola","Deya","Palmanyola"],
-                'Calvià'=>["Calvià"],
+                'Calvià'=>["Bendinat", "Cala Vinyes", "Calvia Pueblo", "Cas Catala", "Costa de la Calma", "Costa d'En Blanes", "El Toro", "Es Capdellà", "Illetes", "Magaluf", "Palmanova", "Peguera", "Portals Nous", "Puerto Portals", "Santa Ponça", "Sol de Mallorca", "Son Ferrer"],
                 'Campanet'=>["Campanet"],
                 'Campos'=>["Campos","Sa Rapita","Ses Covetes"],
                 'Capdepera'=>["Capdepera"],
