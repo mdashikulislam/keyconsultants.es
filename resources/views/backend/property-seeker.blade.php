@@ -64,24 +64,27 @@
 
                                                             <tr>
                                                                 <td>Property Type</td>
-                                                                <td>{{$data->type}}</td>
+                                                                <td>
+                                                                    @if($data->type)
+                                                                        @php
+                                                                        $infos = explode(',',$data->type);
+                                                                        @endphp
+                                                                        @foreach(\App\Models\PropertyType::all() as $type)
+                                                                            @foreach($infos as $info)
+                                                                                @if($info == $type->id)
+                                                                                    {{$type->name}}
+                                                                                    <?php echo '<br>';?>
+                                                                                @endif
+                                                                            @endforeach
+                                                                        @endforeach
+                                                                    @endif
+                                                                </td>
                                                                 <td>Looking For</td>
                                                                 <td>{{@$data->propertyStatus->name}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td>Feature</td>
                                                                 <td>
-{{--                                                                    @if($data->feature)--}}
-{{--                                                                        @php--}}
-{{--                                                                            $ft = explode(',',$data->feature);--}}
-{{--                                                                        @endphp--}}
-{{--                                                                        @foreach(\App\Models\Feature::all() as $fetr)--}}
-{{--                                                                            @if($fetr->id == $ft)--}}
-{{--                                                                                {{$fetr->name}}--}}
-{{--                                                                            @endif--}}
-{{--                                                                        @endforeach--}}
-{{--                                                                    @endif--}}
-
                                                                     @if($data->feature)
                                                                         @php
                                                                                 $feature = explode(',',@$data->feature);
