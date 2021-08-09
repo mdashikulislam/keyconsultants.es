@@ -13,17 +13,22 @@
                             <table class="table table-condensed table-bordered">
                                  <thead>
                                     <tr>
-                                        <th style="width: 5%"></th>
+                                        <th style="width: 5%">#</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th style="width: 15%;">Action</th>
                                     </tr>
                                  </thead>
                                  <tbody>
                                     @forelse($seekers as $seeker)
-                                    <tr data-toggle="collapse" data-target="#colps-{{$seeker->id}}" class="accordion-toggle">
-                                        <td><button class="btn btn-primary btn-xs"><i class="fa fa-eye"></i></button></td>
+                                    <tr  class="accordion-toggle">
+                                        <td>{{$loop->index + 1}}</td>
                                         <td>{{$seeker->name}}</td>
                                         <td>{{$seeker->email}}</td>
+                                        <td>
+                                            <button data-toggle="collapse" data-target="#colps-{{$seeker->id}}" type="button" class="btn btn-primary"><i class="fa fa-eye"></i></button>
+                                            <a  href="{{route('admin.seeker.note',['id'=>$seeker->id])}}" class="btn btn-info"><i class="fa fa-list"></i></a>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td colspan="12" class="hiddenRow">

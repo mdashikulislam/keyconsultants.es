@@ -68,6 +68,9 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('owner/store', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerStore'])->name('owner.store');
         Route::get('owner/delete/{id}', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerDelete'])->name('owner.delete');
         Route::get('property-seeker', [\App\Http\Controllers\Backend\AdminController::class, 'propertySeeker'])->name('admin.property.seeker');
+        Route::get('seeker-note/{id}', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNote'])->name('admin.seeker.note');
+        Route::post('seeker-note/add', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNoteAdd'])->name('admin.seeker.note.add');
+        Route::get('seeker-note/delete/{id}', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNoteDelete'])->name('admin.seeker.note.delete');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
     Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');

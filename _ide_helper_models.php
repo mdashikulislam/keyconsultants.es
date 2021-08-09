@@ -315,6 +315,9 @@ namespace App\Models{
  * @property string|null $max_bed
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $for
+ * @property string|null $feature
+ * @property-read \App\Models\PropertyStatus|null $propertyStatus
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerData newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerData newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerData query()
@@ -331,11 +334,29 @@ namespace App\Models{
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SeekerData[] $seeker_datas
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo query()
  */
 	class SeekerInfo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SeekerNote
+ *
+ * @property int $id
+ * @property int $seeker_id
+ * @property string $title
+ * @property string $content
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote query()
+ */
+	class SeekerNote extends \Eloquent {}
 }
 
 namespace App\Models{
