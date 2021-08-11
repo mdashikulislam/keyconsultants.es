@@ -199,7 +199,7 @@ class AjaxController extends Controller
         $districtRequest = $request->district;
         $cityRequest = $request->city;
 //        dd($cityRequest);
-        $district = Distict::all();
+        $district = \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');;
         $cities = City::all();
         $distHtml = '';
         $cityHtml = '';
@@ -209,7 +209,7 @@ class AjaxController extends Controller
                 $distHtml .= '<option ';
                 if ($districtRequest){
                     foreach ($districtRequest as $dts){
-                        if ($dts == $dt->name){
+                        if ($dts == $dt){
                             $distHtml .=' selected ';
                         }
                     }
