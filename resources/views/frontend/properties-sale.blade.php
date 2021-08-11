@@ -113,9 +113,9 @@
                             <div class="col-md-2 col-sm-6 col-sm-12"></div>
                             <div class="col-md-6 col-sm-6 col-sm-12 text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
-                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
-                                <a href="{{route('property.sale')}}"  class="btn btn-dark">Clear Filter</a>
-                                <button type="button" class="btn btn-danger" id="seeker">
+                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success btn-sm" type="submit">Search</button>
+                                <a href="{{route('property.sale')}}"  class="btn btn-dark btn-sm">Clear Filter</a>
+                                <button type="button" class="btn btn-danger btn-sm" id="seeker">
                                     Save this search
                                 </button>
                             </div>
@@ -338,7 +338,7 @@
                 allowHtml: true,
                 allowClear: false,
                 tags: false,
-                placeholder:'City'
+                placeholder:'Area'
             });
 
         }

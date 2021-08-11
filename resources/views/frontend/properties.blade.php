@@ -16,7 +16,6 @@
                         <div class="row">
                             <div class="col-md-4 col-sm-12 col-12 mb-15">
                                 <select  id="looking_for" class="select-style" name="looking_for">
-                                    <option value="0" selected disabled>Looking For</option>
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
                                     <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
                                 </select>
@@ -121,9 +120,9 @@
                             <div class="col-md-2 col-sm-12 col-12"></div>
                             <div class="col-md-6 col-sm-12  text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
-                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success" type="submit">Search</button>
-                                <a href="{{route('properties')}}"  class="btn btn-dark">Clear Filter</a>
-                                <button type="button" class="btn btn-danger" id="seeker">
+                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success btn-sm" type="submit">Search</button>
+                                <a href="{{route('properties')}}"  class="btn btn-dark btn-sm">Clear Filter</a>
+                                <button type="button" class="btn btn-danger btn-sm" id="seeker">
                                     Save this search
                                 </button>
                             </div>
@@ -271,7 +270,7 @@
                 allowHtml: true,
                 allowClear: false,
                 tags: false,
-                placeholder:'City'
+                placeholder:'Area'
             });
 
 
