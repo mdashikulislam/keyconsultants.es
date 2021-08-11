@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\Distict;
 use App\Models\Feature;
 use App\Models\MoreMedia;
+use App\Models\Property;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
@@ -198,13 +199,25 @@ class AjaxController extends Controller
         $province = $request->province;
         $districtRequest = $request->district;
         $cityRequest = $request->city;
-//        dd($cityRequest);
-        $district = \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');;
-        $cities = City::all();
+        $district = \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');
+        $cities = \App\Models\Property::whereNotNull('city')->groupBy('city')->pluck('city');
         $distHtml = '';
         $cityHtml = '';
         if (!empty($province)){
-            $currentDistrict = Distict::whereNotIn('province_name',$province)->get();
+            $currentDistrict = Property::whereIn('province',$province)->groupBy('district')->pluck('district');
+            foreach ($currentDistrict as $dt){
+                $distHtml .= '<option ';
+                if ($districtRequest){
+                    foreach ($districtRequest as $dts){
+                        if ($dts == $dt){
+                            $distHtml .=' selected ';
+                        }
+                    }
+                }
+                $distHtml .= ' value="'.$dt;
+                $distHtml .=' "> '.$dt.'</option> ';
+            }
+        }else{
             foreach ($district as $dt){
                 $distHtml .= '<option ';
                 if ($districtRequest){
@@ -214,60 +227,36 @@ class AjaxController extends Controller
                         }
                     }
                 }
-                if ($currentDistrict){
-                    foreach ($currentDistrict as $cda){
-                        if ($cda->id == $dt->id){
-                            $distHtml .='disabled ';
-                        }
-                    }
-                }
-                $distHtml .=' >'.$dt->name.'</option>';
-            }
-        }else{
-            foreach ($district as $dt){
-                $distHtml .= '<option ';
-                if ($districtRequest){
-                    foreach ($districtRequest as $dts){
-                        if ($dts == $dt->name){
-                            $distHtml .=' selected ';
-                        }
-                    }
-                }
-                $distHtml .=' >'.$dt->name.'</option>';
+                $distHtml .= ' value="'.$dt;
+                $distHtml .='">'.$dt.'</option>';
             }
         }
         if (!empty($districtRequest)){
-            $currentCity =  City::whereNotIn('district_name',$districtRequest)->get();
-            foreach ($cities as $dt){
+            $currentCity = Property::whereIn('district',$districtRequest)->groupBy('city')->pluck('city');
+            foreach ($currentCity as $dt){
                 $cityHtml .= '<option ';
                 if ($cityRequest){
                     foreach ($cityRequest as $dts){
-                        if ($dts == $dt->name){
+                        if ($dts == $dt){
                             $cityHtml .=' selected ';
                         }
                     }
                 }
-                if ($currentCity){
-                    foreach ($currentCity as $cda){
-                        if ($cda->id == $dt->id){
-                            $cityHtml .='disabled ';
-                        }
-                    }
-                }
-                $cityHtml .=' >'.$dt->name.'</option>';
+                $cityHtml .=' value="'.$dt;
+                $cityHtml .='">'.$dt.'</option>';
             }
         }else{
             foreach ($cities as $ct){
-//                dd($cityRequest);
                 $cityHtml .= '<option ';
                 if ($cityRequest){
                     foreach ($cityRequest as $cts){
-                        if ($cts == $ct->name){
+                        if ($cts == $ct){
                             $cityHtml .=' selected ';
                         }
                     }
                 }
-                $cityHtml .=' >'.$ct->name.'</option>';
+                $cityHtml .='value="'.$ct;
+                $cityHtml .='">'.$ct.'</option>';
             }
         }
         $data = [
