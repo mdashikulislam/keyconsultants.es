@@ -33,34 +33,12 @@
                             </div>
                             <div class="col-md-4 col-sm-6 col-sm-12  mb-25">
                                 <select multiple name="district[]" id="district" class="form-control">
-                                    @forelse(\App\Models\Distict::all() as $district)
-                                        <option
-                                            @if(request()->input('district'))
-                                            @foreach(request()->input('district') as $dt)
-                                            @if($dt == $district->name)
-                                            selected
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                            value="{{$district->name}}">{{$district->name}}</option>
-                                    @empty
-                                    @endforelse
+                                    {!! \App\Helper\Helper::getPropertyDistrict(request()->input('district')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-sm-12  mb-25">
                                 <select multiple name="city[]" id="city" class="form-control">
-                                    @forelse(\App\Models\City::all() as $city)
-                                        <option
-                                            @if(request()->input('city'))
-                                            @foreach(request()->input('city') as $dt)
-                                            @if($dt == $city->name)
-                                            selected
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                            value="{{$city->name}}">{{$city->name}}</option>
-                                    @empty
-                                    @endforelse
+                                    {!! \App\Helper\Helper::getPropertyCityDropdown(request()->input('city')) !!}
                                 </select>
                             </div>
 

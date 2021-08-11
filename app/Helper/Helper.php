@@ -239,11 +239,9 @@ class Helper{
 
     public static function getPropertyProvince($selected = [])
     {
-        $datas = [
-            'Mallorca','Ibiza','Menorca'
-        ];
+        $property = Property::groupBy('province')->pluck('province');
         $html ='';
-        foreach ($datas as $data){
+        foreach ($property as $data){
             $html .= '<option ';
             if ($selected){
                 foreach ($selected as $s){
@@ -255,6 +253,50 @@ class Helper{
             $html .= ' value="'.$data.'" >';
             $html .= $data;
             $html .= '</option>';
+        }
+        return $html;
+    }
+
+    public static function getPropertyDistrict($selected = [])
+    {
+        $properties = \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');
+        $html = '';
+        if ($properties){
+            foreach ($properties as $property){
+                $html .= '<option ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $property){
+                            $html .= 'selected';
+                        }
+                    }
+                }
+                $html .= ' value="'.$property.'" >';
+                $html .= $property;
+                $html .= '</option>';
+            }
+        }
+        return $html;
+    }
+
+    public static function getPropertyCityDropdown($selected = [])
+    {
+        $properties = \App\Models\Property::whereNotNull('city')->groupBy('city')->pluck('city');
+        $html = '';
+        if ($properties){
+            foreach ($properties as $property){
+                $html .= '<option ';
+                if ($selected){
+                    foreach ($selected as $s){
+                        if ($s == $property){
+                            $html .= 'selected';
+                        }
+                    }
+                }
+                $html .= ' value="'.$property.'" >';
+                $html .= $property;
+                $html .= '</option>';
+            }
         }
         return $html;
     }

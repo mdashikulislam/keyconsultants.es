@@ -100,3 +100,6 @@ Route::get('command',function (){
 Route::get('get-district/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getDistrict'])->name('get.district');
 Route::get('get-city/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getCity'])->name('get.city');
 Route::post('get-all',[\App\Http\Controllers\Backend\AjaxController::class,'getAll'])->name('get.all');
+Route::get('data',function (){
+    return \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');
+});
