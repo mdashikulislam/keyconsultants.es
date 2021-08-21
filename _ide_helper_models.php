@@ -27,6 +27,22 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\City
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $district_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|City newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|City query()
+ */
+	class City extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Contact
  *
  * @property int $id
@@ -43,6 +59,22 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Contact query()
  */
 	class Contact extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Distict
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $province_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Distict query()
+ */
+	class Distict extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -170,7 +202,7 @@ namespace App\Models{
  * @property string $reference_number
  * @property int $price
  * @property string $city
- * @property string $region
+ * @property string|null $region
  * @property int|null $room
  * @property int|null $bathroom
  * @property string|null $land_area
@@ -187,6 +219,12 @@ namespace App\Models{
  * @property string|null $feature
  * @property string $symbol
  * @property string|null $owner_name
+ * @property string $ibi
+ * @property string $basura
+ * @property string $community
+ * @property string|null $energy_cost
+ * @property string|null $province
+ * @property string|null $district
  * @property-read \App\Models\Favorite|null $favorites
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\MoreMedia[] $more_medias
  * @property-read \App\Models\PropertyStatus|null $propertyStatus
@@ -258,6 +296,67 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Region query()
  */
 	class Region extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SeekerData
+ *
+ * @property int $id
+ * @property int $seeker_info_id
+ * @property string|null $reference_no
+ * @property string|null $province
+ * @property string|null $district
+ * @property string|null $city
+ * @property string|null $type
+ * @property string|null $min_price
+ * @property string|null $max_price
+ * @property string|null $min_bed
+ * @property string|null $max_bed
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $for
+ * @property string|null $feature
+ * @property-read \App\Models\PropertyStatus|null $propertyStatus
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerData newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerData newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerData query()
+ */
+	class SeekerData extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SeekerInfo
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\SeekerData[] $seeker_datas
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerInfo query()
+ */
+	class SeekerInfo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SeekerNote
+ *
+ * @property int $id
+ * @property int $seeker_id
+ * @property string $title
+ * @property string $content
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SeekerNote query()
+ */
+	class SeekerNote extends \Eloquent {}
 }
 
 namespace App\Models{

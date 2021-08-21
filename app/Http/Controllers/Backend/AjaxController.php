@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Helper\Helper;
 use App\Http\Controllers\Controller;
 use App\Models\Additionally;
+use App\Models\City;
+use App\Models\Distict;
 use App\Models\Feature;
 use App\Models\MoreMedia;
+use App\Models\Property;
 use App\Models\PropertyStatus;
 use App\Models\PropertyType;
 use App\Models\ReferenceNumber;
@@ -160,5 +163,106 @@ class AjaxController extends Controller
                 'data'=>'Not Found'
             ]);
         }
+    }
+
+    public function getDistrict($name)
+    {
+        $districts = Distict::where('province_name',$name)->get();
+        $html = '<option value="" selected disabled>Select District</option>';
+        if (count($districts) > 0){
+            foreach ($districts as $district){
+                $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';
+            }
+        }else{
+            $html = '<option value="">Select District</option>';
+        }
+        return $html;
+    }
+
+    public function getCity($name)
+    {
+        $districts = City::where('district_name',$name)->get();
+        $html = '<option value="" selected disabled>Select City</option>';
+        if (count($districts) > 0){
+            foreach ($districts as $district){
+                $html .= '<option value="'.$district->name.'">'.$district->name.'</option>';
+            }
+        }else{
+            $html = '<option value="">Select City</option>';
+        }
+        return $html;
+    }
+
+    public function getAll(Request $request)
+    {
+
+        $province = $request->province;
+        $districtRequest = $request->district;
+        $cityRequest = $request->city;
+        $district = \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');
+        $cities = \App\Models\Property::whereNotNull('city')->groupBy('city')->pluck('city');
+        $distHtml = '';
+        $cityHtml = '';
+        if (!empty($province)){
+            $currentDistrict = Property::whereIn('province',$province)->groupBy('district')->pluck('district');
+            foreach ($currentDistrict as $dt){
+                $distHtml .= '<option ';
+                if ($districtRequest){
+                    foreach ($districtRequest as $dts){
+                        if ($dts == $dt){
+                            $distHtml .=' selected ';
+                        }
+                    }
+                }
+                $distHtml .= ' value="'.$dt;
+                $distHtml .=' "> '.$dt.'</option> ';
+            }
+        }else{
+            foreach ($district as $dt){
+                $distHtml .= '<option ';
+                if ($districtRequest){
+                    foreach ($districtRequest as $dts){
+                        if ($dts == $dt){
+                            $distHtml .=' selected ';
+                        }
+                    }
+                }
+                $distHtml .= ' value="'.$dt;
+                $distHtml .='">'.$dt.'</option>';
+            }
+        }
+        if (!empty($districtRequest)){
+            $currentCity = Property::whereIn('district',$districtRequest)->groupBy('city')->pluck('city');
+            foreach ($currentCity as $dt){
+                $cityHtml .= '<option ';
+                if ($cityRequest){
+                    foreach ($cityRequest as $dts){
+                        if ($dts == $dt){
+                            $cityHtml .=' selected ';
+                        }
+                    }
+                }
+                $cityHtml .=' value="'.$dt;
+                $cityHtml .='">'.$dt.'</option>';
+            }
+        }else{
+            foreach ($cities as $ct){
+                $cityHtml .= '<option ';
+                if ($cityRequest){
+                    foreach ($cityRequest as $cts){
+                        if ($cts == $ct){
+                            $cityHtml .=' selected ';
+                        }
+                    }
+                }
+                $cityHtml .='value="'.$ct;
+                $cityHtml .='">'.$ct.'</option>';
+            }
+        }
+        $data = [
+            'district'=>$distHtml,
+            'city'=>$cityHtml
+        ];
+        return $data;
     }
 }

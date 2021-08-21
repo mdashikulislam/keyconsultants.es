@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
 @include('frontend.layouts.head')
-
+<style>
+    .product-wrap .product-img .img-content{
+        visibility: hidden;
+    }
+    .product-wrap:hover .product-img .img-content{
+        visibility: visible;
+    }
+    .mainmenu li .submenu{
+        z-index: 999;
+    }
+</style>
 <body>
 <header class="header-area">
     <div class="header-top-area">

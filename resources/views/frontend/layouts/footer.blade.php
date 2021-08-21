@@ -93,8 +93,8 @@
 </a>
 @include('sweetalert::alert')
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/assets/js/popper.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery.validate.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/range.slider.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/slick.min.js')}}"></script>

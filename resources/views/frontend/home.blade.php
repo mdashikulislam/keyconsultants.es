@@ -49,58 +49,59 @@
             <ul class="sale-rent-btns d-flex flex-wrap align-items-center">
                 <li><a class="sale" href="">Sale</a></li>
                 <li><a class="rent" href="">Rent</a></li>
+{{--                <li><button style="padding: 13px 15px;color: #000;font-size: 18px;text-transform: uppercase;font-family: 'Poppins';font-weight: 500" id="seeker" class="btn" type="button" >search our Properties</button></li>--}}
             </ul>
             <div class="row">
                 <div class="col-lg-12">
-                    <form id="search">
+                    <form id="search" method="GET" action="{{route('properties')}}">
                         <div class="row">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12 mb-15">
+                                <select  id="looking_for" class="select-style" name="looking_for">
+                                    <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
+                                    <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
+                                </select>
+                            </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="reference_number">
-                                    <option selected value="">Reference Number...</option>
+                                <select multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="city">
-                                    <option value="">Select City...</option>
-                                    <option {{request()->input('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
-                                    <option {{request()->input('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
-                                    <option {{request()->input('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
-                                    <option {{request()->input('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
-                                    <option {{request()->input('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
-                                    <option {{request()->input('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
-                                    <option {{request()->input('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
-                                    <option {{request()->input('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
-                                    <option {{request()->input('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
-                                    <option {{request()->input('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
-                                    <option {{request()->input('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
-                                    <option {{request()->input('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
-                                    <option {{request()->input('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
-                                    <option {{request()->input('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
-                                    <option {{request()->input('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
-                                    <option {{request()->input('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
-                                    <option {{request()->input('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
-                                    <option {{request()->input('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
-                                    <option {{request()->input('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
-                                    <option {{request()->input('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
-                                    <option {{request()->input('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
-                                    <option {{request()->input('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
-                                    <option {{request()->input('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
-                                    <option {{request()->input('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
-                                    <option {{request()->input('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
-                                    <option {{request()->input('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="region">
-                                    <option value="">Select Region...</option>
-                                    {!! \App\Helper\Helper::getRegionFrontendDropdown() !!}
-                                </select>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select class="select-style" name="property_type">
+                                <select multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
-                                    {!! \App\Helper\Helper::getPropertyTypeDropdown() !!}
+                                    {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple name="province[]" id="province" class="form-control">
+                                    {!! \App\Helper\Helper::getPropertyProvince() !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple name="district[]" id="district" class="form-control">
+                                    {!! \App\Helper\Helper::getPropertyDistrict(request()->input('district')) !!}
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple name="city[]" id="city" class="form-control">
+                                    {!! \App\Helper\Helper::getPropertyCityDropdown(request()->input('city')) !!}
+                                </select>
+                            </div>
+
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <select multiple name="feature[]" id="feature" class="form-control">
+                                    @forelse(\App\Models\Feature::all() as $feature)
+                                        <option
+                                            @if(request()->input('feature'))
+                                            @foreach(request()->input('feature') as $ft)
+                                            @if($ft == $feature->id)
+                                            selected
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                            value="{{$feature->id}}">{{$feature->name}}</option>
+                                    @empty
+                                    @endforelse
                                 </select>
                             </div>
                             <div class="col-md-4 col-sm-6 col-12 mb-25">
@@ -124,6 +125,15 @@
                                     <input type="hidden" name="min_bed" />
                                     <input type="hidden" name="max_bed" />
                                 </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-sm-12"></div>
+                            <div class="col-md-6  col-sm-12 text-right">
+                                {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
+                                <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success btn-sm" type="submit">Search</button>
+                                <a href="{{route('landing')}}"  class="btn btn-dark btn-sm">Clear Filter</a>
+                                <button type="button" class="btn btn-danger btn-sm" id="seeker">
+                                    Save this search
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -346,9 +356,234 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="property_seeker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Property Seeker</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('property.seeker')}}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="mod_ref_number">
+                        <input type="hidden" name="mod_province">
+                        <input type="hidden" name="mod_district">
+                        <input type="hidden" name="mod_city">
+                        <input type="hidden" name="mod_type">
+                        <input type="hidden" name="mod_min_price">
+                        <input type="hidden" name="mod_max_price">
+                        <input type="hidden" name="mod_min_bedroom">
+                        <input type="hidden" name="mod_max_bedroom">
+                        <input type="hidden" name="mod_feature">
+                        <input type="hidden" name="mod_for">
+                        <div class="form-group">
+                            <label for="">Name</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input type="email" class="form-control" name="email" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 @endsection
+@push('css')
+    <style>
+        .select2-results__option {
+            padding-right: 20px;
+            vertical-align: middle;
+        }
+        .select2-results__option:before {
+            content: "";
+            display: inline-block;
+            position: relative;
+            height: 20px;
+            width: 20px;
+            border: 2px solid #e9e9e9;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-right: 20px;
+            vertical-align: middle;
+        }
+        .select2-results__option[aria-selected=true]:before {
+            font-family:fontAwesome;
+            content: "\f00c";
+            color: #fff;
+            background-color: #c0b298;
+            border: 0;
+            display: inline-block;
+            padding-left: 3px;
+        }
+        .select2-container--default .select2-results__option[aria-selected=true] {
+            background-color: #fff;
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #eaeaeb;
+            color: #272727;
+        }
+        .select2-container--default .select2-selection--multiple {
+            margin-bottom: 10px;
+        }
+        .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
+            border-radius: 4px;
+        }
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border-color: #c0b298;
+            border-width: 2px;
+        }
+        .select2-container--default .select2-selection--multiple {
+            border-width: 2px;
+        }
+        .select2-container--open .select2-dropdown--below {
+
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+
+        }
+        .select2-selection .select2-selection--multiple:after {
+            content: 'hhghgh';
+        }
+        /* select with icons badges single*/
+        .select-icon .select2-selection__placeholder .badge {
+            display: none;
+        }
+        .select-icon .placeholder {
+            display: none;
+        }
+        .select-icon .select2-results__option:before,
+        .select-icon .select2-results__option[aria-selected=true]:before {
+            display: none !important;
+            /* content: "" !important; */
+        }
+        .select-icon  .select2-search--dropdown {
+            display: none;
+        }
+        .select-icon  .select2-search--dropdown {
+            display: none;
+        }
+        .select2-container .select2-selection--single{
+            height: 40px!important;
+        }
+        .select2-selection__arrow {
+            height: 38px !important;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 38px;
+            font-weight: 500;
+        }
+    </style>
+@endpush
 @push('js')
+{{--    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.4/js/select2.min.js"></script>--}}
     <script>
+        $('#seeker').on('click',function (){
+            $('input[name="mod_ref_number"]').val($('#reference_number').val())
+            $('input[name="mod_province"]').val($('#province').val())
+            $('input[name="mod_district"]').val($('#district').val())
+            $('input[name="mod_city"]').val($('#city').val())
+            $('input[name="mod_type"]').val($('#property_type').val())
+            $('input[name="mod_min_price"]').val($('input[name="min_price"]').val())
+            $('input[name="mod_max_price"]').val($('input[name="max_price"]').val())
+            $('input[name="mod_min_bedroom"]').val($('input[name="min_bed"]').val())
+            $('input[name="mod_max_bedroom"]').val($('input[name="max_bed"]').val())
+            $('input[name="mod_for"]').val($('#looking_for').val())
+            $('input[name="mod_feature"]').val($('#feature').val())
+            $('#property_seeker').modal('show');
+        })
+
+        $("#reference_number").select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Reference Number'
+        });
+        $('#property_type').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Type'
+        });
+        $('#feature').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Feature'
+        });
+        $('#looking_for').select2({
+            closeOnSelect : false,
+            allowHtml: true,
+            allowClear: false,
+            tags: false,
+            placeholder:'Looking For'
+        });
+        function select2Control(){
+
+            $("#province").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Province'
+            });
+            $("#district").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'District'
+            });
+            $("#city").select2({
+                closeOnSelect : false,
+                allowHtml: true,
+                allowClear: false,
+                tags: false,
+                placeholder:'Area'
+            });
+
+        }
+        select2Control();
+
+        $('#province,#district,#city').on('change',function (){
+            var province = $('#province');
+            var district = $('#district');
+            var city = $('#city');
+            var data = {
+                'province':province.val(),
+                'district':district.val(),
+                'city':city.val(),
+                '_token':'{{csrf_token()}}'
+            };
+            $.ajax({
+                url:'{{route('get.all')}}',
+                method:'POST',
+                data:data,
+                success:function (response){
+                    district.empty();
+                    district.html(response.district);
+                    city.empty();
+                    city.html(response.city);
+                    select2Control();
+                }
+            });
+        });
+
+        console.log($(".select-js").data('place'))
         // Initialize slider:
         $(document).ready(function () {
             $('.noUi-handle').on('click', function () {
@@ -386,11 +621,11 @@
                 decimals: 0,
             });
             noUiSlider.create(priceSlider, {
-                start: [0, 1000000],
+                start: [0, 9999999],
                 step: 1,
                 range: {
                     min: [0],
-                    max: [1000000],
+                    max: [9999999],
                 },
                 format: moneyFormat,
                 connect: true,

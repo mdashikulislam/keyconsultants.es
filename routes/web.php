@@ -39,7 +39,7 @@ Route::get('properties/{id}/{slug}/pdf',[\App\Http\Controllers\Frontend\HomeCont
 Route::post('property-enquiry',[\App\Http\Controllers\Frontend\HomeController::class,'propertyEnquiry'])->name('property.enquiry');
 Route::get('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contact'])->name('contact');
 Route::get('terms-and-conditions-of-business',[\App\Http\Controllers\Frontend\HomeController::class,'termsAndConditionsOfBusiness'])->name('terms.and.conditions.of.business');
-
+Route::post('property-seeker', [\App\Http\Controllers\Frontend\HomeController::class, 'propertySeeker'])->name('property.seeker');
 //User action
 Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contactForm'])->name('user.contact.form');
 Route::post('favorite', [\App\Http\Controllers\Frontend\HomeController::class, 'favorite'])->name('favorite');
@@ -67,6 +67,10 @@ Route::prefix('admin')->middleware('auth')->group(function (){
         Route::post('status-change',[\App\Http\Controllers\Backend\PropertyController::class,'statusChange'])->name('admin.property.status.change');
         Route::post('owner/store', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerStore'])->name('owner.store');
         Route::get('owner/delete/{id}', [\App\Http\Controllers\Backend\PropertyController::class, 'ownerDelete'])->name('owner.delete');
+        Route::get('property-seeker', [\App\Http\Controllers\Backend\AdminController::class, 'propertySeeker'])->name('admin.property.seeker');
+        Route::get('seeker-note/{id}', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNote'])->name('admin.seeker.note');
+        Route::post('seeker-note/add', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNoteAdd'])->name('admin.seeker.note.add');
+        Route::get('seeker-note/delete/{id}', [\App\Http\Controllers\Backend\AdminController::class, 'seekerNoteDelete'])->name('admin.seeker.note.delete');
     });
     Route::get('contact/message',[\App\Http\Controllers\Backend\AdminController::class,'contactMessage'])->name('admin.contact.message');
     Route::get('contact/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'contactDelete'])->name('admin.contact.delete');
@@ -74,6 +78,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
     Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
     Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
+
 });
 
 //Ajax Route
@@ -89,4 +94,12 @@ Route::get('seo-data/{id}',[\App\Http\Controllers\Backend\AjaxController::class,
 Route::get('feature/change/{id}',[\App\Http\Controllers\Backend\AjaxController::class,'changeFeature'])->name('feature.change');
 Route::get('command',function (){
     \Artisan::call('storage:link');
+});
+
+//Ajax Route
+Route::get('get-district/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getDistrict'])->name('get.district');
+Route::get('get-city/{name}',[\App\Http\Controllers\Backend\AjaxController::class,'getCity'])->name('get.city');
+Route::post('get-all',[\App\Http\Controllers\Backend\AjaxController::class,'getAll'])->name('get.all');
+Route::get('data',function (){
+    return \App\Models\Property::whereNotNull('district')->groupBy('district')->pluck('district');
 });

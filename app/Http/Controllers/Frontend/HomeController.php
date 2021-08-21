@@ -8,6 +8,8 @@ use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Favorite;
 use App\Models\Property;
+use App\Models\SeekerData;
+use App\Models\SeekerInfo;
 use Barryvdh\DomPDF\PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -17,7 +19,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-
         Helper::getSeoDataByUrl();
         return view('frontend.home');
     }
@@ -128,17 +129,23 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+        if ($request->looking_for){
+            $property = $property->where('property_status',$request->looking_for);
+        }
         if ($request->reference_number){
-            $property = $property->where('reference_number',$request->reference_number);
+            $property = $property->whereIn('reference_number',$request->reference_number);
+        }
+        if ($request->province){
+            $property = $property->whereIn('province',$request->province);
+        }
+        if ($request->district){
+            $property = $property->whereIn('district',$request->district);
         }
         if ($request->city){
-            $property = $property->where('city',$request->city);
-        }
-        if ($request->region){
-            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
+            $property = $property->whereIn('city',$request->city);
         }
         if ($request->property_type){
-            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+            $property = $property->whereIn('property_type',$request->property_type);
         }
         if ($request->max_price){
             $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
@@ -146,12 +153,17 @@ class HomeController extends Controller
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
         }
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->price_filter){
             $property=$property->orderBy('price',$request->price_filter);
         }else{
             $property=$property->orderBy('created_at','DESC');
         }
         $property= $property->paginate(9);
+//        return $property;
         return view('frontend.properties')
             ->with([
                 'properties'=>$property
@@ -162,26 +174,31 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->reference_number){
-            $property = $property->where('reference_number',$request->reference_number);
+            $property = $property->whereIn('reference_number',$request->reference_number);
+        }
+        if ($request->province){
+            $property = $property->whereIn('province',$request->province);
+        }
+        if ($request->district){
+            $property = $property->whereIn('district',$request->district);
         }
         if ($request->city){
-            $property = $property->where('city',$request->city);
+            $property = $property->whereIn('city',$request->city);
         }
-        if ($request->region){
-            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
-        }
+
         if ($request->property_type){
-            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+            $property = $property->whereIn('property_type',$request->property_type);
         }
         if ($request->max_price){
             $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
         }
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
-        }
-        if ($request->additionally){
-            $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
         }
 
         $property= $property->whereIn('property_status',[7,13]);
@@ -202,26 +219,32 @@ class HomeController extends Controller
     {
         Helper::getSeoDataByUrl(\Illuminate\Support\Facades\Request::segment(1).'/'.\Illuminate\Support\Facades\Request::segment(2));
         $property = Property::where('post_status','Active')->with('propertyStatus');
+
+        if ($request->feature){
+            $fi = implode(',',$request->feature);
+            $property = $property->where('feature','LIKE',"%$fi%");
+        }
         if ($request->reference_number){
-            $property = $property->where('reference_number',$request->reference_number);
+            $property = $property->whereIn('reference_number',$request->reference_number);
+        }
+        if ($request->province){
+            $property = $property->whereIn('province',$request->province);
+        }
+        if ($request->district){
+            $property = $property->whereIn('district',$request->district);
         }
         if ($request->city){
-            $property = $property->where('city',$request->city);
+            $property = $property->whereIn('city',$request->city);
         }
-        if ($request->region){
-            $property = $property->whereRaw("FIND_IN_SET('$request->region',region)");
-        }
+
         if ($request->property_type){
-            $property = $property->whereRaw("FIND_IN_SET('$request->property_type',property_type)");
+            $property = $property->whereIn('property_type',$request->property_type);
         }
         if ($request->max_price){
             $property = $property->whereBetween('price',[$request->min_price,$request->max_price]);
         }
         if ($request->max_bed){
             $property = $property->whereBetween('room',[$request->min_bed,$request->max_bed]);
-        }
-        if ($request->additionally){
-            $property = $property->whereRaw("FIND_IN_SET('$request->additionally',additionally)");
         }
 
         $property= $property->whereIn('property_status',[6,13]);
@@ -350,5 +373,32 @@ class HomeController extends Controller
             toast('Property Added into wishlist','success');
             return redirect()->back();
         }
+    }
+
+    public function propertySeeker(Request $request)
+    {
+        $seeker = SeekerInfo::where('email',$request->email)->first();
+        if (empty($seeker)){
+         $seeker = new SeekerInfo();
+         $seeker->name = $request->name;
+         $seeker->email = $request->email;
+         $seeker->save();
+        }
+        $seekerData = new SeekerData();
+        $seekerData->seeker_info_id = $seeker->id;
+        $seekerData->reference_no = $request->mod_ref_number;
+        $seekerData->province = $request->mod_province;
+        $seekerData->district = $request->mod_district;
+        $seekerData->city = $request->mod_city;
+        $seekerData->type = $request->mod_type;
+        $seekerData->min_price = $request->mod_min_price;
+        $seekerData->max_price = $request->mod_max_price;
+        $seekerData->min_bed = $request->mod_min_bedroom;
+        $seekerData->max_bed = $request->mod_max_bedroom;
+        $seekerData->for = $request->mod_for;
+        $seekerData->feature = $request->mod_feature;
+        $seekerData->save();
+        toast('Property seeker request sent','success');
+        return redirect()->back();
     }
 }

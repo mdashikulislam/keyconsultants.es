@@ -65,15 +65,13 @@
                             <div class="col-md-6 col-12">
                                 <ul class="price-info-details">
                                     <li><strong>Reference Number:</strong> {{$property->reference_number}}</li>
-                                    <li><strong>City:</strong> {{$property->city}}</li>
-                                    <li><strong>Region:</strong>
-                                        @php
-                                            $region = \App\Helper\Helper::getPropertyRegionName($property->region);
-                                            $region = json_decode($region,true);
-                                            $region = implode(',',$region)
-                                        @endphp
-                                        {{$region}}
+                                    <li><strong>Province:</strong>
+                                        {{$property->province}}
                                     </li>
+                                    <li><strong>District:</strong>
+                                        {{$property->district}}
+                                    </li>
+                                    <li><strong>City:</strong> {{$property->city}}</li>
                                     <li><strong>Type:</strong>
                                         @php
                                           $type = \App\Helper\Helper::getFrontendPropertyTypeNameById($property->property_type);
@@ -291,6 +289,9 @@
         .cost-table tr td{
             border: 0;
             padding: 3px 0;
+        }
+        .slick-dots{
+            flex-wrap: wrap!important;
         }
     </style>
 @endpush

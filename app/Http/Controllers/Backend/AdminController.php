@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Property;
+use App\Models\SeekerInfo;
+use App\Models\SeekerNote;
 use App\Models\Seo;
 use Illuminate\Http\Request;
 
@@ -78,5 +80,51 @@ class AdminController extends Controller
         $data->save();
         \Alert::success('Seo Added Successfully');
         return redirect()->back();
+    }
+
+    public function propertySeeker()
+    {
+        $seekers = SeekerInfo::with(['seeker_datas'=>function($item){
+            $item->orderBy('created_at','DESC');
+            $item->with(['propertyStatus']);
+        }])->whereHas('seeker_datas')->orderByDesc('created_at')->paginate(10);
+        return view('backend.property-seeker')
+            ->with([
+                'seekers'=>$seekers
+            ]);
+    }
+
+    public function seekerNote($id)
+    {
+        $seekerNotes = SeekerNote::where('seeker_id',$id)->orderByDesc('created_at')->get();
+        return view('backend.property.seeker-note')
+            ->with([
+                'id'=>$id,
+                'seekerNotes'=>$seekerNotes
+            ]);
+    }
+
+    public function seekerNoteAdd(Request $request)
+    {
+        $seekerNote = new SeekerNote();
+        $seekerNote->seeker_id = $request->id;
+        $seekerNote->title = $request->title;
+        $seekerNote->content = $request->note;
+        $seekerNote->save();
+        toast('Note added successfully','success');
+        return redirect()->back();
+    }
+
+    public function seekerNoteDelete($id)
+    {
+        $seekerData = SeekerNote::where('id',$id)->first();
+        if ($seekerData){
+            $seekerData->delete();
+            toast('Note delete successfully','success');
+            return redirect()->back();
+        }else{
+            toast('not found','error');
+            return redirect()->back();
+        }
     }
 }

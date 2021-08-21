@@ -38,30 +38,6 @@
                     </div>
                     <!-- /.card-body -->
                 </div>
-{{--                <div class="card card-primary">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h3 class="card-title">Reference Number</h3>--}}
-{{--                        <div class="card-tools">--}}
-{{--                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">--}}
-{{--                                <i class="fas fa-minus"></i>--}}
-{{--                            </button>--}}
-{{--                        </div>--}}
-
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div class="form-group clearfix" id="reference_number">--}}
-{{--                            {!! \App\Helper\Helper::getReferenceNumberCheckbox() !!}--}}
-{{--                            @error('reference_number')--}}
-{{--                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>--}}
-{{--                            @enderror--}}
-{{--                        </div>--}}
-
-{{--                        <div class="form-group">--}}
-{{--                            <button  data-toggle="modal" data-target="#modal_add_new_reference_number" style="color: #007bff;" type="button" class="btn  btn-primary btn-sm text-white"><i class="fa fa-plus fa-fw"></i>Add New Reference Number</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- /.card-body -->--}}
-{{--                </div>--}}
                 <div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">Property Information</h3>
@@ -80,84 +56,72 @@
                             <span style="display:block;" class="invalid-feedback">{{$message}}</span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label>City</label>
-                            <select name="city" class="form-control select2 @error('city') is-invalid @enderror" style="width: 100%;height: 50px!important;">
-                                <option selected="selected" value="" disabled>Select City</option>
-                                <option {{old('city') == 'Alcudia' ? 'selected':''}} value="Alcudia">Alcudia</option>
-                                <option {{old('city') == 'Binssalem' ? 'selected':''}} value="Binssalem">Binssalem</option>
-                                <option {{old('city') == 'Cala Ratjada' ? 'selected':''}} value="Cala Ratjada">Cala Ratjada</option>
-                                <option {{old('city') == "Cala d'Or" ? 'selected':''}} value="Cala d'Or">Cala d'Or</option>
-                                <option {{old('city') == 'Cala Moraia' ? 'selected':''}} value="Cala Moraia">Cala Moraia</option>
-                                <option {{old('city') == 'Cala Millor' ? 'selected':''}} value="Cala Millor">Cala Millor</option>
-                                <option {{old('city') == 'Calvià Pueblo' ? 'selected':''}} value="Calvià Pueblo">Calvià Pueblo</option>
-                                <option {{old('city') == 'Costa de la Calma' ? 'selected':''}} value="Costa de la Calma">Costa de la Calma</option>
-                                <option {{old('city') == 'Deià' ? 'selected':''}} value="Deià">Deià</option>
-                                <option {{old('city') == 'Esporles' ? 'selected':''}} value="Esporles">Esporles</option>
-                                <option {{old('city') == 'Fornalutx' ? 'selected':''}} value="Fornalutx">Fornalutx</option>
-                                <option {{old('city') == 'Inca' ? 'selected':''}} value="Inca">Inca</option>
-                                <option {{old('city') == 'Manacor' ? 'selected':''}} value="Manacor">Manacor</option>
-                                <option {{old('city') == 'Palma de Mallorca' ? 'selected':''}} value="Palma de Mallorca">Palma de Mallorca</option>
-                                <option {{old('city') == 'Pollença' ? 'selected':''}} value="Pollença">Pollença</option>
-                                <option {{old('city') == 'Puerto Pollensa' ? 'selected':''}} value="Puerto Pollensa">Puerto Pollensa</option>
-                                <option {{old('city') == 'Sa Pobla' ? 'selected':''}} value="Sa Pobla">Sa Pobla</option>
-                                <option {{old('city') == 'Santa Ponça' ? 'selected':''}} value="Santa Ponça">Santa Ponsa</option>
-                                <option {{old('city') == 'S´Arraco' ? 'selected':''}} value="S´Arraco">S'Arraco</option>
-                                <option {{old('city') == 'Sineu' ? 'selected':''}} value="Sineu">Sineu</option>
-                                <option {{old('city') == 'Sóller' ? 'selected':''}} value="Sóller">Sóller</option>
-                                <option {{old('city') == 'Valldemossa' ? 'selected':''}} value="Valldemossa">Valldemossa</option>
-                                <option {{old('city') == 'Port Andratx' ? 'selected':''}} value="Port Andratx">Port Andratx </option>
-                                <option {{old('city') == 'El Toro' ? 'selected':''}} value="El Toro">El Toro</option>
-                                <option {{old('city') == 'Son Ferrer' ? 'selected':''}} value="Son Ferrer">Son Ferrer</option>
-                                <option {{old('city') == 'Paguera' ? 'selected':''}} value="Paguera">Paguera</option>
-                            </select>
-                            @error('city')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Region</label>
-                            <select name="region[]" class="select2 @error('region') is-invalid @enderror" multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
-                                    {!! \App\Helper\Helper::getRegionDropdown(old('region')) !!}
-                            </select>
-                            @error('region')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label >Rooms</label>
-                            <input name="room" type="number"  value="{{old('room')}}" class="form-control @error('room') is-invalid @enderror">
-                            @error('room')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label >Bathrooms</label>
-                            <input name="bathroom" value="{{old('bathroom')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
-                            @error('bathroom')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label >Land Area</label>
-                            <input placeholder="ex: 720m2" name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
-                            @error('land_area')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label >Living Space</label>
-                            <input placeholder="ex: 720m2"  name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
-                            @error('living_space')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label >Balcony/Terrace Area</label>
-                            <input placeholder="ex: 720m2"  type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
-                            @error('balcony_terrace_area')
-                            <span style="display:block;" class="invalid-feedback">{{$message}}</span>
-                            @enderror
+                        <div class="row">
+                            <div class="form-group col-6">
+                                <label>Province</label>
+                                <select name="province" id="province" class="form-control select2 ">
+                                    <option value="">Select Province</option>
+                                    <option value="Mallorca">Mallorca</option>
+                                    <option value="Ibiza">Ibiza</option>
+                                    <option value="Menorca">Menorca</option>
+                                </select>
+                                @error('province')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label>District</label>
+                                <select name="district" id="district" class="form-control select2">
+                                    <option value="">Select District</option>
+                                </select>
+                                @error('district')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label>City</label>
+                                <select name="city" id="city" class="form-control select2">
+                                    <option value="">Select City</option>
+                                </select>
+                                @error('city')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label >Rooms</label>
+                                <input name="room" type="number"  value="{{old('room')}}" class="form-control @error('room') is-invalid @enderror">
+                                @error('room')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label >Bathrooms</label>
+                                <input name="bathroom" value="{{old('bathroom')}}" type="number"  class="form-control @error('living_space') is-invalid @enderror">
+                                @error('bathroom')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label >Land Area</label>
+                                <input placeholder="ex: 720m2" name="land_area" value="{{old('land_area')}}" type="text"  class="form-control @error('land_area') is-invalid @enderror">
+                                @error('land_area')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label >Living Space</label>
+                                <input placeholder="ex: 720m2"  name="living_space" value="{{old('living_space')}}" type="text"  class="form-control @error('living_space') is-invalid @enderror">
+                                @error('living_space')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group col-6">
+                                <label >Balcony/Terrace Area</label>
+                                <input placeholder="ex: 720m2"  type="text" value="{{old('balcony_terrace_area')}}" name="balcony_terrace_area" class="form-control @error('balcony_terrace_area') is-invalid @enderror">
+                                @error('balcony_terrace_area')
+                                <span style="display:block;" class="invalid-feedback">{{$message}}</span>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
@@ -369,32 +333,6 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-{{--    <div class="modal fade" id="modal_add_new_reference_number"  style=" padding-right: 17px;" aria-modal="true" role="dialog">--}}
-{{--        <div class="modal-dialog">--}}
-{{--            <div class="modal-content">--}}
-{{--                <form id="add_new_reference_number_form">--}}
-{{--                    <div class="modal-header">--}}
-{{--                        <h4 class="modal-title">Add New Reference Number</h4>--}}
-{{--                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">--}}
-{{--                            <span aria-hidden="true">×</span>--}}
-{{--                        </button>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-body">--}}
-{{--                        <div class="form-group">--}}
-{{--                            <label for="">Name</label>--}}
-{{--                            <input name="name" type="text" class="form-control">--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="modal-footer justify-content-between">--}}
-{{--                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>--}}
-{{--                        <button type="submit" class="btn btn-primary">Save</button>--}}
-{{--                    </div>--}}
-{{--                </form>--}}
-{{--            </div>--}}
-{{--            <!-- /.modal-content -->--}}
-{{--        </div>--}}
-{{--        <!-- /.modal-dialog -->--}}
-{{--    </div>--}}
     <div class="modal fade" id="modal_add_new_property_type"  style=" padding-right: 17px;" aria-modal="true" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -458,6 +396,40 @@
         $('.select2').select2()
     </script>
     <script>
+
+        $('#province').on('change',function (){
+           var value = $(this).val();
+           var url= '{{route('get.district',['name'=>':name'])}}';
+           url = url.replace(':name',value);
+           $.ajax({
+                url:url,
+               method:'GET',
+               success:function (response){
+                   $('#city').empty();
+                   $('#city').html('<option value="">Select City</option>');
+                   $('#district').empty();
+                   $('#district').html(response);
+                   $('.select2').select2()
+               }
+           });
+        });
+        $('#district').on('change',function () {
+            var value = $(this).val();
+            var url= '{{route('get.city',['name'=>':name'])}}';
+            url = url.replace(':name',value);
+            $.ajax({
+                url:url,
+                method:'GET',
+                success:function (response){
+                    $('#city').empty();
+                    $('#city').html(response);
+                    $('.select2').select2()
+                }
+            });
+        })
+
+        //district
+
         $(document).on('click','.remove_preview',function (e){
             e.preventDefault();
             $(this).parent('div').parent('div').remove();
@@ -675,7 +647,7 @@
                 forceFallback: false,
                 maxFilesize: 256, // Set the maximum file size to 256 MB
                 parallelUploads: 100,
-                timeout: 180000,
+                timeout: 360000,
             });//end drop zone
             uploader.on("success", function(file,response) {
                 imageDataArray.push(response)
