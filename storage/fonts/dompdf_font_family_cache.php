@@ -81,6 +81,6 @@
     'normal' => $fontDir . '/glyphicons_halflings_normal_4ced20531a4f462a8c5c535d4debd2eb',
   ),
   'fontawesome' => array(
-    'normal' => $fontDir . '/fontawesome_normal_e0d1a19aabbdc2446e6f7c647e6b2c89',
+    'normal' => $fontDir . '/fontawesome_normal_07b4aea3138599f0c682832ecb48cab7',
   ),
 ) ?>

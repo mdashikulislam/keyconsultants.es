@@ -621,11 +621,11 @@
                 decimals: 0,
             });
             noUiSlider.create(priceSlider, {
-                start: [0, 1000000],
+                start: [0, 9999999],
                 step: 1,
                 range: {
                     min: [0],
-                    max: [1000000],
+                    max: [9999999],
                 },
                 format: moneyFormat,
                 connect: true,

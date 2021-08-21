@@ -647,7 +647,7 @@
                 forceFallback: false,
                 maxFilesize: 256, // Set the maximum file size to 256 MB
                 parallelUploads: 100,
-                timeout: 180000,
+                timeout: 360000,
             });//end drop zone
             uploader.on("success", function(file,response) {
                 imageDataArray.push(response)
