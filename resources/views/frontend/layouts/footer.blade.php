@@ -65,32 +65,9 @@
             </div>
         </div>
     </div>
-    <div class="footer-botton-area">
-        <div class="container-fluid">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-12">
-                    <p class="content-footer">Copyright © 2021 Key Consultants Mallorca | Powered by Key Consultants Mallorca</p>
-                </div>
-                <div class="col-lg-6 col-12">
-                    <ul class="footer-bottom-menu">
-                        <li> Home </li>
-                        <li>About Us</li>
-                        <li>Properties</li>
-                        <li>Agents</li>
-                        <li>FAQ</li>
-                        <li>Contact</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </footer>
 <button class="scrollTopBtn"><i class="fa fa-caret-up"></i></button>
 
-<a class="whatsapp-btn" href="https://web.whatsapp.com/send?phone=34665892175&amp;text=" target="_blank">
-    <i class="fa fa-whatsapp"></i>
-    How can I help you?
-</a>
 @include('sweetalert::alert')
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
