@@ -50,7 +50,7 @@
     <div class="content-area">
         <div class="container">
             <div class="row">
-                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12" style="margin-top: 30px;">
                     <div class="area">
                         <h4>Let Key Consultants assist you in the buying or selling of your property here in Mallorca.</h4>
                         <p class="mt-4">If you are looking to buy or sell a property here in Mallorca then you will need to  instruct someone to assist you with the paperwork.  Let Key Consultants help you. We are friendly an approachable and what´s more, our fees are very competitive too!</p>
@@ -108,7 +108,7 @@
                         <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
                     </div>
                 </div>
-                <div class="com-md-3 col-lg-3 col-xs 12 col-sm-12">
+                <div class="com-md-3 col-lg-3 col-xs 12 col-sm-12" style="margin-top: 30px;">
                     <div class="right">
                         <p>Let Key Consultants help buy or sell your property from only 1.250€ plus IVA</p>
                         <p>I Think we should have a picture here with this on – like a banner advert.</p>
@@ -150,5 +150,6 @@
             text-align: center;
             color: #fff;
         }
+
     </style>
     @endpush
