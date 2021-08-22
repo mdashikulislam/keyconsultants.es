@@ -47,5 +47,90 @@
             </div>
         </div>
     </div>
-
+    <div class="content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12">
+                    <div class="area">
+                        <h4>Let Key Consultants assist you in the buying or selling of your property here in Mallorca.</h4>
+                        <p class="mt-4">If you are looking to buy or sell a property here in Mallorca then you will need to  instruct someone to assist you with the paperwork.  Let Key Consultants help you. We are friendly an approachable and what´s more, our fees are very competitive too!</p>
+                        <p>Most professionals will charge you 1% of the overall property price for completing the transaction and filing the respective taxes. If your sale or purchase price of your apartment is for example, 200.000€ the industry standard would be 2.000€ plus IVA at key consultants our fees start at 1.250€ plus IVA without any compromise on service.   Like any aspect of public administration in Spain if you do not have the correct paperwork at hand, this could result in an abortive transaction </p>
+                        <p>We can also help you if you have inherited a property and need to have it registered into your name, would like to have a charge or mortgage removed from your property title or need your property title rectified.  </p>
+                    </div>
+                    <div class="list mt-3">
+                        <h3 style="color: #c0b298;margin-bottom: 20px;">What does our Conveyancing Service include</h3>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <h5>Conveyancing Assistance on Purchase</h5>
+                                <ul>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Reviewing the option contract for signature</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Review of the title deeds</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the IBI & Basura receipts</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Reviewing the certificate of Habitability & Energy Performance.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining a certificate of conformity from the local town hall.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attendance at the Notary to assist you in completing the purchase</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Payment of the Retention taxes (Plusvalia & 3%)</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparation and submission and payment of your taxes (stamp duty) – Modelo 600</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attendance at ATIB (Agencia Tributaria Illes Baleares)</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Prepare and serve notice of new ownership on the administrator.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attend to the Registration Process with the land registry</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Assistance with the changing of your utility bills</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <h5>Conveyancing Assistance on Sale</h5>
+                                <ul>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the option contract for sale for exchange.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Acting as the depositary  of funds using our client funds account</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining a statement of plusvalia</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining IBI and Basura Receipts</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Instructing the Energy Performance certificate (disbursement)</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Instructing the Cedular de habitabilidad.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparation of the documents before the public notary to be included in the public deed</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the apportionments (community and IBI)</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the completion statement for sale</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing all documents before the public notary.</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the 3% retention payment statement from the purchasers</li>
+                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the Plus Val Payment receipt from the purchasers</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="com-md-3 col-lg-3 col-xs 12 col-sm-12">
+                    <div class="right">
+                        <p>Let Key Consultants help buy or sell your property from only 1.250€ plus IVA</p>
+                        <p>I Think we should have a picture here with this on – like a banner advert.</p>
+                        <p>Find out more then link to contact us page</p>
+                    </div>
+                   <div class="wide" style="text-align: center;background: #c0b298;padding: 30px;margin-top: 30px;">
+                       <a href="https://www.atib.es/TA/contenido.aspx?Id=9854&lang=es" style="color: #fff;">View ITP (Stamp duty)tax rates here</a>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+@push('css')
+    <style>
+        .area p{
+            display: flex;
+            justify-content: center;
+        }
+        .list ul {
+            background: #dededc;
+            border-radius: 4px;
+            padding: 20px;
+            margin-top: 20px;
+            height: 520px;
+        }
+        .right{
+            background: #dededc;
+            padding: 20px;
+            border-radius: 4px ;
+        }
+        .right p{
+            padding-top: 40px;
+        }
+    </style>
+    @endpush
