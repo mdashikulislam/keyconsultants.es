@@ -62,39 +62,50 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                                 <h5>Conveyancing Assistance on Purchase</h5>
-                                <ul>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Reviewing the option contract for signature</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Review of the title deeds</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the IBI & Basura receipts</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Reviewing the certificate of Habitability & Energy Performance.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining a certificate of conformity from the local town hall.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attendance at the Notary to assist you in completing the purchase</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Payment of the Retention taxes (Plusvalia & 3%)</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparation and submission and payment of your taxes (stamp duty) – Modelo 600</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attendance at ATIB (Agencia Tributaria Illes Baleares)</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Prepare and serve notice of new ownership on the administrator.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Attend to the Registration Process with the land registry</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Assistance with the changing of your utility bills</li>
+                                <ul style="list-style-type: square">
+                                    <li>Reviewing the option contract for signature</li>
+                                    <li>Review of the title deeds</li>
+                                    <li>Obtaining the IBI & Basura receipts</li>
+                                    <li>Reviewing the certificate of Habitability & Energy Performance.</li>
+                                    <li>Obtaining a certificate of conformity from the local town hall.</li>
+                                    <li>Attendance at the Notary to assist you in completing the purchase</li>
+                                    <li>Payment of the Retention taxes (Plusvalia & 3%)</li>
+                                    <li>Preparation and submission and payment of your taxes (stamp duty) – Modelo 600</li>
+                                    <li>Attendance at ATIB (Agencia Tributaria Illes Baleares)</li>
+                                    <li>Prepare and serve notice of new ownership on the administrator.</li>
+                                    <li>Attend to the Registration Process with the land registry</li>
+                                    <li>Assistance with the changing of your utility bills</li>
                                 </ul>
+                                <div class="bottom">
+                                    <p>Purchase Assistance from</p>
+                                    <h2>1.250€ (plus IVA)</h2>
+                                </div>
                             </div>
                             <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                                 <h5>Conveyancing Assistance on Sale</h5>
-                                <ul>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the option contract for sale for exchange.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Acting as the depositary  of funds using our client funds account</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining a statement of plusvalia</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining IBI and Basura Receipts</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Instructing the Energy Performance certificate (disbursement)</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Instructing the Cedular de habitabilidad.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparation of the documents before the public notary to be included in the public deed</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the apportionments (community and IBI)</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing the completion statement for sale</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Preparing all documents before the public notary.</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the 3% retention payment statement from the purchasers</li>
-                                    <li><i class="fa fa-arrow-right fa-fw"></i>Obtaining the Plus Val Payment receipt from the purchasers</li>
+                                <ul style="list-style-type: square">
+                                    <li>Preparing the option contract for sale for exchange.</li>
+                                    <li>Acting as the depositary  of funds using our client funds account</li>
+                                    <li>Obtaining a statement of plusvalia</li>
+                                    <li>Obtaining IBI and Basura Receipts</li>
+                                    <li>Instructing the Energy Performance certificate (disbursement)</li>
+                                    <li>Instructing the Cedular de habitabilidad.</li>
+                                    <li>Preparation of the documents before the public notary to be included in the public deed</li>
+                                    <li>Preparing the apportionments (community and IBI)</li>
+                                    <li>Preparing the completion statement for sale</li>
+                                    <li>Preparing all documents before the public notary.</li>
+                                    <li>Obtaining the 3% retention payment statement from the purchasers</li>
+                                    <li>Obtaining the Plus Val Payment receipt from the purchasers</li>
                                 </ul>
+                                <div class="bottom">
+                                    <p>Sale  Assistance from </p>
+                                    <h2>1.250€ (plus IVA)</h2>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="text-center mt-50">
+                        <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
                     </div>
                 </div>
                 <div class="com-md-3 col-lg-3 col-xs 12 col-sm-12">
@@ -120,7 +131,7 @@
         .list ul {
             background: #dededc;
             border-radius: 4px;
-            padding: 20px;
+            padding: 20px 30px;
             margin-top: 20px;
             height: 520px;
         }
@@ -131,6 +142,13 @@
         }
         .right p{
             padding-top: 40px;
+        }
+        .bottom{
+            margin-top: 20px;
+            background: #c0b298;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
         }
     </style>
     @endpush
