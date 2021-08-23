@@ -14,7 +14,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "realrashid/sweet-alert": "^3.2"
+        "realrashid/sweet-alert": "^3.2",
+        "spatie/laravel-cookie-consent": "^2.12"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.10",

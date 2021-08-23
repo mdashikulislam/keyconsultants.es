@@ -67,7 +67,7 @@
     </div>
 </footer>
 <button class="scrollTopBtn"><i class="fa fa-caret-up"></i></button>
-
+@include('cookieConsent::index')
 @include('sweetalert::alert')
 <script type="text/javascript" src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/assets/js/bootstrap.min.js')}}"></script>
