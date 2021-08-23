@@ -43,7 +43,6 @@
                         service possible.
                     </p>
                     <div class="devaidar"></div>
-
                 </div>
             </div>
         </div>
