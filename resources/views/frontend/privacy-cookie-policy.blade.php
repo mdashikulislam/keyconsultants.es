@@ -21,10 +21,10 @@
                     </div>
                 </div>
                 <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 mt-120">
-                    <div id="accordion">
-                        <div class="accordion-wrap">
-                            <h5 data-toggle="collapse" data-target="#collapseOne">What data do we collect?</h5>
-                            <div id="collapseOne" class="collapse content" data-parent="#accordion">
+                    <div id="accordion1">
+                        <div class="accordion-wrap accordion-wrap2">
+                            <h5 data-toggle="collapse" data-target="#collapseXt">What data do we collect?</h5>
+                            <div id="collapseXt" class="collapse content" data-parent="#accordion1">
                                 <p>The data that you voluntarily provide us</p>
                                 <p>
                                     By registering, signing up to our newsletter or by receiving property alerts
@@ -53,33 +53,18 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="content-area pt-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-10 offset-lg-1 col-12">
-                    <div class="careers-content">
-                        <h2>YOUR BROWSING DATA</h2>
-                        <p class="text-left">
-                            When you browse the Site or through the Applications, Key Consultants CB collects data
-                            related to your browsing session. Thus, we collect your browsing history on the Site:
-                            pages visited, searches performed, opening of a of Key Consultants CB newsletters.
-                        </p>
-                        <p class="text-left">
-                            Key Consultants CB also uses cookies to store and access data (for more information, see
-                            the section What is our cookie policy).
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 col-12 mt-120">
-                    <div id="accordion1">
+
+
+                        <div class="accordion-wrap accordion-wrap2">
+                            <h5 data-toggle="collapse" data-target="#collapseXp">YOUR BROWSING DATA</h5>
+                            <div id="collapseXp" class="collapse content" data-parent="#accordion1">
+                                <p>When you browse the Site or through the Applications, Key Consultants CB collects data related to your browsing session. Thus, we collect your browsing history on the Site pages visited, searches performed, opening of a of Key Consultants CB newsletters.</p>
+                                <p>Key Consultants CB also uses cookies to store and access data (for more information, see the section What is our cookie policy).</p>
+                            </div>
+                        </div>
+
                         <div class="accordion-wrap accordion-wrap2">
                             <h5 data-toggle="collapse" data-target="#collapseTwo">WHAT DO WE DO WITH YOUR DATA?</h5>
-
                             <div id="collapseTwo" class="collapse content" data-parent="#accordion1">
                                 <p>
                                     The personal data collected related to you receive a computer processing with
