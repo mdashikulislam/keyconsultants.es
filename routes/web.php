@@ -24,7 +24,7 @@ Route::get('cedular-de-habitabilidad',[\App\Http\Controllers\Frontend\HomeContro
 Route::get('insurance-services',[\App\Http\Controllers\Frontend\HomeController::class,'insuranceServices'])->name('insurance.services');
 Route::get('green-energy',[\App\Http\Controllers\Frontend\HomeController::class,'greenEnergy'])->name('green.energy');
 Route::get('administracion-de-fincas',[\App\Http\Controllers\Frontend\HomeController::class,'administracionDeFincas'])->name('administracion.de.fincas');
-Route::get('our-fees',[\App\Http\Controllers\Frontend\HomeController::class,'ourFees'])->name('our.fees');
+Route::get('business-start-up',[\App\Http\Controllers\Frontend\HomeController::class,'ourFees'])->name('our.fees');
 Route::get('accounts-bookkeeping',[\App\Http\Controllers\Frontend\HomeController::class,'accountsBookkeeping'])->name('accounts.bookkeeping');
 Route::get('taxation-matters',[\App\Http\Controllers\Frontend\HomeController::class,'taxationMatters'])->name('taxation.matters');
 Route::get('meet-our-team',[\App\Http\Controllers\Frontend\HomeController::class,'meetOurTeam'])->name('meet.our.team');

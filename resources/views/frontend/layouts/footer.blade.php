@@ -48,10 +48,6 @@
                             </a></li>
                         <li><a href="{{route('terms.and.conditions.of.business')}}">Terms and Conditions of Service
                             </a></li>
-                        <li>Website usage terms</li>
-                        <li><a href="{{route('our.fees')}}">
-                                Our Prices / Fees
-                            </a></li>
                     </ul>
                 </div>
             </div>

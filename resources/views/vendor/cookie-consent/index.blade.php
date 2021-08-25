@@ -29,10 +29,10 @@
             @lang('cookie-consent::texts.alert_settings')
         </button>
         <button type="button" class="lcc-button js-lcc-accept">
-            Allow All
+            Accept
         </button>
         <button type="button" class="lcc-button js-lcc-accept">
-            Accept
+            Allow All
         </button>
     </div>
 </div>
