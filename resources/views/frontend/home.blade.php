@@ -56,40 +56,40 @@
                     <form id="search" method="GET" action="{{route('properties')}}">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12 mb-15">
-                                <select  id="looking_for" class="select-style" name="looking_for">
+                                <select  style="width:100%!important;" id="looking_for" class="select-style" name="looking_for">
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
                                     <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple class="select-style" id="property_type" name="property_type[]">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
                                     {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="province[]" id="province" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="province[]" id="province" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyProvince() !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="district[]" id="district" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="district[]" id="district" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyDistrict(request()->input('district')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="city[]" id="city" class="form-control">
+                            <div  class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="city[]" id="city" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyCityDropdown(request()->input('city')) !!}
                                 </select>
                             </div>
 
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="feature[]" id="feature" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="feature[]" id="feature" class="form-control">
                                     @forelse(\App\Models\Feature::all() as $feature)
                                         <option
                                             @if(request()->input('feature'))
@@ -104,7 +104,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12  mb-25">
                                 <label class="label-text">Price</label>
                                 <div id="price"></div>
                                 <div class="d-flex align-items-center value">
@@ -115,7 +115,7 @@
                                     <input type="hidden" name="max_price"  />
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12  mb-25">
                                 <label class="label-text">Bedrooms</label>
                                 <div id="bedrooms"></div>
                                 <div class="d-flex align-items-center value">
@@ -126,8 +126,8 @@
                                     <input type="hidden" name="max_bed" />
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-sm-12"></div>
-                            <div class="col-md-6  col-sm-12 text-right">
+                            <div class="col-md-6 col-sm-6 "></div>
+                            <div class="col-md-6  col-sm-12  text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success btn-sm" type="submit">Search</button>
                                 <a href="{{route('landing')}}"  class="btn btn-dark btn-sm">Clear Filter</a>
