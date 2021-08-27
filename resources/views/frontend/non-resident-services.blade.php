@@ -3,7 +3,7 @@
     NON-RESIDENT TAXES
 @endsection
 @section('content')
-    <div class="content-area">
+    <div class="content-area" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
@@ -29,8 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="callto-action-area"
-        style="background: url('{{asset('frontend/assets/images/bg/cta.webp')}}') no-repeat center center fixed">
+    <div class="callto-action-area" style="background: url('{{asset('frontend/assets/images/bg/cta.webp')}}') no-repeat center center fixed">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-7">
@@ -45,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="content-area">
+    <div class="content-area" style="padding-bottom: 80px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
@@ -113,16 +112,71 @@
                         </div>
                     </div>
                     <div class="row justify-content-center mt-3">
-                        <div class="com-md-12 ">
-                            <div class="wide" style="text-align: center;background: #c0b298;padding: 30px;margin-top: 30px;">
-                                <a href="https://www.atib.es/TA/contenido.aspx?Id=9854&lang=es" style="color: #fff;font-weight: bold">Click here to start your online Tax Return here</a>
+                        <div class="com-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
+                            <div class="text">
+                                <a href="" style="display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3"></div>
             </div>
-
+        </div>
+    </div>
+    <div class="content-area" style="padding: 0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
+                    <div class="content">
+                        <div class="faq">
+                            <h2>Frequently Asked Questions</h2>
+                            <h3 class="mt-3"><i class="fa fa-hand-o-right fa-fw"></i>How are non-resident taxes calculated?</h3>
+                            <ul style="list-style-type:square;margin-left: 15px;" class="mt-3">
+                                <li>This depends on whether you are tax resident in another EU Country and whether the Valor Cadastral has been reviewed in the last 10 years.</li>
+                                <li>If your valor cadastral HAS been reviewed in the last 10 years, your tax will be calculated on the following basis:-</li>
+                                <li>Valor Catastral x 1.1% x 19% (19% only applies if you are tax resident in another EU country, if you are not resident in another EU country (such as the UK for example) the amount will be x 24%.</li>
+                                <li>So, for example, if your valor catastral value is: 100.000€ and your valor cadastral value has been reviewed in the last 5 years, the following taxes would be paid.</li>
+                            </ul>
+                        </div>
+                        <div class="tax">
+                            <h3 class="mt-3"><i class="fa fa-hand-o-right fa-fw"></i>Where a revision has taken place in the last 10 years </h3>
+                            <ul style="list-style-type: disc;margin-left: 15px;" >
+                                <li>100.000€ x 1.1% x 19% = 209€ (for EU Tax Residents) </li>
+                                <li>100.000€ x 1.1% x 24% = 264€ (for NON-EU Tax residents)</li>
+                            </ul>
+                        </div>
+                        <div class="tax">
+                            <h3 class="mt-3"><i class="fa fa-hand-o-right fa-fw"></i>Where NO revision has taken place within 10 years </h3>
+                            <ul style="list-style-type: disc;margin-left: 15px;">
+                                <li>100.000€ x 2% x 19%  = 380.00  (for EU Tax Residents) </li>
+                                <li>100.000€ x 2% x 24%  = 480.00  (For NON-EU Tax residents) </li>
+                            </ul>
+                        </div>
+                        <div class="link mt-2">
+                            <p>You can check to see if your valor cadastral has been revised in the last 10 years by clicking on this link here:
+                                <a style="word-break: break-all;display: block" target="_blank" href="https://www.agenciatributaria.es/AEAT.internet/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2020/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2010_2020/7_3_4__Municipios_con_valor_catastral_revisado_2010_2020.html">https://www.agenciatributaria.es/AEAT.internet/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2020/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2010_2020/7_3_4__Municipios_con_valor_catastral_revisado_2010_2020.html</a></p>
+                        </div>
+                        <div class="text">
+                            <h3><i class="fa fa-hand-o-right fa-fw"></i>How do I know if my Valor catasral has been reviewed in the last 10 years?</h3>
+                            <p>List here is of Catastral revisions before 10 years:</p>
+                            <a href="https://www.agenciatributaria.es/AEAT.internet/va_es/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2019/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019/7_3_4_7__Baleares/7_3_4_7__Baleares.html" style="word-break: break-all;display: block">https://www.agenciatributaria.es/AEAT.internet/va_es/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2019/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019/7_3_4_7__Baleares/7_3_4_7__Baleares.html</a>
+                            <a style="word-break: break-all;display: block"  href="https://www.agenciatributaria.es/AEAT.internet/va_es/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2019/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019.html">https://www.agenciatributaria.es/AEAT.internet/va_es/Inicio/Ayuda/Manuales__Folletos_y_Videos/Manuales_de_ayuda_a_la_presentacion/Ejercicio_2019/_Ayuda_Modelo_100/7__Cumplimentacion_IRPF__I_/7_3__Rendimientos_derivados_de_inmuebles/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019/7_3_4__Municipios_con_valor_catastral_revisado_2009_2019.html</a>
+                            <p>note that if your valor catastral has not been revised in the last 10 years, the amount of tax imputation tax will be 2%</p>
+                            <h3><i class="fa fa-hand-o-right fa-fw"></i>I pay through my bank and do not have the Valor Cadastral details. </h3>
+                            <p>If you pay your IBI and basura via direct debit and have not received a copy of your bill with the valor catastral,, there are a number of ways that you can obtain this information. </p>
+                            <ul>
+                                <li> 1)	You can obtain that information from the bank payment slip from your online banking or by requesting this information directly. This sheet will provide you with a CSV Reference Number. You can obtain the full details by following this link and entering the CSV number on this web page.
+                                    <a href="https://sede.tributostenerife.es/sta/CarpetaPublic/Public?APP_CODE=STA&PAGE_CODE=VALDOCS">https://sede.tributostenerife.es/sta/CarpetaPublic/Public?APP_CODE=STA&PAGE_CODE=VALDOCS</a></li>
+                                <li>2)	Request the IBI Payment Receipts from your local Ayuntamiento directly (most Ayuntamientos now accept email requests).</li>
+                                <li>3)	Or, if you have a digital signature you can register online with your Local Ayuntamiento and download your previous IBI receipts. Here is an example link from Calvia Ayuntamiento
+                                    <a href="https://www.admonline.calvia.com/cct/">https://www.admonline.calvia.com/cct/</a> </li>
+                            </ul>
+                            <h3><i class="fa fa-hand-o-right fa-fw"></i>What happens if I do not pay my Non-Resident Taxes.</h3>
+                            <p>If you do not submit a non-resident tax return, you will likely have to pay these fees when you come to sell you property, together with any fines or interest that have accrued during the period. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <style>
