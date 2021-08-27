@@ -56,40 +56,40 @@
                     <form id="search" method="GET" action="{{route('properties')}}">
                         <div class="row">
                             <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12 mb-15">
-                                <select  id="looking_for" class="select-style" name="looking_for">
+                                <select  style="width:100%!important;" id="looking_for" class="select-style" name="looking_for">
                                     <option {{request()->input('looking_for') == '7' ? 'selected':''}} value="7">Sale</option>
                                     <option {{request()->input('looking_for') == '6' ? 'selected':''}} value="6">Rent</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple id="reference_number" class="select-style form select-js" name="reference_number[]">
                                     {!! \App\Helper\Helper::getReferenceDropdown(request()->input('reference_number')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple class="select-style" id="property_type" name="property_type[]">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple class="select-style" id="property_type" name="property_type[]">
                                     <option value="">Type...</option>
                                     {!! \App\Helper\Helper::getPropertyTypeDropdown(request()->input('property_type')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="province[]" id="province" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="province[]" id="province" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyProvince() !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="district[]" id="district" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="district[]" id="district" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyDistrict(request()->input('district')) !!}
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="city[]" id="city" class="form-control">
+                            <div  class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="city[]" id="city" class="form-control">
                                     {!! \App\Helper\Helper::getPropertyCityDropdown(request()->input('city')) !!}
                                 </select>
                             </div>
 
-                            <div class="col-md-4 col-sm-6 col-12">
-                                <select multiple name="feature[]" id="feature" class="form-control">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12">
+                                <select style="width:100%!important;" multiple name="feature[]" id="feature" class="form-control">
                                     @forelse(\App\Models\Feature::all() as $feature)
                                         <option
                                             @if(request()->input('feature'))
@@ -104,7 +104,7 @@
                                     @endforelse
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12  mb-25">
                                 <label class="label-text">Price</label>
                                 <div id="price"></div>
                                 <div class="d-flex align-items-center value">
@@ -115,7 +115,7 @@
                                     <input type="hidden" name="max_price"  />
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 col-12 mb-25">
+                            <div class="col-md-4 col-sm-6 col-lg-4 col-xs-12  mb-25">
                                 <label class="label-text">Bedrooms</label>
                                 <div id="bedrooms"></div>
                                 <div class="d-flex align-items-center value">
@@ -126,8 +126,8 @@
                                     <input type="hidden" name="max_bed" />
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-sm-12"></div>
-                            <div class="col-md-6  col-sm-12 text-right">
+                            <div class="col-md-6 col-sm-6 "></div>
+                            <div class="col-md-6  col-sm-12  text-right">
                                 {{--                                <a href="Javascript:void(0)" id="show-hide" class="showmore-btn">Show More</a>--}}
                                 <button style="background: #c0b298!important;border-color: #c0b298!important" class="btn btn-success btn-sm" type="submit">Search</button>
                                 <a href="{{route('landing')}}"  class="btn btn-dark btn-sm">Clear Filter</a>
@@ -258,104 +258,7 @@
             </div>
         </div>
     </div>
-    <div class="team-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="section-title mb-50">MEET OUR TEAM!</h2>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="team-wrap">
-                        <img class="image" src="{{asset('frontend/assets/images/team/img1.png')}}" alt="" />
-                        <h3 class="name">SUSANNE DIETZE</h3>
-                        <h4 class="designation">REAL ESTATE AGENT</h4>
-                        <ul class="social">
-                            <li>
-                                <a target="_blank" href="facebook.com"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="twitter.com"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="google.com"><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="linkedin.com"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                        <p>
-                            Susanne is an experienced real estate Agent located in our Santa Ponsa office and who
-                            has been assisting clients purchase and sell their homes for over many years. If you are
-                            looking to buy and sell in the south west area, then you are in safe hands with Susanne.
-                            Languages: Aleman, English & Spanish
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="team-wrap">
-                        <img class="image" src="{{asset('frontend/assets/images/team/img2.jpg')}}" alt="" />
-                        <h3 class="name">ALEX CARVALHO</h3>
-                        <h4 class="designation">GESTOR & PROPERTY SERVICES</h4>
-                        <ul class="social">
-                            <li>
-                                <a target="_blank" href="facebook.com"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="twitter.com"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="google.com"><i class="fa fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a target="_blank" href="linkedin.com"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                        <p>
-                            Whether it is helping to solve problems, working with a first time buyer, or preparing a
-                            will on behalf of a client, Alex prides himself on his unparalleled service with an
-                            aptitude for problem solving – something essential for navigating clients through the
-                            challenges facing them when starting a business here on Mallorca. My focus is always on
-                            serving my clients with honesty, integrity and discretion as a dependable and
-                            knowledgeable Agent committed to exceptional results. Alex is here as your Gestor for
-                            whatever service you need.
-                        </p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12">
-                    <div class="team-wrap">
-                        <img class="image" src="{{asset('frontend/assets/images/team/img3.jpg')}}" alt="" />
-                        <h3 class="name">RICHARD MORAN</h3>
-                            <h4 class="designation">GESTOR & PROPERTY SERVICES</h4>
-                            <ul class="social">
-                                <li>
-                                    <a target="_blank" href="facebook.com"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a target="_blank" href="twitter.com"><i class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a target="_blank" href="google.com"><i class="fa fa-google-plus"></i></a>
-                                </li>
-                                <li>
-                                    <a target="_blank" href="linkedin.com"><i class="fa fa-linkedin"></i></a>
-                                </li>
-                            </ul>
-                            <p>
-                                Richard English and has had an affinity with Mallorca from a very young age when his step father decided to move to Mallorca over 25 years ago. Having worked in the legal sector for over 20 years Richard has gained valuable experience into the the legal system understanding the complexities involved in the completion of property and business matters. Having owned a number of businesses here on Mallorca, Richard is also very experienced in:-<strong>
-                                    Compliance matters,
-                                    Accounts,
-                                    IVA,
-                                    Business Sales,
-                                    Property Sales
-                                </strong>
 
-                                Richard speaks both English and Spanish.
-                            </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="property_seeker" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

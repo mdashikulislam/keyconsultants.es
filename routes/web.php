@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [\App\Http\Controllers\Frontend\HomeController::class,'index'])->name('landing');
 Route::get('property-sales',[\App\Http\Controllers\Frontend\HomeController::class,'propertySales'])->name('property.sales');
 Route::get('conveyancing-assistance',[\App\Http\Controllers\Frontend\HomeController::class,'conveyancingAssistance'])->name('conveyancing.assistance');
-Route::get('non-resident-services',[\App\Http\Controllers\Frontend\HomeController::class,'nonResidentServices'])->name('non.resident.services');
+Route::get('non-resident-taxes',[\App\Http\Controllers\Frontend\HomeController::class,'nonResidentServices'])->name('non.resident.services');
 Route::get('wills-probate',[\App\Http\Controllers\Frontend\HomeController::class,'willsProbate'])->name('wills.probate');
 Route::get('power-of-attorney',[\App\Http\Controllers\Frontend\HomeController::class,'powerOfAttorney'])->name('power.of.attorney');
 Route::get('energy-performance-certificate',[\App\Http\Controllers\Frontend\HomeController::class,'energyPerformanceCertificate'])->name('energy.performance.certificate');
@@ -24,7 +24,7 @@ Route::get('cedular-de-habitabilidad',[\App\Http\Controllers\Frontend\HomeContro
 Route::get('insurance-services',[\App\Http\Controllers\Frontend\HomeController::class,'insuranceServices'])->name('insurance.services');
 Route::get('green-energy',[\App\Http\Controllers\Frontend\HomeController::class,'greenEnergy'])->name('green.energy');
 Route::get('administracion-de-fincas',[\App\Http\Controllers\Frontend\HomeController::class,'administracionDeFincas'])->name('administracion.de.fincas');
-Route::get('our-fees',[\App\Http\Controllers\Frontend\HomeController::class,'ourFees'])->name('our.fees');
+Route::get('business-start-up',[\App\Http\Controllers\Frontend\HomeController::class,'ourFees'])->name('our.fees');
 Route::get('accounts-bookkeeping',[\App\Http\Controllers\Frontend\HomeController::class,'accountsBookkeeping'])->name('accounts.bookkeeping');
 Route::get('taxation-matters',[\App\Http\Controllers\Frontend\HomeController::class,'taxationMatters'])->name('taxation.matters');
 Route::get('meet-our-team',[\App\Http\Controllers\Frontend\HomeController::class,'meetOurTeam'])->name('meet.our.team');

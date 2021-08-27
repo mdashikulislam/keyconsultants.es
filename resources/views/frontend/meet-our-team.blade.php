@@ -181,3 +181,14 @@
         </div>
     </div>
 @endsection
+@push('css')
+    <style>
+        .team-wrap .image{
+            padding: 30px;
+            height: 300px;
+        }
+        .team-wrap p{
+            text-align: left;
+        }
+    </style>
+@endpush

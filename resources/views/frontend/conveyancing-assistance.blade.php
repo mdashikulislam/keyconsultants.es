@@ -1,6 +1,6 @@
 @extends('frontend.layouts.inner-master')
 @section('breadcumb-title')
-    ADMINISTRACION-DE-FINCAS
+    Conveyancing Assistance
 @endsection
 @section('content')
     <div class="content-area">
@@ -29,134 +29,127 @@
             </div>
         </div>
     </div>
-    @include('frontend.include.contact-banner')
-    <div class="featured-area">
+    <div
+        class="callto-action-area"
+        style="background: url('{{asset('frontend/assets/images/bg/cta.webp')}}') no-repeat center center fixed"
+    >
         <div class="container">
-            <h2 class="featured-title">Amongst other things our Administración de Fincas services includes:</h2>
-        </div>
-        <div class="featured-background">
-            <div class="featured-shape" data-negative="false">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 5.8" preserveAspectRatio="none">
-                    <path
-                        class="elementor-shape-fill"
-                        d="M5.4.4l5.4 5.3L16.5.4l5.4 5.3L27.5.4 33 5.7 38.6.4l5.5 5.4h.1L49.9.4l5.4 5.3L60.9.4l5.5 5.3L72 .4l5.5 5.3L83.1.4l5.4 5.3L94.1.4l5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3L161 .4l5.4 5.3L172 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3L261 .4l5.4 5.3L272 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3L361 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3L461 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1L550 .4l5.4 5.3L561 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2L650 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2L750 .4l5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2L850 .4l5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.4h.2l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.7-5.4 5.4 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.5 5.4h.1l5.6-5.4 5.5 5.3 5.6-5.3 5.5 5.3 5.6-5.3 5.4 5.3 5.7-5.3 5.4 5.3 5.6-5.3 5.5 5.4V0H-.2v5.8z"
-                    ></path>
-                </svg>
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <h2>WORKING TOGETHER TO ENSURE YOUR PROPERTY TRANSACTION RUNS SMOOTHLY</h2>
+                    <p>
+                        As apart of our service, we will always ensure that we provide you with transparency of
+                        service, ensuring that you receive the best, guaranteed cost effective and quality assured
+                        service possible.
+                    </p>
+                    <div class="devaidar"></div>
+                </div>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h3 class="featured-subtitle">HERE ARE SOME OF THE THINGS THAT WE INCLUDE:</h3>
+        </div>
+    </div>
+    <div class="content-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12" style="margin-top: 30px;">
+                    <div class="area">
+                        <h4>Let Key Consultants assist you in the buying or selling of your property here in Mallorca.</h4>
+                        <p class="mt-4">If you are looking to buy or sell a property here in Mallorca then you will need to  instruct someone to assist you with the paperwork.  Let Key Consultants help you. We are friendly an approachable and what´s more, our fees are very competitive too!</p>
+                        <p>Most professionals will charge you 1% of the overall property price for completing the transaction and filing the respective taxes. If your sale or purchase price of your apartment is for example, 200.000€ the industry standard would be 2.000€ plus IVA at key consultants our fees start at 1.250€ plus IVA without any compromise on service.   Like any aspect of public administration in Spain if you do not have the correct paperwork at hand, this could result in an abortive transaction </p>
+                        <p>We can also help you if you have inherited a property and need to have it registered into your name, would like to have a charge or mortgage removed from your property title or need your property title rectified.  </p>
                     </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                The Property Administrator acts as Secretary and Administrator and calls ordinary
-                                meetings, sends Minutes, liquidations, etc.
-                            </p>
+                    <div class="list mt-3">
+                        <h3 style="color: #c0b298;margin-bottom: 20px;">What does our Conveyancing Service include</h3>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <h5>Conveyancing Assistance on Purchase</h5>
+                                <ul style="list-style-type: square">
+                                    <li>Reviewing the option contract for signature</li>
+                                    <li>Review of the title deeds</li>
+                                    <li>Obtaining the IBI & Basura receipts</li>
+                                    <li>Reviewing the certificate of Habitability & Energy Performance.</li>
+                                    <li>Obtaining a certificate of conformity from the local town hall.</li>
+                                    <li>Attendance at the Notary to assist you in completing the purchase</li>
+                                    <li>Payment of the Retention taxes (Plusvalia & 3%)</li>
+                                    <li>Preparation and submission and payment of your taxes (stamp duty) – Modelo 600</li>
+                                    <li>Attendance at ATIB (Agencia Tributaria Illes Baleares)</li>
+                                    <li>Prepare and serve notice of new ownership on the administrator.</li>
+                                    <li>Attend to the Registration Process with the land registry</li>
+                                    <li>Assistance with the changing of your utility bills</li>
+                                </ul>
+                                <div class="bottom">
+                                    <p>Purchase Assistance from</p>
+                                    <h2>1.250€ (plus IVA)</h2>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
+                                <h5>Conveyancing Assistance on Sale</h5>
+                                <ul style="list-style-type: square">
+                                    <li>Preparing the option contract for sale for exchange.</li>
+                                    <li>Acting as the depositary  of funds using our client funds account</li>
+                                    <li>Obtaining a statement of plusvalia</li>
+                                    <li>Obtaining IBI and Basura Receipts</li>
+                                    <li>Instructing the Energy Performance certificate (disbursement)</li>
+                                    <li>Instructing the Cedular de habitabilidad.</li>
+                                    <li>Preparation of the documents before the public notary to be included in the public deed</li>
+                                    <li>Preparing the apportionments (community and IBI)</li>
+                                    <li>Preparing the completion statement for sale</li>
+                                    <li>Preparing all documents before the public notary.</li>
+                                    <li>Obtaining the 3% retention payment statement from the purchasers</li>
+                                    <li>Obtaining the Plus Val Payment receipt from the purchasers</li>
+                                </ul>
+                                <div class="bottom">
+                                    <p>Sale  Assistance from </p>
+                                    <h2>1.250€ (plus IVA)</h2>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                We have a meeting room at no additional cost, and with a max. 25 people, if they do
-                                not have a meeting place or we move to the place designated by the community to hold
-                                the meetings.
-                            </p>
-                        </div>
+                    <div class="text-center mt-50">
+                        <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
                     </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Follow-up of the defaulters and their subsequent claim through the courts through
-                                “payment orders” (whose preparation fees, lawyers and court costs are always borne
-                                by the defendants).
-                            </p>
-                        </div>
+                </div>
+                <div class="com-md-3 col-lg-3 col-xs 12 col-sm-12" style="margin-top: 30px;">
+                    <div class="right">
+                        <p>Let Key Consultants help buy or sell your property from only 1.250€ plus IVA</p>
+                        <p>I Think we should have a picture here with this on – like a banner advert.</p>
+                        <p>Find out more then link to contact us page</p>
                     </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                In communities, where there is a large presence of foreign owners, we manage the
-                                documentation with translations into English or German.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Preparation and sending of expense settlements (as agreed in the Meeting). The
-                                Administration can prepare settlements with the frequency set by the Community:
-                                monthly, bi-monthly, quarterly, quarterly, semi-annually, annually by installments,
-                                by budget
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                In the case of recently built buildings, our work ranges from the drafting of the
-                                Statutes, constitution of the community fund, registration of community and
-                                individual accountants, legalization of the Minutes Book, various steps with the
-                                developer, CIF processing, procedures for obtaining ford, high lines telephone for
-                                the elevators, search and contracting of cleaning services, surveillance, porter,
-                                integral maintenance, etc.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Attend to the maintenance of the building, its facilities and the proper functioning
-                                of the contracted services, for which we have the collaboration of a wide range of
-                                industrialists that fully cover any type of unforeseen event and works. We request
-                                two estimates, as well as incident management.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Bank management of the current account of the community, as authorized, we manage
-                                the day to day of their operations working with the main banking entities.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                All those procedures processed before public bodies and monitoring by the
-                                Administrator of the repairs and / or improvements to be made.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Management of the Organic Law on Data Protection: owners, security surveillance,
-                                etc. With the collaboration of Conversia, leader in the protection management
-                                sector.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Process contracts and attend to payments related to the personnel at the service of
-                                the community; such as doorman, maintainer, gardener, night watch, etc.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-12 mb-30">
-                        <div class="featured-wrap">
-                            <p>
-                                Search for the most suitable insurance for the community, with adjusted premiums,
-                                and claims processing.
-                            </p>
-                        </div>
-                    </div>
+                   <div class="wide" style="text-align: center;background: #c0b298;padding: 30px;margin-top: 30px;">
+                       <a href="https://www.atib.es/TA/contenido.aspx?Id=9854&lang=es" style="color: #fff;">View ITP (Stamp duty)tax rates here</a>
+                   </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@push('css')
+    <style>
+        .area p{
+            display: flex;
+            justify-content: center;
+        }
+        .list ul {
+            background: #dededc;
+            border-radius: 4px;
+            padding: 20px 30px;
+            margin-top: 20px;
+            height: 520px;
+        }
+        .right{
+            background: #dededc;
+            padding: 20px;
+            border-radius: 4px ;
+        }
+        .right p{
+            padding-top: 40px;
+        }
+        .bottom{
+            margin-top: 20px;
+            background: #c0b298;
+            padding: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+    </style>
+    @endpush

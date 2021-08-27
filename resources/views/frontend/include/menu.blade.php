@@ -32,19 +32,19 @@
             <li>
                 <a class="{{$routeName == 'insurance.services' ? 'active':''}}" href="{{route('insurance.services')}}">Insurance Services</a>
             </li>
-            <li>
-                <a class="{{$routeName == 'green.energy' ? 'active':''}}" href="{{route('green.energy')}}">Green Electricity</a>
-            </li>
+{{--            <li>--}}
+{{--                <a class="{{$routeName == 'green.energy' ? 'active':''}}" href="{{route('green.energy')}}">Green Electricity</a>--}}
+{{--            </li>--}}
         </ul>
     </li>
     <li>
-        <a href="{{route('our.fees')}}">For Businesess <i class="fa fa-caret-down"></i></a>
+        <a href="{{route('our.fees')}}">For Businesses <i class="fa fa-caret-down"></i></a>
         <ul class="submenu">
             <li>
                 <a class="{{$routeName == 'administracion.de.fincas' ? 'active':''}}" href="{{route('administracion.de.fincas')}}">Finca Administration</a>
             </li>
             <li>
-                <a class="{{$routeName == 'our.fees' ? 'active':''}}" href="{{route('our.fees')}}">Our Fees</a>
+                <a class="{{$routeName == 'our.fees' ? 'active':''}}" href="{{route('our.fees')}}">BUSINESS START-UP</a>
             </li>
             <li>
                 <a class="{{$routeName == 'accounts.bookkeeping' ? 'active':''}}" href="{{route('accounts.bookkeeping')}}">Accounts &amp; Bookkeeping</a>
