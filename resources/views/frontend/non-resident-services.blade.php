@@ -283,18 +283,18 @@
                 var countryVal = 1;
                 if (year.val() === 'YES'){
                     if (country.val() === 'YES'){
-                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 1.1 * 19) / 100));
+                        totalAmount =  (((parseFloat(amount.val()) * 1.1) / 100) * 19) / 100;
                     }else{
-                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 1.1 * 24) / 100));
+                        totalAmount = (((parseFloat(amount.val()) * 1.1) / 100) * 24) / 100;
                     }
                 }else{
                     if (country.val() === 'YES'){
-                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 2 * 19) / 100));
+                        totalAmount = (((parseFloat(amount.val()) * 2) / 100) * 19) / 100;
                     }else{
-                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 2 * 24) / 100));
+                        totalAmount = (((parseFloat(amount.val()) * 2) / 100) * 24) / 100;
                     }
                 }
-                $('#total').val(new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(totalAmount))
+                $('#total').val(new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(totalAmount.toFixed(2)))
             }
         });
         function addCommas(x) {
