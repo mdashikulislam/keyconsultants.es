@@ -6,25 +6,21 @@
     <div class="content-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 offset-lg-1 col-12">
+                <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
                     <div class="property-content">
-                        <p>
-                            At&nbsp;<strong>Key Consultants Mallorca</strong>&nbsp; we are pleased to offer you our
-                            outstanding Administración de Fincas – a complete professional service for your
-                            community with a personal touch.
-                        </p>
-                        <p>
-                            We are not just administrators of your community, we want you to think that we are part
-                            of it.&nbsp; We will assist the president and works committee members in every way we
-                            can to ensure the correct running of your community. We have invested in the latest IT
-                            equipment and providing an online portal that can be accessed 24/7 by every property
-                            owner within your &nbsp;community. In the portal you can see your co-efficient, access
-                            your accounts, change your bank details, report a complaint and much much more.
-                        </p>
-                        <div class="text-center mt-50">
-                            <a href="{{route('contact')}}" class="contact-btn">Get Quote</a>
-                        </div>
+                         <h2>Let Key Consultants Prepare your Spanish Will </h2>
+                         <p>At Key Consultants we cannot stress the importance of preparing a Will covering your assets in Spain and opting to for your estate to be distributed in accordance with the laws of your country of nationality.</p>
                     </div>
+                    <div class="media-panel mt-5">
+                        <h2>Non-Resident taxes – Holiday Homes</h2>
+                        <p style="overflow: hidden;text-align: justify"> Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did <img style="width: 35%;height: auto;float: left;" class="align-self-center mr-3" src="{{asset('frontend/assets/images/bow.png')}}" alt="Generic placeholder image">Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did you know that a Spanish national cannot disinherit a child? Or that a spouse does not automatically inherit the property if there are descendants and or ascendants?
+                                    Whilst you may have made a Will in your country of Nationality, covering your property in Spain, on your death, your executor or beneficiary will need to apply for letters of administration or apply to the court for probate. This procedure could take a while and could surpass the time frame for accepting inheritance and paying the respective taxes here in Spain. Especially if your estate needs to be divided and taxes need to </p>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
+                    <h2>Let Key Consultants Prepare your Will in Both Spanish and in English </h2>
+                    <h2>for only 90€ plus Iva </h2>
                 </div>
             </div>
         </div>

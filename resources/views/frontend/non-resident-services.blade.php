@@ -16,12 +16,7 @@
                        </div>
                         <div class="media-panel mt-5">
                             <h2>Non-Resident taxes – Holiday Homes</h2>
-                            <div class="media mt-3">
-                                <img style="width: 35%;height: auto" class="align-self-center mr-3" src="{{asset('frontend/assets/images/tax.jpg')}}" alt="Generic placeholder image">
-                                <div class="media-body">
-                                    <p>If you own a property in Spain, but are not resident in Spain, your property is deemed to be available for letting purposes and available for you to make money. As such, even though you have no intention of letting your property, you are taxed a nominal value that is based on the Cadastral value of the property.  Every property in Spain has a cadastral reference and value, which is calculated by the Spanish Government based on a specific calculation.  You can find the cadastral reference on you IBI (Rates) Receipts issued yearly by the local authority.</p>
-                                </div>
-                            </div>
+                            <p style="overflow:hidden;margin-top: 20px;text-align: justify"><img style="width: 35%;height: auto;float: left" class="align-self-center mr-3" src="{{asset('frontend/assets/images/tax.jpg')}}" alt="Generic placeholder image">If you own a property in Spain, but are not resident in Spain, your property is deemed to be available for letting purposes and available for you to make money. As such, even though you have no intention of letting your property, you are taxed a nominal value that is based on the Cadastral value of the property.  Every property in Spain has a cadastral reference and value, which is calculated by the Spanish Government based on a specific calculation.  You can find the cadastral reference on you IBI (Rates) Receipts issued yearly by the local authority.</p>
                         </div>
                         <div class="payment-text mt-5">
                             <h2>Payment of Non-Resident Taxes</h2>
@@ -33,92 +28,95 @@
                             <p>Key Consultants can help you submit your tax return on your behalf.</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="box">
-                                <div class="icon">
-                                    <i class="fa fa-home" style="color: #3b5998"></i>
-                                </div>
-                                <div class="heading">
-                                    <h2 style="color: #3b5998">1. Complete our online form</h2>
-                                    <p>Complete our online tax form on our website in less than 5 minutes and pay our fee online</p>
-                                    <p>If you have any questions we will guide you through the process by phone, by chat or by e-mail.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="box">
-                                <div class="icon">
-                                    <i class="fa fa-file" style="color: #55acee"></i>
-                                </div>
-                                <div class="heading">
-                                    <h2 style="color: #55acee">2. We prepare and submit your taxes on your behalf</h2>
-                                    <p>We calculate your tax to ensure that the information is correct and submit your tax return to the Spanish tax authority.</p>
-                                    <p>The tax payment will be set on direct debit and you do not have to go to the bank.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                            <div class="box">
-                                <div class="icon">
-                                    <i class="fa fa-check" style="color: #18a500"></i>
-                                </div>
-                                <div class="heading">
-                                    <h2 style="color: #18a500">3. You are done and receive a confirmation</h2>
-                                    <p>You will receive confirmation from us and the tax will be collected by the Spanish tax authority from your Spanish bank account via direct debit.</p>
-                                    <p>That´s it, your done!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mt-3">
-                        <div class="com-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
-                            <div class="text">
-                                <a href="" style="display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-4">
                     <form action="" id="calculator">
                         <div class="calculator">
-                        <h4>Calculate your non-resident taxes</h4>
-                        <div class="models">
-                            <p class="cal-text">NON RESIDENT TAX CALCULATOR</p>
-                            <div class="form-group group-sec">
-                                <label for="">Please enter the catastral Value if your Property</label>
-                                <input id="amount" name="amount" type="number" class="form-control">
-                            </div>
-                            <div class="form-group radio-b text-center">
-                                <p>Has the catastral Value been revised in the last 10 years</p>
-                                <input value="YES" checked  type="radio" id="test3" name="year">
-                                <label for="test3">YES</label>
-                                <input value="NO" type="radio" id="test4" name="year">
-                                <label for="test4">NO</label>
-                            </div>
-                            <div class="form-group radio-b text-center">
-                                <p>Are you a resident in a country within the Europe Union?</p>
-                                <input value="YES" checked type="radio" id="test" name="country">
-                                <label for="test">YES</label>
-                                <input value="NO" type="radio" id="test2" name="country">
-                                <label for="test2">NO</label>
-                            </div>
-                            <div class="text-center">
-                                <p style="font-weight: bold">TOTAL TAX TO PAY</p>
-                            </div>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" style="font-weight:bold;" id="basic-addon1">€</span>
+                            <h4>Calculate your non-resident taxes</h4>
+                            <div class="models">
+                                <p class="cal-text">NON RESIDENT TAX CALCULATOR</p>
+                                <div class="form-group group-sec">
+                                    <label for="">Please enter the catastral Value if your Property</label>
+                                    <input id="amount" name="amount" type="number" class="form-control">
                                 </div>
-                                <input id="total" type="text" disabled class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                            </div>
-                            <div class="form-group text-center">
-                                <button class="btn btn-success">Calculate</button>
-                                <button type="reset" class="btn btn-dark">Reset</button>
+                                <div class="form-group radio-b text-center">
+                                    <p>Has the catastral Value been revised in the last 10 years</p>
+                                    <input value="YES" checked  type="radio" id="test3" name="year">
+                                    <label for="test3">YES</label>
+                                    <input value="NO" type="radio" id="test4" name="year">
+                                    <label for="test4">NO</label>
+                                </div>
+                                <div class="form-group radio-b text-center">
+                                    <p>Are you a resident in a country within the Europe Union?</p>
+                                    <input value="YES" checked type="radio" id="test" name="country">
+                                    <label for="test">YES</label>
+                                    <input value="NO" type="radio" id="test2" name="country">
+                                    <label for="test2">NO</label>
+                                </div>
+                                <div class="text-center">
+                                    <p style="font-weight: bold">TOTAL TAX TO PAY</p>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" style="font-weight:bold;" id="basic-addon1">€</span>
+                                    </div>
+                                    <input id="total" type="text" disabled class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-success">Calculate</button>
+                                    <button type="reset" class="btn btn-dark">Reset</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     </form>
+                    <div class="text text-center">
+                        <a href="" style="display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa fa-home" style="color: #3b5998"></i>
+                        </div>
+                        <div class="heading">
+                            <h2 style="color: #3b5998">1. Complete our online form</h2>
+                            <p>Complete our online tax form on our website in less than 5 minutes and pay our fee online</p>
+                            <p>If you have any questions we will guide you through the process by phone, by chat or by e-mail.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa fa-file" style="color: #55acee"></i>
+                        </div>
+                        <div class="heading">
+                            <h2 style="color: #55acee">2. We prepare and submit your taxes on your behalf</h2>
+                            <p>We calculate your tax to ensure that the information is correct and submit your tax return to the Spanish tax authority.</p>
+                            <p>The tax payment will be set on direct debit and you do not have to go to the bank.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                    <div class="box">
+                        <div class="icon">
+                            <i class="fa fa-check" style="color: #18a500"></i>
+                        </div>
+                        <div class="heading">
+                            <h2 style="color: #18a500">3. You are done and receive a confirmation</h2>
+                            <p>You will receive confirmation from us and the tax will be collected by the Spanish tax authority from your Spanish bank account via direct debit.</p>
+                            <p>That´s it, your done!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3">
+                <div class="com-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
+                    <div class="text">
+                        <a href="" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -200,10 +198,18 @@
         }
         .box{
             margin-top: 30px;
-            border: 1px solid #0c84ff;
-            height: 600px;
-            padding: 20px;
-            border-radius: 10px;
+            border: 2px solid #c0b298;
+            min-height: 430px;
+            padding: 30px;
+            border-radius: 30px;
+            -webkit-transition: ease .3s;
+            -moz-transition: ease .3s;
+            -ms-transition: ease .3s;
+            -o-transition: ease .3s;
+            transition: ease .3s;
+        }
+        .box:hover{
+            box-shadow: 0px 0px 35px 0px rgb(0 0 0 / 36%);
         }
         .box .icon{
             text-align: center;
@@ -222,7 +228,7 @@
             margin-bottom: 30px;
         }
         .calculator{
-            border: 1px solid #0c84ff;
+            border: 2px solid #c0b298;
             border-radius: 10px;
             padding: 20px;
         }
