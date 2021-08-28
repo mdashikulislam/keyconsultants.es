@@ -285,10 +285,14 @@
                     if (country.val() === 'YES'){
                         totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 1.1 * 19) / 100));
                     }else{
-
+                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 1.1 * 24) / 100));
                     }
                 }else{
-
+                    if (country.val() === 'YES'){
+                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 2 * 19) / 100));
+                    }else{
+                        totalAmount = parseInt(amount.val()) + (Math.round((parseInt(amount.val()) * 2 * 24) / 100));
+                    }
                 }
                 $('#total').val(new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(totalAmount))
             }
