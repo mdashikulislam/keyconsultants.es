@@ -350,6 +350,10 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function spanishWill()
+    {
+        return view('frontend.spanish-will');
+    }
     public function favorite(Request $request)
     {
         if ($request->mode == 0){
