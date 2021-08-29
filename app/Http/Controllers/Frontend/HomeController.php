@@ -352,7 +352,7 @@ class HomeController extends Controller
 
     public function spanishWill()
     {
-        return view('frontend.spanish-will');
+        return view('frontend.spanish-will-form');
     }
     public function favorite(Request $request)
     {

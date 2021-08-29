@@ -916,7 +916,8 @@
     </div>
 @endsection
 @push('css')
-    <link href="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/css/smart_wizard_all.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('frontend/assets/css/smart_wizard.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('frontend/assets/css/smart_wizard_arrows.css')}}" rel="stylesheet" type="text/css" />
     <style>
         .select2-container .select2-selection--single{
             height: 36px!important;
@@ -927,35 +928,25 @@
     </style>
 @endpush
 @push('js')
-    <script src="https://cdn.jsdelivr.net/npm/smartwizard@5/dist/js/jquery.smartWizard.min.js" type="text/javascript"></script>
+    <script src="{{asset('frontend/assets/js/jquery.smartWizard.js')}}" type="text/javascript"></script>
     <script>
         $(document).ready(function (){
             $('.select2').select2();
             $('#smartwizard').smartWizard({
                 theme:'arrows',
-                selected: 0,
-                justified: true,
-                darkMode:false,
-                autoAdjustHeight: true,
-                cycleSteps: false,
-                backButtonSupport: true,
-                enableURLhash: true,
-                transition: {
-                    animation: 'slide-horizontal',
-                },
             });
+        })
 
-
-            $('#marrage_time').on('change',function (){
-                console.log($(this).val())
-                if ($(this).val() == 'Never Married' || $(this).val() == 1){
-                    $('#marraige_list').empty()
-                }else{
-                    $('#marraige_list').empty()
-                    $('#marraige_list').append(`<div class="row">
+        $('#marrage_time').on('change',function (){
+            console.log($(this).val())
+            if ($(this).val() == 'Never Married' || $(this).val() == 1){
+                $('#marraige_list').empty()
+            }else{
+                $('#marraige_list').empty()
+                $('#marraige_list').append(`<div class="row">
                                                     <div class="form-group col-lg-4 com-md-4 col-xs-12 col-sm-12">
-                                                        <label>Current Spouse First name</label>
-                                                        <input type="text" class="form-control">
+                                                        <label for="sd">Current Spouse First name</label>
+                                                        <input id="sd" type="text" class="form-control">
                                                     </div>
                                                     <div class="form-group col-lg-4 com-md-4 col-xs-12 col-sm-12">
                                                         <label>Current Spouse Surname</label>
@@ -972,8 +963,7 @@
                                                         </select>
                                                     </div>
                                             </div>`);
-                }
-            });
+            }
         });
     </script>
 @endpush
