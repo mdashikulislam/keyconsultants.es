@@ -906,6 +906,11 @@
 @push('css')
     <link rel="stylesheet" href="{{asset('frontend/assets/smart-wizerd/css/smart_wizard.min.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/smart-wizerd/css/smart_wizard_arrows.min.css')}}">
+    <style>
+        .tab-content{
+            height: unset!important;
+        }
+    </style>
 @endpush
 @push('js')
     <script src="{{asset('frontend/assets/smart-wizerd/js/jquery.smartWizard.js')}}"></script>
@@ -916,8 +921,7 @@
             });
         });
 
-        $('#marrage_time').on('change',function (){
-            console.log($(this).val())
+        $(document).on('change','#marrage_time',function (){
             if ($(this).val() == 'Never Married' || $(this).val() == 1){
                 $('#marraige_list').empty()
             }else{
@@ -971,13 +975,10 @@
                                                     </div>
                                             </div>`);
             }
-        });
 
-    </script>
-    <script >
-        $('#current_child').on('change',function (){
-            console.log($('#current_child').val())
-            if (parseInt(value) > 0){
+        });
+        $(document).on('change','#current_child',function (){
+            if (parseInt($(this).val()) > 0){
                 $('#current').empty();
                 $('#current').append(`
                                         <div class="form-group col-lg-4 com-md-4 col-xs-12 col-sm-12">
