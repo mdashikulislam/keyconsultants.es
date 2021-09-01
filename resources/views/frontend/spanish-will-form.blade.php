@@ -34,7 +34,8 @@
                             </a>
                         </li>
                     </ul>
-                    <div class="tab-content">
+                    <form action="sdgsdg" method="post">
+                        <div class="tab-content">
                         <div id="step-1" class="tab-pane" role="tabpanel">
                             <div class="row" style="padding: 20px">
                                 <div class="form-group col-lg-4 com-md-4 col-12">
@@ -992,11 +993,11 @@
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
 @push('css')
     <link rel="stylesheet" href="{{asset('frontend/assets/smart-wizerd/css/smart_wizard.min.css')}}">
@@ -1005,6 +1006,9 @@
         .tab-content{
             height: unset!important;
         }
+        .sw-btn-next.disabled{
+            opacity: 1;
+        }
     </style>
 @endpush
 @push('js')
@@ -1012,8 +1016,63 @@
     <script>
         $(document).ready(function (){
             $('#smartwizard').smartWizard({
-                theme:'arrows'
+                theme:'arrows',
+                toolbarSettings: {
+                    toolbarPosition: 'bottom', // none, top, bottom, both
+                    toolbarButtonPosition: 'right', // left, right
+                    showNextButton: true, // show/hide a Next button
+                    showPreviousButton: true, // show/hide a Previous button
+                    toolbarExtraButtons: [
+                        $('<button></button>').text('Finish')
+                            .addClass('btn btn-info d-none btn-finish')
+                            .on('click', function(){
+                                alert('Finsih button click');
+                            }),
+                    ]
+                },
             });
+            function leaveAStepCallback(obj, context){
+                alert("Leaving step " + context.fromStep + " to go to step " + context.toStep);
+                return validateSteps(context.fromStep); // return false to stay on step and true to continue navigation
+            }
+
+            function onFinishCallback(objs, context){
+                if(validateAllSteps()){
+                    $('form').submit();
+                }
+            }
+            function validateSteps(stepnumber){
+                var isStepValid = true;
+                // validate step 1
+                if(stepnumber == 1){
+
+                    console.log(stepnumber)
+                    // Your step validation logic
+                    // set isStepValid = false if has errors
+                }
+                // ...
+            }
+            function validateAllSteps(){
+                var isStepValid = true;
+                // all step validation logic
+                return isStepValid;
+            }
+
+
+
+            $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
+                $('.sw-btn-next').removeClass('d-none');
+                $('.btn-finish').addClass('d-none');
+                if ((nextStepIndex - 1) === 0){
+
+                }else if((nextStepIndex - 1) === 1){
+
+                }else if ((nextStepIndex - 1) == 2){
+                    $('.btn-finish').removeClass('d-none');
+                    $('.sw-btn-next').addClass('d-none');
+                }
+            });
+
         });
         $(document).on('click','#add_beneficiary',function (){
             $('#add_bf').append(`<div class="row" style="padding: 20px">
@@ -1957,13 +2016,7 @@
                 $('#previous').empty();
             }
         });
-        $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
-            if (currentStepIndex === 0){
 
-            }else if(currentStepIndex === 1){
-                console.log(1)
-            }
-        });
         function ordinal(number) {
             const english_ordinal_rules = new Intl.PluralRules("en", {
                 type: "ordinal"
