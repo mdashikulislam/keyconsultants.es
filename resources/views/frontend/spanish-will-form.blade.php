@@ -34,7 +34,7 @@
                             </a>
                         </li>
                     </ul>
-                    <form action="sdgsdg" method="post">
+                    <form id="will-form" action="sdgsdg" method="post">
                         <div class="tab-content">
                         <div id="step-1" class="tab-pane" role="tabpanel">
                             <div class="row" style="padding: 20px">
