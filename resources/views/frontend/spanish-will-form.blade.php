@@ -36,11 +36,11 @@
                     </ul>
                     <form id="will-form" action="sdgsdg" method="post">
                         <div class="tab-content">
-                        <div id="step-1" class="tab-pane" role="tabpanel">
-                            <div class="row" style="padding: 20px">
+                        <div  id="step-1" class="tab-pane" role="tabpanel">
+                            <div class="row" id="form-step-0" role="form" data-toggle="validator" style="padding: 20px">
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Your Surname</label>
-                                    <input name="surname"  type="text"  class="form-control">
+                                    <input name="surname"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Your first name(s)</label>
@@ -861,10 +861,10 @@
                             </div>
                         </div>
                         <div id="step-2" class="tab-pane" role="tabpanel">
-                            <div class="row" style="padding: 20px">
+                            <div class="row" id="form-step-1" role="form" data-toggle="validator" style="padding: 20px">
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Full name of Mother</label>
-                                    <input name="mother_name" type="text"  class="form-control">
+                                    <input required name="mother_name" type="text"  class="form-control">
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Mother Living Status</label>
@@ -1009,10 +1009,29 @@
         .sw-btn-next.disabled{
             opacity: 1;
         }
+        span.error-message{
+            min-height: 25px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            padding: 4px 10px;
+            width: 100%;
+            color: #f44336;
+            background: rgba(244, 67, 54, 0.2);
+            font-size: 12px;
+            line-height: 14px;
+            border-radius: 2px;
+            margin-top: 1px;
+        }
     </style>
 @endpush
 @push('js')
     <script src="{{asset('frontend/assets/smart-wizerd/js/jquery.smartWizard.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+
     <script>
         $(document).ready(function (){
             $('#smartwizard').smartWizard({
@@ -1031,39 +1050,30 @@
                     ]
                 },
             });
-            function leaveAStepCallback(obj, context){
-                alert("Leaving step " + context.fromStep + " to go to step " + context.toStep);
-                return validateSteps(context.fromStep); // return false to stay on step and true to continue navigation
-            }
-
-            function onFinishCallback(objs, context){
-                if(validateAllSteps()){
-                    $('form').submit();
+            $('#will-form').validate({
+                errorElement: 'span',
+                errorClass: 'error-message',
+                rules: {
+                    'surname':{
+                        required: true
+                    },
+                    'mother_name':{
+                        required: true
+                    }
+                },
+                messages: {
+                    'surname': 'Please Enter Sure Name',
+                    'mother_name': 'Please Enter Your Name',
                 }
-            }
-            function validateSteps(stepnumber){
-                var isStepValid = true;
-                // validate step 1
-                if(stepnumber == 1){
-
-                    console.log(stepnumber)
-                    // Your step validation logic
-                    // set isStepValid = false if has errors
-                }
-                // ...
-            }
-            function validateAllSteps(){
-                var isStepValid = true;
-                // all step validation logic
-                return isStepValid;
-            }
-
-
+            });
 
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 $('.sw-btn-next').removeClass('d-none');
                 $('.btn-finish').addClass('d-none');
+
+                var elmForm = $("#form-step-" + currentStepIndex);
                 if ((nextStepIndex - 1) === 0){
+
 
                 }else if((nextStepIndex - 1) === 1){
 
@@ -1071,6 +1081,19 @@
                     $('.btn-finish').removeClass('d-none');
                     $('.sw-btn-next').addClass('d-none');
                 }
+
+                if(stepDirection === 'forward' && elmForm){
+                    elmForm.validator('validate');
+                    var elmErr = elmForm.children('.has-error');
+                    if(elmErr && elmErr.length > 0){
+                        if ($('#will-form').valid()) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    }
+                }
+                return true;
             });
 
         });
@@ -2034,7 +2057,6 @@
            var value = $(this).val();
            if (value == 0){
                $('#other_many').empty();
-
            }else{
                $('#other_many').empty();
                $('#other_many').append(`<label class="control-label">How many</label>
@@ -2067,7 +2089,6 @@
                                         </div>
 `                                   );
                 }
-
             }else{
                 $('#other_list').empty();
             }
