@@ -26,6 +26,13 @@
                                 Legal bits
                             </a>
                         </li>
+                        <li>
+                            <a class="nav-link" href="#step-4">
+                                Step 4
+                                <br>
+                                How would you like your estate to be distributed?
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
                         <div id="step-1" class="tab-pane" role="tabpanel">
@@ -922,7 +929,67 @@
                             </div>
                         </div>
                         <div id="step-3" class="tab-pane" role="tabpanel">
-                            Step 3
+                            <div class="row" style="padding: 20px">
+                                <div class="form-group col-12">
+                                    <label for="">Do you wish for this will to be regulated by the law of your country of residence / nationality?</label>
+                                    <select name="regulated" class="form-control">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="">Do you wish to appoint an Executor (albacin) in the distribution of your estate?</label>
+                                    <select name="executor_distribution" id="executor_distribution" class="form-control">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12">
+                                    <div class="row" id="executor">
+
+                                    </div>
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="">Have you made a previous will in Spain ?</label>
+                                    <select name="made_previous" class="form-control">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="">If you are a registered resident of Spain  - do you want this Will to deal with ALL of your assets in other Countries as well as in Spain?</label>
+                                    <select name="made_previous" class="form-control">
+                                        <option value="No">No</option>
+                                        <option value="Yes">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="step-4" class="tab-pane" role="tabpanel">
+                            <div class="row" style="padding: 20px">
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">First Name</label>
+                                    <input type="text" class="form-control" name="beneficiary_first_name[]">
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">Last Name</label>
+                                    <input type="text" class="form-control" name="beneficiary_last_name[]">
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">Relation Ship</label>
+                                    <input type="text" class="form-control" name="beneficiary_relationship[]">
+                                </div>
+                                <div class="form-group col-md-8 col-lg-8 col-12">
+                                    <label for="">Description</label>
+                                    <textarea name="beneficiary_description[]" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <button id="add_beneficiary" type="button" class="btn btn-success" style="margin-top: 40px;width: 100%">Add More</button>
+                                </div>
+                            </div>
+                            <div id="add_bf">
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -948,6 +1015,55 @@
                 theme:'arrows'
             });
         });
+        $(document).on('click','#add_beneficiary',function (){
+            $('#add_bf').append(`<div class="row" style="padding: 20px">
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">First Name</label>
+                                    <input type="text" class="form-control" name="beneficiary_first_name[]">
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">Last Name</label>
+                                    <input type="text" class="form-control" name="beneficiary_last_name[]">
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <label for="">Relation Ship</label>
+                                    <input type="text" class="form-control" name="beneficiary_relationship[]">
+                                </div>
+                                <div class="form-group col-md-8 col-lg-8 col-12">
+                                    <label for="">Description</label>
+                                    <textarea name="beneficiary_description[]" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                    <button  type="button" class="btn btn-danger rmv_beneficiary" style="margin-top: 40px;width: 100%">Remove</button>
+                                </div>
+                            </div>`);
+        })
+        $(document).on('change','#executor_distribution',function (){
+            if ($(this).val() == 'No'){
+                $('#executor').empty();
+            }else{
+                $('#executor').empty();
+                $('#executor').append(`<div class="form-group col-lg-4 col-md-4 col-12">
+                                            <label for="">Executor first name</label>
+                                            <input type="text" class="form-control" name="executor_first_name">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-12">
+                                            <label for="">Executor Surname</label>
+                                            <input type="text" class="form-control" name="executor_surname">
+                                        </div>
+                                        <div class="form-group col-lg-4 col-md-4 col-12">
+                                            <label for="">NIE/DNI No</label>
+                                            <input type="text" class="form-control" name="executor_nie">
+                                        </div>
+                                        <div class="form-group col-lg-12 col-md-12 col-12">
+                                            <label for="">Address</label>
+                                            <textarea name="executor_address" class="form-control"></textarea>
+                                        </div>`)
+            }
+        })
+        $(document).on('click','.rmv_beneficiary',function (){
+            $(this).closest('.row').remove();
+        })
         $(document).on('change','#marrage_time',function (){
             if ($(this).val() == 'Never Married'){
                 $('#marraige_list').empty()
