@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Your first name(s)</label>
-                                    <input name="first_name"  type="text"  class="form-control">
+                                    <input name="first_name"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Surname at Birth (if different)</label>
@@ -52,27 +52,27 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Gender</label>
-                                    <select name="gender" class="form-control select2">
+                                    <select name="gender" class="form-control select2" required>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Date of Birth</label>
-                                    <input name="dob"  type="date"  class="form-control">
+                                    <input name="dob"  type="date"  class="form-control" required>
                                 </div>
 
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">NIE No</label>
-                                    <input name="nid"  type="text"  class="form-control">
+                                    <input name="nid"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Passport No</label>
-                                    <input name="passport"  type="text"  class="form-control">
+                                    <input name="passport"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Country of issue</label>
-                                    <select name="country_of_issue"  class="form-control select2">
+                                    <select name="country_of_issue"  class="form-control select2" required>
                                         <option value="">Select Country</option>
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -324,11 +324,11 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Expiry date </label>
-                                    <input name="expiry_date"  type="date"  class="form-control">
+                                    <input name="expiry_date"  type="date"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Postcode </label>
-                                    <input name="postcode"  type="text"  class="form-control">
+                                    <input name="postcode"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Country </label>
@@ -584,23 +584,23 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Profession</label>
-                                    <input name="profession" type="text"  class="form-control">
+                                    <input name="profession" type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Email Address</label>
-                                    <input name="email" type="text"  class="form-control">
+                                    <input name="email" type="email"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Contact telephone number</label>
-                                    <input name="telephone"  type="text"  class="form-control">
+                                    <input name="telephone"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Place of birth </label>
-                                    <input name="place_of_birth" type="text"  class="form-control">
+                                    <input name="place_of_birth" type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Country of Birth </label>
-                                    <select name="country_of_birth" class="form-control select2">
+                                    <select name="country_of_birth" class="form-control select2" required>
                                         <option value="">Select Country</option>
                                         <option value="Afganistan">Afghanistan</option>
                                         <option value="Albania">Albania</option>
@@ -852,11 +852,11 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Nationality</label>
-                                    <input name="nationality" type="text"  class="form-control">
+                                    <input name="nationality" type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Address </label>
-                                    <textarea name="address" class="form-control"></textarea>
+                                    <textarea name="address" class="form-control" required></textarea>
                                 </div>
                             </div>
                         </div>
@@ -875,7 +875,7 @@
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Full name of Father </label>
-                                    <input name="father_name" type="text"  class="form-control">
+                                    <input required name="father_name" type="text"  class="form-control">
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Father Living Status</label>
@@ -1031,9 +1031,9 @@
 @push('js')
     <script src="{{asset('frontend/assets/smart-wizerd/js/jquery.smartWizard.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
-
     <script>
         $(document).ready(function (){
+
             $('#smartwizard').smartWizard({
                 theme:'arrows',
                 toolbarSettings: {
@@ -1057,13 +1057,111 @@
                     'surname':{
                         required: true
                     },
+                    'first_name':{
+                        required: true
+                    },
+                    'dob':{
+                        required: true
+                    },
+                    'nid':{
+                        required: true
+                    },
+                    'passport':{
+                        required: true
+                    },
+                    'country_of_issue':{
+                        required: true
+                    },
+                    'expiry_date':{
+                        required: true
+                    },
+                    'postcode':{
+                        required: true
+                    },
+                    'country':{
+                        required: true
+                    },
+                    'profession':{
+                        required: true
+                    },
+                    'email':{
+                        required: true
+                    },
+                    'telephone':{
+                        required: true
+                    },
+                    'place_of_birth':{
+                        required: true
+                    },
+                    'country_of_birth':{
+                        required: true
+                    },
+                    'nationality':{
+                        required: true
+                    },
+                    'address':{
+                        required: true
+                    },
                     'mother_name':{
                         required: true
+                    },
+                    'father_name':{
+                        required: true
+                    },
+                    'current_marriage_country':{
+                        required: true
+                    },
+                    'current_spouse_first_name':{
+                        required: true
+                    },
+                    'current_spouse_surname':{
+                        required: true
+                    },
+                    'previous_spouse_first_name':{
+                        required: true
+                    },
+                    'previous_spouse_surname':{
+                        required: true
+                    },
+
+                    'previous_marriage_country':{
+                        required: true
+                    },
+                    'other_child_first_name[]':{
+                        required: true
+                    },
+                    'other_child_surname[]':{
+                        required: true
+                    },
+                    'executor_first_name':{
+                        required:true
                     }
                 },
                 messages: {
-                    'surname': 'Please Enter Sure Name',
-                    'mother_name': 'Please Enter Your Name',
+                    'surname': 'Please Enter Surname',
+                    'passport': 'Please Enter Passport No',
+                    'nid': 'Please Enter NIE No',
+                    'dob': 'Please Enter Date of Birth',
+                    'first_name': 'Please Enter First Name',
+                    'country_of_issue': 'Please Select Country of issue',
+                    'expiry_date': 'Please Enter Expiry date',
+                    'postcode': 'Please Enter Postcode',
+                    'country': 'Please Select Country',
+                    'profession': 'Please Enter Profession',
+                    'email': 'Please Enter Email Address',
+                    'telephone': 'Please Enter Contact telephone number',
+                    'place_of_birth': 'Please Enter Place of birth',
+                    'country_of_birth': 'Please Select Country of Birth',
+                    'nationality': 'Please Enter Nationality',
+                    'address': 'Please Enter Address',
+                    'mother_name':'Please Enter Mother Name',
+                    'father_name':'Please Enter Father Name',
+                    'current_marriage_country':'Please Select Current Marriage Country',
+                    'current_spouse_first_name':'Please Enter Current Spouse First Name',
+                    'current_spouse_surname':'Please Enter Current Spouse Surname',
+                    'previous_spouse_first_name':'Please Enter Previous Spouse First Name',
+                    'previous_spouse_surname':'Please Enter Previous Spouse Surname',
+                    'previous_marriage_country':'Please Select Previous Marriage Country',
                 }
             });
 
@@ -1087,9 +1185,9 @@
                     var elmErr = elmForm.children('.has-error');
                     if(elmErr && elmErr.length > 0){
                         if ($('#will-form').valid()) {
-                            return true
+                            return true;
                         } else {
-                            return false
+                            return false;
                         }
                     }
                 }
@@ -1123,11 +1221,12 @@
         $(document).on('change','#executor_distribution',function (){
             if ($(this).val() == 'No'){
                 $('#executor').empty();
+
             }else{
                 $('#executor').empty();
                 $('#executor').append(`<div class="form-group col-lg-4 col-md-4 col-12">
                                             <label for="">Executor first name</label>
-                                            <input type="text" class="form-control" name="executor_first_name">
+                                            <input type="text" class="form-control" name="executor_first_name" required>
                                         </div>
                                         <div class="form-group col-lg-4 col-md-4 col-12">
                                             <label for="">Executor Surname</label>
@@ -1140,7 +1239,8 @@
                                         <div class="form-group col-lg-12 col-md-12 col-12">
                                             <label for="">Address</label>
                                             <textarea name="executor_address" class="form-control"></textarea>
-                                        </div>`)
+                                        </div>`);
+                $("#will-form").validator('update');
             }
         })
         $(document).on('click','.rmv_beneficiary',function (){
@@ -1154,7 +1254,7 @@
                 $('#marraige_list').append(`<div class="row">
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label class="control-label">Which country you married</label>
-                                                        <select name="current_marriage_country"  class="form-control select2">
+                                                        <select   name="current_marriage_country"  class="form-control select2" required>
                                                             <option value="">Select Country</option>
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
@@ -1406,11 +1506,11 @@
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label for="">Current Spouse First name</label>
-                                                        <input name="current_spouse_first_name" type="text" class="form-control">
+                                                        <input  name="current_spouse_first_name" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>Current Spouse Surname</label>
-                                                        <input name="current_spouse_surname" type="text" class="form-control">
+                                                        <input  name="current_spouse_surname" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>No Of Children</label>
@@ -1428,12 +1528,13 @@
                                                         </div>
                                                     </div>
                                             </div>`);
+                $("#will-form").validator('update');
             }else{
                 $('#marraige_list').empty()
                 $('#marraige_list').append(`<div class="row">
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label class="control-label">Which country you married</label>
-                                                        <select name="current_marriage_country"  class="form-control select2">
+                                                        <select  name="current_marriage_country"  class="form-control select2" required>
                                                             <option value="">Select Country</option>
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
@@ -1685,11 +1786,11 @@
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label for="">Current Spouse First name</label>
-                                                        <input name="current_spouse_first_name" type="text" class="form-control">
+                                                        <input name="current_spouse_first_name" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>Current Spouse Surname</label>
-                                                        <input name="current_spouse_surname" type="text" class="form-control">
+                                                        <input  name="current_spouse_surname" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>No Of Children</label>
@@ -1708,7 +1809,7 @@
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label class="control-label">Which country you married </label>
-                                                        <select name="previous_marriage_country"  class="form-control select2">
+                                                        <select name="previous_marriage_country"  class="form-control select2" required>
                                                             <option value="">Select Country</option>
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
@@ -1960,11 +2061,11 @@
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label for="">Previous Spouse First Name</label>
-                                                        <input name="previous_spouse_first_name"  type="text" class="form-control">
+                                                        <input name="previous_spouse_first_name"  type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>Previous Spouse Surname </label>
-                                                        <input name="previous_spouse_surname" type="text" class="form-control">
+                                                        <input name="previous_spouse_surname" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>No Children</label>
@@ -1982,6 +2083,7 @@
                                                         </div>
                                                     </div>
                                             </div>`);
+                $("#will-form").validator('update');
             }
 
         });
@@ -2006,6 +2108,7 @@
                                             </select>
                                         </div>
 `                                   );
+                    $("#will-form").validator('update');
                 }
 
             }else{
@@ -2033,6 +2136,7 @@
                                             </select>
                                         </div>
 `                                   );
+                    $("#will-form").validator('update');
                 }
 
             }else{
@@ -2065,6 +2169,7 @@
                                                 <option value="{{$i}}">{{$i}}</option>
                                                     @endfor
                                             </select>`);
+               $("#will-form").validator('update');
            }
         })
         $(document).on('change','#other_child_field',function (){
