@@ -65,11 +65,6 @@ namespace App\Models{
 /**
  * App\Models\Distict
  *
- * @property int $id
- * @property string $name
- * @property string $province_name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Distict newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Distict newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Distict query()
@@ -376,6 +371,75 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Seo query()
  */
 	class Seo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SpanishWill
+ *
+ * @property int $id
+ * @property string $surname
+ * @property string $first_name
+ * @property string|null $surname_at_birth
+ * @property string $gender
+ * @property string $dob
+ * @property string $passport
+ * @property string $country_of_issue
+ * @property string $expiry_date
+ * @property string $postcode
+ * @property string $country
+ * @property string $profession
+ * @property string $email
+ * @property string $telephone
+ * @property string $place_of_birth
+ * @property string $country_of_birth
+ * @property string $nationality
+ * @property string $address
+ * @property string $mother_name
+ * @property string $mother_living_status
+ * @property string $father_name
+ * @property string $father_living_status
+ * @property string $marital_status
+ * @property string $marriage_time
+ * @property string $current_marriage_country
+ * @property string $current_spouse_first_name
+ * @property string $current_spouse_surname
+ * @property int $current_no_of_children
+ * @property string|null $previous_marriage_country
+ * @property string|null $previous_spouse_first_name
+ * @property string|null $previous_spouse_surname
+ * @property int $previous_no_of_children
+ * @property string|null $current_child_first_name
+ * @property string|null $current_child_surname
+ * @property string|null $current_child_type
+ * @property string|null $previous_child_first_name
+ * @property string|null $previous_child_surname
+ * @property string|null $previous_child_type
+ * @property string|null $have_other_child
+ * @property string|null $how_other_child
+ * @property string|null $other_child_first_name
+ * @property string|null $other_child_surname
+ * @property string|null $other_child_type
+ * @property string $regulated
+ * @property string $executor_distribution
+ * @property string|null $executor_first_name
+ * @property string|null $executor_surname
+ * @property string|null $executor_nie
+ * @property string|null $executor_address
+ * @property string $made_previous
+ * @property string $resident_of_spain
+ * @property string|null $beneficiary_first_name
+ * @property string|null $beneficiary_last_name
+ * @property string|null $beneficiary_relationship
+ * @property string|null $beneficiary_description
+ * @property string $payment_status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill query()
+ */
+	class SpanishWill extends \Eloquent {}
 }
 
 namespace App\Models{

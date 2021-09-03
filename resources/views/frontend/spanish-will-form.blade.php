@@ -968,7 +968,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="">If you are a registered resident of Spain  - do you want this Will to deal with ALL of your assets in other Countries as well as in Spain?</label>
-                                    <select name="resident_of_spain " class="form-control">
+                                    <select name="resident_of_spain" class="form-control">
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>
                                     </select>

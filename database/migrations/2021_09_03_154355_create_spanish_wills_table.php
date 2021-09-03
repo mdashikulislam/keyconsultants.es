@@ -41,7 +41,6 @@ class CreateSpanishWillsTable extends Migration
             $table->string('marital_status');
             $table->string('marriage_time');
             $table->string('current_marriage_country');
-            $table->string('current_marriage_country');
             $table->string('current_spouse_first_name');
             $table->string('current_spouse_surname');
             $table->tinyInteger('current_no_of_children')->default(0);

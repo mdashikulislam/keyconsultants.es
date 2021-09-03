@@ -10,6 +10,7 @@ use App\Models\Favorite;
 use App\Models\Property;
 use App\Models\SeekerData;
 use App\Models\SeekerInfo;
+use App\Models\SpanishWill;
 use Barryvdh\DomPDF\PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -406,6 +407,94 @@ class HomeController extends Controller
         return redirect()->back();
     }
 
+    public function willFormSubmit(Request $request)
+    {
+        $will = new SpanishWill();
+        $will->surname = $request->surname;
+        $will->first_name = $request->first_name;
+        $will->surname_at_birth = $request->surname_at_birth;
+        $will->gender = $request->gender;
+        $will->dob = $request->dob;
+        $will->passport = $request->passport;
+        $will->country_of_issue = $request->country_of_issue;
+        $will->expiry_date = $request->expiry_date;
+        $will->postcode = $request->postcode;
+        $will->country = $request->country;
+        $will->profession = $request->profession;
+        $will->email = $request->email;
+        $will->telephone = $request->telephone;
+        $will->place_of_birth = $request->place_of_birth;
+        $will->country_of_birth = $request->country_of_birth;
+        $will->nationality = $request->nationality;
+        $will->address = $request->address;
+        $will->mother_name = $request->mother_name;
+        $will->mother_living_status = $request->mother_living_status;
+        $will->father_living_status = $request->father_living_status;
+        $will->father_name = $request->father_name;
+        $will->marital_status = $request->marital_status;
+        $will->marriage_time = $request->marriage_time;
+        $will->current_marriage_country = $request->current_marriage_country;
+        $will->current_spouse_first_name = $request->current_spouse_first_name;
+        $will->current_spouse_surname = $request->current_spouse_surname;
+        $will->current_no_of_children = $request->current_no_of_children;
+        $will->previous_marriage_country = $request->previous_marriage_country;
+        $will->previous_spouse_first_name = $request->previous_spouse_first_name;
+        $will->previous_spouse_surname = $request->previous_spouse_surname;
+        $will->previous_no_of_children = $request->previous_no_of_children;
+        if ($request->current_child_first_name){
+            $will->current_child_first_name = implode(',',$request->current_child_first_name);
+        }
+        if ($request->current_child_surname){
+            $will->current_child_surname = implode(',',$request->current_child_surname);
+        }
+        if ($request->current_child_type){
+            $will->current_child_type = implode(',',$request->current_child_type);
+        }
+
+
+        if ($request->previous_child_first_name){
+            $will->previous_child_first_name = implode(',',$request->previous_child_first_name);
+        }
+        if ($request->previous_child_surname){
+            $will->previous_child_surname = implode(',',$request->previous_child_surname);
+        }
+        if ($request->previous_child_type){
+            $will->previous_child_type = implode(',',$request->previous_child_type);
+        }
+        $will->have_other_child = $request->have_other_child;
+        $will->how_other_child = $request->how_other_child;
+        if ($request->other_child_first_name){
+            $will->other_child_first_name = implode(',',$request->other_child_first_name);
+        }
+        if ($request->other_child_surname){
+            $will->other_child_surname = implode(',',$request->other_child_surname);
+        }
+        if ($request->other_child_type){
+            $will->other_child_type = implode(',',$request->other_child_type);
+        }
+        $will->regulated = $request->regulated;
+        $will->executor_distribution = $request->executor_distribution;
+        $will->executor_first_name = $request->executor_first_name;
+        $will->executor_surname = $request->executor_surname;
+        $will->executor_nie = $request->executor_nie;
+        $will->executor_address = $request->executor_address;
+        $will->made_previous = $request->made_previous;
+        $will->resident_of_spain = $request->resident_of_spain;
+        if ($request->beneficiary_first_name){
+            $will->beneficiary_first_name = implode(',',$request->beneficiary_first_name);
+        }
+        if ($request->beneficiary_last_name){
+            $will->beneficiary_last_name = implode(',',$request->beneficiary_last_name);
+        }
+        if ($request->beneficiary_relationship){
+            $will->beneficiary_relationship = implode(',',$request->beneficiary_relationship);
+        }
+        if ($request->beneficiary_description){
+            $will->beneficiary_description = implode(',',$request->beneficiary_description);
+        }
+        $will->save();
+        return $request->all();
+    }
     public function willForm(Request $request)
     {
         return $request->all();
