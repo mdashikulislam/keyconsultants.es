@@ -1,7 +1,15 @@
 @extends('frontend.layouts.inner-master')
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div
+        class="sale-breadcumb-area"
+        style="background: url('{{asset('frontend/assets/images/bg/sale.png')}}') repeat-x center center / contain"
+    >
+        <div class="container">
+            <h2 class="sale-breadcumb-title" style="font-size: 50px;">Spanish WIll Form</h2>
+        </div>
+    </div>
+    <div class="container mb-75">
+        <div class="row mt-5">
             <div class="col-md-12">
                 <div id="smartwizard">
                     <ul class="nav">
@@ -34,7 +42,8 @@
                             </a>
                         </li>
                     </ul>
-                    <form id="will-form" action="sdgsdg" method="post">
+                    <form id="will-form" action="{{route('will.form')}}" method="post">
+                        @csrf
                         <div class="tab-content">
                         <div  id="step-1" class="tab-pane" role="tabpanel">
                             <div class="row" id="form-step-0" role="form" data-toggle="validator" style="padding: 20px">
@@ -64,7 +73,7 @@
 
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">NIE No</label>
-                                    <input name="nid"  type="text"  class="form-control" required>
+                                    <input name="nie"  type="text"  class="form-control" required>
                                 </div>
                                 <div class="form-group col-lg-4 com-md-4 col-12">
                                     <label class="control-label">Passport No</label>
@@ -930,7 +939,7 @@
                             </div>
                         </div>
                         <div id="step-3" class="tab-pane" role="tabpanel">
-                            <div class="row" style="padding: 20px">
+                            <div class="row" id="form-step-2" role="form" data-toggle="validator" style="padding: 20px">
                                 <div class="form-group col-12">
                                     <label for="">Do you wish for this will to be regulated by the law of your country of residence / nationality?</label>
                                     <select name="regulated" class="form-control">
@@ -959,7 +968,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="">If you are a registered resident of Spain  - do you want this Will to deal with ALL of your assets in other Countries as well as in Spain?</label>
-                                    <select name="made_previous" class="form-control">
+                                    <select name="resident_of_spain " class="form-control">
                                         <option value="No">No</option>
                                         <option value="Yes">Yes</option>
                                     </select>
@@ -967,22 +976,22 @@
                             </div>
                         </div>
                         <div id="step-4" class="tab-pane" role="tabpanel">
-                            <div class="row" style="padding: 20px">
+                            <div class="row" id="form-step-3" role="form" data-toggle="validator" style="padding: 20px">
                                 <div class="form-group col-md-4 col-lg-4 col-12">
                                     <label for="">First Name</label>
-                                    <input type="text" class="form-control" name="beneficiary_first_name[]">
+                                    <input required type="text" class="form-control" name="beneficiary_first_name[]">
                                 </div>
                                 <div class="form-group col-md-4 col-lg-4 col-12">
                                     <label for="">Last Name</label>
-                                    <input type="text" class="form-control" name="beneficiary_last_name[]">
+                                    <input required type="text" class="form-control" name="beneficiary_last_name[]">
                                 </div>
                                 <div class="form-group col-md-4 col-lg-4 col-12">
                                     <label for="">Relation Ship</label>
-                                    <input type="text" class="form-control" name="beneficiary_relationship[]">
+                                    <input required type="text" class="form-control" name="beneficiary_relationship[]">
                                 </div>
                                 <div class="form-group col-md-8 col-lg-8 col-12">
                                     <label for="">Description</label>
-                                    <textarea name="beneficiary_description[]" class="form-control"></textarea>
+                                    <textarea required name="beneficiary_description[]" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group col-md-4 col-lg-4 col-12">
                                     <button id="add_beneficiary" type="button" class="btn btn-success" style="margin-top: 40px;width: 100%">Add More</button>
@@ -1135,12 +1144,15 @@
                     },
                     'executor_first_name':{
                         required:true
+                    },
+                    'beneficiary_first_name':{
+                        required:true
                     }
                 },
                 messages: {
                     'surname': 'Please Enter Surname',
                     'passport': 'Please Enter Passport No',
-                    'nid': 'Please Enter NIE No',
+                    'nie': 'Please Enter NIE No',
                     'dob': 'Please Enter Date of Birth',
                     'first_name': 'Please Enter First Name',
                     'country_of_issue': 'Please Select Country of issue',
@@ -1168,10 +1180,8 @@
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 $('.sw-btn-next').removeClass('d-none');
                 $('.btn-finish').addClass('d-none');
-
                 var elmForm = $("#form-step-" + currentStepIndex);
                 if ((nextStepIndex - 1) === 0){
-
 
                 }else if((nextStepIndex - 1) === 1){
 
@@ -2164,7 +2174,7 @@
            }else{
                $('#other_many').empty();
                $('#other_many').append(`<label class="control-label">How many</label>
-                                                <select  class="form-control select2" id="other_child_field">
+                                                <select name="how_other_child" class="form-control select2" id="other_child_field">
                                                     @for($i = 0;$i < 10;$i++)
                                                 <option value="{{$i}}">{{$i}}</option>
                                                     @endfor

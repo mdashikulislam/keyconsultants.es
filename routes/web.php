@@ -44,7 +44,7 @@ Route::post('property-seeker', [\App\Http\Controllers\Frontend\HomeController::c
 Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'contactForm'])->name('user.contact.form');
 Route::post('favorite', [\App\Http\Controllers\Frontend\HomeController::class, 'favorite'])->name('favorite');
 Route::get('spanish-will',[\App\Http\Controllers\Frontend\HomeController::class,'spanishWill'])->name('spanish.will');
-
+Route::post('spanish-will-form',[\App\Http\Controllers\Frontend\HomeController::class,'willForm'])->name('will.form');
 
 //Admin Route and Auth
 Auth::routes(['register'=>false]);

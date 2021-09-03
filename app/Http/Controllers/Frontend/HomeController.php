@@ -405,4 +405,9 @@ class HomeController extends Controller
         toast('Property seeker request sent','success');
         return redirect()->back();
     }
+
+    public function willForm(Request $request)
+    {
+        return $request->all();
+    }
 }
