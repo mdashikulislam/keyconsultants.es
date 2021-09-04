@@ -15,6 +15,7 @@ use Barryvdh\DomPDF\PDF;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -492,8 +493,10 @@ class HomeController extends Controller
         if ($request->beneficiary_description){
             $will->beneficiary_description = implode(',',$request->beneficiary_description);
         }
-        $will->save();
-        return $request->all();
+        if ($will->save()){
+            Session::put('will_id',$will->id);
+        }
+        return Session::get('will_id');
     }
     public function willForm(Request $request)
     {

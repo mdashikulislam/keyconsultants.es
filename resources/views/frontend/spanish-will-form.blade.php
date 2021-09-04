@@ -1059,128 +1059,13 @@
                     ]
                 },
             });
-            $('#will-form').validate({
-                errorElement: 'span',
-                errorClass: 'error-message',
-                rules: {
-                    'surname':{
-                        required: true
-                    },
-                    'first_name':{
-                        required: true
-                    },
-                    'dob':{
-                        required: true
-                    },
-                    'nid':{
-                        required: true
-                    },
-                    'passport':{
-                        required: true
-                    },
-                    'country_of_issue':{
-                        required: true
-                    },
-                    'expiry_date':{
-                        required: true
-                    },
-                    'postcode':{
-                        required: true
-                    },
-                    'country':{
-                        required: true
-                    },
-                    'profession':{
-                        required: true
-                    },
-                    'email':{
-                        required: true
-                    },
-                    'telephone':{
-                        required: true
-                    },
-                    'place_of_birth':{
-                        required: true
-                    },
-                    'country_of_birth':{
-                        required: true
-                    },
-                    'nationality':{
-                        required: true
-                    },
-                    'address':{
-                        required: true
-                    },
-                    'mother_name':{
-                        required: true
-                    },
-                    'father_name':{
-                        required: true
-                    },
-                    'current_marriage_country':{
-                        required: true
-                    },
-                    'current_spouse_first_name':{
-                        required: true
-                    },
-                    'current_spouse_surname':{
-                        required: true
-                    },
-                    'previous_spouse_first_name':{
-                        required: true
-                    },
-                    'previous_spouse_surname':{
-                        required: true
-                    },
 
-                    'previous_marriage_country':{
-                        required: true
-                    },
-                    'other_child_first_name[]':{
-                        required: true
-                    },
-                    'other_child_surname[]':{
-                        required: true
-                    },
-                    'executor_first_name':{
-                        required:true
-                    },
-                    'beneficiary_first_name':{
-                        required:true
-                    }
-                },
-                messages: {
-                    'surname': 'Please Enter Surname',
-                    'passport': 'Please Enter Passport No',
-                    'nie': 'Please Enter NIE No',
-                    'dob': 'Please Enter Date of Birth',
-                    'first_name': 'Please Enter First Name',
-                    'country_of_issue': 'Please Select Country of issue',
-                    'expiry_date': 'Please Enter Expiry date',
-                    'postcode': 'Please Enter Postcode',
-                    'country': 'Please Select Country',
-                    'profession': 'Please Enter Profession',
-                    'email': 'Please Enter Email Address',
-                    'telephone': 'Please Enter Contact telephone number',
-                    'place_of_birth': 'Please Enter Place of birth',
-                    'country_of_birth': 'Please Select Country of Birth',
-                    'nationality': 'Please Enter Nationality',
-                    'address': 'Please Enter Address',
-                    'mother_name':'Please Enter Mother Name',
-                    'father_name':'Please Enter Father Name',
-                    'current_marriage_country':'Please Select Current Marriage Country',
-                    'current_spouse_first_name':'Please Enter Current Spouse First Name',
-                    'current_spouse_surname':'Please Enter Current Spouse Surname',
-                    'previous_spouse_first_name':'Please Enter Previous Spouse First Name',
-                    'previous_spouse_surname':'Please Enter Previous Spouse Surname',
-                    'previous_marriage_country':'Please Select Previous Marriage Country',
-                }
-            });
 
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 $('.sw-btn-next').removeClass('d-none');
                 $('.btn-finish').addClass('d-none');
                 var elmForm = $("#form-step-" + currentStepIndex);
+
                 if ((nextStepIndex - 1) === 0){
 
                 }else if((nextStepIndex - 1) === 1){
@@ -1227,6 +1112,7 @@
                                     <button  type="button" class="btn btn-danger rmv_beneficiary" style="margin-top: 40px;width: 100%">Remove</button>
                                 </div>
                             </div>`);
+
         })
         $(document).on('change','#executor_distribution',function (){
             if ($(this).val() == 'No'){
@@ -1538,7 +1424,9 @@
                                                         </div>
                                                     </div>
                                             </div>`);
-                $("#will-form").validator('update');
+
+
+
             }else{
                 $('#marraige_list').empty()
                 $('#marraige_list').append(`<div class="row">
@@ -2093,7 +1981,7 @@
                                                         </div>
                                                     </div>
                                             </div>`);
-                $("#will-form").validator('update');
+
             }
 
         });
@@ -2206,6 +2094,123 @@
                 }
             }else{
                 $('#other_list').empty();
+            }
+        });
+        $('#will-form').validate({
+            errorElement: 'span',
+            errorClass: 'error-message',
+            rules: {
+                'surname':{
+                    required: true
+                },
+                'first_name':{
+                    required: true
+                },
+                'dob':{
+                    required: true
+                },
+                'nid':{
+                    required: true
+                },
+                'passport':{
+                    required: true
+                },
+                'country_of_issue':{
+                    required: true
+                },
+                'expiry_date':{
+                    required: true
+                },
+                'postcode':{
+                    required: true
+                },
+                'country':{
+                    required: true
+                },
+                'profession':{
+                    required: true
+                },
+                'email':{
+                    required: true
+                },
+                'telephone':{
+                    required: true
+                },
+                'place_of_birth':{
+                    required: true
+                },
+                'country_of_birth':{
+                    required: true
+                },
+                'nationality':{
+                    required: true
+                },
+                'address':{
+                    required: true
+                },
+                'mother_name':{
+                    required: true
+                },
+                'father_name':{
+                    required: true
+                },
+                'current_marriage_country':{
+                    required: true
+                },
+                'current_spouse_first_name':{
+                    required: true
+                },
+                'current_spouse_surname':{
+                    required: true
+                },
+                'previous_spouse_first_name':{
+                    required: true
+                },
+                'previous_spouse_surname':{
+                    required: true
+                },
+
+                'previous_marriage_country':{
+                    required: true
+                },
+                'other_child_first_name[]':{
+                    required: true
+                },
+                'other_child_surname[]':{
+                    required: true
+                },
+                'executor_first_name':{
+                    required:true
+                },
+                'beneficiary_first_name':{
+                    required:true
+                }
+            },
+            messages: {
+                'surname': 'Please Enter Surname',
+                'passport': 'Please Enter Passport No',
+                'nie': 'Please Enter NIE No',
+                'dob': 'Please Enter Date of Birth',
+                'first_name': 'Please Enter First Name',
+                'country_of_issue': 'Please Select Country of issue',
+                'expiry_date': 'Please Enter Expiry date',
+                'postcode': 'Please Enter Postcode',
+                'country': 'Please Select Country',
+                'profession': 'Please Enter Profession',
+                'email': 'Please Enter Email Address',
+                'telephone': 'Please Enter Contact telephone number',
+                'place_of_birth': 'Please Enter Place of birth',
+                'country_of_birth': 'Please Select Country of Birth',
+                'nationality': 'Please Enter Nationality',
+                'address': 'Please Enter Address',
+                'mother_name':'Please Enter Mother Name',
+                'father_name':'Please Enter Father Name',
+                'current_marriage_country':'Please Select Current Marriage Country',
+                'current_spouse_first_name':'Please Enter Current Spouse First Name',
+                'current_spouse_surname':'Please Enter Current Spouse Surname',
+                'previous_spouse_first_name':'Please Enter Previous Spouse First Name',
+                'previous_spouse_surname':'Please Enter Previous Spouse Surname',
+                'previous_marriage_country':'Please Select Previous Marriage Country',
             }
         });
     </script>
