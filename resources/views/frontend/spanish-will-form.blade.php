@@ -1054,7 +1054,7 @@
                         $('<button></button>').text('Finish')
                             .addClass('btn btn-info d-none btn-finish')
                             .on('click', function(){
-                                alert('Finsih button click');
+                                $('#smartwizard').submit();
                             }),
                     ]
                 },

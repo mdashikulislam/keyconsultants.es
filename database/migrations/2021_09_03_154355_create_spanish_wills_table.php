@@ -34,20 +34,20 @@ class CreateSpanishWillsTable extends Migration
             $table->text('address');
 
 
-            $table->string('mother_name');
-            $table->string('mother_living_status');
-            $table->string('father_name');
-            $table->string('father_living_status');
-            $table->string('marital_status');
-            $table->string('marriage_time');
-            $table->string('current_marriage_country');
-            $table->string('current_spouse_first_name');
-            $table->string('current_spouse_surname');
-            $table->tinyInteger('current_no_of_children')->default(0);
+            $table->string('mother_name')->nullable();
+            $table->string('mother_living_status')->nullable();
+            $table->string('father_name')->nullable();
+            $table->string('father_living_status')->nullable();
+            $table->string('marital_status')->nullable();
+            $table->string('marriage_time')->nullable();
+            $table->string('current_marriage_country')->nullable();
+            $table->string('current_spouse_first_name')->nullable();
+            $table->string('current_spouse_surname')->nullable();
+            $table->tinyInteger('current_no_of_children')->nullable();
             $table->string('previous_marriage_country')->nullable();
             $table->string('previous_spouse_first_name')->nullable();
             $table->string('previous_spouse_surname')->nullable();
-            $table->tinyInteger('previous_no_of_children')->default(0);
+            $table->tinyInteger('previous_no_of_children')->nullable();
             $table->text('current_child_first_name')->nullable();
             $table->string('current_child_surname')->nullable();
             $table->string('current_child_type')->nullable();

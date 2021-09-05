@@ -45,8 +45,9 @@ Route::post('contact',[\App\Http\Controllers\Frontend\HomeController::class,'con
 Route::post('favorite', [\App\Http\Controllers\Frontend\HomeController::class, 'favorite'])->name('favorite');
 Route::get('spanish-will',[\App\Http\Controllers\Frontend\HomeController::class,'spanishWill'])->name('spanish.will');
 Route::post('spanish-will-form',[\App\Http\Controllers\Frontend\HomeController::class,'willFormSubmit'])->name('will.form');
-
-
+Route::get('payment',[\App\Http\Controllers\Frontend\HomeController::class,'payment'])->name('payment');
+Route::get('/process', [App\Http\Controllers\PaymentController::class ,'paymentAction'])->name('payment_process');
+Route::post('payment-attempt',[\App\Http\Controllers\PaymentController::class,'paymentAttempt'])->name('payment.attempt');
 //Admin Route and Auth
 Auth::routes(['register'=>false]);
 

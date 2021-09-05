@@ -495,11 +495,20 @@ class HomeController extends Controller
         }
         if ($will->save()){
             Session::put('will_id',$will->id);
+            return redirect()->route('payment');
+        }else{
+            toast('Form not saved','error');
+            return  redirect()->route('spanish.will');
         }
-        return Session::get('will_id');
+
     }
-    public function willForm(Request $request)
+    public function payment(Request $request)
     {
-        return $request->all();
+        $willId = Session::get('will_id');
+        if (empty($willId)){
+            toast('Please fill the form first','error');
+            return redirect()->route('spanish.will');
+        }
+        return view('frontend.payment');
     }
 }
