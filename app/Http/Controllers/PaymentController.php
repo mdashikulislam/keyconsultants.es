@@ -51,14 +51,24 @@ class PaymentController extends Controller
                 $willData->save();
                 \DB::commit();
                 $request->session()->forget('will_id');
-                toast('Payment successful','success');
-                return redirect()->route('spanish.will');
+                return redirect()->route('payment.success');
             }catch (\Exception $exception){
                 \DB::rollBack();
+                return redirect()->route('payment.failed');
             }
         }else{
             toast('Payment failed','error');
             return redirect()->route('will.form');
         }
+    }
+
+    public function paymentSuccess()
+    {
+        return view('frontend.payment-success');
+    }
+
+    public function paymentFailed()
+    {
+        return view('frontend.payment-failed');
     }
 }

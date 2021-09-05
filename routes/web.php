@@ -48,6 +48,8 @@ Route::post('spanish-will-form',[\App\Http\Controllers\Frontend\HomeController::
 Route::get('payment',[\App\Http\Controllers\Frontend\HomeController::class,'payment'])->name('payment');
 Route::get('/process', [App\Http\Controllers\PaymentController::class ,'paymentAction'])->name('payment_process');
 Route::post('payment-attempt',[\App\Http\Controllers\PaymentController::class,'paymentAttempt'])->name('payment.attempt');
+Route::get('payment-success',[\App\Http\Controllers\PaymentController::class,'paymentSuccess'])->name('payment.success');
+Route::get('payment-failed',[\App\Http\Controllers\PaymentController::class,'paymentFailed'])->name('payment.failed');
 //Admin Route and Auth
 Auth::routes(['register'=>false]);
 
