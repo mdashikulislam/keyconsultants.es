@@ -17,7 +17,7 @@
                         <form action="{{route('payment.attempt')}}" method="post" id="payment-form">
                             @csrf
                             <div class="form-group">
-                                <label for="card-element">
+                                <label style="font-weight: bold;font-size: 22px;margin-bottom: 20px;font-family: Arial" for="card-element">
                                     Credit or debit card
                                 </label>
                                 <div id="card-element">
@@ -27,7 +27,7 @@
                                 <!-- Used to display Element errors. -->
                                 <div id="card-errors" role="alert"></div>
                             </div>
-                            <button class="btn btn-success">Submit Payment</button>
+                            <button class="btn btn-success mt-3">Submit Payment</button>
                         </form>
                     </div>
                 </div>
@@ -37,16 +37,20 @@
 @endsection
 @push('css')
     <style>
-
+        #card-errors{
+            color: red;
+            margin-top: 10px;
+        }
+        .form-group{
+            margin-bottom: 0!important;
+        }
     </style>
     <script src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
     <script src="https://js.stripe.com/v3/"></script>
 @endpush
 @push('js')
     <script>
-
-
-        var stripe = Stripe('pk_test_51JVtKLIdRtJSsrCaB63pwtebTUBINjkV5Zo8xMwJz72Hidpw0j7f5HeBfBG5vAI7yDwbeShZAEUmNnw0Y37YPbtK00VgGPpgPv');
+        var stripe = Stripe('{{getenv('STRIPE_PUBLIC_KEY')}}');
         var elements = stripe.elements();
 
         var style = {

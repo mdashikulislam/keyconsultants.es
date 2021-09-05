@@ -395,20 +395,20 @@ namespace App\Models{
  * @property string $country_of_birth
  * @property string $nationality
  * @property string $address
- * @property string $mother_name
- * @property string $mother_living_status
- * @property string $father_name
- * @property string $father_living_status
- * @property string $marital_status
- * @property string $marriage_time
- * @property string $current_marriage_country
- * @property string $current_spouse_first_name
- * @property string $current_spouse_surname
- * @property int $current_no_of_children
+ * @property string|null $mother_name
+ * @property string|null $mother_living_status
+ * @property string|null $father_name
+ * @property string|null $father_living_status
+ * @property string|null $marital_status
+ * @property string|null $marriage_time
+ * @property string|null $current_marriage_country
+ * @property string|null $current_spouse_first_name
+ * @property string|null $current_spouse_surname
+ * @property int|null $current_no_of_children
  * @property string|null $previous_marriage_country
  * @property string|null $previous_spouse_first_name
  * @property string|null $previous_spouse_surname
- * @property int $previous_no_of_children
+ * @property int|null $previous_no_of_children
  * @property string|null $current_child_first_name
  * @property string|null $current_child_surname
  * @property string|null $current_child_type
@@ -440,6 +440,27 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill query()
  */
 	class SpanishWill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Transaction
+ *
+ * @property int $id
+ * @property int $will_id
+ * @property string $trx_id
+ * @property string $amount
+ * @property string $receipt_email
+ * @property string $receipt_number
+ * @property string $receipt_url
+ * @property string $balance_transaction
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction query()
+ */
+	class Transaction extends \Eloquent {}
 }
 
 namespace App\Models{
