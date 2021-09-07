@@ -65,11 +65,6 @@ namespace App\Models{
 /**
  * App\Models\Distict
  *
- * @property int $id
- * @property string $name
- * @property string $province_name
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|Distict newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Distict newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Distict query()
@@ -376,6 +371,96 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Seo query()
  */
 	class Seo extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\SpanishWill
+ *
+ * @property int $id
+ * @property string $surname
+ * @property string $first_name
+ * @property string|null $surname_at_birth
+ * @property string $gender
+ * @property string $dob
+ * @property string $passport
+ * @property string $country_of_issue
+ * @property string $expiry_date
+ * @property string $postcode
+ * @property string $country
+ * @property string $profession
+ * @property string $email
+ * @property string $telephone
+ * @property string $place_of_birth
+ * @property string $country_of_birth
+ * @property string $nationality
+ * @property string $address
+ * @property string|null $mother_name
+ * @property string|null $mother_living_status
+ * @property string|null $father_name
+ * @property string|null $father_living_status
+ * @property string|null $marital_status
+ * @property string|null $marriage_time
+ * @property string|null $current_marriage_country
+ * @property string|null $current_spouse_first_name
+ * @property string|null $current_spouse_surname
+ * @property int|null $current_no_of_children
+ * @property string|null $previous_marriage_country
+ * @property string|null $previous_spouse_first_name
+ * @property string|null $previous_spouse_surname
+ * @property int|null $previous_no_of_children
+ * @property string|null $current_child_first_name
+ * @property string|null $current_child_surname
+ * @property string|null $current_child_type
+ * @property string|null $previous_child_first_name
+ * @property string|null $previous_child_surname
+ * @property string|null $previous_child_type
+ * @property string|null $have_other_child
+ * @property string|null $how_other_child
+ * @property string|null $other_child_first_name
+ * @property string|null $other_child_surname
+ * @property string|null $other_child_type
+ * @property string $regulated
+ * @property string $executor_distribution
+ * @property string|null $executor_first_name
+ * @property string|null $executor_surname
+ * @property string|null $executor_nie
+ * @property string|null $executor_address
+ * @property string $made_previous
+ * @property string $resident_of_spain
+ * @property string|null $beneficiary_first_name
+ * @property string|null $beneficiary_last_name
+ * @property string|null $beneficiary_relationship
+ * @property string|null $beneficiary_description
+ * @property string $payment_status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|SpanishWill query()
+ */
+	class SpanishWill extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\Transaction
+ *
+ * @property int $id
+ * @property int $will_id
+ * @property string $trx_id
+ * @property string $amount
+ * @property string $receipt_email
+ * @property string $receipt_number
+ * @property string $receipt_url
+ * @property string $balance_transaction
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Transaction query()
+ */
+	class Transaction extends \Eloquent {}
 }
 
 namespace App\Models{
