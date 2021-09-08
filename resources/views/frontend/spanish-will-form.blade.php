@@ -1425,8 +1425,6 @@
                                                     </div>
                                             </div>`);
 
-
-
             }else{
                 $('#marraige_list').empty()
                 $('#marraige_list').append(`<div class="row">

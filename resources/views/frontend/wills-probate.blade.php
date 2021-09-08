@@ -8,12 +8,11 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
                     <div class="pc">
-                         <h2 style="text-align: justify">Let Key Consultants Prepare your Spanish Will</h2>
+                         <h2 style="text-align: justify;font-size: 30px;margin-bottom: 10px;">Let Key Consultants Prepare your Spanish Will</h2>
                          <p style="text-align: justify">At Key Consultants we cannot stress the importance of preparing a Will covering your assets in Spain and opting to for your estate to be distributed in accordance with the laws of your country of nationality.</p>
                     </div>
-                    <div class="media-panel mt-5">
-                        <h2>Non-Resident taxes – Holiday Homes</h2>
-                        <p style="overflow: hidden;text-align: justify;margin-top: 30px;"> Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did <img style="width: 35%;height: auto;float: left;" class="align-self-center mr-3" src="{{asset('frontend/assets/images/bow.png')}}" alt="Generic placeholder image">Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did you know that a Spanish national cannot disinherit a child? Or that a spouse does not automatically inherit the property if there are descendants and or ascendants?
+                    <div class="media-panel">
+                        <p style="overflow: hidden;text-align: justify;margin-top: 15px;"> Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did <img style="width: 35%;height: auto;float: left;" class="align-self-center mr-3" src="{{asset('frontend/assets/images/bow.png')}}" alt="Generic placeholder image">Rules in relation to inheritance and the distribution of assets differ from country to country. For example, did you know that a Spanish national cannot disinherit a child? Or that a spouse does not automatically inherit the property if there are descendants and or ascendants?
                         Whilst you may have made a Will in your country of Nationality, covering your property in Spain, on your death, your executor or beneficiary will need to apply for letters of administration or apply to the court for probate. This procedure could take a while and could surpass the time frame for accepting inheritance and paying the respective taxes here in Spain. Especially if your estate needs to be divided and taxes need to </p>
                         <p style="text-align: justify">Whilst in the UK your estate is taxed before the assets are distributed, in Spain the individual is taxed on the inheritance they are to receive before the assets can be transferred into their name. There is a limited timeframe of 6 months from the date of death in which to do this. After the 6 month deadline has ended, fines and interest will need to be paid before the assets can be transferred. </p>
                         <p style="text-align: justify">If you hold assets in different countries it is advisable to make a Will in each country covering the assets in each country.  At Key Consultants we can prepare your Spanish Will and even act as your executor in the event of your death.</p>
@@ -26,7 +25,7 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-                    <h2 style="color: #BF8F00;text-align: justify">Let Key Consultants Prepare your Will in Both Spanish and in English for only <strong>90€</strong> plus Iva</h2>
+                    <h2 style="color: #c0b298;;text-align: justify">Let Key Consultants Prepare your Will in Both Spanish and in English for only <strong>90€</strong> plus Iva</h2>
                     <div class="text text-center">
                         <a href="{{route('spanish.will')}}" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 18px;word-break: break-all;border-radius: 4px">Start your Spanish Will Now</a>
                     </div>
