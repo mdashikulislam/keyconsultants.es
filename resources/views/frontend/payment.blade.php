@@ -11,8 +11,12 @@
 
     <div class="container mb-75">
         <div class="row mt-5">
-            <div class="col-6 offset-3">
-                <div class="card">
+            <div class="col-md-8 col-lg-8 col-12">
+                <div class="secure-title d-flex mb-3">
+                    <img style="max-height: 40px" src="{{asset('frontend/assets/images/lock-icon.png')}}" alt="">
+                    <h2 class="ml-2 mt-1" style="color: #c0b298">Secure Payment Form</h2>
+                </div>
+                <div class="card p-3">
                     <div class="card-body">
                         <form action="{{route('payment.attempt')}}" method="post" id="payment-form">
                             @csrf
@@ -23,13 +27,62 @@
                                 <div id="card-element">
                                     <!-- A Stripe Element will be inserted here. -->
                                 </div>
-
                                 <!-- Used to display Element errors. -->
                                 <div id="card-errors" role="alert"></div>
                             </div>
-                            <button class="btn btn-success mt-3">Submit Payment</button>
+                            <div class="payer mt-5">
+                                <h4>Payer Details</h4>
+                                <div class="info">
+                                    <table class="table table-bordered mt-3">
+                                        <tr>
+                                            <td class="font-weight-bold">Surname Name</td>
+                                            <td>{{ucfirst($info->surname)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold">First Name</td>
+                                            <td>{{ucfirst($info->first_name)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold">Email Address</td>
+                                            <td>{{$info->email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="font-weight-bold">Telephone</td>
+                                            <td>{{$info->telephone}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <button style="background: #c0b298;border-color: #c0b298;" class="btn btn-success mt-3">Submit Payment</button>
                         </form>
                     </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4 col-md-4 col-12">
+                <div class="card " style="margin-top: 65px;">
+                    <div class="card-body">
+                        <div>
+                            <h4 style="border-bottom: 2px solid #ededed;padding-bottom: 10px;">Order Information</h4>
+                        </div>
+                        <table class="table table-bordered order-info mt-3">
+                            <tr>
+                                <td>Fee</td>
+                                <td width="20%">90$</td>
+                            </tr>
+                            <tr>
+                                <td>Tax(21%)</td>
+                                <td>18.9$</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>108.9$</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    <img style="max-height: 100px" src="{{asset('frontend/assets/images/logo-stripe.png')}}" alt="">
                 </div>
             </div>
         </div>
@@ -37,12 +90,29 @@
 @endsection
 @push('css')
     <style>
+        .order-info tr td:last-child{
+            text-align: right;
+        }
+        .order-info tr td:first-child{
+            font-weight: bold;
+        }
         #card-errors{
             color: red;
             margin-top: 10px;
         }
         .form-group{
             margin-bottom: 0!important;
+        }
+        .payer .info p{
+            padding: 0;
+            margin: 0;
+        }
+        .card{
+            border-color: #c0b298;
+        }
+        .StripeElement {
+            border: 1px solid #c0b298;
+            padding: 10px;
         }
     </style>
     <script src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>

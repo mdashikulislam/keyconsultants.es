@@ -509,6 +509,10 @@ class HomeController extends Controller
             toast('Please fill the form first','error');
             return redirect()->route('spanish.will');
         }
-        return view('frontend.payment');
+        $info = SpanishWill::where('id',$willId)->first();
+        return view('frontend.payment')
+            ->with([
+                'info'=>$info
+            ]);
     }
 }
