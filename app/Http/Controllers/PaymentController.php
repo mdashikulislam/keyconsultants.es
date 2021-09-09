@@ -29,7 +29,7 @@ class PaymentController extends Controller
         }
         $token = $request->stripeToken;
         $charge = \Stripe\Charge::create([
-            'amount' => 90 * 100,
+            'amount' => 108.9 * 100,
             'currency' => 'usd',
             'description' => 'For Creating will',
             'source' => $token,
