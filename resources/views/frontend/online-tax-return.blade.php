@@ -11,7 +11,7 @@
                         <div class="wizard-content">
                             <form id="example-form" action="#" class="tab-wizard wizard-circle wizard clearfix">
                                 <h6>General information</h6>
-                                <section>
+                                <section class="pb-3">
                                     <div class="row justify-content-center">
                                         <div class="col-lg-8 col-md-8 col-12">
                                             <div class="base">
@@ -320,39 +320,35 @@
                                     </div>
                                 </section>
                                 <h6>The property in Spain</h6>
-                                <section>
-                                    <div class="row">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-4">
-
-                                            <div class="form-group">
-                                                <label for="name-2">First name</label>
-                                                <input id="name-2" name="name" type="text" class="form-control">
+                                <section class="pb-3">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 col-lg-8 col-12">
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <p>Here you will present information about the property in Spain. If you do not know a specific detail, please leave the part of the form unfilled. </p>
+                                                    <p>The information requested below can be found in your IBI-payment, which the municipality send you on a yearly basis to your spanish address.</p>
+                                                    <p>You can also choose to upload a photo or a scanned copy of your IBI-payment and you will not have to fill in the forms on this page and can proceed to next page.</p>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="d-block">I choose to upload a photo of my IBI-payment</label>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input checked class="form-check-input" type="radio" name="ibi_payment" id="exampleRadios1" value="Yes">
+                                                        <label class="form-check-label" for="exampleRadios1">
+                                                            Yes
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline">
+                                                        <input class="form-check-input" type="radio" name="ibi_payment" id="exampleRadios2" value="No">
+                                                        <label class="form-check-label" for="exampleRadios2">
+                                                            I would rather fill in the details myself
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12 radio-change">
+                                                    <label>Please make sure that the photo is readable</label>
+                                                    <input required type="file" name="ibi_file" class="form-control">
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="surname-2">Last name</label>
-                                                <input id="surname-2" name="surname" type="text" class="form-control">
-
-                                            </div>
-                                            <div class="form-group">
-
-                                                <label for="email-2">Email</label>
-                                                <input id="email-2" name="email" type="text" class="form-control email">
-                                            </div>
-
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="form-group">
-                                                <label for="address-2">Address</label>
-                                                <input id="address-2" name="address" type="text" class="form-control">
-
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="age-2">Age</label>
-                                                <input id="age-2" name="age" type="text" class="form-control number">
-
-                                            </div>
-
                                         </div>
                                     </div>
                                 </section>
@@ -808,6 +804,40 @@
     <script src="{{asset('frontend/step/jquery.steps.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.validate.min.js')}}"></script>
     <script>
+        $(document).on('change','input[name="ibi_payment"]',function (){
+            $('.radio-change').empty();
+            if ($(this).val() == 'Yes'){
+                $('.radio-change').append(`<label>Please make sure that the photo is readable</label>
+                                                    <input required type="file" name="ibi_file" class="form-control">`);
+            }else{
+                $('.radio-change').append(`<div class="row">
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >Address in Spain</label>
+                                                            <input required type="text" class="form-control" name="address_in_spain">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >City</label>
+                                                            <input required type="text" class="form-control" name="city_2">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >State / Province / Region</label>
+                                                            <input required type="text" class="form-control" name="state_2">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >Postal / Zip Code</label>
+                                                            <input required type="text" class="form-control" name="postal_2">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >Catastral reference</label>
+                                                            <input required type="text" class="form-control" name="catastral_reference">
+                                                        </div>
+                                                        <div class="form-group col-lg-6 col-md-6 col-12">
+                                                            <label >Catastral value in euro</label>
+                                                            <input required type="text" class="form-control" name="catastral_value_in_euro">
+                                                        </div>
+                                                    </div>`);
+            }
+        })
         $(document).on('click','.remove',function (){
             event.preventDefault();
             $(this).closest('div.row').empty();
@@ -1123,6 +1153,7 @@
             {
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
+                //return true;
             },
         }).validate({
             errorElement: 'span',
