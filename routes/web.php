@@ -50,6 +50,8 @@ Route::get('/process', [App\Http\Controllers\PaymentController::class ,'paymentA
 Route::post('payment-attempt',[\App\Http\Controllers\PaymentController::class,'paymentAttempt'])->name('payment.attempt');
 Route::get('payment-success',[\App\Http\Controllers\PaymentController::class,'paymentSuccess'])->name('payment.success');
 Route::get('payment-failed',[\App\Http\Controllers\PaymentController::class,'paymentFailed'])->name('payment.failed');
+Route::get('online-tax-return',[\App\Http\Controllers\Frontend\HomeController::class,'onlineTaxReturn'])->name('online.tax.return');
+
 //Admin Route and Auth
 Auth::routes(['register'=>false]);
 

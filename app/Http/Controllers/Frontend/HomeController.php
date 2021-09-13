@@ -515,4 +515,9 @@ class HomeController extends Controller
                 'info'=>$info
             ]);
     }
+
+    public function onlineTaxReturn()
+    {
+        return view('frontend.online-tax-return');
+    }
 }

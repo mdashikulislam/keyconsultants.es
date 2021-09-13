@@ -3,7 +3,6 @@
     NON-RESIDENT TAXES
 @endsection
 @section('content')
-
     <div class="content-area" style="padding-bottom: 80px">
         <div class="container">
             <div class="row">
@@ -70,7 +69,7 @@
                         </div>
                     </form>
                     <div class="text text-center">
-                        <a href="" style="text-align: center;display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 18px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                        <a href="{{route('online.tax.return')}}" style="text-align: center;display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 18px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +114,7 @@
             <div class="row justify-content-center mt-3">
                 <div class="com-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
                     <div class="text">
-                        <a href="" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                        <a href="{{route('online.tax.return')}}" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
                     </div>
                 </div>
             </div>

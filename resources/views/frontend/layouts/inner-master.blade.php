@@ -2,7 +2,7 @@
 @php
   $routeName = Route::currentRouteName();
 @endphp
-@if($routeName != 'about.us' && $routeName != 'properties' && $routeName != 'contact' && $routeName !='properties.details' && $routeName !='property.sale' && $routeName !='property.rent' && $routeName!='spanish.will' && $routeName!='payment')
+@if($routeName != 'about.us' && $routeName != 'properties' && $routeName != 'contact' && $routeName !='properties.details' && $routeName !='property.sale' && $routeName !='property.rent' && $routeName!='spanish.will' && $routeName!='payment' && $routeName !='payment.success')
 <div
     class="breadcumb-area"
     style="background: url('{{asset('frontend/assets/images/bg/property.webp')}}') no-repeat center center / cover">
