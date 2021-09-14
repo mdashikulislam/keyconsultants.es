@@ -352,68 +352,80 @@
                                         </div>
                                     </div>
                                 </section>
-                                <h6>The property in Spain</h6>
-                                <section>
-                                    <div class="row">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-8">
-                                            <div class="form-group">
-                                                <label>This is the question that is being asked to the user?</label>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
-                                                        Option one is this and that&mdash;be sure to include why it's great
-                                                    </label>
+                                <h6>Account details</h6>
+                                <section class="pb-3">
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 col-lg-8 col-12">
+                                            <div class="row">
+                                                <div class="form-group col-12">
+                                                    <label for="iban_code">IBAN-code (account number) at your spanish bank</label>
+                                                    <input required id="iban_code" type="text" class="form-control" name="iban_code" placeholder="Your tax will deducted from this account">
                                                 </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" >
-                                                        Option two can be something else and selecting it will deselect option one
-                                                    </label>
+                                                <div class="form-group col-12">
+                                                    <p>We will never have access to your bank account. You will pay our fee with a debit/credit card.</p>
                                                 </div>
-                                                <div class="radio">
-                                                    <label>
-                                                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" >
-                                                        Option three. This is just a demo.
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
+                                                    <label for="whole_tax_year">Have you owned the property the whole tax year?
                                                     </label>
+                                                    <select name="whole_tax_year" id="whole_tax_year" class="form-control">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
                                                 </div>
-                                            </div></div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-sm-2"></div>
-                                        <div class="col-sm-4">
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
+                                                    <label for="rental_year">Have you had the property for rental during the year?
+                                                    </label>
+                                                    <select name="rental_year" id="rental_year" class="form-control">
+                                                        <option value="Yes">Yes</option>
+                                                        <option value="No">No</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="whole_tax_year_append">
 
-                                            <div class="form-group">
-                                                <label for="name-2">First name</label>
-                                                <input id="name-2" name="name" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="surname-2">Last name</label>
-                                                <input id="surname-2" name="surname" type="text" class="form-control">
-
-                                            </div>
-
-
-                                        </div>
-                                        <div class="col-sm-4">
-
-                                            <div class="form-group">
-                                                <label for="age-2">Age</label>
-                                                <input id="age-2" name="age" type="text" class="form-control number">
-
-                                            </div>
-                                            <div class="form-group">
-
-                                                <label for="email-2">Email</label>
-                                                <input id="email-2" name="email" type="text" class="form-control email">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <label class="d-block">I want to declare tax year</label>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input class="form-check-input" type="checkbox" name="tax_year[]" value="2020" id="flexCheckDefault1">
+                                                        <label class="form-check-label" for="flexCheckDefault1">
+                                                            2020
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input class="form-check-input" type="checkbox" name="tax_year[]" value="2019" id="flexCheckDefault2">
+                                                        <label class="form-check-label" for="flexCheckDefault2">
+                                                            2019
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input class="form-check-input" type="checkbox" name="tax_year[]" value="2018" id="flexCheckDefault3">
+                                                        <label class="form-check-label" for="flexCheckDefault3">
+                                                            2018
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input class="form-check-input" type="checkbox" name="tax_year[]" value="2017" id="flexCheckDefault4">
+                                                        <label class="form-check-label" for="flexCheckDefault4">
+                                                            2017
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check d-inline mr-3">
+                                                        <input class="form-check-input" type="checkbox" name="tax_year[]" value="2016" id="flexCheckDefault5">
+                                                        <label class="form-check-label" for="flexCheckDefault5">
+                                                            2016
+                                                        </label>
+                                                    </div>
+                                                    <p class="d-block mt-3">The tax is always declared the year after the tax year, meaning during 2021 the tax is declared for tax year 2020. Please do note that our fee in this form is calculated just for one tax year. If you wish to declare several years the additional years will be paid separately.</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
                                 <h6>Present your taxes and make payment</h6>
-                                <section>
-                                    <input id="acceptTerms-2" name="acceptTerms" type="checkbox" class=""> <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                <section class="pb-3">
+
                                 </section>
                             </form>
                         </div>
@@ -804,6 +816,17 @@
     <script src="{{asset('frontend/step/jquery.steps.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.validate.min.js')}}"></script>
     <script>
+        $(document).on('change','#whole_tax_year',function (){
+            $('.whole_tax_year_append').empty();
+            if ($(this).val() == 'No'){
+                $('.whole_tax_year_append').append(`<div class="row">
+                                                            <div class="form-group col-12">
+                                                                <label for="buy_the_property">When did you buy the property?</label>
+                                                                <input required type="date" name="buy_the_property" class="form-control">
+                                                            </div>
+                                                        </div>`);
+            }
+        });
         $(document).on('change','input[name="ibi_payment"]',function (){
             $('.radio-change').empty();
             if ($(this).val() == 'Yes'){
@@ -1151,9 +1174,9 @@
             titleTemplate: '<span class="step">#index#</span> #title#',
             onStepChanging: function (event, currentIndex, newIndex)
             {
-                form.validate().settings.ignore = ":disabled,:hidden";
-                return form.valid();
-                //return true;
+                // form.validate().settings.ignore = ":disabled,:hidden";
+                // return form.valid();
+                return true;
             },
         }).validate({
             errorElement: 'span',
