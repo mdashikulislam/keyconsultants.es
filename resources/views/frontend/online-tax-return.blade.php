@@ -4,12 +4,13 @@
 @endsection
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin: 60px 0;">
             <div class="col-12">
-                <div class="card">
+                <div class="card ">
                     <div class="card-body">
                         <div class="wizard-content">
-                            <form id="example-form" action="#" class="tab-wizard wizard-circle wizard clearfix">
+                            <form id="example-form" action="{{route('online.tax.return')}}" method="POST" class="tab-wizard wizard-circle wizard clearfix">
+                                @csrf
                                 <h6>General information</h6>
                                 <section class="pb-3">
                                     <div class="row justify-content-center">
@@ -315,7 +316,7 @@
                                             <div id="add-data">
 
                                             </div>
-                                            <button id="add-owner" type="button" class="btn btn-success">Add Owner</button>
+                                            <button id="add-owner" type="button" class="btn btn-success" style="background: #c0b298;border-color: #c0b298">Add Owner</button>
                                         </div>
                                     </div>
                                 </section>
@@ -425,7 +426,54 @@
                                 </section>
                                 <h6>Present your taxes and make payment</h6>
                                 <section class="pb-3">
-
+                                    <div class="row justify-content-center">
+                                        <div class="col-md-8 col-lg-8 col-12">
+                                            <div class="row">
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
+                                                    <label for="">Telephone number for contact person</label>
+                                                    <input required type="text" class="form-control" name="contact_telephone">
+                                                </div>
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
+                                                    <label for="">E-mail address for contact person</label>
+                                                    <input required type="text" class="form-control" name="contact_email">
+                                                </div>
+                                                <div class="form-group col-md-8 col-lg-8 col-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <label style="font-weight: bold;font-size: 22px;margin-bottom: 20px;font-family: Arial" for="card-element">
+                                                                Credit or debit card
+                                                            </label>
+                                                            <div id="card-element">
+                                                                <!-- A Stripe Element will be inserted here. -->
+                                                            </div>
+                                                            <!-- Used to display Element errors. -->
+                                                            <div id="card-errors" role="alert"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4 col-lg-4 col-12">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <table class="table mb-0">
+                                                                <tr>
+                                                                    <td>Subtotal:</td>
+                                                                    <td>$34.95</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>VAT/IVA:</td>
+                                                                    <td>$7.34</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Total:</td>
+                                                                    <td>$42.29</td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </section>
                             </form>
                         </div>
@@ -537,7 +585,10 @@
             background-color: #fff;
             color: #c0b298
         }
-
+        .StripeElement {
+            border: 1px solid #c0b298;
+            padding: 10px;
+        }
         .wizard-content .wizard>.steps>ul>li.disabled a,
         .wizard-content .wizard>.steps>ul>li.disabled a:focus,
         .wizard-content .wizard>.steps>ul>li.disabled a:hover {
@@ -811,10 +862,74 @@
             }
         }
     </style>
+    <script src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 @endpush
 @push('js')
+
     <script src="{{asset('frontend/step/jquery.steps.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.validate.min.js')}}"></script>
+    <script>
+        var stripe = Stripe('{{getenv('STRIPE_PUBLIC_KEY')}}');
+        var elements = stripe.elements();
+
+        var style = {
+            base: {
+                color: "#32325d",
+                fontFamily: 'Arial, sans-serif',
+                fontSmoothing: "antialiased",
+                fontSize: "16px",
+                "::placeholder": {
+                    color: "#32325d"
+                }
+            },
+            invalid: {
+                fontFamily: 'Arial, sans-serif',
+                color: "#fa755a",
+                iconColor: "#fa755a"
+            }
+        };
+
+        // Create an instance of the card Element.
+        var card = elements.create('card', {style: style});
+
+        // Add an instance of the card Element into the `card-element` <div>.
+        card.mount('#card-element');
+        card.on("change", function (event) {
+            // Disable the Pay button if there are no card details in the Element
+            document.querySelector("button").disabled = event.empty;
+            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+        });
+
+        var form = document.getElementById('example-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            stripe.createToken(card).then(function(result) {
+                if (result.error) {
+                    // Inform the customer that there was an error.
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server.
+                    stripeTokenHandler(result.token);
+                }
+            });
+        });
+
+        function stripeTokenHandler(token) {
+            // Insert the token ID into the form so it gets submitted to the server
+            var form = document.getElementById('example-form');
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'stripeToken');
+            hiddenInput.setAttribute('value', token.id);
+            form.appendChild(hiddenInput);
+
+            form.submit();
+        }
+    </script>
+
     <script>
         $(document).on('change','#whole_tax_year',function (){
             $('.whole_tax_year_append').empty();
@@ -1174,10 +1289,21 @@
             titleTemplate: '<span class="step">#index#</span> #title#',
             onStepChanging: function (event, currentIndex, newIndex)
             {
-                // form.validate().settings.ignore = ":disabled,:hidden";
-                // return form.valid();
-                return true;
+                form.validate().settings.ignore = ":disabled,:hidden";
+                return form.valid();
+
             },
+            onFinishing: function (event, currentIndex)
+            {
+                form.validate().settings.ignore = ":disabled";
+                return form.valid();
+
+            },
+            onFinished: function (event, currentIndex)
+            {
+                $("#example-form").submit();
+                console.log(currentIndex)
+            }
         }).validate({
             errorElement: 'span',
             errorClass: 'error-message',
@@ -1210,6 +1336,12 @@
                     required:true
                 },
                 'place_of_birth[]':{
+                    required:true
+                },
+                'cardnumber':{
+                    required:true
+                },
+                'exp-date':{
                     required:true
                 },
             },

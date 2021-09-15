@@ -520,4 +520,9 @@ class HomeController extends Controller
     {
         return view('frontend.online-tax-return');
     }
+
+    public function onlineTaxReturnPost(Request $request)
+    {
+        return view('frontend.payment-success');
+    }
 }
