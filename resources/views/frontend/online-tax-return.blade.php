@@ -18,7 +18,7 @@
                                             <div class="base">
                                                 <div class="row">
                                                     <div class="form-group col-12">
-                                                        <h4 class="d-flex justify-content-between">Owner 1</h4>
+                                                        <h4 class="d-flex justify-content-between">Property owner No: 1</h4>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
                                                         <label >First name </label>
@@ -37,7 +37,7 @@
                                                         <input required id="dob" name="dob[1]" type="date" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="address">Address in your home country</label>
+                                                        <label for="address">Address in your home Country</label>
                                                         <input required id="address" name="address[1]" type="text" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
@@ -301,14 +301,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-12">
-                                                        <p>If your tax residence in in other country than your home adress please notify.</p>
+                                                        <p>If you are a tax resident in another country other than that of where your home address is located, please notify us.</p>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="ownership">Ownership in %</label>
-                                                        <input required id="ownership" name="ownership[1]" type="text" class="form-control ">
+                                                        <label for="ownership">Percentage of Ownership %</label>
+                                                        <input required id="ownership" name="ownership[1]" type="number" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="place_of_birth">Place of birth and country</label>
+                                                        <label for="place_of_birth">Place and Country of birth</label>
                                                         <input required id="place_of_birth" name="place_of_birth[1]" type="text" class="form-control ">
                                                     </div>
                                                 </div>
@@ -320,28 +320,28 @@
                                         </div>
                                     </div>
                                 </section>
-                                <h6>The property in Spain</h6>
+                                <h6>Your property in Spain</h6>
                                 <section class="pb-3">
                                     <div class="row justify-content-center">
                                         <div class="col-md-8 col-lg-8 col-12">
                                             <div class="row">
                                                 <div class="form-group col-12">
-                                                    <p>Here you will present information about the property in Spain. If you do not know a specific detail, please leave the part of the form unfilled. </p>
-                                                    <p>The information requested below can be found in your IBI-payment, which the municipality send you on a yearly basis to your spanish address.</p>
-                                                    <p>You can also choose to upload a photo or a scanned copy of your IBI-payment and you will not have to fill in the forms on this page and can proceed to next page.</p>
+                                                    <p>Here we would like you to present us with information about your property in Spain. If you are unaware of specific details, please leave that part of the form unfilled.</p>
+                                                    <p>The information requested below can be found in your annual IBI-payment, which your  Local Council send to you a yearly basis.</p>
+                                                    <p>You can also choose to upload a scanned copy of your IBI-payment receipt. If you do so, you do not have to complete this section of the form and can proceed to next page.</p>
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label class="d-block">I choose to upload a photo of my IBI-payment</label>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block">
                                                         <input checked class="form-check-input" type="radio" name="ibi_payment" id="exampleRadios1" value="Yes">
                                                         <label class="form-check-label" for="exampleRadios1">
-                                                            Yes
+                                                            Yes, I choose to upload a copy of my IBI-receipt
                                                         </label>
                                                     </div>
-                                                    <div class="form-check d-inline">
+                                                    <div class="form-check d-block">
                                                         <input class="form-check-input" type="radio" name="ibi_payment" id="exampleRadios2" value="No">
                                                         <label class="form-check-label" for="exampleRadios2">
-                                                            I would rather fill in the details myself
+                                                            I would rather fill in the details in myself
                                                         </label>
                                                     </div>
                                                 </div>
@@ -388,43 +388,43 @@
                                                 </div>
                                                 <div class="form-group col-12">
                                                     <label class="d-block">I want to declare tax year</label>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block mr-3">
                                                         <input class="form-check-input" type="checkbox" name="tax_year[]" value="2020" id="flexCheckDefault1">
                                                         <label class="form-check-label" for="flexCheckDefault1">
-                                                            2020
+                                                            2020(Current Year)
                                                         </label>
                                                     </div>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block mr-3">
                                                         <input class="form-check-input" type="checkbox" name="tax_year[]" value="2019" id="flexCheckDefault2">
                                                         <label class="form-check-label" for="flexCheckDefault2">
                                                             2019
                                                         </label>
                                                     </div>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block mr-3">
                                                         <input class="form-check-input" type="checkbox" name="tax_year[]" value="2018" id="flexCheckDefault3">
                                                         <label class="form-check-label" for="flexCheckDefault3">
                                                             2018
                                                         </label>
                                                     </div>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block mr-3">
                                                         <input class="form-check-input" type="checkbox" name="tax_year[]" value="2017" id="flexCheckDefault4">
                                                         <label class="form-check-label" for="flexCheckDefault4">
                                                             2017
                                                         </label>
                                                     </div>
-                                                    <div class="form-check d-inline mr-3">
+                                                    <div class="form-check d-block mr-3">
                                                         <input class="form-check-input" type="checkbox" name="tax_year[]" value="2016" id="flexCheckDefault5">
                                                         <label class="form-check-label" for="flexCheckDefault5">
                                                             2016
                                                         </label>
                                                     </div>
-                                                    <p class="d-block mt-3">The tax is always declared the year after the tax year, meaning during 2021 the tax is declared for tax year 2020. Please do note that our fee in this form is calculated just for one tax year. If you wish to declare several years the additional years will be paid separately.</p>
+                                                    <p class="d-block mt-3">The tax is always declared a year in arears, meaning in 2021 the tax is declared for tax year 2020. Please do note that our fee in this form is calculated just for one tax year. If you wish to declare several years, the additional years will be paid separately.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </section>
-                                <h6>Present your taxes and make payment</h6>
+                                <h6>Present your information and make a payment</h6>
                                 <section class="pb-3">
                                     <div class="row justify-content-center">
                                         <div class="col-md-8 col-lg-8 col-12">
@@ -986,7 +986,7 @@
             i++;
             $('#add-data').append(`<div class="row">
                                                     <div class="form-group col-12 mt-3">
-                                                        <h4 class="d-flex justify-content-between">Owner ${i} <a href="#" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></a></h4>
+                                                        <h4 class="d-flex justify-content-between">Property owner No: ${i} <a href="#" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></a></h4>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
                                                         <label >First name </label>
@@ -1005,7 +1005,7 @@
                                                         <input required id="dob" name="dob[${i}]" type="date" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="address">Address in your home country</label>
+                                                        <label for="address">Address in your home Country</label>
                                                         <input required id="address" name="address[${i}]" type="text" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
@@ -1269,14 +1269,14 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-12">
-                                                        <p>If your tax residence in in other country than your home adress please notify.</p>
+                                                        <p>If you are a tax resident in another country other than that of where your home address is located, please notify us.</p>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="ownership">Ownership in %</label>
-                                                        <input required id="ownership" name="ownership[${i}]" type="text" class="form-control ">
+                                                        <label for="ownership">Percentage of Ownership %</label>
+                                                        <input required id="ownership" name="ownership[${i}]" type="number" class="form-control ">
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
-                                                        <label for="place_of_birth">Place of birth and country</label>
+                                                        <label for="place_of_birth">Place and Country of birth</label>
                                                         <input required id="place_of_birth" name="place_of_birth[${i}]" type="text" class="form-control ">
                                                     </div>
                                                 </div>`);
@@ -1289,6 +1289,7 @@
             titleTemplate: '<span class="step">#index#</span> #title#',
             onStepChanging: function (event, currentIndex, newIndex)
             {
+                return true;
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
 
