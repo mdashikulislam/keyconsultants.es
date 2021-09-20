@@ -263,6 +263,22 @@
         </div>
     </div>
     <style>
+        .terms{
+            margin-bottom: 60px;
+        }
+        .terms h2{
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .terms h2::after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #c0b298;
+            bottom: -10px;
+            left: 0;
+        }
         .terms h4{
             margin-top: 15px;
         }

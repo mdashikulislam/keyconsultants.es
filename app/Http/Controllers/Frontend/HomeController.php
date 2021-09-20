@@ -523,6 +523,7 @@ class HomeController extends Controller
 
     public function onlineTaxReturnPost(Request $request)
     {
+        return $request->all();
         return view('frontend.payment-success');
     }
 }

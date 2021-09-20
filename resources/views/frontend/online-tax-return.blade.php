@@ -18,7 +18,7 @@
                                             <div class="base">
                                                 <div class="row">
                                                     <div class="form-group col-12">
-                                                        <h4 class="d-flex justify-content-between">Property owner No: 1</h4>
+                                                        <h4 class="d-flex justify-content-between owner-count">Property owner No: 1</h4>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
                                                         <label >First name </label>
@@ -427,8 +427,9 @@
                                 <h6>Present your information and make a payment</h6>
                                 <section class="pb-3">
                                     <div class="row justify-content-center">
-                                        <div class="col-md-8 col-lg-8 col-12">
+                                        <div class=" col-12">
                                             <div class="row">
+                                                <input type="hidden" id="amount" name="amount">
                                                 <div class="form-group col-md-6 col-lg-6 col-12">
                                                     <label for="">Telephone number for contact person</label>
                                                     <input required type="text" class="form-control" name="contact_telephone">
@@ -437,7 +438,7 @@
                                                     <label for="">E-mail address for contact person</label>
                                                     <input required type="text" class="form-control" name="contact_email">
                                                 </div>
-                                                <div class="form-group col-md-8 col-lg-8 col-12">
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
                                                     <div class="card">
                                                         <div class="card-body">
                                                             <label style="font-weight: bold;font-size: 22px;margin-bottom: 20px;font-family: Arial" for="card-element">
@@ -450,22 +451,26 @@
                                                             <div id="card-errors" role="alert"></div>
                                                         </div>
                                                     </div>
+                                                    <div class="ico text-center">
+                                                        <img style="width: auto;max-height: 90px" class="mt-3" src="{{asset('frontend/assets/images/logo-stripe.png')}}" alt="">
+                                                    </div>
+
                                                 </div>
-                                                <div class="form-group col-md-4 col-lg-4 col-12">
-                                                    <div class="card">
+                                                <div class="form-group col-md-6 col-lg-6 col-12">
+                                                    <div class="card price">
                                                         <div class="card-body">
                                                             <table class="table mb-0">
                                                                 <tr>
                                                                     <td>Subtotal:</td>
-                                                                    <td>$34.95</td>
+                                                                    <td id="subtotal"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>VAT/IVA:</td>
-                                                                    <td>$7.34</td>
+                                                                    <td id="vat"></td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Total:</td>
-                                                                    <td>$42.29</td>
+                                                                    <td id="total"></td>
                                                                 </tr>
                                                             </table>
                                                         </div>
@@ -486,6 +491,9 @@
 @endsection
 @push('css')
     <style>
+        .price table tr td:last-child{
+            text-align: right;
+        }
         span.error-message{
             min-height: 25px;
             display: -webkit-box;
@@ -896,6 +904,7 @@
         // Add an instance of the card Element into the `card-element` <div>.
         card.mount('#card-element');
         card.on("change", function (event) {
+
             // Disable the Pay button if there are no card details in the Element
             document.querySelector("button").disabled = event.empty;
             document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
@@ -904,7 +913,6 @@
         var form = document.getElementById('example-form');
         form.addEventListener('submit', function(event) {
             event.preventDefault();
-
             stripe.createToken(card).then(function(result) {
                 if (result.error) {
                     // Inform the customer that there was an error.
@@ -916,7 +924,6 @@
                 }
             });
         });
-
         function stripeTokenHandler(token) {
             // Insert the token ID into the form so it gets submitted to the server
             var form = document.getElementById('example-form');
@@ -925,7 +932,6 @@
             hiddenInput.setAttribute('name', 'stripeToken');
             hiddenInput.setAttribute('value', token.id);
             form.appendChild(hiddenInput);
-
             form.submit();
         }
     </script>
@@ -986,7 +992,7 @@
             i++;
             $('#add-data').append(`<div class="row">
                                                     <div class="form-group col-12 mt-3">
-                                                        <h4 class="d-flex justify-content-between">Property owner No: ${i} <a href="#" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></a></h4>
+                                                        <h4 class="d-flex justify-content-between owner-count">Property owner No: ${i} <a href="#" class="btn btn-danger btn-sm remove"><i class="fa fa-trash"></i></a></h4>
                                                     </div>
                                                     <div class="form-group col-lg-6 col-md-6 col-12">
                                                         <label >First name </label>
@@ -1289,7 +1295,20 @@
             titleTemplate: '<span class="step">#index#</span> #title#',
             onStepChanging: function (event, currentIndex, newIndex)
             {
-                return true;
+                if (newIndex > 0 && newIndex < 2 ){
+                    localStorage.setItem('owner',$('.owner-count').length);
+                }
+                if (newIndex === 3){
+                    var value = 39.95;
+                    var subtotal = value * localStorage.getItem('owner');
+                    var tax = (subtotal * 21)/100;
+                    var total = subtotal + tax;
+                    $('#subtotal').text('€ '+value+' * '+localStorage.getItem('owner')+' = €'+subtotal.toFixed(2));
+                    $('#vat').text('= € '+tax.toFixed(2));
+                    $('#total').text('= € '+total.toFixed(2));
+                    $('#amount').val(total.toFixed(2));
+                }
+                return  true;
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
 
@@ -1303,7 +1322,7 @@
             onFinished: function (event, currentIndex)
             {
                 $("#example-form").submit();
-                console.log(currentIndex)
+
             }
         }).validate({
             errorElement: 'span',
@@ -1360,5 +1379,8 @@
                 return this.valid();
             }
         });
+        $(window).on('load',function (){
+            localStorage.setItem('owner',0);
+        })
     </script>
 @endpush
