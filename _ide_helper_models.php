@@ -162,6 +162,47 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\OnlineTax
+ *
+ * @property int $id
+ * @property string $first_name
+ * @property string $last_name
+ * @property string $nie
+ * @property string $dob
+ * @property string $address
+ * @property string $city
+ * @property string $zip
+ * @property string $country
+ * @property string $ownership
+ * @property string $place_of_birth
+ * @property string|null $ibi_file
+ * @property string|null $address_in_spain
+ * @property string|null $city_2
+ * @property string|null $state_2
+ * @property string|null $postal_2
+ * @property string|null $catastral_reference
+ * @property string|null $catastral_value_in_euro
+ * @property string $iban_code
+ * @property string|null $buy_the_property
+ * @property string $whole_tax_year
+ * @property string $rental_year
+ * @property string|null $tax_year
+ * @property string $contact_telephone
+ * @property string $contact_email
+ * @property int $total_owner
+ * @property string $total_amount
+ * @property string $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|OnlineTax newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OnlineTax newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OnlineTax query()
+ */
+	class OnlineTax extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Owner
  *
  * @property int $id

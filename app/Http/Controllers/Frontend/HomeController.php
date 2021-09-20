@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Favorite;
+use App\Models\OnlineTax;
 use App\Models\Property;
 use App\Models\SeekerData;
 use App\Models\SeekerInfo;
@@ -523,6 +524,43 @@ class HomeController extends Controller
 
     public function onlineTaxReturnPost(Request $request)
     {
+
+        $onlineTax = new OnlineTax();
+        //Step one
+        $onlineTax->first_name = $request->first_name ?  implode(',',$request->first_name):null;
+        $onlineTax->last_name = $request->last_name ? implode(',',$request->last_name):null;
+        $onlineTax->nie = $request->nie ? implode(',',$request->nie):null;
+        $onlineTax->dob = $request->dob ? implode(',',$request->dob):null;
+        $onlineTax->address = $request->address ? implode(',',$request->address):null;
+        $onlineTax->city = $request->city ? implode(',',$request->city):null;
+        $onlineTax->zip = $request->zip ? implode(',',$request->zip):null;
+        $onlineTax->country = $request->country ? implode(',',$request->country):null;
+        $onlineTax->ownership = $request->ownership ? implode(',',$request->ownership):null;
+        $onlineTax->place_of_birth = $request->place_of_birth ? implode(',',$request->place_of_birth):null;
+
+        //Step two
+        if ($request->ibi_payment == 'Yes'){
+            if ($request->hasFile('ibi_file'))
+            $onlineTax->ibi_file = Helper::uploadSingleImage($request->ibi_file,'ibi','ibi');
+        }else{
+            $onlineTax->address_in_spain = $request->address_in_spain;
+            $onlineTax->city_2 = $request->city_2;
+            $onlineTax->state_2 = $request->state_2;
+            $onlineTax->postal_2 = $request->postal_2;
+            $onlineTax->catastral_reference = $request->catastral_reference;
+            $onlineTax->catastral_value_in_euro = $request->catastral_value_in_euro;
+        }
+        $onlineTax->iban_code = $request->iban_code;
+        $onlineTax->whole_tax_year = $request->whole_tax_year;
+        if ($request->whole_tax_year =='No'){
+            $onlineTax->tax_year = $request->tax_year;
+        }
+
+
+
+
+        $onlineTax->ibi_file = $request->ibi_file;
+        $onlineTax->ibi_file = $request->ibi_file;
         return $request->all();
         return view('frontend.payment-success');
     }
