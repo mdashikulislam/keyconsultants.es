@@ -9,8 +9,12 @@
                 <div class="card ">
                     <div class="card-body">
                         <div class="wizard-content">
-                            <form id="example-form" action="{{route('online.tax.return')}}" method="POST" class="tab-wizard wizard-circle wizard clearfix">
+                            <form id="example-form" action="{{route('online.tax.return')}}" method="POST" class="tab-wizard wizard-circle wizard clearfix" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" id="amount" name="amount">
+                                <input type="hidden" id="total_owner" name="total_owner">
+                                <input type="hidden" id="sub_total" name="sub_total">
+                                <input type="hidden" id="vat" name="vat">
                                 <h6>General information</h6>
                                 <section class="pb-3">
                                     <div class="row justify-content-center">
@@ -424,62 +428,6 @@
                                         </div>
                                     </div>
                                 </section>
-                                <h6>Present your information and make a payment</h6>
-                                <section class="pb-3">
-                                    <div class="row justify-content-center">
-                                        <div class=" col-12">
-                                            <div class="row">
-                                                <input type="hidden" id="amount" name="amount">
-                                                <div class="form-group col-md-6 col-lg-6 col-12">
-                                                    <label for="">Telephone number for contact person</label>
-                                                    <input required type="text" class="form-control" name="contact_telephone">
-                                                </div>
-                                                <div class="form-group col-md-6 col-lg-6 col-12">
-                                                    <label for="">E-mail address for contact person</label>
-                                                    <input required type="text" class="form-control" name="contact_email">
-                                                </div>
-                                                <div class="form-group col-md-6 col-lg-6 col-12">
-                                                    <div class="card">
-                                                        <div class="card-body">
-                                                            <label style="font-weight: bold;font-size: 22px;margin-bottom: 20px;font-family: Arial" for="card-element">
-                                                                Credit or debit card
-                                                            </label>
-                                                            <div id="card-element">
-                                                                <!-- A Stripe Element will be inserted here. -->
-                                                            </div>
-                                                            <!-- Used to display Element errors. -->
-                                                            <div id="card-errors" role="alert"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ico text-center">
-                                                        <img style="width: auto;max-height: 90px" class="mt-3" src="{{asset('frontend/assets/images/logo-stripe.png')}}" alt="">
-                                                    </div>
-
-                                                </div>
-                                                <div class="form-group col-md-6 col-lg-6 col-12">
-                                                    <div class="card price">
-                                                        <div class="card-body">
-                                                            <table class="table mb-0">
-                                                                <tr>
-                                                                    <td>Subtotal:</td>
-                                                                    <td id="subtotal"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>VAT/IVA:</td>
-                                                                    <td id="vat"></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>Total:</td>
-                                                                    <td id="total"></td>
-                                                                </tr>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </section>
                             </form>
                         </div>
                     </div>
@@ -870,87 +818,10 @@
             }
         }
     </style>
-    <script src="{{asset('frontend/assets/js/jquery-3.2.1.min.js')}}"></script>
-    <script src="https://js.stripe.com/v3/"></script>
 @endpush
 @push('js')
-
     <script src="{{asset('frontend/step/jquery.steps.js')}}"></script>
     <script src="{{asset('frontend/assets/js/jquery.validate.min.js')}}"></script>
-    <script>
-        var stripe = Stripe('{{getenv('STRIPE_PUBLIC_KEY')}}');
-        var elements = stripe.elements();
-
-        var style = {
-            base: {
-                color: "#32325d",
-                fontFamily: 'Arial, sans-serif',
-                fontSmoothing: "antialiased",
-                fontSize: "16px",
-                "::placeholder": {
-                    color: "#32325d"
-                }
-            },
-            invalid: {
-                fontFamily: 'Arial, sans-serif',
-                color: "#fa755a",
-                iconColor: "#fa755a"
-            }
-        };
-
-        // Create an instance of the card Element.
-        var card = elements.create('card', {style: style});
-
-        // Add an instance of the card Element into the `card-element` <div>.
-        card.mount('#card-element');
-        card.on("change", function (event) {
-
-            // Disable the Pay button if there are no card details in the Element
-            document.querySelector("button").disabled = event.empty;
-            document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
-            stripe.createToken(card).then(function(result) {
-                console.log('token',result)
-                if (result.error) {
-                    // Inform the customer that there was an error.
-                    var errorElement = document.getElementById('card-errors');
-                    errorElement.textContent = result.error.message;
-                } else {
-                    // Send the token to your server.
-                    stripeTokenHandler(result.token);
-                }
-            });
-        });
-
-        var forms = document.getElementById('example-form');
-        // forms.addEventListener('submit', function(event) {
-        //     event.preventDefault();
-        //     console.log('result',event)
-        //     stripe.createToken(card).then(function(result) {
-        //         if (result.error) {
-        //             // Inform the customer that there was an error.
-        //             var errorElement = document.getElementById('card-errors');
-        //             errorElement.textContent = result.error.message;
-        //         } else {
-        //             // Send the token to your server.
-        //             stripeTokenHandler(result.token);
-        //         }
-        //     });
-        // });
-        $(document).on('click','.actions ul li a[href="#finish"]',function (){
-            forms.submit();
-        })
-
-        function stripeTokenHandler(token) {
-            // Insert the token ID into the form so it gets submitted to the server
-            var form3 = document.getElementById('example-form');
-            var hiddenInput = document.createElement('input');
-            hiddenInput.setAttribute('type', 'hidden');
-            hiddenInput.setAttribute('name', 'stripeToken');
-            hiddenInput.setAttribute('value', token.id);
-            form3.appendChild(hiddenInput);
-
-        }
-    </script>
 
     <script>
         $(document).on('change','#whole_tax_year',function (){
@@ -1314,15 +1185,18 @@
                 if (newIndex > 0 && newIndex < 2 ){
                     localStorage.setItem('owner',$('.owner-count').length);
                 }
-                if (newIndex === 3){
+                if (newIndex === 2){
                     var value = 39.95;
                     var subtotal = value * localStorage.getItem('owner');
                     var tax = (subtotal * 21)/100;
                     var total = subtotal + tax;
-                    $('#subtotal').text('€ '+value+' * '+localStorage.getItem('owner')+' = €'+subtotal.toFixed(2));
-                    $('#vat').text('= € '+tax.toFixed(2));
-                    $('#total').text('= € '+total.toFixed(2));
+                    // $('#subtotal').text('€ '+value+' * '+localStorage.getItem('owner')+' = €'+subtotal.toFixed(2));
+                    // $('#vat').text('= € '+tax.toFixed(2));
+                    // $('#total').text('= € '+total.toFixed(2));
                     $('#amount').val(total.toFixed(2));
+                    $('#sub_total').val(subtotal.toFixed(2));
+                    $('#vat').val(tax.toFixed(2));
+                    $('#total_owner').val(localStorage.getItem('owner'));
                 }
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
@@ -1334,6 +1208,9 @@
                 return form.valid();
 
             },
+            onFinished:function (event,currentIndex){
+                $('#example-form').submit();
+            }
         }).validate({
             errorElement: 'span',
             errorClass: 'error-message',

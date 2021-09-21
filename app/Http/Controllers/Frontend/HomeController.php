@@ -524,8 +524,6 @@ class HomeController extends Controller
 
     public function onlineTaxReturnPost(Request $request)
     {
-
-        return $request->stripeToken;
         $onlineTax = new OnlineTax();
         //Step one
         $onlineTax->first_name = $request->first_name ?  implode(',',$request->first_name):null;
@@ -538,7 +536,10 @@ class HomeController extends Controller
         $onlineTax->country = $request->country ? implode(',',$request->country):null;
         $onlineTax->ownership = $request->ownership ? implode(',',$request->ownership):null;
         $onlineTax->place_of_birth = $request->place_of_birth ? implode(',',$request->place_of_birth):null;
-
+        $onlineTax->total_owner = $request->total_owner;
+        $onlineTax->total_amount = $request->amount;
+        $onlineTax->sub_total = $request->sub_total;
+        $onlineTax->vat = $request->vat;
         //Step two
         if ($request->ibi_payment == 'Yes'){
             if ($request->hasFile('ibi_file'))
@@ -559,14 +560,12 @@ class HomeController extends Controller
         $onlineTax->rental_year = $request->rental_year;
         $onlineTax->tax_year = $request->tax_year ?  implode(',',$request->tax_year):'';
 
-        $onlineTax->contact_telephone = $request->contact_telephone;
-        $onlineTax->contact_email = $request->contact_email;
         if ($onlineTax->save()){
-            \Stripe\Stripe::setApiKey(getenv('STRIPE_SECRET_KEY'));
-            $token = $request->stripeToken;
+           Session::put('tax_id',$onlineTax->id);
+            return redirect()->route('tax.fee.payment');
+        }else{
+            toast('Something went wrong. please fill again','error');
+            return redirect()->back();
         }
-
-
-        return view('frontend.payment-success');
     }
 }

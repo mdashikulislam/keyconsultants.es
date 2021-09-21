@@ -52,7 +52,8 @@ Route::get('payment-success',[\App\Http\Controllers\PaymentController::class,'pa
 Route::get('payment-failed',[\App\Http\Controllers\PaymentController::class,'paymentFailed'])->name('payment.failed');
 Route::get('online-tax-return',[\App\Http\Controllers\Frontend\HomeController::class,'onlineTaxReturn'])->name('online.tax.return');
 Route::post('online-tax-return',[\App\Http\Controllers\Frontend\HomeController::class,'onlineTaxReturnPost'])->name('online.tax.return');
-
+Route::get('tax-fee-payment',[\App\Http\Controllers\PaymentController::class,'taxFeePayment'])->name('tax.fee.payment');
+Route::post('tax-fee-payment',[\App\Http\Controllers\PaymentController::class,'taxFeePaymentPost']);
 //Admin Route and Auth
 Auth::routes(['register'=>false]);
 

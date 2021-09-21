@@ -41,10 +41,12 @@ class CreateOnlineTaxesTable extends Migration
 
             $table->enum('rental_year',['Yes','No'])->default('Yes');
             $table->string('tax_year')->nullable();
-            $table->string('contact_telephone');
-            $table->string('contact_email');
+            $table->string('contact_telephone')->nullable();
+            $table->string('contact_email')->nullable();
             $table->integer('total_owner')->default(0);
-            $table->decimal('total_amount',2)->default(0);
+            $table->decimal('total_amount',10,2)->default(0);
+            $table->decimal('vat',10,2)->default(0);
+            $table->decimal('sub_total',10,2)->default(0);
             $table->enum('status',['Pending','Accept'])->default('Pending');
 
             $table->timestamps();
