@@ -908,12 +908,8 @@
             // Disable the Pay button if there are no card details in the Element
             document.querySelector("button").disabled = event.empty;
             document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
-        });
-
-        var form = document.getElementById('example-form');
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
             stripe.createToken(card).then(function(result) {
+                console.log('token',result)
                 if (result.error) {
                     // Inform the customer that there was an error.
                     var errorElement = document.getElementById('card-errors');
@@ -924,15 +920,35 @@
                 }
             });
         });
+
+        var forms = document.getElementById('example-form');
+        // forms.addEventListener('submit', function(event) {
+        //     event.preventDefault();
+        //     console.log('result',event)
+        //     stripe.createToken(card).then(function(result) {
+        //         if (result.error) {
+        //             // Inform the customer that there was an error.
+        //             var errorElement = document.getElementById('card-errors');
+        //             errorElement.textContent = result.error.message;
+        //         } else {
+        //             // Send the token to your server.
+        //             stripeTokenHandler(result.token);
+        //         }
+        //     });
+        // });
+        $(document).on('click','.actions ul li a[href="#finish"]',function (){
+            forms.submit();
+        })
+
         function stripeTokenHandler(token) {
             // Insert the token ID into the form so it gets submitted to the server
-            var form = document.getElementById('example-form');
+            var form3 = document.getElementById('example-form');
             var hiddenInput = document.createElement('input');
             hiddenInput.setAttribute('type', 'hidden');
             hiddenInput.setAttribute('name', 'stripeToken');
             hiddenInput.setAttribute('value', token.id);
-            form.appendChild(hiddenInput);
-            form.submit();
+            form3.appendChild(hiddenInput);
+
         }
     </script>
 
@@ -1308,7 +1324,6 @@
                     $('#total').text('= € '+total.toFixed(2));
                     $('#amount').val(total.toFixed(2));
                 }
-                return  true;
                 form.validate().settings.ignore = ":disabled,:hidden";
                 return form.valid();
 
@@ -1319,11 +1334,6 @@
                 return form.valid();
 
             },
-            onFinished: function (event, currentIndex)
-            {
-                $("#example-form").submit();
-
-            }
         }).validate({
             errorElement: 'span',
             errorClass: 'error-message',

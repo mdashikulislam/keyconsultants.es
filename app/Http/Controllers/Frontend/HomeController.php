@@ -525,6 +525,7 @@ class HomeController extends Controller
     public function onlineTaxReturnPost(Request $request)
     {
 
+        return $request->stripeToken;
         $onlineTax = new OnlineTax();
         //Step one
         $onlineTax->first_name = $request->first_name ?  implode(',',$request->first_name):null;
@@ -553,15 +554,19 @@ class HomeController extends Controller
         $onlineTax->iban_code = $request->iban_code;
         $onlineTax->whole_tax_year = $request->whole_tax_year;
         if ($request->whole_tax_year =='No'){
-            $onlineTax->tax_year = $request->tax_year;
+            $onlineTax->buy_the_property = $request->buy_the_property;
+        }
+        $onlineTax->rental_year = $request->rental_year;
+        $onlineTax->tax_year = $request->tax_year ?  implode(',',$request->tax_year):'';
+
+        $onlineTax->contact_telephone = $request->contact_telephone;
+        $onlineTax->contact_email = $request->contact_email;
+        if ($onlineTax->save()){
+            \Stripe\Stripe::setApiKey(getenv('STRIPE_SECRET_KEY'));
+            $token = $request->stripeToken;
         }
 
 
-
-
-        $onlineTax->ibi_file = $request->ibi_file;
-        $onlineTax->ibi_file = $request->ibi_file;
-        return $request->all();
         return view('frontend.payment-success');
     }
 }
