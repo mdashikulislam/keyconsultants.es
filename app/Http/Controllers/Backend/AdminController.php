@@ -9,6 +9,7 @@ use App\Models\Property;
 use App\Models\SeekerInfo;
 use App\Models\SeekerNote;
 use App\Models\Seo;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -126,5 +127,14 @@ class AdminController extends Controller
             toast('not found','error');
             return redirect()->back();
         }
+    }
+
+    public function transaction()
+    {
+        $trxs = Transaction::orderByDesc('created_at')->get();
+        return view('backend.transaction')
+            ->with([
+                'trxs'=>$trxs
+            ]);
     }
 }
