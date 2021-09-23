@@ -102,6 +102,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.tax.return')}}" class="nav-link {{$currentRouteName == 'admin.tax.return' ? 'active':''}}">
+                        <i class="nav-icon fa fa-money-check-alt"></i>
+                        <p>
+                            Online Tax Return
+                        </p>
+                    </a>
+                </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

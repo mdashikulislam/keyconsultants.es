@@ -88,6 +88,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
     Route::get('transaction',[\App\Http\Controllers\Backend\AdminController::class,'transaction'])->name('admin.transaction');
     Route::get('online-tax-return',[\App\Http\Controllers\Backend\AdminController::class,'onlineTaxForm'])->name('admin.tax.return');
+    Route::get('online-tax-return/{id}',[\App\Http\Controllers\Backend\AdminController::class,'onlineTaxFormSingle'])->name('admin.tax.return.single');
 });
 
 //Ajax Route

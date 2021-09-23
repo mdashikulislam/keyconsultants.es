@@ -522,8 +522,13 @@ class HomeController extends Controller
         return view('frontend.online-tax-return');
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function onlineTaxReturnPost(Request $request)
     {
+
         $onlineTax = new OnlineTax();
         //Step one
         $onlineTax->first_name = $request->first_name ?  implode(',',$request->first_name):null;
@@ -540,6 +545,7 @@ class HomeController extends Controller
         $onlineTax->total_amount = $request->amount;
         $onlineTax->sub_total = $request->sub_total;
         $onlineTax->vat = $request->vat;
+        $onlineTax->ibi_payment = $request->ibi_payment;
         //Step two
         if ($request->ibi_payment == 'Yes'){
             if ($request->hasFile('ibi_file'))

@@ -141,7 +141,23 @@ class AdminController extends Controller
 
     public function onlineTaxForm()
     {
-        $taxReturns = OnlineTax::orderByDesc('created_at')->get();
-        return $taxReturns;
+        $taxReturns = OnlineTax::where('status','Accept')->orderByDesc('created_at')->get();
+        return view('backend.tax-return')
+            ->with([
+                'taxReturns'=>$taxReturns
+            ]);
+    }
+
+    public function onlineTaxFormSingle($id)
+    {
+        $data = OnlineTax::findOrFail($id);
+        if (empty($data)){
+            toast('Data not found');
+            return redirect()->back();
+        }
+        return view('backend.tax-return-single')
+            ->with([
+                'data'=>$data
+            ]);
     }
 }
