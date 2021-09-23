@@ -1072,7 +1072,6 @@
                 },
             });
 
-
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 $('.sw-btn-next').removeClass('d-none');
                 $('.btn-finish').addClass('d-none');
@@ -1439,7 +1438,7 @@
 
             }else{
                 $('#marraige_list').empty()
-                $('#marraige_list').append(`<div class="row">
+                var data =`<div class="row">
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label class="control-label">Which country you married</label>
                                                         <select  name="current_marriage_country"  class="form-control select2" required>
@@ -1714,8 +1713,9 @@
                                                         <div class="row" id="current">
 
                                                         </div>
-                                                    </div>
-                                                    <div class="form-group col-lg-3 com-md-3 col-12">
+                                                    </div>`;
+                                                    for(var i = 1; i < $(this).val();i++){
+                                                        data += `<div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label class="control-label">Which country you married </label>
                                                         <select name="previous_marriage_country"  class="form-control select2" required>
                                                             <option value="">Select Country</option>
@@ -1977,7 +1977,7 @@
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>No Children</label>
-                                                        <select name="previous_no_of_children" id="previous_child" class="form-control select2">
+                                                        <select name="previous_no_of_children" class="form-control select2 previous_child" data-previous="${i}">
                                                             <option value="0">0</option>
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
@@ -1986,18 +1986,21 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-md-12 col-lg-12 col-12">
-                                                        <div class="row" id="previous">
+                                                        <div class="row previous-${i}" >
 
                                                         </div>
-                                                    </div>
-                                            </div>`);
+                                                    </div>`;
+                                                    }
+                                            data +=`</div>`;
 
+                $('#marraige_list').append(data);
             }
 
         });
         $(document).on('change','#current_child',function (){
             if (parseInt($(this).val()) > 0){
                 $('#current').empty();
+
                 for (var i = 0; i < parseInt($(this).val()); i++){
                     $('#current').append(`
                                         <div class="form-group col-lg-4 com-md-4 col-12">
@@ -2023,11 +2026,14 @@
                 $('#current').empty();
             }
         });
-        $(document).on('change','#previous_child',function (){
+        $(document).on('change','.previous_child',function (){
             if (parseInt($(this).val()) > 0){
-                $('#previous').empty();
+
+                var dataPrevious = $(this).data('previous');
+                $('.previous-'+dataPrevious).empty();
+                console.log(dataPrevious)
                 for (var i = 0; i < parseInt($(this).val()); i++){
-                    $('#previous').append(`
+                    $('.previous-'+dataPrevious).append(`
                                         <div class="form-group col-lg-4 com-md-4 col-12">
                                             <label for="">Previous ${ordinal(i+1)} Child First name</label>
                                             <input name="previous_child_first_name[]"  type="text" class="form-control">

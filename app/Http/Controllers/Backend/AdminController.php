@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
+use App\Models\OnlineTax;
 use App\Models\Property;
 use App\Models\SeekerInfo;
 use App\Models\SeekerNote;
@@ -136,5 +137,11 @@ class AdminController extends Controller
             ->with([
                 'trxs'=>$trxs
             ]);
+    }
+
+    public function onlineTaxForm()
+    {
+        $taxReturns = OnlineTax::orderByDesc('created_at')->get();
+        return $taxReturns;
     }
 }
