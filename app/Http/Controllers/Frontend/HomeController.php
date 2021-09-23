@@ -411,6 +411,7 @@ class HomeController extends Controller
 
     public function willFormSubmit(Request $request)
     {
+        //return $request->all();
         $will = new SpanishWill();
         $will->surname = $request->surname;
         $will->first_name = $request->first_name;
@@ -435,34 +436,51 @@ class HomeController extends Controller
         $will->father_name = $request->father_name;
         $will->marital_status = $request->marital_status;
         $will->marriage_time = $request->marriage_time;
-        $will->current_marriage_country = $request->current_marriage_country;
-        $will->current_spouse_first_name = $request->current_spouse_first_name;
-        $will->current_spouse_surname = $request->current_spouse_surname;
-        $will->current_no_of_children = $request->current_no_of_children;
-        $will->previous_marriage_country = $request->previous_marriage_country;
-        $will->previous_spouse_first_name = $request->previous_spouse_first_name;
-        $will->previous_spouse_surname = $request->previous_spouse_surname;
-        $will->previous_no_of_children = $request->previous_no_of_children;
-        if ($request->current_child_first_name){
-            $will->current_child_first_name = implode(',',$request->current_child_first_name);
-        }
-        if ($request->current_child_surname){
-            $will->current_child_surname = implode(',',$request->current_child_surname);
-        }
-        if ($request->current_child_type){
-            $will->current_child_type = implode(',',$request->current_child_type);
+
+        if ($request->marriage_time == 1){
+            $will->current_marriage_country = $request->current_marriage_country;
+            $will->current_spouse_first_name = $request->current_spouse_first_name;
+            $will->current_spouse_surname = $request->current_spouse_surname;
+            $will->current_no_of_children = $request->current_no_of_children;
+            if ($request->current_child_first_name){
+                $will->current_child_first_name = implode(',',$request->current_child_first_name);
+            }
+            if ($request->current_child_surname){
+                $will->current_child_surname = implode(',',$request->current_child_surname);
+            }
+            if ($request->current_child_type){
+                $will->current_child_type = implode(',',$request->current_child_type);
+            }
+        }elseif ($request->marriage_time > 1){
+            $will->current_marriage_country = $request->current_marriage_country;
+            $will->current_spouse_first_name = $request->current_spouse_first_name;
+            $will->current_spouse_surname = $request->current_spouse_surname;
+            $will->current_no_of_children = $request->current_no_of_children;
+            if ($request->current_child_first_name){
+                $will->current_child_first_name = implode(',',$request->current_child_first_name);
+            }
+            if ($request->current_child_surname){
+                $will->current_child_surname = implode(',',$request->current_child_surname);
+            }
+            if ($request->current_child_type){
+                $will->current_child_type = implode(',',$request->current_child_type);
+            }
+            $jsonData = [];
+            for ($i = 1; $i < $request->marriage_time;$i++){
+                $jsonData['previous_marriage_'.$i]['previous_marriage_country_'.$i] = $request->input('previous_marriage_country_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_spouse_first_name_'.$i] = $request->input('previous_spouse_first_name_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_spouse_surname_'.$i] = $request->input('previous_spouse_surname_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_no_of_children_'.$i] = $request->input('previous_no_of_children_'.$i);
+                if ($request->input('previous_no_of_children_'.$i) > 0){
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_first_name'] =$request->input('previous_child_first_name_'.$i);
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_surname'] =$request->input('previous_child_surname_'.$i);
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_type'] =$request->input('previous_child_type_'.$i);
+                }
+
+            }
+            $will->previous_child_first_name = json_encode($jsonData);
         }
 
-
-        if ($request->previous_child_first_name){
-            $will->previous_child_first_name = implode(',',$request->previous_child_first_name);
-        }
-        if ($request->previous_child_surname){
-            $will->previous_child_surname = implode(',',$request->previous_child_surname);
-        }
-        if ($request->previous_child_type){
-            $will->previous_child_type = implode(',',$request->previous_child_type);
-        }
         $will->have_other_child = $request->have_other_child;
         $will->how_other_child = $request->how_other_child;
         if ($request->other_child_first_name){

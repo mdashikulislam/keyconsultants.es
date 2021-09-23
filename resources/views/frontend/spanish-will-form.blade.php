@@ -1715,9 +1715,9 @@
                                                         </div>
                                                     </div>`;
                                                     for(var i = 1; i < $(this).val();i++){
-                                                        data += `<div class="form-group col-lg-3 com-md-3 col-12">
+                                                        data += `<div class="form-group col-lg-4 com-md-4 col-12">
                                                         <label class="control-label">Which country you married </label>
-                                                        <select name="previous_marriage_country"  class="form-control select2" required>
+                                                        <select name="previous_marriage_country_${i}"  class="form-control select2" required>
                                                             <option value="">Select Country</option>
                                                             <option value="Afganistan">Afghanistan</option>
                                                             <option value="Albania">Albania</option>
@@ -1967,17 +1967,32 @@
                                                             <option value="Zimbabwe">Zimbabwe</option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-lg-3 com-md-3 col-12">
+                                                    <div class="form-group col-lg-4 com-md-4 col-12">
                                                         <label for="">Previous Spouse First Name</label>
-                                                        <input name="previous_spouse_first_name"  type="text" class="form-control" required>
+                                                        <input name="previous_spouse_first_name_${i}"  type="text" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-lg-4 com-md-4 col-12">
+                                                        <label>Previous Spouse Surname </label>
+                                                        <input name="previous_spouse_surname_${i}" type="text" class="form-control" required>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
-                                                        <label>Previous Spouse Surname </label>
-                                                        <input name="previous_spouse_surname" type="text" class="form-control" required>
+                                                        <label>Date of the marriage </label>
+                                                        <input name="date_of_marriage_${i}" type="date" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-lg-3 com-md-3 col-12">
+                                                        <label>Date the marriage ended </label>
+                                                        <input name="date_of_marriage_end_${i}" type="date" class="form-control" required>
+                                                    </div>
+                                                    <div class="form-group col-lg-3 com-md-3 col-12">
+                                                        <label>Reason </label>
+                                                    <select class="form-control" name="region_of_marriage_end_${i}" required>
+                                                        <option value="Divorce">Divorce</option>
+                                                        <option value="Death">Death</option>
+                                                    </select>
                                                     </div>
                                                     <div class="form-group col-lg-3 com-md-3 col-12">
                                                         <label>No Children</label>
-                                                        <select name="previous_no_of_children" class="form-control select2 previous_child" data-previous="${i}">
+                                                        <select name="previous_no_of_children_${i}" class="form-control select2 previous_child" data-previous="${i}">
                                                             <option value="0">0</option>
                                                             <option value="1">1</option>
                                                             <option value="2">2</option>
@@ -2036,15 +2051,15 @@
                     $('.previous-'+dataPrevious).append(`
                                         <div class="form-group col-lg-4 com-md-4 col-12">
                                             <label for="">Previous ${ordinal(i+1)} Child First name</label>
-                                            <input name="previous_child_first_name[]"  type="text" class="form-control">
+                                            <input name="previous_child_first_name_${dataPrevious}[]"  type="text" class="form-control">
                                         </div>
                                         <div class="form-group col-lg-4 com-md-4 col-12">
                                             <label for="">Previous ${ordinal(i+1)} Child Surname</label>
-                                            <input name="previous_child_surname[]"  type="text" class="form-control">
+                                            <input name="previous_child_surname_${dataPrevious}[]"  type="text" class="form-control">
                                         </div>
                                         <div class="form-group col-lg-4 com-md-4 col-12">
                                             <label >Previous ${ordinal(i+1)} Child Type</label>
-                                            <select name="previous_child_type[]" class="form-control">
+                                            <select name="previous_child_type_${dataPrevious}[]" class="form-control">
                                                 <option name="Son">Son</option>
                                                 <option value="Daughter">Daughter</option>
                                             </select>
