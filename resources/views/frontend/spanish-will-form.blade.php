@@ -1065,12 +1065,14 @@
                     toolbarExtraButtons: [
                         $('<button></button>').text('Finish')
                             .addClass('btn btn-info d-none btn-finish')
-                            .on('click', function(){
-                                $('#smartwizard').submit();
-                            }),
-                    ]
+                    ],
+                    onFinish:onFinishCallback
                 },
+
             });
+            function onFinishCallback(objs, context){
+                $('#smartwizard').submit();
+            }
 
             $("#smartwizard").on("leaveStep", function(e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) {
                 $('.sw-btn-next').removeClass('d-none');
