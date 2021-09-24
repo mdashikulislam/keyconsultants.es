@@ -68,15 +68,15 @@
                         <table class="table table-bordered order-info mt-3">
                             <tr>
                                 <td>Fee</td>
-                                <td width="20%">90$</td>
+                                <td width="20%">€90</td>
                             </tr>
                             <tr>
                                 <td>Tax(21%)</td>
-                                <td>18.9$</td>
+                                <td>€18.9</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>108.9$</td>
+                                <td>€108.9</td>
                             </tr>
                         </table>
                     </div>
