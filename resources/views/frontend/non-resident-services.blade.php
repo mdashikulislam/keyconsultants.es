@@ -11,7 +11,7 @@
                        <div class="txt">
                            <h1 class="text-center mb-4">Non-Resident Taxes  -  (Modelo 210)</h1>
                            <p >Non-resident taxes arise when you are not a resident in Spain, but you own a property here for vacation purposes or to make an income renting out your property. </p>
-                           <h5 class="text-center" style="color: #c0b298">Let Key Consultants Prepare and submit your Non-Resident Tax return for just 35,00€  plus IVA Per Person  — it only takes a few Minutes and can save you much time!</h5>
+                           <h5 class="text-center" style="color: #c0b298">Let Key Consultants Prepare and submit your Non-Resident Tax return for just <span style="color: #000">39.95€</span>  plus IVA Per Person  — it only takes a few Minutes and can save you much time!</h5>
                        </div>
                         <div class="media-panel mt-5">
                             <h2>Non-Resident taxes – Holiday Homes</h2>
