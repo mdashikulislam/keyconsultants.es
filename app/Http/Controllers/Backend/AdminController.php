@@ -10,6 +10,7 @@ use App\Models\Property;
 use App\Models\SeekerInfo;
 use App\Models\SeekerNote;
 use App\Models\Seo;
+use App\Models\SpanishWill;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -156,6 +157,29 @@ class AdminController extends Controller
             return redirect()->back();
         }
         return view('backend.tax-return-single')
+            ->with([
+                'data'=>$data
+            ]);
+    }
+
+    public function spanishWill()
+    {
+        $spanishWills = SpanishWill::where('payment_status','Accept')->orderByDesc('created_at')->get();
+        return view('backend.spanish-will')
+            ->with([
+                'spanishWills'=>$spanishWills
+            ]);
+    }
+
+    public function spanishWillSingle($id)
+    {
+        $data = SpanishWill::findOrFail($id);
+        if (empty($data)){
+            toast('Data not found','error');
+            return  redirect()->back();
+        }
+        $data->previous_child_first_name = json_decode($data->previous_child_first_name,true);
+        return view('backend.will-single')
             ->with([
                 'data'=>$data
             ]);
