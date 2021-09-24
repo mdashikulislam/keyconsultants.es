@@ -471,6 +471,9 @@ class HomeController extends Controller
                 $jsonData['previous_marriage_'.$i]['previous_spouse_first_name_'.$i] = $request->input('previous_spouse_first_name_'.$i);
                 $jsonData['previous_marriage_'.$i]['previous_spouse_surname_'.$i] = $request->input('previous_spouse_surname_'.$i);
                 $jsonData['previous_marriage_'.$i]['previous_no_of_children_'.$i] = $request->input('previous_no_of_children_'.$i);
+                $jsonData['previous_marriage_'.$i]['date_of_marriage_'.$i] = $request->input('date_of_marriage_'.$i);
+                $jsonData['previous_marriage_'.$i]['date_of_marriage_end_'.$i] = $request->input('date_of_marriage_end_'.$i);
+                $jsonData['previous_marriage_'.$i]['region_of_marriage_end_'.$i] = $request->input('region_of_marriage_end_'.$i);
                 if ($request->input('previous_no_of_children_'.$i) > 0){
                     $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_first_name'] =$request->input('previous_child_first_name_'.$i);
                     $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_surname'] =$request->input('previous_child_surname_'.$i);
@@ -480,7 +483,6 @@ class HomeController extends Controller
             }
             $will->previous_child_first_name = json_encode($jsonData);
         }
-
         $will->have_other_child = $request->have_other_child;
         $will->how_other_child = $request->how_other_child;
         if ($request->other_child_first_name){
