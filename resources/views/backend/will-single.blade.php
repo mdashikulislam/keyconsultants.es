@@ -81,7 +81,7 @@
                         @if(@(int)$data->current_no_of_children > 0)
                             <div class="row mt-3">
                                 @for($p = 0;$p < (int)$data->current_no_of_children;$p++)
-                                    <div class="col-md-4">
+                                    <div class="col-md-4 col-lg-4 col-12">
                                         <h2 class="card-title mb-3">Child {{$p+1}} :</h2>
                                         <table class="table table-bordered">
                                             <tr>
@@ -180,7 +180,7 @@
                     @if($data->how_other_child > 0)
                         <div class="row mt-3">
                             @for($s = 0;$s < $data->how_other_child;$s++)
-                                <div class="col-md-4">
+                                <div class="col-md-4 col-lg-4 col-12">
                                     <h2 class="card-title mb-3">Child {{$s+1}} :</h2>
                                     <table class="table table-bordered">
                                         <tr>
