@@ -436,6 +436,7 @@ class HomeController extends Controller
         $will->father_name = $request->father_name;
         $will->marital_status = $request->marital_status;
         $will->marriage_time = $request->marriage_time;
+        $will->nie = $request->nie;
 
         if ($request->marriage_time == 1){
             $will->current_marriage_country = $request->current_marriage_country;
@@ -481,7 +482,7 @@ class HomeController extends Controller
                 }
 
             }
-            $will->previous_child_first_name = json_encode($jsonData);
+            $will->previous_info = json_encode($jsonData);
         }
         $will->have_other_child = $request->have_other_child;
         $will->how_other_child = $request->how_other_child;

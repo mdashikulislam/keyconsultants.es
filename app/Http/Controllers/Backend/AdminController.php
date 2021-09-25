@@ -178,7 +178,18 @@ class AdminController extends Controller
             toast('Data not found','error');
             return  redirect()->back();
         }
-        $data->previous_child_first_name = json_decode($data->previous_child_first_name,true);
+        if ($data->current_child_first_name){
+            $data->current_child_first_name = explode(',',$data->current_child_first_name);
+        }
+        if ($data->current_child_surname){
+            $data->current_child_surname = explode(',',$data->current_child_surname);
+        }
+        if ($data->current_child_type){
+            $data->current_child_type = explode(',',$data->current_child_type);
+        }
+
+        $data->previous_info = json_decode($data->previous_info,true);
+//        return $data;
         return view('backend.will-single')
             ->with([
                 'data'=>$data
