@@ -1012,6 +1012,10 @@
                             <div id="add_bf">
 
                             </div>
+                            <div class="form-group ml-5">
+                                <input required type="checkbox" name="clicking" class="form-check-input" id="clicking">
+                                <label id="clicking-error" class="form-check-label" for="clicking">Check here to indicate that you have read and agree to the terms of the Keyconsultants</label>
+                            </div>
                         </div>
                     </div>
                     </form>
@@ -2244,6 +2248,13 @@
                 'previous_spouse_first_name':'Please Enter Previous Spouse First Name',
                 'previous_spouse_surname':'Please Enter Previous Spouse Surname',
                 'previous_marriage_country':'Please Select Previous Marriage Country',
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "clicking") {
+                    error.appendTo("#clicking-error");
+                } else {
+                    error.insertAfter(element);
+                }
             }
         });
     </script>

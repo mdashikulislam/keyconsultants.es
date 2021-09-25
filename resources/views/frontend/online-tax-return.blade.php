@@ -423,6 +423,11 @@
                                                         </label>
                                                     </div>
                                                     <p class="d-block mt-3">The tax is always declared a year in arears, meaning in 2021 the tax is declared for tax year 2020. Please do note that our fee in this form is calculated just for one tax year. If you wish to declare several years, the additional years will be paid separately.</p>
+
+                                                </div>
+                                                <div class="form-group ml-4 col-12">
+                                                    <input required type="checkbox" name="clicking" class="form-check-input" id="clicking">
+                                                    <label id="clicking-error" class="form-check-label" for="clicking">Check here to indicate that you have read and agree to the terms of the Keyconsultants</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -1264,6 +1269,13 @@
                     }
                 }
                 return this.valid();
+            },
+            errorPlacement: function(error, element) {
+                if (element.attr("name") == "clicking") {
+                    error.appendTo("#clicking-error");
+                } else {
+                    error.insertAfter(element);
+                }
             }
         });
         $(window).on('load',function (){
