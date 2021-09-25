@@ -222,6 +222,26 @@
                     <p><strong>If you are a registered resident of Spain - do you want this Will to deal with ALL of your assets in other Countries as well as in Spain? </strong>{{$data->resident_of_spain}}</p>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">How would you like your estate to be distributed?</h2>
+                </div>
+                <div class="card-body">
+                    @for($k = 0;$k < count($data->beneficiary_first_name);$k++)
+                        <h2 class="card-title mt-3 mb-3">Beneficiary {{$k+1}} :</h2>
+                        <table class="table table-bordered">
+                            <tr>
+                                <td style="width: 50%"><strong>First Name : </strong>{{$data->beneficiary_first_name[$k]}}</td>
+                                <td><strong>Last Name : </strong>{{$data->beneficiary_last_name[$k]}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Relation Ship : </strong>{{$data->beneficiary_relationship[$k]}}</td>
+                                <td><strong>Description : </strong>{{$data->beneficiary_description[$k]}}</td>
+                            </tr>
+                        </table>
+                    @endfor
+                </div>
+            </div>
         </div>
     </div>
 @endsection

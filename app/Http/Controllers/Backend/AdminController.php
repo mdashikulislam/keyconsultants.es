@@ -196,7 +196,10 @@ class AdminController extends Controller
         if ($data->other_child_type){
             $data->other_child_type = explode(',',$data->other_child_type);
         }
-
+        $data->beneficiary_first_name = explode(',',$data->beneficiary_first_name);
+        $data->beneficiary_last_name = explode(',',$data->beneficiary_last_name);
+        $data->beneficiary_relationship = explode(',',$data->beneficiary_relationship);
+        $data->beneficiary_description = explode(',',$data->beneficiary_description);
         $data->previous_info = json_decode($data->previous_info,true);
         //return $data;
         return view('backend.will-single')
