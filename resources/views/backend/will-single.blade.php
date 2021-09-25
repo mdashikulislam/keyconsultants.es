@@ -171,6 +171,32 @@
 {{--                            <div style="width: 100%;height: 2px;background: red;display: block;margin-top: 10px;"></div>--}}
                         @endfor
                     @endif
+                    <div class="mt-3">
+                        <p><strong>Do you have any other children born outside of the aforementioned marriage(s)? : </strong>{{$data->have_other_child == 1 ? 'Yes':'No'}}</p>
+                        @if($data->have_other_child == 1)
+                            <p><strong>How many : </strong>{{$data->how_other_child}}</p>
+                        @endif
+                    </div>
+                    @if($data->how_other_child > 0)
+                        <div class="row mt-3">
+                            @for($s = 0;$s < $data->how_other_child;$s++)
+                                <div class="col-md-4">
+                                    <h2 class="card-title mb-3">Child {{$s+1}} :</h2>
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <td><strong>First Name :</strong> {{$data->other_child_first_name[$s]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Surname :</strong> {{$data->other_child_surname[$s]}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Child type :</strong> {{$data->other_child_type[$s]}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            @endfor
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

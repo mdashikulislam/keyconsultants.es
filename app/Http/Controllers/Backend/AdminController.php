@@ -187,9 +187,18 @@ class AdminController extends Controller
         if ($data->current_child_type){
             $data->current_child_type = explode(',',$data->current_child_type);
         }
+        if ($data->other_child_first_name){
+            $data->other_child_first_name = explode(',',$data->other_child_first_name);
+        }
+        if ($data->other_child_surname){
+            $data->other_child_surname = explode(',',$data->other_child_surname);
+        }
+        if ($data->other_child_type){
+            $data->other_child_type = explode(',',$data->other_child_type);
+        }
 
         $data->previous_info = json_decode($data->previous_info,true);
-//        return $data;
+        //return $data;
         return view('backend.will-single')
             ->with([
                 'data'=>$data
