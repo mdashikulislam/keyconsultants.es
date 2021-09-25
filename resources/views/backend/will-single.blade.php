@@ -199,6 +199,29 @@
                     @endif
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Legal Bits</h2>
+                </div>
+                <div class="card-body">
+                    <p><strong>Do you wish for this will to be regulated by the law of your country of residence / nationality? </strong>{{$data->regulated}}</p>
+                    <p><strong>Do you wish to appoint an Executor (albacin) in the distribution of your estate? </strong>{{$data->executor_distribution}}</p>
+                    @if($data->executor_distribution == 'Yes')
+                        <table class="table table-bordered">
+                            <tr>
+                                <td><strong>Executor first name : </strong>{{$data->executor_first_name}}</td>
+                                <td><strong>Executor Surname : </strong>{{$data->executor_surname}}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>NIE/DNI No : </strong>{{$data->executor_nie}}</td>
+                                <td><strong>Executor Surname : </strong>{{$data->executor_address}}</td>
+                            </tr>
+                        </table>
+                    @endif
+                    <p class="mt-3"><strong>Have you made a previous will in Spain ? </strong>{{$data->made_previous}}</p>
+                    <p><strong>If you are a registered resident of Spain - do you want this Will to deal with ALL of your assets in other Countries as well as in Spain? </strong>{{$data->resident_of_spain}}</p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
