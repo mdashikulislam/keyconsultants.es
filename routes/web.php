@@ -50,6 +50,10 @@ Route::get('/process', [App\Http\Controllers\PaymentController::class ,'paymentA
 Route::post('payment-attempt',[\App\Http\Controllers\PaymentController::class,'paymentAttempt'])->name('payment.attempt');
 Route::get('payment-success',[\App\Http\Controllers\PaymentController::class,'paymentSuccess'])->name('payment.success');
 Route::get('payment-failed',[\App\Http\Controllers\PaymentController::class,'paymentFailed'])->name('payment.failed');
+Route::get('online-tax-return',[\App\Http\Controllers\Frontend\HomeController::class,'onlineTaxReturn'])->name('online.tax.return');
+Route::post('online-tax-return',[\App\Http\Controllers\Frontend\HomeController::class,'onlineTaxReturnPost'])->name('online.tax.return');
+Route::get('tax-fee-payment',[\App\Http\Controllers\PaymentController::class,'taxFeePayment'])->name('tax.fee.payment');
+Route::post('tax-fee-payment',[\App\Http\Controllers\PaymentController::class,'taxFeePaymentPost']);
 //Admin Route and Auth
 Auth::routes(['register'=>false]);
 
@@ -82,7 +86,11 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('enquiry/delete/{id}',[\App\Http\Controllers\Backend\AdminController::class,'enquiryDelete'])->name('admin.enquiry.delete');
     Route::get('seo',[\App\Http\Controllers\Backend\AdminController::class,'seo'])->name('admin.seo');
     Route::post('seo/store',[\App\Http\Controllers\Backend\AdminController::class,'seoStore'])->name('seo.store');
-
+    Route::get('transaction',[\App\Http\Controllers\Backend\AdminController::class,'transaction'])->name('admin.transaction');
+    Route::get('online-tax-return',[\App\Http\Controllers\Backend\AdminController::class,'onlineTaxForm'])->name('admin.tax.return');
+    Route::get('online-tax-return/{id}',[\App\Http\Controllers\Backend\AdminController::class,'onlineTaxFormSingle'])->name('admin.tax.return.single');
+    Route::get('spanish-will',[\App\Http\Controllers\Backend\AdminController::class,'spanishWill'])->name('admin.spanish.will');
+    Route::get('spanish-will/{id}',[\App\Http\Controllers\Backend\AdminController::class,'spanishWillSingle'])->name('admin.spanish.will.single');
 });
 
 //Ajax Route

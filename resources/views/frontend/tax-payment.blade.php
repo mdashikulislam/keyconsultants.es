@@ -18,7 +18,7 @@
                 </div>
                 <div class="card p-3">
                     <div class="card-body">
-                        <form action="{{route('payment.attempt')}}" method="post" id="payment-form">
+                        <form action="{{route('tax.fee.payment')}}" method="post" id="payment-form">
                             @csrf
                             <div class="form-group">
                                 <label style="font-weight: bold;font-size: 22px;margin-bottom: 20px;font-family: Arial" for="card-element">
@@ -33,24 +33,15 @@
                             <div class="payer mt-5">
                                 <h4>Payer Details</h4>
                                 <div class="info">
-                                    <table class="table table-bordered mt-3">
-                                        <tr>
-                                            <td class="font-weight-bold">Surname Name</td>
-                                            <td>{{ucfirst($info->surname)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">First Name</td>
-                                            <td>{{ucfirst($info->first_name)}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">Email Address</td>
-                                            <td>{{$info->email}}</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="font-weight-bold">Telephone</td>
-                                            <td>{{$info->telephone}}</td>
-                                        </tr>
-                                    </table>
+                                    <input type="hidden" value="{{$info->id}}" name="id">
+                                    <div class="form-group">
+                                        <label for="telephone">Telephone number for contact person:</label>
+                                        <input required id="telephone" type="number" name="telephone" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">E-mail address for contact person:</label>
+                                        <input required id="email" type="email" name="email" class="form-control"/>
+                                    </div>
                                 </div>
                             </div>
                             <button style="background: #c0b298;border-color: #c0b298;" class="btn btn-success mt-3">Submit Payment</button>
@@ -67,16 +58,16 @@
                         </div>
                         <table class="table table-bordered order-info mt-3">
                             <tr>
-                                <td>Fee</td>
-                                <td width="20%">€90</td>
+                                <td>Sub Total</td>
+                                <td>{{'€'.($info->sub_total / $info->total_owner).' * '.$info->total_owner.' = €'.$info->sub_total}}</td>
                             </tr>
                             <tr>
                                 <td>Tax(21%)</td>
-                                <td>€18.9</td>
+                                <td>{{'= €'.$info->vat}}</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>€108.9</td>
+                                <td>{{'= €'.$info->total_amount}}</td>
                             </tr>
                         </table>
                     </div>
@@ -175,7 +166,6 @@
             hiddenInput.setAttribute('name', 'stripeToken');
             hiddenInput.setAttribute('value', token.id);
             form.appendChild(hiddenInput);
-
             form.submit();
         }
     </script>

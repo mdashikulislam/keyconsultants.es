@@ -5,10 +5,13 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
+use App\Models\OnlineTax;
 use App\Models\Property;
 use App\Models\SeekerInfo;
 use App\Models\SeekerNote;
 use App\Models\Seo;
+use App\Models\SpanishWill;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -126,5 +129,82 @@ class AdminController extends Controller
             toast('not found','error');
             return redirect()->back();
         }
+    }
+
+    public function transaction()
+    {
+        $trxs = Transaction::orderByDesc('created_at')->get();
+        return view('backend.transaction')
+            ->with([
+                'trxs'=>$trxs
+            ]);
+    }
+
+    public function onlineTaxForm()
+    {
+        $taxReturns = OnlineTax::where('status','Accept')->orderByDesc('created_at')->get();
+        return view('backend.tax-return')
+            ->with([
+                'taxReturns'=>$taxReturns
+            ]);
+    }
+
+    public function onlineTaxFormSingle($id)
+    {
+        $data = OnlineTax::findOrFail($id);
+        if (empty($data)){
+            toast('Data not found');
+            return redirect()->back();
+        }
+        return view('backend.tax-return-single')
+            ->with([
+                'data'=>$data
+            ]);
+    }
+
+    public function spanishWill()
+    {
+        $spanishWills = SpanishWill::where('payment_status','Accept')->orderByDesc('created_at')->get();
+        return view('backend.spanish-will')
+            ->with([
+                'spanishWills'=>$spanishWills
+            ]);
+    }
+
+    public function spanishWillSingle($id)
+    {
+        $data = SpanishWill::findOrFail($id);
+        if (empty($data)){
+            toast('Data not found','error');
+            return  redirect()->back();
+        }
+        if ($data->current_child_first_name){
+            $data->current_child_first_name = explode(',',$data->current_child_first_name);
+        }
+        if ($data->current_child_surname){
+            $data->current_child_surname = explode(',',$data->current_child_surname);
+        }
+        if ($data->current_child_type){
+            $data->current_child_type = explode(',',$data->current_child_type);
+        }
+        if ($data->other_child_first_name){
+            $data->other_child_first_name = explode(',',$data->other_child_first_name);
+        }
+        if ($data->other_child_surname){
+            $data->other_child_surname = explode(',',$data->other_child_surname);
+        }
+        if ($data->other_child_type){
+            $data->other_child_type = explode(',',$data->other_child_type);
+        }
+        $data->beneficiary_first_name = explode(',',$data->beneficiary_first_name);
+        $data->beneficiary_last_name = explode(',',$data->beneficiary_last_name);
+        $data->beneficiary_relationship = explode(',',$data->beneficiary_relationship);
+        $data->beneficiary_description = explode(',',$data->beneficiary_description);
+        $data->previous_info = json_decode($data->previous_info,true);
+        //return $data;
+        return view('backend.will-single')
+            ->with([
+                'data'=>$data
+            ]);
     }
 }

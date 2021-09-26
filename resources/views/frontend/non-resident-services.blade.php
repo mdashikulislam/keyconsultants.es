@@ -3,7 +3,6 @@
     NON-RESIDENT TAXES
 @endsection
 @section('content')
-
     <div class="content-area" style="padding-bottom: 80px">
         <div class="container">
             <div class="row">
@@ -11,8 +10,8 @@
                     <div class="module">
                        <div class="txt">
                            <h1 class="text-center mb-4">Non-Resident Taxes  -  (Modelo 210)</h1>
-                           <p >Non-resident taxes arise when you are not a resident in Spain, but you own a property here for vacation purposes or to make an income renting out your property.  We have split these sections in 3 parts dealing with the typical holiday home first. </p>
-                           <h5 class="text-center" style="color: #DB6503">Let Key Consultants Prepare and submit your Non-Resident Tax return for just 35,00€  plus IVA Per Person  — it only takes a few Minutes and can save you much time!</h5>
+                           <p >Non-resident taxes arise when you are not a resident in Spain, but you own a property here for vacation purposes or to make an income renting out your property. </p>
+                           <h5 class="text-center" style="color: #c0b298">Let Key Consultants Prepare and submit your Non-Resident Tax return for just <span style="color: #000">39.95€</span>  plus IVA Per Person  — it only takes a few Minutes and can save you much time!</h5>
                        </div>
                         <div class="media-panel mt-5">
                             <h2>Non-Resident taxes – Holiday Homes</h2>
@@ -70,7 +69,7 @@
                         </div>
                     </form>
                     <div class="text text-center">
-                        <a href="" style="display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                        <a href="{{route('online.tax.return')}}" style="text-align: center;display:block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 18px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +114,7 @@
             <div class="row justify-content-center mt-3">
                 <div class="com-md-12 col-lg-12 col-sm-12 col-xs-12 text-center">
                     <div class="text">
-                        <a href="" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
+                        <a href="{{route('online.tax.return')}}" style="display:inline-block;color: #fff;font-weight: bold;background: #c0b298;padding: 30px;margin-top: 50px;font-size: 20px;word-break: break-all;border-radius: 4px">Click here to start your online Tax Return here</a>
                     </div>
                 </div>
             </div>
@@ -175,6 +174,77 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-12">
+                    <div class="terms">
+                        <h2 class="text-center">Our General terms of service for Non-Resident Tax Returns</h2>
+                        <h4>About our Service</h4>
+                        <ul>
+                            <li>he service refers to an online tax declaration service where the end service user provides their information on the service provider´s website at www.keyconsultants.es and the service provider uses this information to submit their Spanish non-resident tax declaration (Modelo 210) with the Spanish Tax office at
+                                <a target="_blank" href="http://aeat.es">www.aeat.es</a>
+                            </li>
+                            <li>The service relates to a an annual Spanish tax return (modelo 210) specifically for the non-residents who own Spanish property but who do not have their tax residence in Spain. Therefore, the service is preliminary for the preparation and submission of the tax declaration with the Spanish Tax Authority and for setting up a direct debit deduction of the payment or assist with payment through our client bank account.</li>
+                            <li>The service provider is Key Consultants CB, a Spanish registered company (comunidad de bienes)  with CIF Number of E16535874 and with the address of Ramon de Moncada 2 Local 4, 07180 Santa Ponça, Illes Baleares. </li>
+                            <li>These Terms of  service set out the agreement between you as the service user and us the service provider.</li>
+                            <li>The information on this site is prepared by Key Consultants CB and may not be copied or distributed without the permission of the copyright owner. </li>
+                        </ul>
+                        <h4>Our fees</h4>
+                        <ul>
+                            <li>We charge our fees by Credit/ Debit card once you have completed the online instruction form. This payment is powered by Stripe Secure payment gateway. Under no circumstances do we hold or have access to your credit or debit card details.</li>
+                        </ul>
+                        <h4>Payment of your taxes </h4>
+                        <ul>
+                            <li>You pay you Non-Resident Taxes by setting up a onetime direct debit instruction which permits the Spanish Tax Agency (AEAT) to deduct the amount of tax that you owe from your Spanish bank account</li>
+                            <li>If you do not have a Spanish bank account, and would like Key Consultants CB to pay your taxes direct from our client account, please contact us on
+                                <a href="mailto:hola@keyconsultants.es">hola@keyconsultants.es</a> and we will be happy to discuss this service with you. </li>
+                        </ul>
+                        <h4>Service user responsibility</h4>
+                        <ul>
+                            <li>It is the responsibility of the Service user to ensure that the information provided on the online form is correct.</li>
+                            <li>The Service user is responsible for ensuring that there is sufficient funds in their bank to cover the taxes due when they are due to be paid. Taxes are due either annually before the end of December (where your home is not rented), or quarterly (usually in the 20th of April, 20th July, 20th October and 20th January). Key Consultants CB will not be responsible for any incorrect information provided or where the payment was rejected due to insufficient funds being held in the account.</li>
+                        </ul>
+                        <h4>Your taxable income and deductions</h4>
+                        <ul>
+                            <li>We  will submit your tax declaration (Modelo 210) on your behalf, for every quarter that you are registered on our website (where you rent your property out long term)</li>
+                            <li>We will submit your annual taxes (Modelo 210) where you don’t rent out your property.</li>
+                            <li>The Service user is liable for any penalties if you claim deductions that you are not entitled to, or fails to report the rented income and expenses correctly or on time, leading to a missed tax payment.</li>
+                            <li>You must be able to prove all your invoices with the IVA number and in your name / CIF number from the supplier.</li>
+                            <li>You have no previous deficits from a previous rental income or you let us know if you have so that we can make the correct deduction.</li>
+                        </ul>
+                        <h4>What you promise to do</h4>
+                        <ul>
+                            <li>By using this service the Service user is confirming that they are non-resident in Spain and therefore need to submit non-resident taxes to the Spanish Tax Authority.</li>
+                            <li>The Service user is obliged to ensure that taxes are declared in the country in which they are fiscal resident. </li>
+                            <li>The Service user is responsible for ensuring that there is the necessary funds in the bank to pay the tax at the time the tax return has been drafted and presented.</li>
+                            <li>The Service user is responsible for ensuring that the bank has The Service user’s correct NIE Number registered on the account (Passport numbers are not sufficient) otherwise the Spanish Tax authority will not be able to deduct the taxes from that particular account.</li>
+                            <li>The Service user is responsible for confirming that that the tax has been deducted from their bank account at the time of submission of the tax form or, in the event that this is an annual return, before the 31st December each year to ensure that the bank has not denied the direct debit payment.</li>
+                            <li>The Service user is responsible for contacting Key Consultants CB during the day of the tax payment if the tax deduction has not been made.  It is therefore important to keep track of the payment date!</li>
+                            <li>Key Consultants CB undertakes to declare Modelo 210 to the Spanish Tax Authority and send a confirmation to the Service user no later than one month after the declaration date. If Key Consultants CB has not sent a confirmation of this, the Service user is responsible for contacting Key Consultants CB within two weeks to point this out. Key Consultants CB will then investigate any problems and remedy this.</li>
+                            <li>The Service user is responsible for submitting all documents that Key Consultants CB requires in order to submit the declaration, either through the digital service Key Consultants CB or via e-mail or other medium chosen by Key Consultants CB.</li>
+                            <li>The Service user is ultimately responsible for fulfilling their tax obligations against Spanish and other tax authorities.</li>
+                            <li>The Service user is liable for any fees or fines if the Service user does not pay the tax or ensure that there are necessary funds in the account when the tax is deducted. If the direct for whatever reason does not work, please contact us immediately and we will try to remedy the situation and prevent you from suffering any additional costs such as fines and/or Interest.</li>
+                            <li>The Service user must submit their information to us no later than 5 days after the end of each Quarter or no later than the 15th December of the year following the tax year for the standard tax.</li>
+                        </ul>
+                        <h4>What we at Key Consultants promises to do for you.</h4>
+                        <ul>
+                            <li>We will prepare and submit your Modelo 210 tax declaration to the Spanish tax authorities before the deadline for declarations and set up the direct debit. The final date for setting up for direct debit is approximately two weeks before the payment is due. </li>
+                            <li>We are not responsible for any damages or losses incurred by you or any other person, as a result of our actions, errors or defects on our site under these Terms of Use, except as a result of deliberate conduct, fraud, deliberate negligence, gross negligence by us , our employees or our partners.</li>
+                            <li>We will send  you a copy of your completed tax declaration as soon as we have submitted it.</li>
+                        </ul>
+                        <h4>What if something goes wrong?</h4>
+                        <ul>
+                            <li>We are dedicated to delivering a high quality and transparent service, but if you are dissatisfied with any aspect of our service and feel the need to make a complaint please contact us via email or phone and we will do our utmost to resolve the issue as soon as it arises. Complaints are normally handled in a timely manner so as to ensure Service user satisfaction. You can contact us on +34 871 046 034 or email us at
+                                <a href="mailto:hola@keyconsultants.es">hola@keyconsultants.es</a>.</li>
+                            <li>This agreement is governed by the laws and tribunals of Spain and any disputes that may arise shall be resolved under Spanish law. </li>
+                            <li>We protect your data in accordance with our terms of use regarding the handling of personal data. We collect your data only to perform the service. We can store the data for a maximum of 7 years after your last declaration.</li>
+                            <li>These terms of use can be changed by Key Consultants CB by sending information about the changes to your e-mail address.</li>
+                            <li>You are required to notify us if you change your email address or other information that may be relevant to your declaration.</li>
+                        </ul>
+                        <p class="mt-3">These terms  are specific for non-resident tax returns. For our full terms and conditions of business please visit:
+                            <a href="{{route('terms.and.conditions.of.business')}}">{{route('terms.and.conditions.of.business')}}</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="callto-action-area" style="background: url('{{asset('frontend/assets/images/bg/cta.webp')}}') no-repeat center center fixed">
@@ -193,6 +263,30 @@
         </div>
     </div>
     <style>
+        .terms{
+            margin-bottom: 60px;
+        }
+        .terms h2{
+            position: relative;
+            margin-bottom: 30px;
+        }
+        .terms h2::after{
+            position: absolute;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #c0b298;
+            bottom: -10px;
+            left: 0;
+        }
+        .terms h4{
+            margin-top: 15px;
+        }
+        .terms ul{
+            list-style-type: disc;
+            margin-left: 15px;
+            text-align: justify
+        }
         .error-message{
             color: red;
         }

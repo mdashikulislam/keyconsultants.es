@@ -70,8 +70,8 @@
                         <p>I Think we should have a picture here with this on – like a banner advert.</p>
                         <p>Find out more then link to contact us page</p>
                     </div>
-                    <div class="wide" style="text-align: center;background: #c0b298;padding: 30px;margin-top: 30px;">
-                        <a href="https://www.atib.es/TA/contenido.aspx?Id=9854&lang=es" style="color: #fff;">View ITP (Stamp duty)tax rates here</a>
+                    <div class="wide" style="text-align: center;background: #c0b298;padding: 30px;margin-top: 30px;font-size: 16px;">
+                        <a href="https://www.atib.es/TA/contenido.aspx?Id=9854&lang=es" style="color: #fff;">View ITP (Stamp duty) tax rates here</a>
                     </div>
                 </div>
             </div>
@@ -114,9 +114,6 @@
             background: #dededc;
             padding: 20px;
             border-radius: 4px ;
-        }
-        .right p{
-            padding-top: 40px;
         }
         .bottom{
             margin-top: 20px;

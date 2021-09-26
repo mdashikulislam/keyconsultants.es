@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Contact;
 use App\Models\Enquiry;
 use App\Models\Favorite;
+use App\Models\OnlineTax;
 use App\Models\Property;
 use App\Models\SeekerData;
 use App\Models\SeekerInfo;
@@ -410,6 +411,7 @@ class HomeController extends Controller
 
     public function willFormSubmit(Request $request)
     {
+        //return $request->all();
         $will = new SpanishWill();
         $will->surname = $request->surname;
         $will->first_name = $request->first_name;
@@ -434,33 +436,53 @@ class HomeController extends Controller
         $will->father_name = $request->father_name;
         $will->marital_status = $request->marital_status;
         $will->marriage_time = $request->marriage_time;
-        $will->current_marriage_country = $request->current_marriage_country;
-        $will->current_spouse_first_name = $request->current_spouse_first_name;
-        $will->current_spouse_surname = $request->current_spouse_surname;
-        $will->current_no_of_children = $request->current_no_of_children;
-        $will->previous_marriage_country = $request->previous_marriage_country;
-        $will->previous_spouse_first_name = $request->previous_spouse_first_name;
-        $will->previous_spouse_surname = $request->previous_spouse_surname;
-        $will->previous_no_of_children = $request->previous_no_of_children;
-        if ($request->current_child_first_name){
-            $will->current_child_first_name = implode(',',$request->current_child_first_name);
-        }
-        if ($request->current_child_surname){
-            $will->current_child_surname = implode(',',$request->current_child_surname);
-        }
-        if ($request->current_child_type){
-            $will->current_child_type = implode(',',$request->current_child_type);
-        }
+        $will->nie = $request->nie;
 
+        if ($request->marriage_time == 1){
+            $will->current_marriage_country = $request->current_marriage_country;
+            $will->current_spouse_first_name = $request->current_spouse_first_name;
+            $will->current_spouse_surname = $request->current_spouse_surname;
+            $will->current_no_of_children = $request->current_no_of_children;
+            if ($request->current_child_first_name){
+                $will->current_child_first_name = implode(',',$request->current_child_first_name);
+            }
+            if ($request->current_child_surname){
+                $will->current_child_surname = implode(',',$request->current_child_surname);
+            }
+            if ($request->current_child_type){
+                $will->current_child_type = implode(',',$request->current_child_type);
+            }
+        }elseif ($request->marriage_time > 1){
+            $will->current_marriage_country = $request->current_marriage_country;
+            $will->current_spouse_first_name = $request->current_spouse_first_name;
+            $will->current_spouse_surname = $request->current_spouse_surname;
+            $will->current_no_of_children = $request->current_no_of_children;
+            if ($request->current_child_first_name){
+                $will->current_child_first_name = implode(',',$request->current_child_first_name);
+            }
+            if ($request->current_child_surname){
+                $will->current_child_surname = implode(',',$request->current_child_surname);
+            }
+            if ($request->current_child_type){
+                $will->current_child_type = implode(',',$request->current_child_type);
+            }
+            $jsonData = [];
+            for ($i = 1; $i < $request->marriage_time;$i++){
+                $jsonData['previous_marriage_'.$i]['previous_marriage_country_'.$i] = $request->input('previous_marriage_country_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_spouse_first_name_'.$i] = $request->input('previous_spouse_first_name_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_spouse_surname_'.$i] = $request->input('previous_spouse_surname_'.$i);
+                $jsonData['previous_marriage_'.$i]['previous_no_of_children_'.$i] = $request->input('previous_no_of_children_'.$i);
+                $jsonData['previous_marriage_'.$i]['date_of_marriage_'.$i] = $request->input('date_of_marriage_'.$i);
+                $jsonData['previous_marriage_'.$i]['date_of_marriage_end_'.$i] = $request->input('date_of_marriage_end_'.$i);
+                $jsonData['previous_marriage_'.$i]['region_of_marriage_end_'.$i] = $request->input('region_of_marriage_end_'.$i);
+                if ($request->input('previous_no_of_children_'.$i) > 0){
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_first_name'] =$request->input('previous_child_first_name_'.$i);
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_surname'] =$request->input('previous_child_surname_'.$i);
+                    $jsonData['previous_marriage_'.$i]['previous_marriage_child']['previous_child_type'] =$request->input('previous_child_type_'.$i);
+                }
 
-        if ($request->previous_child_first_name){
-            $will->previous_child_first_name = implode(',',$request->previous_child_first_name);
-        }
-        if ($request->previous_child_surname){
-            $will->previous_child_surname = implode(',',$request->previous_child_surname);
-        }
-        if ($request->previous_child_type){
-            $will->previous_child_type = implode(',',$request->previous_child_type);
+            }
+            $will->previous_info = json_encode($jsonData);
         }
         $will->have_other_child = $request->have_other_child;
         $will->how_other_child = $request->how_other_child;
@@ -509,6 +531,68 @@ class HomeController extends Controller
             toast('Please fill the form first','error');
             return redirect()->route('spanish.will');
         }
-        return view('frontend.payment');
+        $info = SpanishWill::where('id',$willId)->first();
+        return view('frontend.payment')
+            ->with([
+                'info'=>$info
+            ]);
+    }
+
+    public function onlineTaxReturn()
+    {
+        return view('frontend.online-tax-return');
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function onlineTaxReturnPost(Request $request)
+    {
+
+        $onlineTax = new OnlineTax();
+        //Step one
+        $onlineTax->first_name = $request->first_name ?  implode(',',$request->first_name):null;
+        $onlineTax->last_name = $request->last_name ? implode(',',$request->last_name):null;
+        $onlineTax->nie = $request->nie ? implode(',',$request->nie):null;
+        $onlineTax->dob = $request->dob ? implode(',',$request->dob):null;
+        $onlineTax->address = $request->address ? implode(',',$request->address):null;
+        $onlineTax->city = $request->city ? implode(',',$request->city):null;
+        $onlineTax->zip = $request->zip ? implode(',',$request->zip):null;
+        $onlineTax->country = $request->country ? implode(',',$request->country):null;
+        $onlineTax->ownership = $request->ownership ? implode(',',$request->ownership):null;
+        $onlineTax->place_of_birth = $request->place_of_birth ? implode(',',$request->place_of_birth):null;
+        $onlineTax->total_owner = $request->total_owner;
+        $onlineTax->total_amount = $request->amount;
+        $onlineTax->sub_total = $request->sub_total;
+        $onlineTax->vat = $request->vat;
+        $onlineTax->ibi_payment = $request->ibi_payment;
+        //Step two
+        if ($request->ibi_payment == 'Yes'){
+            if ($request->hasFile('ibi_file'))
+            $onlineTax->ibi_file = Helper::uploadSingleImage($request->ibi_file,'ibi','ibi');
+        }else{
+            $onlineTax->address_in_spain = $request->address_in_spain;
+            $onlineTax->city_2 = $request->city_2;
+            $onlineTax->state_2 = $request->state_2;
+            $onlineTax->postal_2 = $request->postal_2;
+            $onlineTax->catastral_reference = $request->catastral_reference;
+            $onlineTax->catastral_value_in_euro = $request->catastral_value_in_euro;
+        }
+        $onlineTax->iban_code = $request->iban_code;
+        $onlineTax->whole_tax_year = $request->whole_tax_year;
+        if ($request->whole_tax_year =='No'){
+            $onlineTax->buy_the_property = $request->buy_the_property;
+        }
+        $onlineTax->rental_year = $request->rental_year;
+        $onlineTax->tax_year = $request->tax_year ?  implode(',',$request->tax_year):'';
+
+        if ($onlineTax->save()){
+           Session::put('tax_id',$onlineTax->id);
+            return redirect()->route('tax.fee.payment');
+        }else{
+            toast('Something went wrong. please fill again','error');
+            return redirect()->back();
+        }
     }
 }

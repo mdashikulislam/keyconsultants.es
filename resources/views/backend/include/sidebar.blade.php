@@ -94,6 +94,30 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.transaction')}}" class="nav-link {{$currentRouteName == 'admin.transaction' ? 'active':''}}">
+                        <i class="nav-icon fa fa-money-check-alt"></i>
+                        <p>
+                            Transaction
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.tax.return')}}" class="nav-link {{$currentRouteName == 'admin.tax.return' ? 'active':''}}">
+                        <i class="nav-icon fa fa-money-bill-wave-alt"></i>
+                        <p>
+                            Online Tax Return
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.spanish.will')}}" class="nav-link {{$currentRouteName == 'admin.spanish.will' ? 'active':''}}">
+                        <i class="nav-icon fa fa-spa"></i>
+                        <p>
+                            Spanish Will
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
