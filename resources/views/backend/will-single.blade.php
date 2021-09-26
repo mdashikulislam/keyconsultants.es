@@ -154,13 +154,13 @@
                                                 <h2 class="card-title mb-2">Child Info {{$j+1}} :</h2>
                                                 <table class="table">
                                                     <tr>
-                                                        <td><strong>Child Type :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_type'][$i]}}</td>
+                                                        <td><strong>Child Type :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_type'][$j]}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><strong>First Name :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_first_name'][$i]}}</td>
+                                                        <td><strong>First Name :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_first_name'][$j]}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td><strong>Surname :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_surname'][$i]}}</td>
+                                                        <td><strong>Surname :</strong> {{$data['previous_info']['previous_marriage_'.$i]['previous_marriage_child']['previous_child_surname'][$j]}}</td>
                                                     </tr>
                                                 </table>
                                             @endfor
