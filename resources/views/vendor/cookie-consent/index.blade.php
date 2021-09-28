@@ -22,7 +22,7 @@
         <p>You can adjust all of your cookie settings by navigating the tabs on the left hand side.</p>
     </div>
     <div class="lcc-modal__actions">
-        <a class="btn btn-success btn-sm" style="background: #c0b298!important;border-color: #c0b298!important;border-radius: 0;padding: .40rem .5rem;" href="https://qwertydemo.tk/eugeneraldatapro/en/module/eugeneraldatapro/informations" target="_blank">
+        <a class="btn btn-success btn-sm" style="background: #c0b298!important;border-color: #c0b298!important;border-radius: 0;padding: .40rem .5rem;" href="https://gdpr.eu/what-is-gdpr" target="_blank">
             EU: GDPR
         </a>
         <button type="button" class="lcc-button lcc-button--link js-lcc-settings-toggle">
