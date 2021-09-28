@@ -8,19 +8,71 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
                     <div class="property-content">
-                        <p>
-                            At&nbsp;<strong>Key Consultants Mallorca</strong>&nbsp; we are pleased to offer you our
-                            outstanding Administración de Fincas – a complete professional service for your
-                            community with a personal touch.
-                        </p>
-                        <p>
-                            We are not just administrators of your community, we want you to think that we are part
-                            of it.&nbsp; We will assist the president and works committee members in every way we
-                            can to ensure the correct running of your community. We have invested in the latest IT
-                            equipment and providing an online portal that can be accessed 24/7 by every property
-                            owner within your &nbsp;community. In the portal you can see your co-efficient, access
-                            your accounts, change your bank details, report a complaint and much much more.
-                        </p>
+                        <div class="insurance">
+                            <h2 class="d-flex justify-content-center">Select Insurance Type</h2>
+                            <div class="row">
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-heart"></i>
+                                                <h2>HEALTH INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-home"></i>
+                                                <h2>HOME INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-hotel"></i>
+                                                <h2>HOLIDAY HOME INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-car"></i>
+                                                <h2>CAR INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-ship"></i>
+                                                <h2>BOAT INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-lg-4 col-12">
+                                    <div class="card mt-5">
+                                        <a href="#">
+                                            <div class="box d-flex align-items-center">
+                                                <i class="fa fa-paw"></i>
+                                                <h2>PET INSURANCE</h2>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="text-center mt-50">
                             <a href="{{route('contact')}}" class="contact-btn">Get Quote</a>
                         </div>
@@ -50,3 +102,29 @@
         </div>
     </div>
 @endsection
+@push('css')
+    <style>
+        .card{
+            border-color: #c0b298!important;
+        }
+        .card a{
+            color: #2d2d2a;
+
+        }
+        .card a h2{
+            font-size: 20px;
+        }
+        .box i{
+            background: #c0b298;
+            color: #fff;
+            padding: 24px;
+            font-size: 38px;
+            margin-right: 10px;
+        }
+        @media only screen and (max-width:991px) and (min-width: 768px) {
+            .card a h2{
+                font-size: 18px;
+            }
+        }
+    </style>
+@endpush
