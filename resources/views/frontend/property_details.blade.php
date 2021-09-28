@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
-                    <form class="product-details-form" method="POST" action="{{route('property.enquiry')}}">
+                    <form  class="product-details-form {{ $errors->has('name') ? ' has-error' : '' }}" method="POST" action="{{route('property.enquiry')}}">
                         @csrf
                         <input type="hidden" name="post_id" value="{{$property->id}}">
                         <label class="product-label">Your Query About*</label>
@@ -144,6 +144,16 @@
                         @error('email')
                             <span  class="invalid-feedback d-block">{{$message}}</span>
                         @enderror
+
+                        <div class="mb-3">
+                            <div id="example3"></div>
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+
                         <button type="submit">Submit</button>
                     </form>
                     <div class="feature-list mt-3" style="background: #dededc;padding: 20px;">
@@ -273,6 +283,11 @@
 @push('css')
     <link rel="stylesheet" href="{{asset('frontend/assets/css/magnific-popup.css')}}">
     <style>
+        span.help-block {
+            color: #dc3545;
+            font-size: 12px;
+             font-weight: normal;
+        }
         .product-details-content .price-info li:last-child{
             margin-right: 0;
         }
@@ -294,4 +309,17 @@
             flex-wrap: wrap!important;
         }
     </style>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript">
+
+        var widgetId1;
+        var widgetId2;
+        var onloadCallback = function() {
+            grecaptcha.render('example3', {
+                'sitekey' : '{{getenv('NOCAPTCHA_SITEKEY')}}',
+                'theme' : 'light'
+            });
+        };
+    </script>
 @endpush

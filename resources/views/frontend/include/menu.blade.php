@@ -44,7 +44,7 @@
                 <a class="{{$routeName == 'administracion.de.fincas' ? 'active':''}}" href="{{route('administracion.de.fincas')}}">Finca Administration</a>
             </li>
             <li>
-                <a class="{{$routeName == 'our.fees' ? 'active':''}}" href="{{route('our.fees')}}">BUSINESS START-UP</a>
+                <a class="{{$routeName == 'our.fees' ? 'active':''}}" href="{{route('our.fees')}}">Business Start-up</a>
             </li>
             <li>
                 <a class="{{$routeName == 'accounts.bookkeeping' ? 'active':''}}" href="{{route('accounts.bookkeeping')}}">Accounts &amp; Bookkeeping</a>
