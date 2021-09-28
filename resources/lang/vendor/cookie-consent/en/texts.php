@@ -1,5 +1,5 @@
 <?php
-
+$privacy = route('privacy.cookie.policy');
 return [
     'alert_accept' => 'Agreed',
     'alert_settings' => 'Settings',
@@ -16,5 +16,5 @@ return [
     'settings_close' => 'Close',
     'settings_save' => 'Save',
     'settings_title' => 'Cookie settings',
-    'settings_text' => 'Our website keeps three levels of cookies. You can adjust your preferences at any time. If you want more information about what cookies are and which cookies we collect, please read our <a href="'.route('privacy.cookie.policy').'" target="_blank">cookie policy</a>.',
+    'settings_text' => 'Our website keeps three levels of cookies. You can adjust your preferences at any time. If you want more information about what cookies are and which cookies we collect, please read our <a href="'.$privacy.'" target="_blank">cookie policy</a>.',
 ];
