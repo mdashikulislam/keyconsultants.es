@@ -16,5 +16,5 @@ return [
     'settings_close' => 'Sluiten',
     'settings_save' => 'Opslaan',
     'settings_title' => 'Cookievoorkeuren',
-    'settings_text' => 'Onze website houdt drie niveaus van cookies bij. Je kan zelf je voorkeuren op elk moment aanpassen. Meer informatie over wat cookies zijn en welke cookies we verzamelen kan je lezen in ons <a href=":policyUrl">cookiebeleid</a>.',
+    'settings_text' => 'Onze website houdt drie niveaus van cookies bij. Je kan zelf je voorkeuren op elk moment aanpassen. Meer informatie over wat cookies zijn en welke cookies we verzamelen kan je lezen in ons <a href="https://keyconsultants.es/">cookiebeleid</a>.',
 ];

@@ -16,5 +16,5 @@ return [
     'settings_close' => 'Fermer',
     'settings_save' => 'Enregistrer',
     'settings_title' => 'Cookie settings',
-    'settings_text' => 'Notre site web utilise trois niveaux de cookies. Vous pouvez adapter vos préférences à tout moment. Vous trouverez davantage d\'informations sur les cookies et la manière dont nous les utilisons dans notre <a href=":policyUrl">politique en matière de cookies</a>.',
+    'settings_text' => 'Notre site web utilise trois niveaux de cookies. Vous pouvez adapter vos préférences à tout moment. Vous trouverez davantage d\'informations sur les cookies et la manière dont nous les utilisons dans notre <a href="https://keyconsultants.es/">politique en matière de cookies</a>.',
 ];
