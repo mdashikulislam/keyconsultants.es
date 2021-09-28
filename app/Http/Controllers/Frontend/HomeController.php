@@ -332,12 +332,17 @@ class HomeController extends Controller
     }
     public function propertyEnquiry(Request $request)
     {
+
         $this->validate($request,[
             'name'=>['required'],
             'email'=>['required','email'],
             'question'=>['required'],
             'phone'=>['required'],
+            'g-recaptcha-response' => 'required|captcha',
         ]);
+
+
+
         $quiry = new Enquiry();
         $quiry->post_id = $request->post_id;
         $quiry->name = $request->name;
