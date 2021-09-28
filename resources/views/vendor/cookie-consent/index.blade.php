@@ -50,7 +50,7 @@
                 @lang('cookie-consent::texts.settings_title')
             </h2>
             <p id="lcc-modal-settings-desc" class="lcc-text">
-                @lang('cookie-consent::texts.settings_text', [ 'policyUrl' => config("cookie-consent.policy_url_$locale")])
+                @lang('cookie-consent::texts.settings_text', [ 'policyUrl' => route('privacy.cookie.policy')])
             </p>
             <div class="lcc-modal__section lcc-u-text-center">
                 <button type="button" class="lcc-button js-lcc-accept">
