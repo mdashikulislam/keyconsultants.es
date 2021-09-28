@@ -106,7 +106,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-12">
-                    <form class="product-details-form" method="POST" action="{{route('property.enquiry')}}">
+                    <form  class="product-details-form" method="POST" action="{{route('property.enquiry')}}">
                         @csrf
                         <input type="hidden" name="post_id" value="{{$property->id}}">
                         <label class="product-label">Your Query About*</label>
@@ -144,6 +144,11 @@
                         @error('email')
                             <span  class="invalid-feedback d-block">{{$message}}</span>
                         @enderror
+
+                        <div class="mb-3">
+                            <div id="example3"></div>
+                        </div>
+
                         <button type="submit">Submit</button>
                     </form>
                     <div class="feature-list mt-3" style="background: #dededc;padding: 20px;">
@@ -294,4 +299,17 @@
             flex-wrap: wrap!important;
         }
     </style>
+
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+    <script type="text/javascript">
+
+        var widgetId1;
+        var widgetId2;
+        var onloadCallback = function() {
+            grecaptcha.render('example3', {
+                'sitekey' : '{{getenv('CAPTURE_SITE_KEY')}}',
+                'theme' : 'light'
+            });
+        };
+    </script>
 @endpush
