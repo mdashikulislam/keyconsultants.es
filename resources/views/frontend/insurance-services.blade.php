@@ -9,7 +9,7 @@
                 <div class="col-lg-10 offset-lg-1 col-12">
                     <div class="property-content">
                         <div class="insurance">
-                            <h2 class="d-flex justify-content-center">Select Insurance Type</h2>
+                            <h2 style="color: #c0b298;" class="d-flex justify-content-center">Select Insurance Type</h2>
                             <div class="row">
                                 <div class="col-md-4 col-lg-4 col-12">
                                     <div class="card mt-5">
