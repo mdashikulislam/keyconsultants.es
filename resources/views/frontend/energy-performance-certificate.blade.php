@@ -8,21 +8,51 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
                     <div class="property-content">
-                        <p>
-                            At&nbsp;<strong>Key Consultants Mallorca</strong>&nbsp; we are pleased to offer you our
-                            outstanding Administración de Fincas – a complete professional service for your
-                            community with a personal touch.
-                        </p>
-                        <p>
-                            We are not just administrators of your community, we want you to think that we are part
-                            of it.&nbsp; We will assist the president and works committee members in every way we
-                            can to ensure the correct running of your community. We have invested in the latest IT
-                            equipment and providing an online portal that can be accessed 24/7 by every property
-                            owner within your &nbsp;community. In the portal you can see your co-efficient, access
-                            your accounts, change your bank details, report a complaint and much much more.
-                        </p>
+                        <h2 class="mb-3">Energy Performance Certificate : </h2>
+                        <div class="img text-center">
+                            <img src="{{asset('frontend/assets/images/energy.png')}}" alt="">
+                        </div>
+                        <p>The energy performance certificate (certificado de efficienca Energética) is now mandatory if you intend to sell or rent your Spanish Property. If you are planning on selling your property, the notary will not complete the transaction without it.  </p>
+                        <p>The energy performance certificate, measures the efficiency of your home together with a measurement of your Co2 emissions.</p>
+                        <p>If you need an energy performance certificate and are based on the island of Malllorca, please contact us.</p>
+
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Up to 85m2</th>
+                                    <th>Between 85m2 & 200m2</th>
+                                    <th>Between 200m2 & 400m2</th>
+                                    <th>Between 400m2 & 600m2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Apartment/house</td>
+                                    <td>185€</td>
+                                    <td>195€</td>
+                                    <td>235€</td>
+                                    <td>255€</td>
+                                </tr>
+                                <tr>
+                                    <td>Chalet / Villa</td>
+                                    <td>195€</td>
+                                    <td>215€</td>
+                                    <td>255€</td>
+                                    <td>295€</td>
+                                </tr>
+                                <tr>
+                                    <td>Shops/Locales</td>
+                                    <td>190€</td>
+                                    <td>210€</td>
+                                    <td>240€</td>
+                                    <td>290€</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <div class="text-center mt-50">
-                            <a href="{{route('contact')}}" class="contact-btn">Get Quote</a>
+                            <a href="{{route('contact')}}" class="contact-btn">Contact Us</a>
                         </div>
                     </div>
                 </div>
