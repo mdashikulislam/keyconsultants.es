@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-10 offset-lg-1 col-12">
                     <div class="property-content">
-                        <h2 class="mb-3">Energy Performance Certificate : </h2>
+                        <h2 style="color: #c0b298;" class="mb-3">Energy Performance Certificate : </h2>
                         <div class="img text-center">
                             <img src="{{asset('frontend/assets/images/energy.png')}}" alt="">
                         </div>
