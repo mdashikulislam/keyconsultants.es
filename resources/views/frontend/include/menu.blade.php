@@ -38,7 +38,7 @@
         </ul>
     </li>
     <li>
-        <a href="{{route('our.fees')}}">For Businesses <i class="fa fa-caret-down"></i></a>
+        <span>For Businesses <i class="fa fa-caret-down"></i></span>
         <ul class="submenu">
             <li>
                 <a class="{{$routeName == 'administracion.de.fincas' ? 'active':''}}" href="{{route('administracion.de.fincas')}}">Finca Administration</a>
@@ -55,8 +55,11 @@
         </ul>
     </li>
     <li>
-        <a href="{{route('about.us')}}">About Us <i class="fa fa-caret-down"></i></a>
+        <span>About Us <i class="fa fa-caret-down"></i></span>
         <ul class="submenu">
+            <li>
+                <a class="{{$routeName == 'about.us' ? 'active':''}}" href="{{route('about.us')}}">About Us</a>
+            </li>
             <li>
                 <a class="{{$routeName == 'meet.our.team' ? 'active':''}}" href="{{route('meet.our.team')}}">Meet Our Team</a>
             </li>
